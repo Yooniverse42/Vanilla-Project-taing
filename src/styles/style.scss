@@ -3,16 +3,3 @@
 body {
   background-color: $gray-300;
 }
-
-.container {
-  border: 1px solid $black;
-  height: 500px;
-  min-width: 100px;
-  max-width: 200px;
-  margin: 0 auto;
-
-  @include mq(tablet) {
-    min-width: 300px;
-    max-width: 500px;
-  }
-}

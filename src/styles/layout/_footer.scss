@@ -1,1 +1,106 @@
-@import '@/styles/_index.scss';
+@use '@/styles/utils/index' as *;
+@use '@/styles/components/snsIcon' as *;
+
+body {
+  background-color: $black;
+  color: $gray-200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer {
+  width: 20rem;
+  padding: $spacing-52 $spacing-16 $spacing-82;
+}
+
+.footer_contents {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-16;
+  border-top: 1px solid $brand-dark-2;
+}
+
+.footer_util {
+  margin-top: $spacing-8;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-4;
+}
+
+.SNS {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-8;
+}
+
+.youtube {
+  padding: $spacing-10;
+}
+
+.instagram {
+  padding: $spacing-8 $spacing-10;
+}
+
+.twitter {
+  padding: $spacing-10;
+}
+
+.facebook {
+  padding: $spacing-8 $spacing-16;
+}
+
+.copyright_container {
+  display: none;
+}
+
+.copyright {
+  color: $gray-500;
+  font-size: $text-12;
+  font-weight: 400;
+  line-height: $line-160;
+}
+
+@include mq(tablet) {
+  .footer {
+    width: 48rem;
+    padding: 70px 40px 100px;
+  }
+
+  .footer_contents {
+    gap: $spacing-12;
+  }
+
+  .footer_util {
+    gap: $spacing-20;
+    flex-direction: row;
+    align-self: stretch;
+  }
+
+  .copyright_container {
+    display: block;
+    font-size: $text-12;
+    color: $gray-500;
+  }
+
+  .SNS {
+    gap: $spacing-8;
+  }
+}
+
+@include mq(desktop) {
+  .footer {
+    width: 120rem;
+    padding: 140px 68px 170px;
+  }
+
+  .footer_contents {
+    gap: $spacing-24;
+  }
+
+  .footer_util {
+    gap: $spacing-36;
+  }
+}
