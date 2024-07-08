@@ -1,2 +1,2 @@
-@import '@/styles/base/_reset.scss';
-@import '@/styles/base/_default.scss';
+@forward 'reset';
+@forward 'default';
