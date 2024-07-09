@@ -6,8 +6,6 @@ class Footer extends HTMLElement {
 
     style.textContent = `@import '/docs/assets/main-MxLk8JDM.css';`;
 
-    console.log(style.textContent);
-
     this.shadowRoot.innerHTML = `
     <style>
       ${style.textContent}
