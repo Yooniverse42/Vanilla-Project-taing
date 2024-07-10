@@ -7,18 +7,18 @@ body {
   background-color: $black;
 }
 
-.onboarding_scroll_section_0 {
+.section_0 {
   @include flexbox(column, nowrap, center, center, null);
   width: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 10%, rgba(0, 0, 0, 0.8) 90%, rgba(0, 0, 0, 1) 100%), url(https://yooniverse.pockethost.io/api/files/poster/q1agi9w1i882os5/onboarding_bg_s_8BSHdaE8OO.png) no-repeat center;
   background-size: cover;
 
-  .message_title_wrapper {
+  .container {
     @include flexbox(column, nowrap, center, center, null);
     width: 222px;
     padding: calc(80px + 38px) 0 130px;
 
-    .message_title_header {
+    .container__header {
       display: block;
       width: 100%;
       text-align: center;
@@ -27,12 +27,12 @@ body {
       line-height: $line-140;
       color: $white;
 
-      &_text {
+      &__text {
         display: block;
       }
     }
 
-    .message_title_text {
+    .container__text {
       white-space: nowrap;
       margin: 0 0 $spacing-16; 
       text-align: center;
@@ -41,17 +41,17 @@ body {
       color: $gray-400;
     }
 
-    .message_title_button {
+    .container__button {
       padding: 0 $spacing-12 0 $spacing-8;
       border-radius: 4px;
       background-color: $brand-red-2;
       color: white;
 
-      .message_title_button_img img {
+      .button__icon img {
         width: 22.5px;
       }
 
-      .message_title_button_text {
+      .button__text {
         display: inline-block;
         margin: $spacing-8 $spacing-4;
         font-size: $text-12;
