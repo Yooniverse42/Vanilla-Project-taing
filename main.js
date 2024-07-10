@@ -13,7 +13,7 @@ import '@/layout/footer';
 import 'swiper/css/bundle';
 import Swiper from 'swiper/bundle';
 
-const swiper = new Swiper('.section1__swiper1', {
+new Swiper('.section1__swiper1', {
   autoplay: {
     delay: 2000,
   },
