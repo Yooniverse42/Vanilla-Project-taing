@@ -158,11 +158,23 @@ body {
   .swiper-slide {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     font-size: $text-12;
 
     h3 {
-      font-size: $text-12;
       display: flex;
+      justify-content: end;
+      position: relative;
+      font-size: 12px;
+      height: 19px;
+
+      :nth-child(1) {
+        font-size: 34px;
+        color: $white;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
     }
   }
 
@@ -187,7 +199,7 @@ body {
 
 .swiper5 {
   width: 145px;
-  height: 82px;
+  height: 136px;
   display: flex;
 
   .swiper-wrapper {
@@ -200,12 +212,22 @@ body {
     flex-direction: column;
 
     h3 {
-      font-size: $text-12;
-    }
-  }
+      display: flex;
+      position: relative;
+      font-size: 12px;
+      height: 54px;
+      gap: 8px;
+      margin: 2px 0 0 0;
 
-  .swiper-slide img {
-    display: block;
+      :nth-child(1) {
+        font-size: 34px;
+        color: $white;
+      }
+    }
+
+    .swiper-slide img {
+      display: block;
+    }
   }
 }
 
