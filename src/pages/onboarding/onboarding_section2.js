@@ -24,5 +24,5 @@ function createSwiper(className, speed) {
   });
 }
 
-createSwiper('.swiper-1', 3100);
-createSwiper('.swiper-2', 3000);
+createSwiper('.section2__swiper1', 3100);
+createSwiper('.section2__swiper2', 3000);
