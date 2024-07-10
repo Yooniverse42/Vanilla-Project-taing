@@ -6,9 +6,8 @@ import { renderImgList, renderImgTitleList } from '@/library/index';
 import { getRecords } from '@/api/getRecords';
 
 const banner = getRecords('banner_test');
-
 renderImgList(banner, '.swiper1 > ul').then(() => {
-  const swiper1 = new Swiper('.swiper1', {
+  new Swiper('.swiper1', {
     // autoplay: {
     //   delay: 1000,
     //   disableOnInteraction: false,
@@ -33,18 +32,16 @@ renderImgList(banner, '.swiper1 > ul').then(() => {
   // autoplayButton.addEventListener('click', swiper1.autoplay.start());
 });
 
-const poster = getRecords('poster_test');
-
+const poster = getRecords('taing_main_poster');
 renderImgList(poster, '.swiper2 > ul').then(() => {
   new Swiper('.swiper2', {
     parallax: true,
     freeMode: true,
-    slidesPerGroup: 3,
+    // slidesPerGroup:
   });
 });
 
 const quickVod = getRecords('quick_vod');
-
 renderImgTitleList(quickVod, '.swiper3 > ul').then(() => {
   new Swiper('.swiper3', {
     parallax: true,
@@ -62,7 +59,6 @@ renderImgTitleList(poster, '.swiper4 > ul').then(() => {
 });
 
 const liveChannel = getRecords('live_channel');
-
 renderImgTitleList(liveChannel, '.swiper5 > ul').then(() => {
   new Swiper('.swiper5', {
     parallax: true,
@@ -72,7 +68,6 @@ renderImgTitleList(liveChannel, '.swiper5 > ul').then(() => {
 });
 
 const original = getRecords('original');
-
 renderImgList(original, '.swiper6 > ul').then(() => {
   new Swiper('.swiper6', {
     parallax: true,
@@ -80,8 +75,10 @@ renderImgList(original, '.swiper6 > ul').then(() => {
   });
 });
 
-const event = getRecords('event');
+const subBanner = getRecords('sub_banner');
+renderImgList(subBanner, '.sub_banner');
 
+const event = getRecords('event');
 renderImgList(event, '.swiper7 > ul').then(() => {
   new Swiper('.swiper7', {
     parallax: true,

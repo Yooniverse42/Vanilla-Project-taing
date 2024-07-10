@@ -3,14 +3,17 @@ import getPbImageURL from '@/api/getPbImageURL';
 
 export async function renderImgList(storage, node) {
   const records = await storage;
+
   records.forEach((item) => {
     const template = `
-      <li class="swiper-slide">
-        <img
-          src="${getPbImageURL(item)}"
-          alt="${item.title}"
-        />
-      </li>
+      <div class="swiper-slide">
+        <picture>
+          <source srcset="${getPbImageURL(item)}" media="(max-width: 768px)" />
+          <source srcset="${getPbImageURL(item, 'tablet')}" media="(max-width: 1920px)" />
+          <source srcset="${getPbImageURL(item, 'desktop')}" />
+          <img src="/src/img.jpg" alt="러브캐처 포스터" />
+        </picture>
+      </div>
     `;
     insertLast(node, template);
   });
@@ -18,16 +21,21 @@ export async function renderImgList(storage, node) {
 
 export async function renderImgTitleList(storage, node) {
   const records = await storage;
+
   records.forEach((item) => {
     if (Object.prototype.hasOwnProperty.call(item, 'episode')) {
       const template = `
       <li class="swiper-slide">
-        <img
-          src="${getPbImageURL(item)}"
-          alt="${item.title}"
-        />
-        <h3>${item.title}</h3>
-        <span>${item.episode}</span>
+        <picture class="swiper-slide">
+          <source srcset="${getPbImageURL(item)}" media="(max-width: 768px)" />
+          <source srcset="${getPbImageURL(item, 'tablet')}" media="(max-width: 1920px)" />
+          <source srcset="${getPbImageURL(item, 'desktop')}" />
+          <img src="/src/img.jpg" alt="러브캐처 포스터" />
+        </picture>
+        <h3>
+          <span>${item.title}</span>
+          <span>${item.episode}</span>
+        </h3>
       </li>
       
     `;
@@ -35,10 +43,12 @@ export async function renderImgTitleList(storage, node) {
     } else {
       const template = `
       <li class="swiper-slide">
-        <img
-          src="${getPbImageURL(item)}"
-          alt="${item.title}"
-        />
+        <picture class="swiper-slide">
+          <source srcset="${getPbImageURL(item)}" media="(max-width: 768px)" />
+          <source srcset="${getPbImageURL(item, 'tablet')}" media="(max-width: 1920px)" />
+          <source srcset="${getPbImageURL(item, 'desktop')}" />
+          <img src="/src/img.jpg" alt="러브캐처 포스터" />
+        </picture>
         <h3>
           <span>${records.indexOf(item) + 1}</span>
           <span>${item.title}</span>
