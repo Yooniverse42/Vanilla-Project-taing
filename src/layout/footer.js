@@ -5,8 +5,7 @@ class Footer extends HTMLElement {
     const style = document.createElement('style');
 
     style.textContent = `@import '/docs/assets/main-MxLk8JDM.css';`;
-
-    console.log(style.textContent);
+    // style.textContent = `@import '/src/styles/layout._footer.scss';`;
 
     this.shadowRoot.innerHTML = `
     <style>
