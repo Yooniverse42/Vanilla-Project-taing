@@ -2,17 +2,17 @@ import '@/layout/footer';
 import '@/styles/pages/taing.scss';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
-import { renderImgList } from '@/library/index';
+import { renderImgList, renderImgTitleList } from '@/library/index';
+import { getRecords } from '@/api/getRecords';
 
-// const autoplayButton = document.querySelector('.swiper-autoplayButton');
-// autoplayButton.addEventListener('click', swiper1.autoplay.stop());
+const banner = getRecords('banner_test');
 
-renderImgList('banner_test', '.swiper1 > ul').then(() => {
-  new Swiper('.swiper1', {
-    autoplay: {
-      delay: 1000,
-      disableOnInteraction: false,
-    },
+renderImgList(banner, '.swiper1 > ul').then(() => {
+  const swiper1 = new Swiper('.swiper1', {
+    // autoplay: {
+    //   delay: 1000,
+    //   disableOnInteraction: false,
+    // },
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -28,32 +28,64 @@ renderImgList('banner_test', '.swiper1 > ul').then(() => {
     speed: 1000,
     parallax: true,
   });
+
+  // const autoplayButton = document.querySelector('.swiper-autoplayButton');
+  // autoplayButton.addEventListener('click', swiper1.autoplay.start());
 });
 
-renderImgList('poster_test', '.swiper2 > ul').then(() => {
+const poster = getRecords('poster_test');
+
+renderImgList(poster, '.swiper2 > ul').then(() => {
   new Swiper('.swiper2', {
     parallax: true,
     freeMode: true,
+    slidesPerGroup: 3,
   });
 });
 
-renderImgList('quick_vod', '.swiper3 > ul').then(() => {
+const quickVod = getRecords('quick_vod');
+
+renderImgTitleList(quickVod, '.swiper3 > ul').then(() => {
   new Swiper('.swiper3', {
     parallax: true,
     freeMode: true,
+    slidesPerGroup: 2,
   });
 });
 
-renderImgList('poster_test', '.swiper4 > ul').then(() => {
+renderImgTitleList(poster, '.swiper4 > ul').then(() => {
   new Swiper('.swiper4', {
     parallax: true,
     freeMode: true,
+    slidesPerGroup: 3,
   });
 });
 
-renderImgList('live_channel', '.swiper5 > ul').then(() => {
+const liveChannel = getRecords('live_channel');
+
+renderImgTitleList(liveChannel, '.swiper5 > ul').then(() => {
   new Swiper('.swiper5', {
     parallax: true,
     freeMode: true,
+    slidesPerGroup: 2,
+  });
+});
+
+const original = getRecords('original');
+
+renderImgList(original, '.swiper6 > ul').then(() => {
+  new Swiper('.swiper6', {
+    parallax: true,
+    freeMode: true,
+  });
+});
+
+const event = getRecords('event');
+
+renderImgList(event, '.swiper7 > ul').then(() => {
+  new Swiper('.swiper7', {
+    parallax: true,
+    freeMode: true,
+    slidesPerGroup: 2,
   });
 });
