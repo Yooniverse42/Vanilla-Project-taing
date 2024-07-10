@@ -4,7 +4,7 @@ class Footer extends HTMLElement {
     this.attachShadow({ mode: 'open' });
     const style = document.createElement('style');
 
-    style.textContent = `@import '/docs/assets/main-MxLk8JDM.css';`;
+    style.textContent = `@import '/src/styles/layout/_footer.scss';`;
     // style.textContent = `@import '/src/styles/layout._footer.scss';`;
 
     this.shadowRoot.innerHTML = `
