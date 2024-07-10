@@ -1,4 +1,4 @@
-import '@/styles/pages/scroll_section_2.scss';
+import '@/styles/pages/onboarding/onboarding_section2.scss';
 
 // import Swiper bundle with all modules installed
 import Swiper from 'swiper/bundle';

@@ -1,4 +1,4 @@
-import '@/styles/pages/onboarding_scroll_section_1.scss';
+import '@/styles/pages/onboarding/onboarding_section1.scss';
 import 'swiper/css/bundle';
 import Swiper from 'swiper/bundle';
 import { Pagination } from 'swiper/modules';
