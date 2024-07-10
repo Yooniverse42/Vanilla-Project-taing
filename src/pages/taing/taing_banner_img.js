@@ -33,7 +33,7 @@ renderImgList(banner, '.swiper1 > ul').then(() => {
 });
 
 const poster = getRecords('taing_main_poster');
-renderImgList(poster, '.swiper2 > ul').then(() => {
+renderImgTitleList(poster, '.swiper2 > ul').then(() => {
   new Swiper('.swiper2', {
     parallax: true,
     freeMode: true,
