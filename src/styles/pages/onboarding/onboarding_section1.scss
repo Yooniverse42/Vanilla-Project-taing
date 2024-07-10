@@ -4,23 +4,23 @@ body {
   background-color: $black;
 }
 
-.scroll-section-1 {
+.section1 {
   padding-top: $spacing-48;
   margin: 0 auto;
 }
-.message-title-wrapper {
+.container__message {
   margin-bottom: $spacing-20;
   text-align: center;
   font-family: $base-font-family;
   font-weight: 400;
 }
 
-.message-title {
+.container__message__header {
   color: $white;
   font-size: $text-21;
   line-height: $line-140;
 }
-.message {
+.container__message__wrapper {
   color: $gray-200;
   font-size: $text-12;
   line-height: $line-160;
@@ -28,60 +28,68 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.text-1 {
+.message_wrapper__text1 {
 }
-.text-2 {
+.message_wrapper__text2 {
+}
+.section1__swiper1 {
+  position: relative;
+  left: 0;
+  top: 30%;
+  width: 100vh;
+
+  & img {
+    width: 100%;
+  }
 }
 
-.swiper-slide img {
-  width: 100%;
-}
 @include mq(tablet) {
-  .scroll-section-1 {
+  .section1 {
     padding-top: 40px;
   }
-  .message-title-wrapper {
+  .container__message {
   }
-  .message-title {
+  .container__message__header {
     font-size: $text-28;
   }
-  .message {
+  .container__message__wrapper {
     line-height: $line-150;
   }
-  .text-1 {
+  .message_wrapper__text1 {
     font-size: $text-16;
   }
-  .text-2 {
+  .message_wrapper__text2 {
     fomt-size: $text-12;
   }
-  section {
-  }
-  .swiper-slide img {
+
+  .section1__swiper1 {
+    & img {
+    }
   }
 }
 
 @include mq(desktop) {
-  .scroll-section-1 {
+  .section1 {
     padding-top: 160px;
   }
-  .message-title-wrapper {
+  .container__message {
     margin-bottom: 40px;
   }
-  .message-title {
+  .container__message__header {
     font-size: 50px;
   }
-  .message {
+  .container__message__wrapper {
     line-height: 42px;
   }
-  .text-1 {
+  .message_wrapper__text1 {
     font-size: $text-28;
   }
-  .text-2 {
+  .message_wrapper__text2 {
     font-size: $text-21;
   }
-  section {
-  }
 
-  .swiper-slide img {
+  .section1__swiper1 {
+    & img {
+    }
   }
 }

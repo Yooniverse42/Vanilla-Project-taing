@@ -52,6 +52,7 @@
       </section>
 
       <!-- 다경 -->
+     <!-- 다경 -->
       <section class="section1">
         <div class="container__message">
           <h2 class="container__message__header">티빙에만 있는 재미</h2>
@@ -64,64 +65,67 @@
             >
           </p>
         </div>
-        <div class="section1__swiper1">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img
-                id="tablet-poster"
-                src="/src/assets/image/image40.jpg"
-                alt="러브캐쳐"
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                id="pc-poster"
-                src="/src/assets/image/러브캐처1.jpg"
-                alt="pc-러브캐쳐"
-              />
-            </div>
-
-            <div class="swiper-slide">
-              <img
-                id="tablet-poster"
-                src="/src/assets/image/image42.jpg"
-                alt="보물찾기"
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                id="pc-poster"
-                src="/src/assets/image/보물찾기1.jpg"
-                alt="pc-보물찾기"
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                id="tablet-poster"
-                src="/src/assets/image/image39.jpg"
-                alt="술꾼 도시 여자들 2"
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                id="pc-poster"
-                src="/src/assets/image/푸드 크로니클1.jpg"
-                alt="pc-푸드크로니클"
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                id="tablet-poster"
-                src="/src/assets/image/image41.jpg"
-                alt="아일랜드"
-              />
-            </div>
-            <div class="swiper-slide">
-              <img
-                id="pc-poster"
-                src="/src/assets/image/몸값1.jpg"
-                alt="pc-몸값"
-              />
+        <!-- swiper 정상 구현릏 위해 section1__swiper__wrapper 추가 -->
+        <div class="section1__swiper__wrapper">
+          <div class="section1__swiper1">
+            <div class="swiper-wrapper">
+              <!-- swiper slide에 picture 요소 수정 -->
+              <div class="swiper-slide">
+                <picture class="swiper__slide__poster">
+                  <source
+                    media="(max-width:1920px)"
+                    srcset="
+                      http://yooniverse.pockethost.io/api/files/poster/nktv4vqrs6qmqgm/onboarding_swiper1_m1_iKsXxKXkse.png
+                    "
+                  />
+                  <img
+                    src="http://yooniverse.pockethost.io/api/files/poster/fdmy7sj8jp7sbog/onboarding_swiper1_l1_GnIF44b1Sr.png"
+                    alt="러브캐쳐 포스터"
+                  />
+                </picture>
+              </div>
+              <div class="swiper-slide">
+                <picture class="swiper__slide__poster">
+                  <source
+                    media="(max-width: 1920px)"
+                    srcset="
+                      http://yooniverse.pockethost.io/api/files/poster/6ptv8go43w587oj/onboarding_swiper1_m2_RYFh7fVhKY.png
+                    "
+                  />
+                  <img
+                    src="http://yooniverse.pockethost.io/api/files/poster/2nifq3n6yhcmj73/onboarding_swiper1_l2_0IJd7vwYdF.png"
+                    alt="보물찾기 포스터"
+                  />
+                </picture>
+              </div>
+              <div class="swiper-slide">
+                <picture class="swiper__slide__poster">
+                  <source
+                    media="(max-width: 1920px)"
+                    srcset="
+                      http://yooniverse.pockethost.io/api/files/poster/18zkje6pd6clodt/onboarding_swiper1_m4_Lnhgh3kwI6.png
+                    "
+                  />
+                  <img
+                    src="http://yooniverse.pockethost.io/api/files/poster/0n79vnr0xb7c9qy/onboarding_swiper1_l3_T5Dy1GhBJL.png"
+                    alt="푸드크로니클 포스터"
+                  />
+                </picture>
+              </div>
+              <div class="swiper-slide">
+                <picture class="swiper__slide__poster">
+                  <source
+                    media="(max-width: 1920px)"
+                    srcset="
+                      http://yooniverse.pockethost.io/api/files/poster/ii8arp1exbq14k4/onboarding_swiper1_m3_7Ihfh2uzZo.png
+                    "
+                  />
+                  <img
+                    src="http://yooniverse.pockethost.io/api/files/poster/52uq8mfbjvwida1/onboarding_swiper1_l4_vsZV0s2L2N.png"
+                    alt="몸값 포스터"
+                  />
+                </picture>
+              </div>
             </div>
           </div>
         </div>
