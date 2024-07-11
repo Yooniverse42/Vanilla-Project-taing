@@ -29,14 +29,11 @@
 //         </style>
 //         <header class="header">
 
-//           <nav class="header__container">
+//           <nav class="nav">
+
 //             <h1 class="header__logo">
-//               <a href="/index.html">
-//                 <picture class="message_title_button_img">
-//                   <source media="(min-width: 1920px)" srcset="http://yooniverse.pockethost.io/api/files/icon/996jh1fp64lu2vq/logo_l_MphmumOKiy.svg">
-//                   <source media="(min-width: 768px)" srcset="http://yooniverse.pockethost.io/api/files/icon/2cffqgs2lq2k6t7/logo_m_VreQNMTbLn.svg">
-//                   <img src="http://yooniverse.pockethost.io/api/files/icon/529jxuhmio4cfda/logo_s_DWQKIp5chm.svg" alt="타잉">
-//                 </picture>
+//               <a class="header__logo__link" href="/index.html">
+//                 <img class="logo1" src="http://yooniverse.pockethost.io/api/files/icon/451vddo2teve45p/icon_l_QGEdYLL7JV.svg" alt="타잉" />
 //               </a>
 //           </h1>
 
