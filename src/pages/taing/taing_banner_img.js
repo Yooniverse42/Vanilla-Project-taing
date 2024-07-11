@@ -5,7 +5,7 @@ import 'swiper/css/bundle';
 import { renderImgList, renderImgTitleList } from '@/library/index';
 import { getRecords } from '@/api/getRecords';
 
-const banner = getRecords('banner_test');
+const banner = getRecords('main_banner');
 renderImgList(banner, '.swiper1 > ul').then(() => {
   new Swiper('.swiper1', {
     // autoplay: {
