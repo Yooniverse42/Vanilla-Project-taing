@@ -1,10 +1,13 @@
 @use '@/styles/index' as *;
 
 body {
-  min-width: 320px;
-  width: 100%;
   @include flexbox(column, nowrap, null, center, null);
   background-color: $black;
+}
+
+.main {
+  width: 100%;
+  min-width: 320px;
 }
 
 .section0 {

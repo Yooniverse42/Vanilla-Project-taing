@@ -1,1 +1,82 @@
+@use '@/styles/index' as *;
+
+body {
+  min-width: 320px;
+  width: 100%;
+  background-color: rgb(211, 69, 93);
+}
+
+.header {
+  border: 1px solid blue;
+  width: 100%;
+  height: 38px;
+  padding: 11.5px 16px;
+
+  img {
+    height: 20px;
+  }
+  
+  span {
+    font-size: $text-12;
+  }
+
+  .nav {
+    @include flexbox(row, nowrap, null, center, null);
+    border: 1px solid blue;
+    color: $white;
+  }
+  
+  .header__logo {
+  
+    .header__logo__link {
+      height: 20px;
+    }
+  }
+  
+  .header__menu {
+    background-color: blue;
+    @include flexbox(row, nowrap, null, center, $spacing-28);
+    flex-grow: 1;
+  }
+
+  .list__link__live {
+    background-color: green;
+    @include flexbox(row, nowrap, center, center, 4px);
+// 아니 "실시간" 글자 왜 세로고 난리냐고요 아오아오아오!
+    span {
+      white-space: none;
+    }
+  }
+
+  .header__asider {
+
+    .header__icon__search {
+      // 왜 안나오시고 그러세요;
+      width: 24px;
+      height: 24px;
+      background-image: url('http://yooniverse.pockethost.io/api/files/icon/d3s11y4bei09eke/search_defualt_l_uO5dv62LBJ.svg');
+    }
+  }
+
+}
+
+// 미디어쿼리 해야함, 글자색 변경, hover 추가, core-js 들고오기
+
+
+
+@include mq(tablet) {
+  .header {
+    height: 56px;
+  }
+}
+
+@include mq(desktop) {
+  .header {
+    height: 100px;
+  }
+}
+
+
+
+
 
