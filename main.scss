@@ -52,31 +52,26 @@ body {
     color: $gray-400;
   }
 
-  .container__button {
-    display: flex;
-    align-items: flex-start;
-    position: relative;
+  .login__move {
+    @include flexbox(row, nowrap, null, null, null);
     width: 188px;
     height: 34px;
+    border-radius: 4px;
     padding: 0 16px 0 8px;
     background-color: $brand-red-2;
   }
 
   .button__icon {
-    width: 26px;
+    width: 22px;
     height: 26px;
-    padding: 0 1px 0 2px;
   }
 
   .button__message {
-    position: absolute;
-    left: 31px;
-    top: 10px;
+    @include flexbox(row, nowrap, null, center, null);
     color: $white;
-    text-align: right;
-    font-size: 11px;
+    font-size: $text-12;
     font-weight: 400;
-    line-height: 150%;
+    line-height: $line-150;
   }
 }
 
@@ -107,20 +102,19 @@ body {
       font-size: $text-12;
     }
 
-    .container__button {
+    .login__move {
+      @include flexbox(row, nowrap, center, null, $spacing-10);
       width: 283px;
       height: 48px;
-      padding: 0 44px 0 8px;
+      padding: 0 44px 0 10px;
     }
-
+  
     .button__icon {
-      width: 36px;
+      width: 31px;
       height: 36px;
     }
-
+  
     .button__message {
-      right: 34px;
-      top: 12px;
       font-size: $text-16;
     }
   }
@@ -155,21 +149,19 @@ body {
       font-size: $text-28;
     }
 
-    .container__button {
+    .login__move {
+      @include flexbox(row, nowrap, center, null, $spacing-20);
       width: 506px;
       height: 80px;
-      padding: 0 64px 0 8px;
-      gap: $spacing-24;
+      padding: 0 65px 0 10px;
     }
-
+  
     .button__icon {
-      width: 63px;
+      width: 54px;
       height: 63px;
     }
-
+  
     .button__message {
-      right: 64px;
-      top: 19px;
       font-size: $text-28;
     }
   }
@@ -390,39 +382,34 @@ body {
     height: 32px;
   }
 
-  .message_header {
+  .message__header {
     color: $white;
     text-align: center;
-    font-size: $text-16;
+    font-size: $text-12;
     font-weight: 400;
     line-height: $line-140;
   }
 
-  .container__button {
-    display: flex;
-    align-items: flex-start;
-    position: relative;
+  .login__move {
+    @include flexbox(row, nowrap, null, null, null);
     width: 188px;
     height: 34px;
+    border-radius: 4px;
     padding: 0 16px 0 8px;
     background-color: $brand-red-2;
   }
 
   .button__icon {
-    width: 26px;
+    width: 22px;
     height: 26px;
-    padding: 0 1px 0 2px;
   }
 
   .button__message {
-    position: absolute;
-    left: 31px;
-    top: 10px;
+    @include flexbox(row, nowrap, null, center, null);
     color: $white;
-    text-align: right;
-    font-size: 11px;
+    font-size: $text-12;
     font-weight: 400;
-    line-height: 150%;
+    line-height: $line-150;
   }
 }
 
@@ -437,24 +424,23 @@ body {
       height: 52px;
     }
 
-    .message_header {
+    .message__header {
       font-size: $text-28;
     }
 
-    .container__button {
+    .login__move {
+      @include flexbox(row, nowrap, center, null, $spacing-10);
       width: 283px;
       height: 48px;
-      padding: 0 44px 0 8px;
+      padding: 0 44px 0 10px;
     }
-
+  
     .button__icon {
-      width: 36px;
+      width: 31px;
       height: 36px;
     }
-
+  
     .button__message {
-      right: 34px;
-      top: 12px;
       font-size: $text-16;
     }
   }
@@ -471,25 +457,23 @@ body {
       height: 110px;
     }
 
-    .message_header {
+    .message__header {
       font-size: 50px;
     }
 
-    .container__button {
+    .login__move {
+      @include flexbox(row, nowrap, center, null, $spacing-20);
       width: 506px;
       height: 80px;
-      padding: 8px 64px 8px 8px;
-      gap: $spacing-24;
+      padding: 0 65px 0 10px;
     }
-
+  
     .button__icon {
-      width: 63px;
+      width: 54px;
       height: 63px;
     }
-
+  
     .button__message {
-      right: 64px;
-      top: 19px;
       font-size: $text-28;
     }
   }
