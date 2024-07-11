@@ -1,5 +1,5 @@
 import '@/layout/footer';
-import '@/styles/pages/taing.scss';
+import '@/pages/taing/taing.scss';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 import { renderImgList, renderImgTitleList } from '@/library/index';
