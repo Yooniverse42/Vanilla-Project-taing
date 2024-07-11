@@ -1,31 +1,26 @@
 @use '@/styles/utils/index' as *;
+@use '@/styles/base/index' as *;
 @use '@/styles/components/snsIcon' as *;
 
 .footer {
-  width: 20rem;
-  padding: $spacing-52 $spacing-16 $spacing-82;
-  color: $gray-200;
+  padding: 0 1rem;
+  width: 100%;
+  color: $gray-400;
+  font-size: $text-12;
 }
 
 .footer_contents {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: $spacing-16;
+  @include flexbox(column, nowrap, null, null, $gap: $spacing-16);
   border-top: 1px solid $brand-dark-2;
 }
 
 .footer_util {
-  @include flexColumn;
+  @include flexbox(column, nowrap, null, null, $gap: $spacing-4);
   margin-top: $spacing-8;
-
-  gap: $spacing-4;
 }
 
 .SNS {
-  display: flex;
-  align-items: flex-start;
-  gap: $spacing-8;
+  @include flexbox(row, nowrap, null, flex-start, $gap: $spacing-8);
 }
 
 .youtube {
@@ -57,8 +52,8 @@
 
 @include mq(tablet) {
   .footer {
-    width: 48rem;
-    padding: 70px 40px 100px;
+    width: 100%;
+    padding: 4.375rem 2.5rem 6.25rem;
   }
 
   .footer_contents {
@@ -68,7 +63,6 @@
   .footer_util {
     gap: $spacing-20;
     flex-direction: row;
-    align-self: stretch;
   }
 
   .copyright_container {
@@ -85,7 +79,7 @@
 @include mq(desktop) {
   .footer {
     width: 120rem;
-    padding: 140px 68px 170px;
+    padding: 8.75rem 4.25rem 10.625rem;
   }
 
   .footer_contents {

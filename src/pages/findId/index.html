@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>TAING : 아이디 찾기</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="upgrade-insecure-requests"
+    />
+    <script type="module" src="/src/pages/findId/find_id.js"></script>
+  </head>
+  <body>
+    <!-- <c-header></c-header> -->
+
+    <main class="main">
+      <section class="findId_container">
+        <!-- 타이틀 -->
+        <h1 class="findId_title">아이디 찾기</h1>
+
+        <!-- 입력폼 -->
+        <form class="findId_content" action="/">
+          <h2>
+            이메일로 찾기
+            <p>가입 시 등록한 이메일을 입력해주세요.</p>
+          </h2>
+          <label class="findId_label" for="findId_email">
+            <input
+              class="findId_email"
+              type="text"
+              placeholder="이메일"
+              required
+            />
+            <button class="button_delete" type="reset">
+              <span class="icon_delete"></span>
+            </button>
+          </label>
+        </form>
+        <button class="submit_email" type="button" disabled>확인</button>
+
+        <div class="line_border"><p>또는</p></div>
+
+        <div class="findId_sub-content">
+          <h2>
+            본인인증으로 찾기
+            <p>
+              이미 본인인증이 완료된 계정에 한하여 아이디 찾기가 가능합니다.
+            </p>
+          </h2>
+          <button type="button">본인인증하기</button>
+        </div>
+
+        <nav class="findId_nav">
+          <a href="/">로그인하기</a>
+          <div class="line_divide"></div>
+          <a href="/">비밀번호 찾기</a>
+        </nav>
+      </section>
+    </main>
+
+    <c-footer></c-footer>
+  </body>
+</html>
