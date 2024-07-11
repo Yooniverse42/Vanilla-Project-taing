@@ -1,0 +1,496 @@
+@use '@/styles/index' as *;
+
+body {
+  @include flexbox(column, nowrap, null, center, null);
+  background-color: $black;
+}
+
+.main {
+  width: 100%;
+  min-width: 320px;
+}
+
+.section0 {
+  @include flexbox(column, nowrap, center, center, null);
+  width: 100%;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.6) 10%,
+      rgba(0, 0, 0, 0.8) 90%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url(https://yooniverse.pockethost.io/api/files/poster/q1agi9w1i882os5/onboarding_bg_s_8BSHdaE8OO.png)
+      no-repeat center;
+  background-size: cover;
+
+  .container {
+    @include flexbox(column, nowrap, center, center, null);
+    width: 222px;
+    padding: calc(80px + 38px) 0 130px;
+  }
+
+  .container__header {
+    width: 100%;
+    text-align: center;
+    font-size: $text-16;
+    font-weight: 700;
+    line-height: $line-140;
+    color: $white;
+
+    .header__text {
+      display: block;
+    }
+  }
+
+  .container__message {
+    white-space: nowrap;
+    margin: 0 0 $spacing-16;
+    text-align: center;
+    font-size: $text-12;
+    line-height: $line-160;
+    color: $gray-400;
+  }
+
+  .container__button {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    width: 188px;
+    height: 34px;
+    padding: 0 16px 0 8px;
+    background-color: $brand-red-2;
+  }
+
+  .button__icon {
+    width: 26px;
+    height: 26px;
+    padding: 0 1px 0 2px;
+  }
+
+  .button__message {
+    position: absolute;
+    left: 31px;
+    top: 10px;
+    color: $white;
+    text-align: right;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+}
+
+@include mq(tablet) {
+  .section0 {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.6) 10%,
+        rgba(0, 0, 0, 0.8) 90%,
+        rgba(0, 0, 0, 1) 100%
+      ),
+      url(https://yooniverse.pockethost.io/api/files/poster/0miz17ddkeq5egg/onboarding_bg_m_IgPeulahdq.png)
+        no-repeat center;
+    background-size: cover;
+
+    .container {
+      width: 283px;
+      padding: 155px 0 183px;
+    }
+
+    .container__header {
+      font-size: $text-21;
+    }
+
+    .container__message {
+      margin: $spacing-8 0 $spacing-28;
+      font-size: $text-12;
+    }
+
+    .container__button {
+      width: 283px;
+      height: 48px;
+      padding: 0 44px 0 8px;
+    }
+
+    .button__icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .button__message {
+      right: 34px;
+      top: 12px;
+      font-size: $text-16;
+    }
+  }
+}
+
+@include mq(desktop) {
+  .section0 {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.6) 10%,
+        rgba(0, 0, 0, 0.8) 90%,
+        rgba(0, 0, 0, 1) 100%
+      ),
+      url(https://yooniverse.pockethost.io/api/files/poster/omaugf19clqumnw/onboarding_bg_l_6PCKVGwXhH.png)
+        no-repeat center;
+    background-size: cover;
+
+    .container {
+      width: 545px;
+      padding: calc(160px + 100px) 0 404px;
+    }
+
+    .container__header {
+      white-space: nowrap;
+      margin: 0 -100% $spacing-16 -100%;
+      font-size: $text-50;
+    }
+
+    .container__message {
+      margin: 0 0 $spacing-60;
+      font-size: $text-28;
+    }
+
+    .container__button {
+      width: 506px;
+      height: 80px;
+      padding: 0 64px 0 8px;
+      gap: $spacing-24;
+    }
+
+    .button__icon {
+      width: 63px;
+      height: 63px;
+    }
+
+    .button__message {
+      right: 64px;
+      top: 19px;
+      font-size: $text-28;
+    }
+  }
+}
+
+// 다경
+.section1 {
+  padding-top: $spacing-48;
+  margin: 0 auto;
+  max-width: 320px;
+}
+.container__message {
+  margin-bottom: $spacing-20;
+  text-align: center;
+  font-family: $base-font-family;
+  font-weight: 400;
+}
+
+.container__message__header {
+  color: $white;
+  font-size: $text-21;
+  line-height: $line-140;
+}
+.container__message__wrapper {
+  color: $gray-200;
+  font-size: $text-12;
+  line-height: $line-160;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section1__swiper__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.section1__swiper1 {
+  position: relative;
+  left: 0;
+  top: 30%;
+  width: 100vw;
+  overflow: hidden;
+  & img {
+    border-radius: 4px;
+    width: 100%;
+  }
+}
+
+@include mq(tablet) {
+  .section1 {
+    padding-top: 40px;
+    max-width: 768px;
+  }
+
+  .container__message__header {
+    font-size: $text-28;
+  }
+  .container__message__wrapper {
+    line-height: $line-150;
+  }
+  .message__wrapper__text1 {
+    font-size: $text-16;
+  }
+  .message__wrapper__text2 {
+    font-size: $text-12;
+  }
+}
+
+@include mq(desktop) {
+  .section1 {
+    padding-top: 160px;
+    max-width: 1920px;
+  }
+  .container__message {
+    margin-bottom: 40px;
+  }
+  .container__message__header {
+    font-size: 50px;
+  }
+  .container__message__wrapper {
+    line-height: 42px;
+  }
+  .message__wrapper__text1 {
+    font-size: $text-28;
+  }
+  .message__wrapper__text2 {
+    font-size: $text-21;
+  }
+}
+
+// 승헌
+.section2 {
+  background-color: $black;
+  margin: 0 auto;
+  max-width: 320px;
+
+  .container__message {
+    text-align: center;
+    padding-top: $spacing-48;
+    padding-bottom: $spacing-26;
+
+    .container__message__header {
+      color: $white;
+      font-size: $text-21;
+      line-height: $line-140;
+      font-weight: 700;
+    }
+
+    .container__message__text1 {
+      color: $gray-200;
+      font-size: $text-12;
+      font-weight: 400;
+      line-height: $line-160;
+    }
+
+    .container__message__text2 {
+      display: none;
+    }
+  }
+}
+
+.section2__swiper__wrapper {
+  overflow: hidden;
+
+  .swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
+
+  .section2__swiper2 {
+    .swiper-wrapper {
+      margin-top: $spacing-12;
+    }
+  }
+  .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swiper-slide img {
+    border-radius: 4px;
+  }
+}
+
+@include mq(tablet) {
+  .section2 {
+    max-width: 768px;
+    max-height: 410px;
+
+    .container__message {
+      text-align: center;
+      padding-top: calc($spacing-8 * 10);
+      padding-bottom: calc($spacing-8 * 4);
+
+      .container__message__header {
+        font-size: $text-28;
+      }
+
+      .container__message__text1,
+      .container__message__text2 {
+        font-size: $text-16;
+        line-height: $line-140;
+        font-weight: 600;
+      }
+
+      .container__message__text2 {
+        font-size: $text-12;
+      }
+
+      .container__message__text2.hidden {
+        display: block;
+      }
+    }
+  }
+}
+
+@include mq(desktop) {
+  .section2 {
+    max-width: 1920px;
+    max-height: 860px;
+
+    .container__message {
+      .container__message__header {
+        font-size: calc($text-12 * 4);
+      }
+
+      .container__message__text1,
+      .container__message__text2 {
+        font-size: $text-28;
+        font-weight: 600;
+      }
+
+      .container__message__text2 {
+        font-size: $text-21;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+// 승수
+.main {
+  @include flexColumn;
+}
+
+// message_title
+
+.section3 {
+  @include flexColumn;
+  padding: $spacing-52 0;
+  gap: $spacing-18;
+  color: $gray-200;
+
+  .logo2 {
+    width: 83px;
+    height: 32px;
+  }
+
+  .message_header {
+    color: $white;
+    text-align: center;
+    font-size: $text-16;
+    font-weight: 400;
+    line-height: $line-140;
+  }
+
+  .container__button {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    width: 188px;
+    height: 34px;
+    padding: 0 16px 0 8px;
+    background-color: $brand-red-2;
+  }
+
+  .button__icon {
+    width: 26px;
+    height: 26px;
+    padding: 0 1px 0 2px;
+  }
+
+  .button__message {
+    position: absolute;
+    left: 31px;
+    top: 10px;
+    color: $white;
+    text-align: right;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+}
+
+@include mq(tablet) {
+  .section3 {
+    width: 768px;
+    padding: 100px 0;
+    gap: 14px;
+
+    .logo2 {
+      width: 135px;
+      height: 52px;
+    }
+
+    .message_header {
+      font-size: $text-28;
+    }
+
+    .container__button {
+      width: 283px;
+      height: 48px;
+      padding: 0 44px 0 8px;
+    }
+
+    .button__icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .button__message {
+      right: 34px;
+      top: 12px;
+      font-size: $text-16;
+    }
+  }
+}
+
+@include mq(desktop) {
+  .section3 {
+    width: 1920px;
+    padding: 150px 0;
+    gap: $spacing-36;
+
+    .logo2 {
+      width: 280px;
+      height: 110px;
+    }
+
+    .message_header {
+      font-size: 50px;
+    }
+
+    .container__button {
+      width: 506px;
+      height: 80px;
+      padding: 8px 64px 8px 8px;
+      gap: $spacing-24;
+    }
+
+    .button__icon {
+      width: 63px;
+      height: 63px;
+    }
+
+    .button__message {
+      right: 64px;
+      top: 19px;
+      font-size: $text-28;
+    }
+  }
+}
