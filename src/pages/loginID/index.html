@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="img/svg-xml" href="/vite.svg" />
+    <script type="module" src="/src/pages/loginID/login_ID.js"></script>
+    <title>login Id</title>
+  </head>
+  <body>
+    <!-- <c-header></c-header> -->
+
+    <main class="main__login">
+      <div class="login__title__form">
+        <h2 class="login__title">TAING ID 로그인</h2>
+      </div>
+
+      <form action="/" class="login__form" method="post">
+        <fieldset>
+          <legend class="aiiy">로그인 폼</legend>
+          <div class="login__form__container">
+            <div class="user__ID">
+              <label for="userEmail" class="a11y">아이디</label>
+              <input
+                type="email"
+                id="userEmail"
+                class="user__ID__input"
+                required
+                placeholder="아이디(이메일)"
+                name="userEmail"
+                aria-invalid="false"
+                aria-describedby="userEmailError"
+                aria-live="assertive"
+              />
+              <span id="userEmailError" class="login__form__error__massage"
+                >아이디는 이메일 형식으로 입력 해주세요</span
+              >
+            </div>
+            <!-- user__ID -->
+            <div class="user__password">
+              <label for="userPassword" class="a11y"> 비밀번호</label>
+              <input
+                type="password"
+                id="userPassword"
+                class="user__password__input"
+                required
+                placeholder="'비밀번호"
+                name="userPassword"
+                aria-invalid="false"
+                aria-describedby="userPasswordError"
+                aria-live="polite"
+              />
+              <span id="userPasswordError" class="login__form__error__massage"
+                >비밀번호는 특수문자 포함 6자리 이상 입력 해주세요</span
+              >
+            </div>
+            <!-- user__password -->
+            <div class="login__form__ip__checkbox__wrapper">
+              <div class="login__ip__security__remember__me">
+                <input
+                  type="checkbox"
+                  id="loginRememberMe"
+                  class="login__ip__remember__me"
+                  name="rememberMe"
+                />
+                <label for="loginRememberMe" class="login__remember__me__label"
+                  ><span>자동로그인</span></label
+                >
+              </div>
+            </div>
+            <!-- 자동로그인 체크박스 -->
+            <button type="submit" class="Login-button">로그인하기</button>
+
+            <ul class="login__form__search">
+              <li>
+                <a href="/">
+                  <span>아이디 찾기</span>
+                  <span></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>
