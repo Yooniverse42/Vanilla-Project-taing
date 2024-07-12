@@ -5,7 +5,6 @@ export async function renderImgList(storage, node) {
   const records = await storage;
 
   records.forEach((item) => {
-    console.log(item);
     const template = `
       <div class="swiper-slide">
         <picture>
