@@ -9,8 +9,8 @@ export async function renderImgList(storage, node) {
       <div class="swiper-slide">
         <picture>
           <source srcset="${getPbImageURL(item)}" media="(max-width: 768px)" />
-          <source srcset="${getPbImageURL(item, 'tablet')}" media="(max-width: 1920px)" />
-          <source srcset="${getPbImageURL(item, 'desktop')}" />
+          <source srcset="${getPbImageURL(item, 'tablet')}" media="(max-width: 1919px)" />
+          <source srcset="${getPbImageURL(item, 'desktop')}" media="(min-width: 1920)"/>
           <img src="/src/img.jpg" alt="러브캐처 포스터" />
         </picture>
       </div>
@@ -28,8 +28,8 @@ export async function renderImgTitleList(storage, node) {
       <li class="swiper-slide">
         <picture class="swiper-slide">
           <source srcset="${getPbImageURL(item)}" media="(max-width: 768px)" />
-          <source srcset="${getPbImageURL(item, 'tablet')}" media="(max-width: 1920px)" />
-          <source srcset="${getPbImageURL(item, 'desktop')}" />
+          <source srcset="${getPbImageURL(item, 'tablet')}" media="(max-width: 1919px)" />
+          <source srcset="${getPbImageURL(item, 'desktop')}" media="(min-width: 1920)"/>
           <img src="/src/img.jpg" alt="러브캐처 포스터" />
         </picture>
         <h3>
@@ -45,8 +45,8 @@ export async function renderImgTitleList(storage, node) {
       <li class="swiper-slide">
         <picture class="swiper-slide">
           <source srcset="${getPbImageURL(item)}" media="(max-width: 768px)" />
-          <source srcset="${getPbImageURL(item, 'tablet')}" media="(max-width: 1920px)" />
-          <source srcset="${getPbImageURL(item, 'desktop')}" />
+          <source srcset="${getPbImageURL(item, 'tablet')}" media="(max-width: 1919px)" />
+          <source srcset="${getPbImageURL(item, 'desktop')}" media="(min-width: 1920)"/>
           <img src="/src/img.jpg" alt="러브캐처 포스터" />
         </picture>
         <h3>
