@@ -13,6 +13,7 @@ body {
 .section0 {
   @include flexbox(column, nowrap, center, center, null);
   width: 100%;
+  aspect-ratio: 16 / 9;
   background:
     linear-gradient(
       to bottom,
@@ -75,6 +76,7 @@ body {
   }
 }
 
+//url(https://yooniverse.pockethost.io/api/files/poster/0miz17ddkeq5egg/onboarding_bg_m_IgPeulahdq.png)
 @include mq(tablet) {
   .section0 {
     background:
@@ -84,7 +86,7 @@ body {
         rgba(0, 0, 0, 0.8) 90%,
         rgba(0, 0, 0, 1) 100%
       ),
-      url(https://yooniverse.pockethost.io/api/files/poster/0miz17ddkeq5egg/onboarding_bg_m_IgPeulahdq.png)
+      url(https://yooniverse.pockethost.io/api/files/poster/omaugf19clqumnw/onboarding_bg_l_6PCKVGwXhH.png)
         no-repeat center;
     background-size: cover;
 
