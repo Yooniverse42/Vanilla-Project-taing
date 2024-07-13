@@ -1,6 +1,239 @@
 @use '@/styles/index' as *;
 
-
 body {
-  background-color: $gray-200;
+  background-color: $black;
+}
+// 숨김
+.a11y,
+legend {
+  position: absolute;
+  width: 1px;
+  height: 14.96px;
+  margin: -1px;
+  visibility: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+}
+fieldset {
+  border: 0;
+  margin-top: $spacing-28;
+}
+
+.main__login {
+  width: 320px;
+  margin: 0 auto;
+  padding-top: $spacing-28;
+
+  .login__title__form {
+    text-align: center;
+
+    .login__title {
+      color: $white;
+      font-family: $base-font-family;
+      font-size: $text-16;
+      font-weight: 700;
+      line-height: $line-140;
+    }
+  }
+}
+.login__form__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-8;
+  margin-left: $spacing-16;
+  margin-right: $spacing-16;
+  box-sizing: border-box;
+}
+
+.user__ID__input,
+.user__password__input {
+  width: 288px;
+  height: 46px;
+  font-size: $text-12;
+  padding: 0 $spacing-20 0 $spacing-16;
+  align-items: center;
+  background-color: $brand-dark-2;
+  border-radius: 4px;
+}
+.user__ID__input:focus,
+.user__password__input:focus {
+  outline: none;
+  color: $brand-red-2; //color 추후변경
+}
+.user__ID__input:focus::placeholder,
+.user__password__input:focus::placeholder {
+  color: $brand-red-2; //color 추후 변경
+}
+
+// error message
+.login__form__error__message {
+  color: $brand-red-1;
+  display: none;
+  font-size: $text-12;
+  margin-top: $spacing-10;
+}
+.is__invlid + .login__form__error__message {
+  display: block;
+}
+// 채크벅스, 로그인 버튼
+.login__form__ip__checkbox__wrapper {
+  width: 100%;
+  // oder: 1;
+}
+// checkbox 자동로그인
+.login__ip__security__remember__me {
+  position: relative;
+}
+.login__ip__remember__me {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  width: $text-12;
+  height: $text-12;
+  appearance: none;
+}
+.login__remember__me__label {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: $spacing-4;
+
+  img {
+    width: $text-12;
+    height: $text-12;
+    display: block;
+    cursor: pointer;
+  }
+  .icon__check {
+    color: $gray-500;
+    font-size: $text-12;
+  }
+}
+// 로그인 버튼
+.login__button {
+  width: 100%;
+  background-color: $brand-red-1;
+  color: $white;
+  font-size: $text-12;
+  padding: $spacing-16;
+  border-radius: 4px;
+  margin-top: $spacing-16;
+  cursor: pointer;
+}
+// 아이디 찾기, 비번 찾기, 계정 유무 물어 보기
+.login__form__search {
+  color: $gray-300;
+  font-size: $text-12;
+  font-weight: 400;
+  line-height: $line-160;
+
+  .login__search__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: $spacing-16;
+    cursor: poiner;
+
+    span {
+      padding: 0 $spacing-12;
+      gap: $spacing-8;
+    }
+  }
+}
+
+@include mq(tablet) {
+  .main__login {
+    min-width: 768px;
+    padding-top: 40px;
+
+    .login__title__form {
+      .login__title {
+        font-size: $text-28;
+        margin-bottom: $spacing-24;
+      }
+    }
+  }
+  .user__ID__input,
+  .user__password__input {
+    width: 416px;
+    height: 54px;
+    font-size: $text-16;
+  }
+  .logo__form__error__message {
+    font-size: $text-16;
+  }
+  .login__form__ip__checkbox__wrapper {
+    width: 416px;
+  }
+  .login__remember__me__label {
+    gap: $spacing-12;
+    img {
+      width: $text-16;
+      height: $text-16;
+    }
+    .icon__check {
+      font-size: $text-16;
+    }
+  }
+  .login__button {
+    width: 416px;
+    height: 54px;
+    font-size: $text-16;
+    line-height: $line-160;
+    margin-bottom: $spacing-24;
+  }
+  .login__form__search {
+    font-size: $text-16;
+  }
+}
+@include mq(desktop) {
+  .main__login {
+    min-width: 1920px;
+    padding-top: 70px;
+
+    .login__title__form {
+      .login__title {
+        font-size: $text-37;
+        margin-bottom: $spacing-60;
+      }
+    }
+  }
+  .user__ID__input,
+  .user__password__input {
+    width: 732px;
+    height: 96px;
+    font-size: $text-28;
+  }
+  .login__form__error__message {
+    font-size: $text-28;
+  }
+  .login__form__ip__checkbox__wrapper {
+    width: 732px;
+  }
+  .login__remember__me__label {
+    gap: $spacing-16;
+    margin-bottom: $spacing-36;
+    margin-top: $spacing-16;
+    img {
+      width: 26px;
+      height: 26px;
+    }
+    .icon__check {
+      font-size: $text-21;
+    }
+  }
+
+  .login__button {
+    width: 732px;
+    height: 96px;
+    font-size: $text-28;
+    line-height: $line-150;
+    margin-bottom: $spacing-48;
+  }
+  .login__form__search {
+    font-size: $text-28;
+  }
 }
