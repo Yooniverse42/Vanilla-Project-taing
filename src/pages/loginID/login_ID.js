@@ -36,6 +36,7 @@ function handlePasswordValid() {
     pwValid = false;
   }
 }
+// 로그인 버튼 누를시 id와 비밀번호 양식이 맞으면 메인페이지로 감
 loginButton.addEventListener('click', (e) => {
   e.preventDefault();
   const userEmail = document.getElementById('userEmail').value;
