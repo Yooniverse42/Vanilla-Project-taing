@@ -10,36 +10,20 @@ body {
 
 .header {
   width: 100%;
-
-  height: 38px;
-  padding: 11.5px 16px;
-
-  img {
-    height: 20px;
-  }
-
-  span {
-    font-size: $text-12;
-  }
-
   // height: 38px;
   height: 10vh;
   padding: 10px 12px;
-
 
   .nav {
     @include flexbox(row, nowrap, space-between, center, null);
     color: $gray-200;
   }
-
+  
   .header__logo {
-
-
     display: inline-block;
     margin-right: $spacing-28;
     height: 15px;
   
-
     .header__logo__link {
       display: inline-block;
       height: 15px;
@@ -49,7 +33,7 @@ body {
       }
     }
   }
-
+  
   .header__menu {
     @include flexbox(row, nowrap, null, center, $spacing-28);
     flex-grow: 1;
@@ -63,26 +47,6 @@ body {
 
   .list__live {
     @include flexbox(row, nowrap, center, center, 4px);
- feature/loginID
-    // 아니 "실시간" 글자 왜 세로고 난리냐고요 아오아오아오!
-    span {
-      white-space: none;
-    }
-  }
-
-  .header__asider {
-    .header__icon__search {
-      // 왜 안나오시고 그러세요;
-      width: 24px;
-      height: 24px;
-      background-image: url('http://yooniverse.pockethost.io/api/files/icon/d3s11y4bei09eke/search_defualt_l_uO5dv62LBJ.svg');
-    }
-  }
-}
-
-// 미디어쿼리 해야함, 글자색 변경, hover 추가, core-js 들고오기
-
-
     width: 56px;
     
     img {
@@ -110,7 +74,6 @@ body {
     }
   }
 }
-
 
 @include mq(tablet) {
   .header {
