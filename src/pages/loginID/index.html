@@ -15,7 +15,7 @@
         <h2 class="login__title">TAING ID 로그인</h2>
       </div>
 
-      <form action="URL" class="login__form" method="post">
+      <form class="login__form" method="post">
         <fieldset>
           <legend class="a11y">로그인 폼</legend>
           <div class="login__form__container">
@@ -26,7 +26,7 @@
                 id="userEmail"
                 class="user__ID__input"
                 required
-                placeholder="fdjsd012@example.com"
+                placeholder="아이디"
                 name="userEmail"
                 aria-invalid="false"
                 aria-describedby="userEmailError"
@@ -50,8 +50,8 @@
                 aria-describedby="userPasswordError"
                 aria-live="polite"
               />
-              <span id="userPasswordError" class="login__form__error__message"
-                >비밀번호는 특수문자 포함 6자리 이상 입력 해주세요</span
+              <span id="userPasswordError" class="login__form__PWerror__message"
+                >비밀번호는 숫자와 특수문자 포함 6자리 이상 입력 해주세요</span
               >
             </div>
             <!-- user__password -->
@@ -76,7 +76,7 @@
             <!-- 아이디 비밀번호 찾기 -->
             <ul class="login__form__search">
               <li class="login__search__list">
-                <a href="/">
+                <a href="/src/pages/findId/index.html">
                   <span>아이디 찾기</span>
                 </a>
                 <span>|</span>
@@ -93,5 +93,6 @@
         </fieldset>
       </form>
     </main>
+    <c-footer></c-footer>
   </body>
 </html>

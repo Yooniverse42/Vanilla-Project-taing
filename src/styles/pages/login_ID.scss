@@ -68,13 +68,14 @@ fieldset {
 }
 
 // error message
-.login__form__error__message {
+.login__form__error__message,
+.login__form__PWerror__message {
   color: $brand-red-1;
   display: none;
   font-size: $text-12;
   margin-top: $spacing-10;
 }
-.is__invlid + .login__form__error__message {
+.is--invalid {
   display: block;
 }
 // 채크벅스, 로그인 버튼
@@ -162,7 +163,8 @@ fieldset {
     height: 54px;
     font-size: $text-16;
   }
-  .logo__form__error__message {
+  .logo__form__error__message,
+  .login__form__PWerror__message {
     font-size: $text-16;
   }
   .login__form__ip__checkbox__wrapper {
@@ -207,7 +209,8 @@ fieldset {
     height: 96px;
     font-size: $text-28;
   }
-  .login__form__error__message {
+  .login__form__error__message,
+  .login__form__PWerror__message {
     font-size: $text-28;
   }
   .login__form__ip__checkbox__wrapper {
