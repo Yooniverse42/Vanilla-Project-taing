@@ -56,14 +56,13 @@ function popUp() {
 // 입력한 이메일이 서버에 있으면 아이디 알려주기
 
 async function checkUserEmail() {
-  const userRecord = await getRecord('user', 'email = "test@gmail.com"');
+  const filter = `email = "${userId.value}"`;
+  const userRecord = await getRecord('users', filter);
   const userInfo = userRecord.items[0];
 
-  console.log();
-
-  if (userInfo.email === userId.value && isEmailValid == true) {
+  if (userRecord.items.length >= 1 && isEmailValid) {
     alert(`입력하신 이메일로 아이디가 전송 되었습니다!
-    아이디 : ${userInfo.login_ID}`);
+    아이디 : ${userInfo.username}`);
   } else {
     alert('입력하신 이메일을 다시 확인 해주세요!');
   }
