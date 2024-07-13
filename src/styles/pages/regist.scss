@@ -1,0 +1,329 @@
+@import '@/styles/index.scss';
+body {
+  background-color: $black;
+}
+
+input {
+  outline: none;
+}
+.a11y,
+legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  visibility: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+}
+
+.regist {
+  margin: 0 auto;
+  background-color: $black;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.header-wrap {
+  padding-top: $spacing-28;
+  padding-bottom: $spacing-24;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.header-title {
+  color: $white;
+  font-size: $text-16;
+  font-weight: 700;
+  line-height: $line-140;
+}
+
+.header-title-second {
+  color: $gray-400;
+  font-size: $text-12;
+  font-weight: 600;
+  line-height: calc($line-140 + 0.1);
+}
+
+//768 1920
+.content {
+  display: flex;
+  flex-direction: column;
+
+  input[type='checkbox'] {
+    // appearance: auto;
+    position: absolute;
+    // left: 180px;
+    width: $text-16;
+    height: $text-16;
+  }
+
+  .check-state-label .check-icon {
+    background: url(../../pages/register/check.svg) no-repeat 0 0 /100%;
+    display: block;
+    width: $text-16;
+    height: $text-16;
+  }
+
+  .check-state-checkbox:checked + .check-state-label .check-icon {
+    background-image: url(../../pages/register/checked.svg);
+  }
+
+  //   <input
+  //   id="checkState"
+  //   type="checkbox"
+  //   class="list-checkbox check-state-checkbox"
+  // />
+  // <label for="checkState" class="check-state-label">
+
+  label {
+    display: flex;
+    gap: $spacing-4;
+  }
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+
+  input {
+    display: flex;
+    height: 46px;
+    padding: 0 $spacing-20 0 $spacing-16;
+    border-radius: 4px;
+    background-color: $brand-dark-2;
+    color: $gray-600;
+    font-size: $text-12;
+  }
+
+  .user-email,
+  .user-password {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-self: stretch;
+    span {
+      color: $gray-500;
+      font-size: 12px;
+      line-height: $line-160;
+    }
+  }
+}
+
+.check-all-container {
+  display: flex;
+  padding: $spacing-16 0;
+
+  .check-all-label .check-all-icon {
+    background: url(../../pages/register/check.svg) no-repeat 0 0 /100%;
+    background-color: $gray-600;
+    border-radius: 14px;
+    width: $spacing-16;
+    height: $spacing-16;
+    // background-color: $gray-600;
+  }
+
+  .check-all-checkbox:checked + .check-all-label .check-all-icon {
+    background-image: url(../../pages/register/checked.svg);
+  }
+
+  label {
+    color: $gray-500;
+    font-size: $text-12;
+  }
+}
+// -webkit-appearance: none;
+//  appearance: none;
+.check-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: $text-12;
+  font-weight: 600;
+  color: $gray-500;
+
+  .check-list,
+  .check-marketing {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-8;
+    align-self: stretch;
+  }
+  .check-marketing {
+    padding-left: $spacing-16;
+  }
+}
+
+.confirm-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: $gray-700;
+  font-size: $text-12;
+  font-weight: 600;
+  color: $gray-400;
+  width: 100%;
+  height: 42px;
+  margin-top: $spacing-16;
+  cursor: pointer;
+}
+
+.confirm-button.active {
+  background-color: $white;
+  color: $black;
+}
+
+.confirm-button:hover {
+  background-color: $white;
+  color: $black;
+}
+
+.confirm-button:disabled {
+  cursor: not-allowed;
+}
+
+@include mq(tablet) {
+  .regist {
+    width: 416px;
+    gap: 24px;
+  }
+
+  .regist__inner {
+    width: 100%;
+  }
+
+  .header-wrap {
+    padding-top: 44px;
+  }
+
+  .header-title {
+    font-size: $text-28;
+  }
+
+  .header-title-second {
+    font-size: $text-16;
+  }
+
+  .input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-18;
+
+    input {
+      height: 54px;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      gap: $spacing-12;
+    }
+  }
+
+  .check-all-container {
+    label {
+      gap: $spacing-4;
+    }
+  }
+
+  .confirm-button {
+    margin-top: $spacing-20;
+    height: 50px;
+  }
+}
+
+@include mq(desktop) {
+  .regist {
+    width: 732px;
+    gap: 24px;
+  }
+
+  .regist__inner {
+    width: 100%;
+  }
+
+  .header-wrap {
+    padding-top: 70px;
+    gap: $spacing-28;
+    padding-bottom: $spacing-60;
+  }
+
+  .header-title {
+    font-size: $text-37;
+  }
+
+  .header-title-second {
+    font-size: $text-28;
+    font-weight: 600;
+  }
+
+  .input-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: $spacing-18;
+
+    input {
+      padding: 0 $spacing-28 0 $spacing-24;
+      border-radius: 4px;
+      background-color: $brand-dark-2;
+      color: $gray-600;
+      font-size: $text-12;
+      height: 96px;
+      font-weight: 400;
+      font-size: $text-28;
+    }
+
+    .user-email,
+    .user-password {
+      span {
+        font-size: $text-21;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      gap: $spacing-12;
+    }
+  }
+
+  .check-all-container {
+    padding: $spacing-28;
+    label {
+      span {
+        font-weight: 600;
+      }
+    }
+  }
+  .check-list-container {
+    gap: $spacing-16;
+    .check-list,
+    .check-marketing {
+      gap: $spacing-12;
+      font-size: $text-21;
+    }
+  }
+  .confirm-button {
+    margin-top: $spacing-36;
+    height: 86px;
+    font-size: $text-28;
+  }
+}
