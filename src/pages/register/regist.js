@@ -1,6 +1,10 @@
 import '@/styles/pages/regist.scss';
 import pb from '../../api/pocketbase';
 import '@/layout/footer';
+
+// 입력 폼 초기화 추가
+// 중복 요소
+
 // 로그인 시 {token, model:{username, name, id, email}}
 const id = 'kor123@gmail.com';
 const pw = 'gksrnrtkfka12!';
@@ -54,7 +58,8 @@ async function createAccount() {
     pb.collection('users')
       .create(data)
       .then((data) => alert(`${data.username}님 가입이 완료되었습니다`))
-      .then(() => (location.href = 'http://www.naver.com/'));
+      .then(() => (location.href = 'src/pages/loginID/index.html'));
+    // 입력 폼 초기화 추가
   }
 }
 
@@ -105,7 +110,7 @@ function activeButtonState({
   emailState,
   checkItemState,
 }) {
-  if (idState && emailState && pwCheckState && pwState & checkItemState) {
+  if (idState && emailState && pwCheckState && pwState) {
     confirmButton.disabled = false;
     confirmButton.classList.add('active');
   } else {

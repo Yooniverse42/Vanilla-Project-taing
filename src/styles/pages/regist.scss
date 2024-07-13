@@ -66,14 +66,17 @@ legend {
   }
 
   .check-state-label .check-icon {
-    background: url(../../pages/register/check.svg) no-repeat 0 0 /100%;
+    // background: url(../../pages/register/check.svg) no-repeat 0 0 /100%;
+    background: url('/public/icons/stack.svg#check-no-filled-default-l')
+      no-repeat 0 0 /100%;
+
     display: block;
     width: $text-16;
     height: $text-16;
   }
 
   .check-state-checkbox:checked + .check-state-label .check-icon {
-    background-image: url(../../pages/register/checked.svg);
+    background-image: url('/public/icons/stack.svg#check-filled-default-l');
   }
 
   //   <input
@@ -164,6 +167,7 @@ legend {
 }
 
 .confirm-button {
+  margin-bottom: $spacing-52;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -241,6 +245,7 @@ legend {
   }
 
   .confirm-button {
+    margin-bottom: 0;
     margin-top: $spacing-20;
     height: 50px;
   }
@@ -322,6 +327,7 @@ legend {
     }
   }
   .confirm-button {
+    margin-bottom: 0;
     margin-top: $spacing-36;
     height: 86px;
     font-size: $text-28;
