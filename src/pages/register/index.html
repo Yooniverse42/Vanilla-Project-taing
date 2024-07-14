@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./regist.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="regist">
+      <div class="regist__inner">
+        <header class="header-wrap">
+          <h1 class="header-title">티빙 회원가입</h1>
+          <h4 class="header-title-second">
+            아이디와 이메일로 간편하게 티빙을 시작하세요!
+          </h4>
+        </header>
+        <div class="content">
+          <form class="input-form">
+            <div class="user-email">
+              <label class="a11y" for="idInput">아이디</label>
+              <input
+                id="idInput"
+                placeholder="아이디"
+                required
+                aria-invalid="false"
+              />
+              <span>영문 또는 영문, 숫자 조합 6-12자리</span>
+            </div>
+            <div class="user-password">
+              <label for="pwInput" class="a11y">비밀번호</label>
+              <input
+                id="pwInput"
+                type="password"
+                placeholder="비밀번호"
+                autocomplete="off"
+              />
+              <span>영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15자리</span>
+            </div>
+            <label for="pwCheckInput" class="a11y">비밀번호 확인</label>
+            <input
+              id="pwCheckInput"
+              type="password"
+              placeholder="비밀번호 확인"
+              autocomplete="off"
+            />
+            <label for="emailInput" class="a11y">이메일</label>
+            <input id="emailInput" type="email" placeholder="이메일" />
+          </form>
+          <div class="check-all-container">
+            <input
+              id="checkState-all"
+              type="checkbox"
+              class="check-all-checkbox"
+            />
+            <label for="checkState-all" class="check-all-label">
+              <!-- <span class="check-all-icon"></span> -->
+              <svg
+                class="check-all-icon"
+                role="button"
+                aria-label="약관 체크 아이콘"
+              >
+                <use href="/icons/stack.svg#check-no-filled-default" />
+              </svg>
+              모두 동의합니다
+            </label>
+          </div>
+          <div class="check-list-container">
+            <ul class="check-list">
+              <li>
+                <input
+                  id="checkState"
+                  type="checkbox"
+                  class="list-checkbox check-state-checkbox"
+                />
+                <label for="checkState" class="check-state-label">
+                  <!-- <span class="check-icon"></span> -->
+
+                  <svg
+                    class="check-icon"
+                    role="button"
+                    aria-label="약관 체크 아이콘"
+                  >
+                    <use href="/icons/stack.svg#check-no-filled-default" />
+                  </svg>
+
+                  만 14세 이상입니다.
+                </label>
+              </li>
+              <li class="necessary">
+                <input
+                  id="checkState"
+                  type="checkbox"
+                  class="list-checkbox check-state-checkbox"
+                />
+                <label for="checkState" class="check-state-label">
+                  <svg
+                    class="check-icon"
+                    role="button"
+                    aria-label="약관 체크 아이콘"
+                  >
+                    <use href="/icons/stack.svg#check-no-filled-default" />
+                  </svg>
+                  [필수] 서비스 이용약관 동의
+                </label>
+              </li>
+              <li class="necessary">
+                <input
+                  id="checkState"
+                  type="checkbox"
+                  class="list-checkbox check-state-checkbox"
+                />
+                <label for="checkState" class="check-state-label">
+                  <svg
+                    class="check-icon"
+                    role="button"
+                    aria-label="약관 체크 아이콘"
+                  >
+                    <use href="/icons/stack.svg#check-no-filled-default" />
+                  </svg>
+                  [필수] 개인정보 수집 및 서비스 활용 동의
+                </label>
+              </li>
+              <li class="necessary">
+                <input
+                  id="checkState"
+                  type="checkbox"
+                  class="list-checkbox check-state-checkbox"
+                />
+                <label for="checkState" class="check-state-label">
+                  <svg
+                    class="check-icon"
+                    role="button"
+                    aria-label="약관 체크 아이콘"
+                  >
+                    <use href="/icons/stack.svg#check-no-filled-default" />
+                  </svg>
+                  [필수] 채널 홈페이지 개인정보 제 3자 제공동의
+                </label>
+              </li>
+              <li>
+                <input
+                  id="checkState"
+                  type="checkbox"
+                  class="list-checkbox check-state-checkbox"
+                />
+                <label for="checkState" class="check-state-label">
+                  <svg
+                    class="check-icon"
+                    role="button"
+                    aria-label="약관 체크 아이콘"
+                  >
+                    <use href="/icons/stack.svg#check-no-filled-default" />
+                  </svg>
+                  [선택] 개인정보 제 3자 제공동의
+                </label>
+              </li>
+              <li>
+                <input
+                  id="checkState"
+                  type="checkbox"
+                  class="list-checkbox check-state-checkbox"
+                />
+                <label for="checkState" class="check-state-label">
+                  <svg
+                    class="check-icon"
+                    role="button"
+                    aria-label="약관 체크 아이콘"
+                  >
+                    <use href="/icons/stack.svg#check-no-filled-default" />
+                  </svg>
+                  [선택] 개인정보 수집 및 서비스 활용 동의
+                </label>
+              </li>
+            </ul>
+            <ul class="check-marketing">
+              <li>
+                <input
+                  id="checkState"
+                  type="checkbox"
+                  class="list-checkbox check-state-checkbox"
+                />
+                <label for="checkState" class="check-state-label">
+                  <svg
+                    class="check-icon"
+                    role="button"
+                    aria-label="약관 체크 아이콘"
+                  >
+                    <use href="/icons/stack.svg#check-no-filled-default" />
+                  </svg>
+                  [선택] 마케팅 정보 SMS 수신동의
+                </label>
+              </li>
+              <li>
+                <input
+                  id="checkState"
+                  type="checkbox"
+                  class="list-checkbox check-state-checkbox"
+                />
+                <label for="checkState" class="check-state-label">
+                  <svg
+                    class="check-icon"
+                    role="button"
+                    aria-label="약관 체크 아이콘"
+                  >
+                    <use href="/icons/stack.svg#check-no-filled-default" />
+                  </svg>
+                  [선택] 마케팅 정보 이메일 수신동의
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button type="submit" class="confirm-button" disabled>확인</button>
+      </div>
+    </section>
+    <c-footer></c-footer>
+  </body>
+</html>
