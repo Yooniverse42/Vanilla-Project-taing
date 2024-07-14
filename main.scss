@@ -110,12 +110,12 @@ body {
       height: 48px;
       padding: 0 44px 0 10px;
     }
-  
+
     .button__icon {
       width: 31px;
       height: 36px;
     }
-  
+
     .button__message {
       font-size: $text-16;
     }
@@ -157,12 +157,12 @@ body {
       height: 80px;
       padding: 0 65px 0 10px;
     }
-  
+
     .button__icon {
       width: 54px;
       height: 63px;
     }
-  
+
     .button__message {
       font-size: $text-28;
     }
@@ -260,7 +260,7 @@ body {
 .section2 {
   background-color: $black;
   margin: 0 auto;
-  max-width: 320px;
+  max-width: 100%;
 
   .container__message {
     text-align: center;
@@ -312,8 +312,7 @@ body {
 
 @include mq(tablet) {
   .section2 {
-    max-width: 768px;
-    max-height: 410px;
+    max-width: 100%;
 
     .container__message {
       text-align: center;
@@ -344,8 +343,7 @@ body {
 
 @include mq(desktop) {
   .section2 {
-    max-width: 1920px;
-    max-height: 860px;
+    max-width: 100%;
 
     .container__message {
       .container__message__header {
@@ -436,12 +434,12 @@ body {
       height: 48px;
       padding: 0 44px 0 10px;
     }
-  
+
     .button__icon {
       width: 31px;
       height: 36px;
     }
-  
+
     .button__message {
       font-size: $text-16;
     }
@@ -469,12 +467,12 @@ body {
       height: 80px;
       padding: 0 65px 0 10px;
     }
-  
+
     .button__icon {
       width: 54px;
       height: 63px;
     }
-  
+
     .button__message {
       font-size: $text-28;
     }
