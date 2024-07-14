@@ -6,7 +6,9 @@ import { renderImgList, getNodes, getNode } from '@/library/index';
 import { getRecords } from '@/api/getRecords';
 
 // 서버에서 image collection 가져오기
-const imageCollection = await getRecords('image');
+const imageCollection = (async () => {
+  await getRecords('image');
+})();
 
 renderImgList(imageCollection, 'main_banner', '.swiper1 > ul').then(() => {
   const swiper1 = new Swiper('.swiper1', {
