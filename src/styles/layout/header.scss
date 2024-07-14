@@ -4,15 +4,14 @@ body {
   min-width: 320px;
   width: 100%;
   background-color: $brand-dark-1;
+  position: relative;
 }
-
-// hover 추가, core-js 들고오기
 
 .header {
   width: 100%;
-  // height: 38px;
-  height: 10vh;
+  height: 38px;
   padding: 10px 12px;
+  position: absolute;
 
   .nav {
     @include flexbox(row, nowrap, space-between, center, null);

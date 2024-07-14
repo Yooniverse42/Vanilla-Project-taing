@@ -15,11 +15,7 @@
 //       super();
 //       this.attachShadow({ mode: 'open' });
 //       const style = document.createElement('style');
-//       style.textContent = `@import '@/styles/layout/header.scss';`;
-//       // const bodySearch = document.createElement('body');
-//       // bodySearch.textContent = `@import '@/pages/search/index.html';`;
-//       // const bodyProfile = document.createElement('body');
-//       // bodyProfile.textContent = `@import '@/pages/profile/index.html';`;
+//       style.textContent = `@import '/src/styles/layout/header.scss';`;
 
 //       this.shadowRoot.innerHTML = `
 //         <style>
@@ -30,11 +26,16 @@
 //           <nav class="nav">
 //             <h1 class="header__logo">
 //               <a class="header__logo__link" href="/index.html">
+//                 <!-- role img가 맞나? -->
 //                 <svg class="logo1" role="img" aria-label="타잉">
 //                   <use href="/icons/stack.svg#live_default" />
 //                 </svg>
 //               </a>
 //             </h1>
+
+//           ${
+//             isAuth
+//               ? `
 //             <ul class="header__menu">
 //               <li class="menu__list">
 //                 <a class="list__live" href="/">
@@ -67,12 +68,13 @@
 //               <svg class="actions__search" role="img" aria-label="검색하기">
 //                 <use href="/icons/stack.svg#search_defualt" />
 //               </svg>
-//               <!-- ${bodySearch.textContent} -->
 //               <svg class="actions__profile" role="img" aria-label="프로필 편집 또는 시청중인 컨텐츠, 로그아웃, 회원탈퇴 페이지로 이동하기">
 //                 <use href="/icons/stack.svg#profile_img" />
 //               </svg>
-//               <!-- ${bodyProfile.textContent} -->
 //             </div>
+//             `
+//               : ` `
+//           }
           
 //           </nav>
 //         </header>
