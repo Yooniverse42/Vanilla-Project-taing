@@ -58,7 +58,7 @@ main {
     right: 0;
     translate: 0 -50%;
     margin: 0 $spacing-14 0 0;
-    background-image: url(/button_delete.svg);
+    background-image: url(/image/button_delete.svg);
     background-color: transparent;
     display: none;
   }
@@ -145,6 +145,7 @@ main {
     border-radius: 0.25rem;
     background-color: $gray-100;
     font-family: $base-font-family;
+    font-size: $text-12;
   }
 }
 
@@ -187,12 +188,6 @@ main {
       height: 3.375rem;
       font-size: $text-16;
     }
-
-    // .button_delete {
-    //   width: $spacing-20;
-    //   height: $spacing-20;
-    //   margin: 0 $spacing-14 0 0;
-    // }
   }
 
   .check_email {
@@ -214,6 +209,7 @@ main {
 
     button {
       height: 3.375rem;
+      font-size: $text-16;
     }
   }
 
@@ -267,6 +263,7 @@ main {
       height: $spacing-36;
       margin: 0 $spacing-28 0 0;
       background-size: 100% 100%;
+      font-size: $text-28;
     }
   }
 
