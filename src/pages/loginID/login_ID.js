@@ -44,7 +44,7 @@ loginButton.addEventListener('click', (e) => {
   const userPassword = document.getElementById('userPassword').value;
 
   if (emailValid && pwValid) {
-    location.href = '/src/index.html/';
+    location.href = '/src/pages/taing/index.html';
   } else {
     alert('아이디와 비밀번호를 확인해 주세요.');
   }
