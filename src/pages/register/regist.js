@@ -19,6 +19,7 @@ const buttonState = {
   emailState: false,
   pwState: false,
   pwCheckState: false,
+  checkState: false,
 };
 
 idInput.addEventListener('input', idValidation);
@@ -109,9 +110,9 @@ function activeButtonState({
   pwState,
   pwCheckState,
   emailState,
-  checkItemState,
+  checkState,
 }) {
-  if (idState && emailState && pwCheckState && pwState) {
+  if (idState && emailState && pwCheckState && pwState && checkState) {
     confirmButton.disabled = false;
     confirmButton.classList.add('active');
   } else {
@@ -143,6 +144,25 @@ checkAllButton.addEventListener('click', (e) => {
   } else {
     checkListitems.forEach((item) => (item.checked = false));
   }
+});
+
+function getCheckState() {
+  const necessaryCheck = document.querySelectorAll('.necessary');
+  const length = Array.from(necessaryCheck).filter(
+    (item) => item.checked
+  ).length;
+
+  length === necessaryCheck.length
+    ? (buttonState.checkState = true)
+    : (buttonState.checkState = false);
+  activeButtonState(buttonState);
+}
+
+const checkListContainer = document.querySelector('.check-list-container');
+
+//closest 사용 필 나중에 수정
+checkListContainer.addEventListener('click', () => {
+  getCheckState();
 });
 
 //
