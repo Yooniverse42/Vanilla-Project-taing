@@ -1,20 +1,18 @@
 import '@/styles/pages/regist.scss';
-import pb from '../../api/pocketbase';
 import '@/layout/footer';
-
-// 입력 폼 초기화 추가
-// 중복 요소
+import { getNode } from './../../library/getNode';
+import { createData, getData } from '../../api/serverData';
 
 // 로그인 시 {token, model:{username, name, id, email}}
 const id = 'kor123@gmail.com';
 const pw = 'gksrnrtkfka12!';
 
-// getNode로 바꿔야함
-const idInput = document.querySelector('#idInput');
-const pwInput = document.querySelector('#pwInput');
-const pwCheckInput = document.querySelector('#pwCheckInput');
-const emailInput = document.querySelector('#emailInput');
-const confirmButton = document.querySelector('.confirm-button');
+const registerForm = getNode('.input-form');
+const idInput = getNode('#idInput');
+const pwInput = getNode('#pwInput');
+const pwCheckInput = getNode('#pwCheckInput');
+const emailInput = getNode('#emailInput');
+const confirmButton = getNode('.confirm-button');
 
 const buttonState = {
   idState: false,
@@ -30,13 +28,13 @@ pwCheckInput.addEventListener('input', pwCheckValidation);
 
 confirmButton.addEventListener('click', createAccount);
 
+// 입력 폼 초기화 추가
+// 중복 요소
 async function createAccount() {
   const id = idInput.value;
   const pw = pwInput.value;
   const pwCheck = pwCheckInput.value;
   const email = emailInput.value;
-
-  console.log('createAccount 시작');
 
   const data = {
     username: id,
@@ -47,18 +45,21 @@ async function createAccount() {
     emailVisibility: true,
   };
 
-  console.log('중복 검사');
-  const sameIdEmail = await checkSameIdEmail(data.username, data.email);
+  const sameIdEmail = await getData('users', {
+    filter: `username='${data.username}'|| email='${data.email}'`,
+  }).then((result) => result.length);
+
   if (sameIdEmail) {
     console.log('중복');
     alert('아이디 또는 이메일이 이미 존재합니다');
     return;
   } else {
     console.log('중복 ㄴㄴ');
-    pb.collection('users')
-      .create(data)
+
+    createData('users', data)
       .then((data) => alert(`${data.username}님 가입이 완료되었습니다`))
       .then(() => (location.href = 'src/pages/loginID/index.html'));
+    registerForm.reset();
     // 입력 폼 초기화 추가
   }
 }
@@ -128,23 +129,15 @@ function activeButtonState({
 // }
 
 //계정 중복 확인
-function checkSameIdEmail(username, email) {
-  return pb
-    .collection('users')
-    .getFullList({
-      filter: `username='${username}'|| email='${email}'`,
-    })
-    .then((result) => result.length);
-  // return result;
-  //?filter=(id='abc' && created>'2022-01-01')
-}
 
 //체크박스
-const checkAllButton = document.querySelector('.check-all-checkbox');
+const checkAllButton = getNode('.check-all-checkbox');
 const checkListitems = document.querySelectorAll('.check-list-container input');
+
 console.log('checkAllButton', checkAllButton);
 checkAllButton.addEventListener('click', (e) => {
   const checkAll = e.target.checked;
+
   if (checkAll) {
     checkListitems.forEach((item) => (item.checked = true));
   } else {
@@ -152,6 +145,68 @@ checkAllButton.addEventListener('click', (e) => {
   }
 });
 
+//
+//
+//
+//
+
+//
+//
+//
+
+//
+//
+//
+
+//
+//
+//
+//
+//
+//
+
+//
+//
+//
+
+//
+//
+//
+
+//
+//
+//
+//
+//
+//
+
+//
+//
+//
+
+//
+//
+//
+
+//
+//
+//
+//
+//
+//
+
+//
+//
+//
+
+//
+//
+//
+
+//
+//
+
+//
 // - 회원가입을 통해 사용자(user)를 생성하고 관리합니다.
 // - 데이터 통신을 통해 유저를 생성하고 관리해주세요 V
 // - 유저의 회원을 탈퇴할 수 있는 기능을 구현해주세요
@@ -166,3 +221,15 @@ checkAllButton.addEventListener('click', (e) => {
 
 //로그인
 // await pb.collection('users').authWithPassword(data.name, data.password);
+
+//중복
+// function checkSameIdEmail(username, email) {
+//   return pb
+//     .collection('users')
+//     .getFullList({
+//       filter: `username='${username}'|| email='${email}'`,
+//     })
+//     .then((result) => result.length);
+//   // return result;
+//   //?filter=(id='abc' && created>'2022-01-01')
+// }
