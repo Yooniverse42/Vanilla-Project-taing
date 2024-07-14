@@ -1,4 +1,89 @@
 @use '@/styles/index' as *;
-h1 {
-  color: aqua;
+body {
+  background-color: $black;
+}
+
+.search__main {
+  padding: $spacing-20 $spacing-36;
+  margin: 0 auto;
+  width: 320px;
+  color: $white;
+  background-color: $gray-800;
+}
+.search__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-12 0px;
+  font-size: $text-16;
+  border-bottom: 2px solid $white;
+}
+.search__bar__input {
+  width: 100%;
+  line-height: $line-150;
+  font-weight: 600;
+  color: $gray-500;
+
+  background-color: transparent;
+}
+.search__bar__input:focus {
+  outline: none;
+}
+.search__bar__input:focus::placeholder {
+  color: $gray-500;
+}
+.search__icon {
+  // position: absolute;
+  // top: 12px;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+}
+
+.search__list__container {
+  margin-top: 40px;
+}
+.resent__search {
+  display: none;
+  h2 {
+    font-size: Stext-16;
+    font-weight: 600;
+    color: $gray-200;
+    line-height: $line-150;
+  }
+  p {
+    font-size: $text-12;
+    color: $gray-300;
+    line-height: $line-160;
+    margin-top: 12px;
+  }
+}
+.popular__search {
+  h2 {
+    font-size: $text-16;
+    font-weight: 600;
+    color: $gray-200;
+    line-height: $line-150;
+  }
+  .popular__list {
+    margin-top: 20px;
+    .popular__list__order {
+      font-size: $text-12;
+      font-weight: 600;
+      line-height: $line-150;
+      color: $gray-300;
+      padding-bottom: 9px;
+      cursor: pointer;
+      span {
+        color: $brand-red-3;
+        padding-right: 5px;
+      }
+    }
+    .date {
+      font-size: $text-12;
+      color: $gray-500;
+      line-height: $line-140;
+      margin-top: $spacing-16;
+    }
+  }
 }
