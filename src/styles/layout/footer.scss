@@ -53,7 +53,7 @@
 @include mq(tablet) {
   .footer {
     width: 100%;
-    padding: 4.375rem 2.5rem 6.25rem;
+    padding: 0 2.5rem 6.25rem;
   }
 
   .footer_contents {
@@ -79,7 +79,7 @@
 @include mq(desktop) {
   .footer {
     width: 120rem;
-    padding: 8.75rem 4.25rem 10.625rem;
+    padding: 0 4.25rem 10.625rem;
   }
 
   .footer_contents {
