@@ -2,12 +2,12 @@
 $base-font-family: 'SUIT Variable', sans-serif;
 
 // Colors
-$white: #ffffff; 
+$white: #ffffff;
 $black: #000000;
-$brand-red-1: #B50320;
+$brand-red-1: #b50320;
 $brand-red-2: #b50205;
 // 메인 scroll 실시간 인기프로그램 안에있는 V 로고 색상 변경 brand-red 3
-$brand-red-3:#FD2739 ;
+$brand-red-3: #fd2739;
 $brand-dark-1: #191919;
 $brand-dark-2: #212121;
 $gray-100: #e1e1e1;
@@ -15,20 +15,23 @@ $gray-200: #c4c4c4;
 $gray-300: #a6a6a6;
 $gray-400: #b6b7b4;
 $gray-500: #969a9d;
-$gray-600: #A9ADB1;
+$gray-600: #a9adb1;
 $gray-700: #404040;
 $gray-800: #2b2b2b;
-
 
 // Box Size
 
 // Text Size
+$text-10: 0.625rem;
 $text-12: 0.75rem;
 $text-16: 1rem;
 $text-21: 1.3125rem;
+$text-22: 1.375rem;
 $text-28: 1.75rem;
+$text-34: 2.125rem;
 $text-37: 2.3125rem;
 $text-50: 3.125rem;
+$text-75: 4.6875rem;
 
 // Spacing
 $spacing-4: 0.25rem;
@@ -44,7 +47,9 @@ $spacing-24: 1.5rem;
 $spacing-26: 1.625rem;
 $spacing-28: 1.75rem;
 $spacing-30: 1.875rem;
+$spacing-32: 2rem;
 $spacing-36: 2.25rem;
+$spacing-40: 2.5rem;
 $spacing-48: 3rem;
 $spacing-52: 3.25rem;
 $spacing-60: 3.75rem;

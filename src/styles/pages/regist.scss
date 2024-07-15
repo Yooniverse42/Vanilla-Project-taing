@@ -60,23 +60,22 @@ legend {
   input[type='checkbox'] {
     // appearance: auto;
     position: absolute;
-    // left: 180px;
+    // left: 50px;
     width: $text-16;
     height: $text-16;
   }
 
   .check-state-label .check-icon {
     // background: url(../../pages/register/check.svg) no-repeat 0 0 /100%;
-    background: url('/public/icons/stack.svg#check-no-filled-default-l')
-      no-repeat 0 0 /100%;
-
+    background: url('/public/icons/stack.svg#check-no-filled-default') no-repeat
+      0 0 /100%;
     display: block;
     width: $text-16;
     height: $text-16;
   }
 
   .check-state-checkbox:checked + .check-state-label .check-icon {
-    background-image: url('/public/icons/stack.svg#check-filled-default-l');
+    background-image: url('/public/icons/stack.svg#cancel-hover');
   }
 
   //   <input
