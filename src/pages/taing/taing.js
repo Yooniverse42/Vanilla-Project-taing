@@ -6,9 +6,7 @@ import { renderImgList, getNodes, getNode } from '@/library/index';
 import { getRecords } from '@/api/getRecords';
 
 // 서버에서 image collection 가져오기
-const imageCollection = (async () => {
-  await getRecords('image');
-})();
+const imageCollection = getRecords('image');
 
 renderImgList(imageCollection, 'main_banner', '.swiper1 > ul').then(() => {
   const swiper1 = new Swiper('.swiper1', {
@@ -52,15 +50,14 @@ renderImgList(imageCollection, 'main_banner', '.swiper1 > ul').then(() => {
 
 // 메인 포스터
 renderImgList(imageCollection, 'main_poster', '.swiper2 > ul')
-  .then(() => {
+  .then(async () => {
     const list = getNodes('.swiper2 > ul > li');
-    const records = imageCollection.filter(
-      (item) => item.category == 'main_poster'
-    );
-    for (let i = 0; i < records.length; i++) {
+    const records = await imageCollection;
+    let record = records.filter((item) => item.category == 'main_poster');
+    for (let i = 0; i < record.length; i++) {
       const template = `
         <h3>
-          <span>${records[i].title}</span>
+          <span>${record[i].title}</span>
         </h3>
         `;
       list[i].insertAdjacentHTML('beforeend', template);
@@ -76,16 +73,15 @@ renderImgList(imageCollection, 'main_poster', '.swiper2 > ul')
 
 // QUICK VOD
 renderImgList(imageCollection, 'quick_vod', '.swiper3 > ul')
-  .then(() => {
+  .then(async () => {
     const list = getNodes('.swiper3 > ul > li');
-    const records = imageCollection.filter(
-      (item) => item.category == 'quick_vod'
-    );
-    for (let i = 0; i < records.length; i++) {
+    const records = await imageCollection;
+    let record = records.filter((item) => item.category == 'quick_vod');
+    for (let i = 0; i < record.length; i++) {
       const template = `
         <h3>
-          <span>${records[i].title}</span>
-          <span>${records[i].episode}</span>
+          <span>${record[i].title}</span>
+          <span>${record[i].episode}</span>
         </h3>
         `;
       list[i].insertAdjacentHTML('beforeend', template);
@@ -101,16 +97,15 @@ renderImgList(imageCollection, 'quick_vod', '.swiper3 > ul')
 
 // 실시간 인기 프로그램
 renderImgList(imageCollection, 'main_poster', '.swiper4 > ul')
-  .then(() => {
+  .then(async () => {
     const list = getNodes('.swiper4 > ul > li');
-    const records = imageCollection.filter(
-      (item) => item.category == 'main_poster'
-    );
-    for (let i = 0; i < records.length; i++) {
+    const records = await imageCollection;
+    let record = records.filter((item) => item.category == 'main_poster');
+    for (let i = 0; i < record.length; i++) {
       const template = `
         <h3>
           <span>${i + 1}</span>
-          <span>${records[i].title}</span>
+          <span>${record[i].title}</span>
         </h3>
         `;
       list[i].insertAdjacentHTML('beforeend', template);
@@ -126,19 +121,18 @@ renderImgList(imageCollection, 'main_poster', '.swiper4 > ul')
 
 // 인기 LIVE 채널
 renderImgList(imageCollection, 'live_channel', '.swiper5 > ul')
-  .then(() => {
+  .then(async () => {
     const list = getNodes('.swiper5 > ul > li');
-    const records = imageCollection.filter(
-      (item) => item.category == 'live_channel'
-    );
-    for (let i = 0; i < records.length; i++) {
+    const records = await imageCollection;
+    const record = records.filter((item) => item.category == 'live_channel');
+    for (let i = 0; i < record.length; i++) {
       const template = `
         <h3>
           <span class="index">${i + 1}</span>
           <div class="text_wrapper">
-            <span>${records[i].title}</span>
-            <span>${records[i].episode}</span>
-            <span>${records[i].viewer_rating}</span>
+            <span>${record[i].title}</span>
+            <span>${record[i].episode}</span>
+            <span>${record[i].viewer_rating}</span>
           </div>
         </h3>
         `;
