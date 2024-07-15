@@ -1,11 +1,6 @@
 import '@/layout/footer';
 import '@/pages/myInfo_modal/myInfo_modal.scss';
-import {
-  getNode,
-  setStorage,
-  getStorage,
-  deleteStorage,
-} from '@/library/index';
+import { getNode, getStorage, deleteStorage } from '@/library/index';
 import pb from '@/api/pocketbase';
 
 const buttonProfile = getNode('.button_profile_open');
@@ -13,8 +8,12 @@ const profile = getNode('.profile');
 const buttonDeleteID = getNode('.deleteID_button');
 const buttonLogout = getNode('.logout_button');
 
-console.log(buttonDeleteID);
-setStorage('auth', { id: '44vbcckr39voea4' });
+const cHeader = getNode('c-header');
+cHeader.shadowRoot.querySelector('.button_profile_open');
+
+// const shadow = cHeader.shadowRoot.querySelector('.button_profile_open');
+
+// setStorage('auth', { id: '44vbcckr39voea4' });
 
 let isActive = false;
 
