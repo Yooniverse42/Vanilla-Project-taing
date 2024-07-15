@@ -56,15 +56,16 @@ fieldset {
   align-items: center;
   background-color: $brand-dark-2;
   border-radius: 4px;
+  color: $gray-600;
 }
 .user__ID__input:focus,
 .user__password__input:focus {
   outline: none;
-  color: $brand-red-2; //color 추후변경
+  color: $gray-600//color 추후변경;
 }
 .user__ID__input:focus::placeholder,
 .user__password__input:focus::placeholder {
-  color: $brand-red-2; //color 추후 변경
+  color: $gray-600; //color 추후 변경
 }
 
 // error message
