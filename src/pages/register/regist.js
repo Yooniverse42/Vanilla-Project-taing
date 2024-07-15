@@ -6,6 +6,8 @@ import { createData, getData } from '../../api/serverData';
 // 로그인 시 {token, model:{username, name, id, email}}
 const id = 'kor123@gmail.com';
 const pw = 'gksrnrtkfka12!';
+const avatarURL =
+  'https://yooniverse.pockethost.io/api/files/gym9pmfmkdf9wtq/dcbodtzpvpt5ulf/profile_2_desktop_ujnfC7hxCb.png?token=';
 
 const registerForm = getNode('.input-form');
 const idInput = getNode('#idInput');
@@ -43,6 +45,7 @@ async function createAccount() {
     email: email,
     password: pw, //8자 이상
     passwordConfirm: pwCheck, //8자 이상
+    avatar: avatarURL,
     emailVisibility: true,
   };
 
@@ -135,7 +138,6 @@ function activeButtonState({
 const checkAllButton = getNode('.check-all-checkbox');
 const checkListitems = document.querySelectorAll('.check-list-container input');
 
-console.log('checkAllButton', checkAllButton);
 checkAllButton.addEventListener('click', (e) => {
   const checkAll = e.target.checked;
 
@@ -160,84 +162,12 @@ function getCheckState() {
 
 const checkListContainer = document.querySelector('.check-list-container');
 
-//closest 사용 필 나중에 수정
-checkListContainer.addEventListener('click', () => {
+//closest? 수정
+checkListContainer.addEventListener('click', (e) => {
+  if (e.target.id !== 'checkState') return;
+  console.log('s');
   getCheckState();
 });
-
-//
-//
-//
-//
-
-//
-//
-//
-
-//
-//
-//
-
-//
-//
-//
-//
-//
-//
-
-//
-//
-//
-
-//
-//
-//
-
-//
-//
-//
-//
-//
-//
-
-//
-//
-//
-
-//
-//
-//
-
-//
-//
-//
-//
-//
-//
-
-//
-//
-//
-
-//
-//
-//
-
-//
-//
-
-//
-// - 회원가입을 통해 사용자(user)를 생성하고 관리합니다.
-// - 데이터 통신을 통해 유저를 생성하고 관리해주세요 V
-// - 유저의 회원을 탈퇴할 수 있는 기능을 구현해주세요
-// - 로그인된 유저를 인식하여 UI를 다르게 랜더링해주세요
-// - 로그인되지 않은 사용자면 회원가입 페이지로 리디렉션 시켜주세요
-// - 회원가입시 중복된 유저가 있는지 체크해주세요
-
-// function aa() {
-//   window.location.href = 'http://www.naver.com/';
-// }
-// aa();
 
 //로그인
 // await pb.collection('users').authWithPassword(data.name, data.password);
