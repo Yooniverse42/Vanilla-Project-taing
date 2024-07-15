@@ -33,8 +33,6 @@ body {
   color: $gray-500;
 }
 .search__icon {
-  // position: absolute;
-  // top: 12px;
   cursor: pointer;
   width: 22px;
   height: 22px;
@@ -46,7 +44,7 @@ body {
 .resent__search {
   display: none;
   h2 {
-    font-size: Stext-16;
+    font-size: $text-16;
     font-weight: 600;
     color: $gray-200;
     line-height: $line-150;
@@ -84,6 +82,71 @@ body {
       color: $gray-500;
       line-height: $line-140;
       margin-top: $spacing-16;
+    }
+  }
+}
+
+@include mq(tablet) {
+  .search__main {
+    padding-top: $spacing-28;
+    padding-bottom: $spacing-52;
+    padding-left: 123px;
+    padding-right: 123px;
+    min-width: 768px;
+  }
+  .search__bar__input {
+    font-size: $text-21;
+  }
+  .search__icon {
+    width: 28px;
+    height: 28px;
+  }
+  .search__list__container {
+    margin-top: $spacing-48;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .resent__search {
+    display: block;
+  }
+  .popular__search {
+    border-left: 1px solid $gray-700;
+    padding-left: 72px;
+  }
+}
+
+@include mq(desktop) {
+  .search__main {
+    min-width: 1920px;
+    padding: $spacing-52 220px;
+  }
+  .search__bar__input {
+    font-size: $text-37;
+  }
+  .search__icon {
+    width: 58px;
+    height: 58px;
+  }
+  .search__list__container {
+    margin-top: 98px;
+  }
+  .resent__search {
+    h2 {
+      font-size: $text-28;
+    }
+    p {
+      font-size: $text-21;
+      font-weight: 400;
+    }
+  }
+  .popular__search {
+    margin-right: $spacing-36;
+    h2 {
+      margin-bottom: $spacing-36;
+      font-size: $text-28;
+    }
+    .popular__list {
     }
   }
 }
