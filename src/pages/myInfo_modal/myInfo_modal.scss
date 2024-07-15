@@ -1,5 +1,10 @@
 @use '@/styles/index' as *;
 
+.button_profile_open {
+  width: 18px;
+  height: 18px;
+}
+
 .profile_container {
   img {
     width: 114px;
