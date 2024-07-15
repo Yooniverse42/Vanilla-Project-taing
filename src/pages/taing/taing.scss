@@ -20,6 +20,7 @@ body {
 .swiper1 {
   @include size(100%, 100%);
   overflow: hidden;
+  border-radius: 0.25rem;
 
   .swiper-slide {
     @include flexbox(row, nowrap, center, center, null);
