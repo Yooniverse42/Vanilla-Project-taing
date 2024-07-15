@@ -6,7 +6,7 @@ body {
 .search__main {
   padding: $spacing-20 $spacing-36;
   margin: 0 auto;
-  width: 320px;
+  width: 100%;
   color: $white;
   background-color: $gray-800;
 }
@@ -18,15 +18,19 @@ body {
   font-size: $text-16;
   border-bottom: 2px solid $white;
 }
-.search__bar__input {
+.search__bar__input,
+.search__bar__input2 {
   width: 100%;
   line-height: $line-150;
   font-weight: 600;
   color: $gray-500;
-
   background-color: transparent;
 }
-.search__bar__input:focus {
+.search__bar__input2 {
+  display: none;
+}
+.search__bar__input,
+.search__bar__input2:focus {
   outline: none;
 }
 .search__bar__input:focus::placeholder {
@@ -43,14 +47,15 @@ body {
 }
 .resent__search {
   display: none;
+
   h2 {
-    font-size: $text-16;
+    font-size: $text-21;
     font-weight: 600;
     color: $gray-200;
     line-height: $line-150;
   }
   p {
-    font-size: $text-12;
+    font-size: $text-16;
     color: $gray-300;
     line-height: $line-160;
     margin-top: 12px;
@@ -92,36 +97,57 @@ body {
     padding-bottom: $spacing-52;
     padding-left: 123px;
     padding-right: 123px;
-    min-width: 768px;
   }
   .search__bar__input {
+    display: none;
+  }
+  .search__bar__input2 {
+    display: block;
     font-size: $text-21;
   }
   .search__icon {
-    width: 28px;
-    height: 28px;
+    width: $text-28;
+    height: $text-28;
   }
   .search__list__container {
     margin-top: $spacing-48;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
   }
   .resent__search {
+    width: 100%;
     display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .popular__search {
+    width: 100%;
     border-left: 1px solid $gray-700;
     padding-left: 72px;
+    h2 {
+      font-size: $text-21;
+    }
+    .popular__list {
+      .popular__list__order {
+        font-size: $text-16;
+      }
+      .date {
+        font-size: $text-16;
+      }
+    }
   }
 }
 
 @include mq(desktop) {
   .search__main {
-    min-width: 1920px;
     padding: $spacing-52 220px;
   }
   .search__bar__input {
+    display: none;
+  }
+  .search__bar__input2 {
     font-size: $text-37;
   }
   .search__icon {
@@ -147,6 +173,15 @@ body {
       font-size: $text-28;
     }
     .popular__list {
+      .popular__list__order {
+        font-size: $text-21;
+        span {
+          padding-right: $spacing-14;
+        }
+      }
+      .date {
+        font-size: $text-21;
+      }
     }
   }
 }
