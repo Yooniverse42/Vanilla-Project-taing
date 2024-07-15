@@ -2,9 +2,10 @@ import { insertLast } from '@/library/insert';
 import getPbImageURL from '@/api/getPbImageURL';
 
 export async function renderImgList(collection, categoryName, node) {
-  const records = collection.filter((item) => item.category == categoryName);
+  const records = await collection;
+  let record = records.filter((item) => item.category == categoryName);
 
-  records.forEach((item) => {
+  record.forEach((item) => {
     const template = `
       <li class="swiper-slide">
         <picture>
