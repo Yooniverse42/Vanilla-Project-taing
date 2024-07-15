@@ -58,7 +58,9 @@ legend {
   flex-direction: column;
 
   input[type='checkbox'] {
-    // appearance: auto;
+    cursor: pointer;
+    // border: 1px solid wheat;
+    background-color: transparent;
     position: absolute;
     // left: 50px;
     width: $text-16;
@@ -66,7 +68,6 @@ legend {
   }
 
   .check-state-label .check-icon {
-    // background: url(../../pages/register/check.svg) no-repeat 0 0 /100%;
     background: url('/public/icons/stack.svg#check-no-filled-default') no-repeat
       0 0 /100%;
     display: block;
@@ -75,19 +76,15 @@ legend {
   }
 
   .check-state-checkbox:checked + .check-state-label .check-icon {
-    background-image: url('/public/icons/stack.svg#check-no-filled-active');
-  }
 
-  //   <input
-  //   id="checkState"
-  //   type="checkbox"
-  //   class="list-checkbox check-state-checkbox"
-  // />
-  // <label for="checkState" class="check-state-label">
+    background: url('/public/icons/stack.svg#check-no-filled-active');
+
+  }
 
   label {
     display: flex;
     gap: $spacing-4;
+    pointer-events: none;
   }
 }
 
@@ -126,16 +123,17 @@ legend {
   padding: $spacing-16 0;
 
   .check-all-label .check-all-icon {
-    background: url(../../pages/register/check.svg) no-repeat 0 0 /100%;
-    background-color: $gray-600;
+    cursor: pointer;
+    background: url('/public/icons/stack.svg#check-no-filled-default') no-repeat;
+    background-color: $gray-400;
     border-radius: 14px;
     width: $spacing-16;
     height: $spacing-16;
-    // background-color: $gray-600;
   }
 
   .check-all-checkbox:checked + .check-all-label .check-all-icon {
-    background-image: url(../../pages/register/checked.svg);
+    background: url('/public/icons/stack.svg#check-no-filled-active');
+    background-color: $gray-600;
   }
 
   label {
@@ -244,7 +242,6 @@ legend {
   }
 
   .confirm-button {
-    margin-bottom: 0;
     margin-top: $spacing-20;
     height: 50px;
   }
@@ -326,7 +323,6 @@ legend {
     }
   }
   .confirm-button {
-    margin-bottom: 0;
     margin-top: $spacing-36;
     height: 86px;
     font-size: $text-28;
