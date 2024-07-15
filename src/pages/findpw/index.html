@@ -16,29 +16,27 @@
 
     <main class="main">
       <!-- 타이틀 -->
-      <h1 class="findPW__title">비밀번호 찾기</h1>
-
-      <p>아이디 확인 후 등록된 이메일 주소로 비밀번호 재설정을 위한 인증 메일이 발송됩니다. 이메일을 확인하여 12시간 이내에 비밀번호 재설정을 완료해주세요.</p>
-
+      <h1 class="findPw__title">비밀번호 찾기</h1>
+      
+      <p class="findPw__message">아이디 확인 후 등록된 이메일 주소로 비밀번호 재설정을 위한 인증 메일이 발송됩니다. 메일을 확인하여 12시간 이내에 비밀번호 재설정을 완료해주세요.</p>
       <!-- 입력폼 -->
-      <form class="findPW__content" action="/">
-        <label class="findPW__label" for="findPW__email">
-          <input
-            id="findPW__email"
-            type="email"
-            name="user__email"
-            placeholder="아이디"
-            required
-            aria-invalid="false"
-            aria-describedby="user_email_error"
-          />
-          <button class="button__delete" type="reset"></button>
-        </label>
+      <form class="findPw__content" action="/">
+        <label class="findPw__label" for="findPw__email"></label>
+        <input
+          id="findPw__email"
+          type="email"
+          name="user__email"
+          placeholder="아이디"
+          required
+          aria-invalid="false"
+          aria-describedby="user_email_error"
+        />
+        <button class="button__delete" type="reset"></button>
         <span class="error-message">
           아이디는 이메일 형식으로 입력해 주세요.
         </span> 
+        <button class="check__email" type="button" disabled>확인</button>
       </form>
-      <button class="check__email" type="button" disabled>확인</button>
 
     </main>
 
