@@ -13,7 +13,7 @@ const pwInput = getNode('#pwInput');
 const pwCheckInput = getNode('#pwCheckInput');
 const emailInput = getNode('#emailInput');
 const confirmButton = getNode('.confirm-button');
-// const modal = getNode('.modal');
+const modal = getNode('.modal');
 
 const buttonState = {
   idState: false,
@@ -56,15 +56,15 @@ async function createAccount() {
     alert('아이디 또는 이메일이 이미 존재합니다');
     return;
   } else {
-    // modal.classList.add('acitve');
+    modal.classList.add('modal-active');
     console.log('중복 ㄴㄴ');
 
     createData('users', data)
       .then((data) => {
-        // modal.classList.remove('.acitve');
+        modal.classList.remove('modal-active');
         alert(`${data.username}님 가입이 완료되었습니다`);
       })
-      .then(() => (location.href = 'src/pages/loginID/index.html'));
+      .then(() => (location.href = 'src/pages/loginid/'));
     registerForm.reset();
     // 입력 폼 초기화 추가
   }
