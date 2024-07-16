@@ -1,12 +1,12 @@
 import pb from '@/api/pocketbase';
-// import defaultAuthData from '@/api/defaultAuthData';
+import defaultAuthData from '@/api/defaultAuthData';
 import { getStorage, setStorage, deleteStorage } from '@/library/index';
 import '@/styles/layout/header.scss';
 import '@/pages/myInfo_modal/myInfo_modal.scss';
 import textCSS from '@/styles/layout/header.scss?inline';
 
 // 기본값
-// setStorage('auth', defaultAuthData)
+setStorage('auth', defaultAuthData)
 
 const headerTemplate = document.createElement('template');
 headerTemplate.innerHTML = `
@@ -25,10 +25,7 @@ headerTemplate.innerHTML = `
       <ul class="header__menu">
         <li class="menu__list">
           <a class="list__live" href="/">
-            <svg role="img" aria-label="라이브 페이지로 이동하기">
-              <use href="/icons/stack.svg#live-default" />
-            </svg>
-            <span>실시간</span>
+            <span aria-label="라이브 페이지로 이동하기">실시간</span>
           </a>
         </li>
         <li class="menu__list">
@@ -43,9 +40,7 @@ headerTemplate.innerHTML = `
         </li>
         <li class="menu__list">
           <a class="list__paramount" href="/">
-            <svg role="img" aria-label="파라마운트 이동하기">
-              <use href="/icons/stack.svg#paramount-default" />
-            </svg>
+            <span aria-label="파라마운트 이동하기"></span>
           </a>
         </li>
       </ul>

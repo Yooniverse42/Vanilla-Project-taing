@@ -6,7 +6,7 @@ body {
 }
 
 .header {
-  background-color: red;
+  background-color: darkblue;
   width: 100%;
   height: 38px;
   padding: 10px 12px;
@@ -15,7 +15,7 @@ body {
   left: 0;
 
   .nav {
-    @include flexbox(row, nowrap, space-between, center, $spacing-8);
+    @include flexbox(row, nowrap, space-between, center, $spacing-28);
     color: $gray-200;
   }
 
@@ -30,6 +30,7 @@ body {
       .logo1 {
         width: 100%;
         height: 15px;
+        margin-bottom: 2px
       }
     }
   }
@@ -42,25 +43,50 @@ body {
 
   .menu__list {
     font-size: $text-12;
-  }
 
-  .list__live {
-    @include flexbox(row, nowrap, center, center, $spacing-4);
-    width: 56px;
-
-    svg {
-      width: 20px;
-      height: 15px;
+    &:hover {
+      color: $white;
     }
   }
 
+  .list__live {
+    width: 56px;
+    height: 20px;
+
+    span {
+      width: 56px;
+      height: 15px;
+      display: inline-flex;
+      align-items: center;
+      
+      background: url("/icons/stack.svg#live-default");
+      background-position: -17px;
+      background-repeat: no-repeat;
+      padding-left: $spacing-24;
+      
+
+      &:hover {
+        background-image: url("/icons/stack.svg#live-hover");
+      }
+    }
+
+    
+  }
+
   .list__paramount {
-    width: 65px;
+    width: 50px;
     height: 15px;
 
-    svg {
-      width: 65px;
+    span {
+      width: 50px;
       height: 15px;
+      display: inline-block;
+      background: url("/icons/stack.svg#paramount-default");
+      background-repeat: no-repeat;
+
+      &:hover {
+        background-image: url("/icons/stack.svg#paramount-hover");
+      }
     }
   }
 
@@ -169,8 +195,7 @@ body {
   }
 }
 
-// 미디어 쿼리
-
+// 미디어 쿼리 
 @include mq(tablet) {
   .header {
     height: 56px;
@@ -209,65 +234,65 @@ body {
   }
 }
 
-// @include mq(desktop) {
-//   .header {
-//     height: 100px;
-//     padding: 29px 70px;
-//     background: linear-gradient(
-//       to bottom,
-//       rgba($brand-dark-1, 1) 10%,
-//       rgba($gray-300, 0.2) 100%
-//     );
+@include mq(desktop) {
+  .header {
+    height: 100px;
+    padding: 29px 70px;
+    background: linear-gradient(
+      to bottom,
+      rgba($brand-dark-1, 1) 10%,
+      rgba($gray-300, 0.2) 100%
+    );
 
-//     .header__logo {
-//       margin-right: $spacing-52;
-//       height: 42px;
+    .header__logo {
+      margin-right: $spacing-52;
+      height: 42px;
 
-//       .header__logo__link {
-//         height: 42px;
+      .header__logo__link {
+        height: 42px;
 
-//         .logo1 {
-//           height: 42px;
-//         }
-//       }
-//     }
+        .logo1 {
+          height: 42px;
+        }
+      }
+    }
 
-//     .header__menu {
-//       @include flexbox(row, nowrap, null, center, $spacing-52);
-//       display: flex;
-//     }
+    .header__menu {
+      @include flexbox(row, nowrap, null, center, $spacing-52);
+      display: flex;
+    }
 
-//     .menu__list {
-//       font-size: $text-21;
-//     }
+    .menu__list {
+      font-size: $text-21;
+    }
 
-//     .list__live {
-//       @include flexbox(row, nowrap, center, center, 10px);
-//       width: 100px;
+    .list__live {
+      @include flexbox(row, nowrap, center, center, 10px);
+      width: 100px;
 
-//       img {
-//         width: 34px;
-//       }
-//     }
+      img {
+        width: 34px;
+      }
+    }
 
-//     .list__paramount {
-//       width: 112px;
+    .list__paramount {
+      width: 112px;
 
-//       img {
-//         width: 112px;
-//       }
-//     }
+      img {
+        width: 112px;
+      }
+    }
 
-//     .header__actions {
-//       @include flexbox(row, nowrap, center, center, 40px);
+    .header__actions {
+      @include flexbox(row, nowrap, center, center, 40px);
 
-//       .actions__search {
-//         width: 40px;
-//       }
+      .actions__search {
+        width: 40px;
+      }
 
-//       .actions__profile {
-//         width: 40px;
-//       }
-//     }
-//   }
-// }
+      .actions__profile {
+        width: 40px;
+      }
+    }
+  }
+}
