@@ -36,6 +36,10 @@ body {
 .search__bar__input:focus::placeholder {
   color: $gray-500;
 }
+.search__icon__button {
+  outline: none;
+  background-color: transparent;
+}
 .search__icon {
   cursor: pointer;
   width: 22px;
@@ -45,7 +49,7 @@ body {
 .search__list__container {
   margin-top: 40px;
 }
-.resent__search {
+.recent__search {
   display: none;
 
   h2 {
@@ -54,12 +58,26 @@ body {
     color: $gray-200;
     line-height: $line-150;
   }
-  p {
+  #recent__search__list {
     font-size: $text-16;
     color: $gray-300;
     line-height: $line-160;
     margin-top: 12px;
   }
+}
+#recent__delet__button {
+  background-color: transparent;
+  outline: none;
+}
+.delet__recent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-12;
+}
+.delet__icon {
+  width: $text-12;
+  height: $text-12;
 }
 .popular__search {
   h2 {
@@ -82,15 +100,14 @@ body {
         padding-right: 5px;
       }
     }
-    .date {
-      font-size: $text-12;
-      color: $gray-500;
-      line-height: $line-140;
-      margin-top: $spacing-16;
-    }
   }
 }
-
+.date {
+  font-size: $text-12;
+  color: $gray-500;
+  line-height: $line-140;
+  margin-top: $spacing-16;
+}
 @include mq(tablet) {
   .search__main {
     padding-top: $spacing-28;
@@ -115,13 +132,14 @@ body {
     justify-content: center;
     align-items: flex-start;
   }
-  .resent__search {
+  .recent__search {
     width: 100%;
     display: block;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
+
   .popular__search {
     width: 100%;
     border-left: 1px solid $gray-700;
@@ -133,10 +151,10 @@ body {
       .popular__list__order {
         font-size: $text-16;
       }
-      .date {
-        font-size: $text-16;
-      }
     }
+  }
+  .date {
+    font-size: $text-16;
   }
 }
 
@@ -157,14 +175,24 @@ body {
   .search__list__container {
     margin-top: 98px;
   }
-  .resent__search {
+  .recent__search {
     h2 {
       font-size: $text-28;
     }
-    p {
+    #recent__search__list {
       font-size: $text-21;
       font-weight: 400;
     }
+  }
+  #recent__delet__button {
+    background-color: transparent;
+    outline: none;
+  }
+
+  .delet__icon {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
   }
   .popular__search {
     margin-right: $spacing-36;
@@ -179,9 +207,9 @@ body {
           padding-right: $spacing-14;
         }
       }
-      .date {
-        font-size: $text-21;
-      }
     }
+  }
+  .date {
+    font-size: $text-21;
   }
 }
