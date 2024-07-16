@@ -1,13 +1,20 @@
 import '@/styles/pages/login_ID.scss';
 import '@/layout/index';
-import { getNode, emailReg, pwReg, debounce } from '@/library/index';
-import { getRecord } from '@/api/getRecords';
+import {
+  getNode,
+  emailReg,
+  pwReg,
+  debounce,
+  setStorage,
+} from '@/library/index';
+import { authWithPassword } from '@/api/getRecords';
 
 const loginButton = getNode('.login__button');
 const loginUserID = getNode('#userEmail');
 const loginUserPassword = getNode('#userPassword');
 const idMessageError = getNode('.login__form__error__message');
 const pwMessageError = getNode('.login__form__PWerror__message');
+
 // 이메일 유효성 검사
 
 let emailValid = false;
@@ -36,15 +43,26 @@ function handlePasswordValid() {
     pwValid = false;
   }
 }
-// 로그인 버튼 누를시 id와 비밀번호 양식이 맞으면 메인페이지로 감
-loginButton.addEventListener('click', (e) => {
+// 로그인
+loginButton.addEventListener('click', async (e) => {
   e.preventDefault();
-  const userEmail = document.getElementById('userEmail').value;
-
-  const userPassword = document.getElementById('userPassword').value;
-
+  // 유효성 검사 통과 시 로그인 시도
   if (emailValid && pwValid) {
-    location.href = '/src/pages/taing/index.html';
+    const userEmail = loginUserID.value;
+    const userPassword = loginUserPassword.value;
+
+    try {
+      const response = await authWithPassword(userEmail, userPassword);
+      if (response.success) {
+        setStorage('user', response.authData); //사용자 정보 로컬 스토리지에 저장
+        location.href = '/src/pages/taing/index.html'; //로그인 성공!!
+      } else {
+        alert('로그인 실패:' + response.error);
+      }
+    } catch (error) {
+      console.error('로그인 오류:', error);
+      alert('로그인 중 오류가 발생했습니다.');
+    }
   } else {
     alert('아이디와 비밀번호를 확인해 주세요.');
   }

@@ -62,73 +62,72 @@
             <ul class="check-list">
               <li>
                 <input
-                  id="checkState"
+                  id="checkState-age"
                   type="checkbox"
-                  class="list-checkbox check-state-checkbox"
+                  class="check-state-checkbox"
                 />
-                <label for="checkState" class="check-state-label">
+                <label for="checkState-age" class="check-state-label">
                   <span class="check-icon"></span>
                   만 14세 이상입니다.
                 </label>
               </li>
               <li>
                 <input
-                  id="checkState"
+                  id="checkState-necessary"
                   type="checkbox"
-                  class="list-checkbox check-state-checkbox necessary"
+                  class="check-state-checkbox necessary"
                 />
-                <label for="checkState" class="check-state-label">
+                <label for="checkState-necessary" class="check-state-label">
                   <span class="check-icon"></span>
                   [필수] 서비스 이용약관 동의
                 </label>
               </li>
               <li>
                 <input
-                  id="checkState"
+                  id="checkState-private-service"
                   type="checkbox"
-                  class="list-checkbox check-state-checkbox necessary"
+                  class="check-state-checkbox necessary"
                 />
-                <label for="checkState" class="check-state-label">
-                  <!-- <svg
-                    class="check-icon"
-                    role="button"
-                    aria-label="약관 체크 아이콘"
-                  >
-                    <use href="/icons/stack.svg#check-no-filled-default" />
-                  </svg> -->
+                <label
+                  for="checkState-private-service"
+                  class="check-state-label"
+                >
                   <span class="check-icon"></span>
                   [필수] 개인정보 수집 및 서비스 활용 동의
                 </label>
               </li>
               <li>
                 <input
-                  id="checkState"
+                  id="checkState-channel"
                   type="checkbox"
-                  class="list-checkbox check-state-checkbox necessary"
+                  class="check-state-checkbox necessary"
                 />
-                <label for="checkState" class="check-state-label">
+                <label for="checkState-channel" class="check-state-label">
                   <span class="check-icon"></span>
                   [필수] 채널 홈페이지 개인정보 제 3자 제공동의
                 </label>
               </li>
               <li>
                 <input
-                  id="checkState"
+                  id="checkState-private"
                   type="checkbox"
-                  class="list-checkbox check-state-checkbox"
+                  class="check-state-checkbox"
                 />
-                <label for="checkState" class="check-state-label">
+                <label for="checkState-private" class="check-state-label">
                   <span class="check-icon"></span>
                   [선택] 개인정보 제 3자 제공동의
                 </label>
               </li>
               <li>
                 <input
-                  id="checkState"
+                  id="checkState-private-service2"
                   type="checkbox"
-                  class="list-checkbox check-state-checkbox"
+                  class="check-state-checkbox"
                 />
-                <label for="checkState" class="check-state-label">
+                <label
+                  for="checkState-private-service2"
+                  class="check-state-label"
+                >
                   <span class="check-icon"></span>
                   [선택] 개인정보 수집 및 서비스 활용 동의
                 </label>
@@ -137,22 +136,25 @@
             <ul class="check-marketing">
               <li>
                 <input
-                  id="checkState"
+                  id="checkState-marketing-sns"
                   type="checkbox"
-                  class="list-checkbox check-state-checkbox"
+                  class="check-state-checkbox"
                 />
-                <label for="checkState" class="check-state-label">
+                <label for="checkState-marketing-sns" class="check-state-label">
                   <span class="check-icon"></span>
                   [선택] 마케팅 정보 SMS 수신동의
                 </label>
               </li>
               <li>
                 <input
-                  id="checkState"
+                  id="checkState-marketing-email"
                   type="checkbox"
-                  class="list-checkbox check-state-checkbox"
+                  class="check-state-checkbox"
                 />
-                <label for="checkState" class="check-state-label">
+                <label
+                  for="checkState-marketing-email"
+                  class="check-state-label"
+                >
                   <span class="check-icon"></span>
                   [선택] 마케팅 정보 이메일 수신동의
                 </label>
@@ -165,4 +167,10 @@
     </section>
     <c-footer></c-footer>
   </body>
+  <div class="modal">
+    <div class="modal-inner">
+      <h2>회원가입 진행 중</h2>
+      <div class="loading"></div>
+    </div>
+  </div>
 </html>

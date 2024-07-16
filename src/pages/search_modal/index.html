@@ -12,7 +12,7 @@
       <form class="search__bar" action="URL" method="POST">
         <input
           class="search__bar__input"
-          id="search__box"
+          id="search__box1"
           type="text"
           name="searchBox"
           placeholder="검색"
@@ -20,17 +20,32 @@
           aria-invalid="false"
           aria-live="polite"
         />
-        <svg class="search__icon" role="img" aria-label="검색 아이콘">
-          <use href="/public/icons/stack.svg#search-defualt" />
-        </svg>
+        <input
+          class="search__bar__input2"
+          id="search__box2"
+          type="text"
+          name="searchBox"
+          placeholder="TV프로그램, 영화 제목 및 출연진으로 검색해보세요"
+          required
+          aria-invalid="false"
+          aria-live="polite"
+        />
+        <button type="button" class="search__icon__button">
+          <svg class="search__icon" role="img" aria-label="검색 아이콘">
+            <use href="/public/icons/stack.svg#search-defualt" />
+          </svg>
+        </button>
       </form>
       <!-- 검색 바 -->
       <section class="search__list__container">
-        <div class="resent__search">
+        <div class="recent__search">
           <h2>최근 검색어</h2>
-          <p>검색 내역이 없습니다</p>
+          <ul id="recent__search__list">
+            <li>검색 내역이 없습니다</li>
+          </ul>
+          <button type="button" id="recent__delet__button"></button>
         </div>
-        <!-- recent__search -->
+        <!-- 최근 검색어 -->
         <div class="popular__search">
           <h2>실시간 인기 검색어</h2>
           <ul class="popular__list">
@@ -54,9 +69,12 @@
               <span>9</span>미씽:그들이 있었다 - 그들을 다만나다
             </li>
             <li class="popular__list__order"><span>10</span>술꾼도시여자들</li>
-            <li class="date">2024.07.14 오후 10시 41 기준</li>
           </ul>
+          
+          <div class="date">2024.07.14 오후 10시 41 기준</div>
+          <!-- 날짜 -->
         </div>
+        <!-- 실시간 인기 검색어 -->
       </section>
     </main>
   </body>

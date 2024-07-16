@@ -1,0 +1,51 @@
+@import '@/styles/index.scss';
+
+.loading {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  height: 100%;
+}
+
+.active {
+  display: block;
+
+  .loading_inner {
+    animation: spin 2000ms ease-in-out infinite;
+  }
+}
+
+.loading_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 100%;
+  gap: $text-16;
+
+  h2 {
+    color: $white;
+  }
+
+  .loading_inner {
+    border: 3px solid $gray-500;
+    border-top-color: white;
+    width: $text-28;
+    height: $text-28;
+    border-radius: 100%;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

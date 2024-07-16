@@ -173,7 +173,7 @@ body {
 .section1 {
   padding-top: $spacing-48;
   margin: 0 auto;
-  max-width: 320px;
+  width: 320px;
 }
 .container__message {
   margin-bottom: $spacing-20;
@@ -217,7 +217,7 @@ body {
 @include mq(tablet) {
   .section1 {
     padding-top: 40px;
-    max-width: 768px;
+    min-width: 768px;
   }
 
   .container__message__header {
@@ -237,7 +237,7 @@ body {
 @include mq(desktop) {
   .section1 {
     padding-top: 160px;
-    max-width: 1920px;
+    min-width: 1920px;
   }
   .container__message {
     margin-bottom: 40px;
