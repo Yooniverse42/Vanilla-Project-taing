@@ -1,0 +1,67 @@
+@use '@/styles/index' as *;
+
+.button_profile_open {
+  width: 18px;
+  height: 18px;
+}
+
+.profile_container {
+  img {
+    width: 114px;
+    height: 114px;
+  }
+}
+
+.main {
+  width: 20rem;
+  margin: 50px auto;
+  background-color: $brand-dark-1;
+}
+
+.profile {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.profile_container {
+  @include flexbox(column, nowrap, null, center, $spacing-12);
+
+  margin: 0 0 $spacing-32;
+  font-size: $text-16;
+
+  h2 {
+    font-size: $text-16;
+    color: $gray-400;
+  }
+  button {
+    @include size(18rem, 2.625rem);
+    background-color: $brand-dark-1;
+    font-size: $text-12;
+    color: $gray-500;
+    border: 1px solid $gray-500;
+    border-radius: 0.25rem;
+  }
+}
+
+.button_container {
+  @include flexbox(column, nowrap, null, center, $spacing-16);
+
+  button {
+    @include size(18rem, 2.625rem);
+    padding: 0 $spacing-12;
+    font-size: $text-12;
+    background-color: $brand-dark-2;
+    color: $gray-500;
+
+    img {
+      @include size($spacing-16, $spacing-16);
+    }
+  }
+
+  .deleteID_button {
+    background-color: $brand-dark-1;
+  }
+}

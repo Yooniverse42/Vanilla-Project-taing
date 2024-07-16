@@ -19,3 +19,13 @@ export async function renderImgList(collection, categoryName, node) {
     insertLast(node, template);
   });
 }
+
+export async function renderImg(collection, userName) {
+  const records = await collection;
+  let record = records.filter((item) => item.username == userName);
+
+  const template = `
+    <img src="${getPbImageURL(record[0], 'mobile', 'avatar')}" alt="프로필" />
+  `;
+  return template;
+}

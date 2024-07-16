@@ -1,7 +1,7 @@
 import '@/styles/pages/login_ID.scss';
 import '@/layout/index';
 import { getNode, emailReg, pwReg, debounce } from '@/library/index';
-import { getRecord } from '@/api/getRecords';
+import { getRecord, authWidthPassword } from '@/api/getRecords';
 
 const loginButton = getNode('.login__button');
 const loginUserID = getNode('#userEmail');
@@ -37,14 +37,24 @@ function handlePasswordValid() {
   }
 }
 // 로그인 버튼 누를시 id와 비밀번호 양식이 맞으면 메인페이지로 감
-loginButton.addEventListener('click', (e) => {
+loginButton.addEventListener('click', async (e) => {
   e.preventDefault();
-  const userEmail = document.getElementById('userEmail').value;
-
-  const userPassword = document.getElementById('userPassword').value;
-
+  // 유효성 검사 통과 시 로그인 시도
   if (emailValid && pwValid) {
-    location.href = '/src/pages/taing/index.html';
+    const userEmail = loginUserID.value;
+    const userPassword = loginUserPassword.value;
+
+    try {
+      const response = await authWidthPassword(userEmail, userPassword);
+      if (response.success) {
+        location.href = '/src/pages/tain/index.html'; //로그인 성공!!
+      } else {
+        alert('로그인 실패:' + response.error);
+      }
+    } catch (error) {
+      console.error('로그인 오류:', error);
+      alert('로그인 중 오류가 발생했습니다.');
+    }
   } else {
     alert('아이디와 비밀번호를 확인해 주세요.');
   }

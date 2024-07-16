@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>Vite Scss</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <script
+      type="module"
+      src="/src/pages/myInfo_modal/myInfo_modal.js"
+    ></script>
+  </head>
+  <body>
+    <header class="header">
+      <button type="button" class="button_profile_open">
+        <img src="/image/profile_4.png" alt="" />
+      </button>
+    </header>
+    <main class="main">
+      <div class="profile">
+        <div class="profile_container">
+          <img src="/image/profile_4.png" alt="프로필" />
+          <h2>이듬</h2>
+          <button type="button">
+            <span>프로필 편집</span>
+          </button>
+        </div>
+        <div class="button_container">
+          <button type="button" class="contents_button">
+            <img src="/image/icon_TV.svg" alt="티비 아이콘" />
+            <span>시청 중인 컨텐츠</span>
+            <!-- <img src="/image/button_arrow.svg" alt="바로가기 버튼" /> -->
+          </button>
+          <button type="button" class="logout_button">
+            <img src="/image/icon_logout.svg" alt="로그아웃 아이콘" />
+            <span>로그아웃</span>
+            <!-- <img src="/image/button_arrow.svg" alt="바로가기 버튼" /> -->
+          </button>
+          <button type="button" class="deleteID_button">
+            <span>회원탈퇴</span>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <c-footer></c-footer>
+  </body>
+</html>
