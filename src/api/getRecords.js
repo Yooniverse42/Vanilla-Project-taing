@@ -16,3 +16,14 @@ export function getRecord(storage, option = false) {
 export function getRecords(storage) {
   return pb.collection(storage).getFullList();
 }
+// 로그인 정보 서버에서 불러오기
+export async function authWithPassword(email, password) {
+  try {
+    const authData = await pb
+      .collection('users')
+      .authWithPassword(email, password);
+    return { success: true, authData };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
