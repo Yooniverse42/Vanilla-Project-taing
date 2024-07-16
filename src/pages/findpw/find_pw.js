@@ -52,7 +52,6 @@ function deleteButtonOn() {
 async function checkUserEmail() {
   const filter = `email = "${userId.value}"`;
   const userRecord = await getRecord('users', filter);
-  const userInfo = userRecord.items[0];
 
   if (userRecord.items.length >= 1 && isEmailValid) {
     alert(`등록하신 이메일로 비밀번호가 전송되었습니다. 이메일을 확인 해주세요.`);
