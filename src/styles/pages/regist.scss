@@ -1,6 +1,7 @@
 @import '@/styles/index.scss';
 body {
   background-color: $black;
+  position: relative;
 }
 
 input {
@@ -327,43 +328,46 @@ legend {
   }
 }
 
-// .modal {
-//   display: none;
-//   justify-content: center;
-//   align-items: center;
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   left: 0;
-//   right: 0;
-//   background-color: rgba(0, 0, 0, 0.6);
-// }
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
 
-// .modal .active {
-//   display: flex;
-// }
+.modal-active {
+  display: flex;
+}
 
-// .modal-inner {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: $text-16;
+.modal-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  gap: $text-16;
 
-//   h2 {
-//     color: $white;
-//   }
+  h2 {
+    color: $white;
+  }
 
-//   .loading {
-//     border: 2px dotted white;
-//     width: $text-28;
-//     height: $text-28;
-//     border-radius: 50%;
-//     animation: spin 2000ms ease-in-out infinite;
-//   }
-// }
+  .loading {
+    border: 3px solid $gray-500;
+    border-top-color: white;
+    width: $text-28;
+    height: $text-28;
+    border-radius: 100%;
+    animation: spin 2000ms ease-in-out infinite;
+  }
+}
 
-// @keyframes spin {
-//   100% {
-//     transform: rotate(360deg);
-//   }
-// }
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
