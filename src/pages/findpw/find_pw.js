@@ -1,4 +1,4 @@
-import '/src/pages/findPw/find_pw.scss';
+import '/src/pages/findpw/find_pw.scss';
 
 import '@/layout/index';
 import { getNode, emailReg, debounce } from '@/library/index';
