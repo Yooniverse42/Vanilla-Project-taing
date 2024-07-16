@@ -1,7 +1,8 @@
 import '@/styles/pages/regist.scss';
 import '@/layout/footer';
 import { getNode } from './../../library/getNode';
-import { createData, getData } from '../../api/serverData';
+import { createData, getData, getImageData } from '../../api/serverData';
+import getPbImageURL from './../../api/getPbImageURL';
 
 // 로그인 시 {token, model:{username, name, id, email}}
 const id = 'kor123@gmail.com';
@@ -37,7 +38,18 @@ async function createAccount() {
   const pw = pwInput.value;
   const pwCheck = pwCheckInput.value;
   const email = emailInput.value;
+  const imageBlob = await getImageData('profile') //
+    .then((response) => ({
+      ...response.items[0],
+      photo: [response.items[0].field],
+    }))
+    .then((item) => getPbImageURL(item)) //
+    .then((url) => fetch(url))
+    .then((response) => response.blob());
 
+  const form = new FormData();
+  form.append('avatar', imageBlob);
+  console.log(form.get('avatar'));
   const data = {
     username: id,
     name: id,
@@ -45,6 +57,7 @@ async function createAccount() {
     password: pw, //8자 이상
     passwordConfirm: pwCheck, //8자 이상
     emailVisibility: true,
+    avatar: form.get('avatar'),
   };
 
   const sameIdEmail = await getData('users', {
@@ -64,7 +77,7 @@ async function createAccount() {
         modal.classList.remove('modal-active');
         alert(`${data.username}님 가입이 완료되었습니다`);
       })
-      .then(() => (location.href = 'src/pages/loginid/'));
+      .then(() => (location.href = 'src/pages/loginID/'));
     registerForm.reset();
     // 입력 폼 초기화 추가
   }
@@ -109,7 +122,6 @@ function activeButtonState({
   emailState,
   checkState,
 }) {
-  console.log(buttonState);
   if (idState && emailState && pwCheckState && pwState && checkState) {
     confirmButton.disabled = false;
     confirmButton.classList.add('active');
