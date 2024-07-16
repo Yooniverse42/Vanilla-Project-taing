@@ -1,13 +1,20 @@
 import '@/styles/pages/login_ID.scss';
 import '@/layout/index';
-import { getNode, emailReg, pwReg, debounce } from '@/library/index';
-import { getRecord, authWidthPassword } from '@/api/getRecords';
+import {
+  getNode,
+  emailReg,
+  pwReg,
+  debounce,
+  setStorage,
+} from '@/library/index';
+import { authWithPassword } from '@/api/getRecords';
 
 const loginButton = getNode('.login__button');
 const loginUserID = getNode('#userEmail');
 const loginUserPassword = getNode('#userPassword');
 const idMessageError = getNode('.login__form__error__message');
 const pwMessageError = getNode('.login__form__PWerror__message');
+
 // 이메일 유효성 검사
 
 let emailValid = false;
@@ -36,7 +43,7 @@ function handlePasswordValid() {
     pwValid = false;
   }
 }
-// 로그인 버튼 누를시 id와 비밀번호 양식이 맞으면 메인페이지로 감
+// 로그인
 loginButton.addEventListener('click', async (e) => {
   e.preventDefault();
   // 유효성 검사 통과 시 로그인 시도
@@ -45,9 +52,10 @@ loginButton.addEventListener('click', async (e) => {
     const userPassword = loginUserPassword.value;
 
     try {
-      const response = await authWidthPassword(userEmail, userPassword);
+      const response = await authWithPassword(userEmail, userPassword);
       if (response.success) {
-        location.href = '/src/pages/tain/index.html'; //로그인 성공!!
+        setStorage('user', response.authData); //사용자 정보 로컬 스토리지에 저장
+        location.href = '/src/pages/taing/index.html'; //로그인 성공!!
       } else {
         alert('로그인 실패:' + response.error);
       }
