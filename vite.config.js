@@ -16,7 +16,11 @@ export default defineConfig({
         findpw: resolve(__dirname, 'src/pages/findpw/index.html'),
         register: resolve(__dirname, 'src/pages/register/index.html'),
         taing: resolve(__dirname, 'src/pages/taing/index.html'),
-
+        profile_select: resolve(
+          __dirname,
+          'src/pages/profile_select/index.html'
+        ),
+        profile_edit: resolve(__dirname, 'src/pages/profile_edit/index.html'),
         // page 구현 시 연결할 html 파일
         // detail: resolve(__dirname, 'src/pages/detail/index.html'),
       },
