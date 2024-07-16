@@ -1,99 +1,167 @@
-// import { getStorage, setStorage } from 'kind-tiger';
-// import pb from '@/api/pocketbase';
+import pb from '@/api/pocketbase';
 // import defaultAuthData from '@/api/defaultAuthData';
+import { getStorage, setStorage, deleteStorage } from '@/library/index';
+import '@/styles/layout/header.scss';
+import '@/pages/myInfo_modal/myInfo_modal.scss';
+import textCSS from '@/styles/layout/header.scss?inline';
 
-// // IIAFE
-// (async function () {
-//   if (!localStorage.getItem('auth')) {
-//     setStorage('auth', defaultAuthData);
-//   }
+// 기본값
+// setStorage('auth', defaultAuthData)
 
-//   const { isAuth, user } = await getStorage('auth');
+const headerTemplate = document.createElement('template');
+headerTemplate.innerHTML = `
+  <style>
+    ${textCSS}
+  </style>
+  <header class="header">
+    <nav class="nav">
+      <h1 class="header__logo">
+        <a class="header__logo__link" href="/index.html">
+          <svg class="logo1" role="img" aria-label="타잉">
+            <use href="/icons/stack.svg#logo" />
+          </svg>
+        </a>
+      </h1>
+      <ul class="header__menu">
+        <li class="menu__list">
+          <a class="list__live" href="/">
+            <svg role="img" aria-label="라이브 페이지로 이동하기">
+              <use href="/icons/stack.svg#live-default" />
+            </svg>
+            <span>실시간</span>
+          </a>
+        </li>
+        <li class="menu__list">
+          <a class="list__tv" href="/">
+            <span>TV프로그램</span>
+          </a>
+        </li>
+        <li class="menu__list">
+          <a class="list__movie" href="/">
+            <span>영화</span>
+          </a>
+        </li>
+        <li class="menu__list">
+          <a class="list__paramount" href="/">
+            <svg role="img" aria-label="파라마운트 이동하기">
+              <use href="/icons/stack.svg#paramount-default" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <div class="header__actions">
+        <!-- <button type="button" class="button_search_open">
+          <img src="/icons/stack.svg#search-defualt" alt="검색창으로 이동하기" />
+        </button>
+        <div class="search"></div> -->
+        <button type="button" class="button_profile_open">
+          <img src="/image/profile_4.png" alt="프로필 이동하기" />
+        </button>
+        <div class="profile">
+          <div class="profile_wrapper">
+            <div class="profile_container">
+              <img src="/image/profile_4.png" alt="프로필" />
+              <h2>이듬</h2>
+              <button type="button">
+                <span>프로필 편집</span>
+              </button>
+            </div>
+            <div class="button_container">
+              <button type="button" class="contents_button">
+                <img src="/image/icon_TV.svg" alt="티비 아이콘" />
+                <span>시청 중인 컨텐츠</span>
+              </button>
+              <button type="button" class="logout_button">
+                <img src="/image/icon_logout.svg" alt="로그아웃 아이콘" />
+                <span>로그아웃</span>
+              </button>
+              <button type="button" class="deleteID_button">
+                <span>회원탈퇴</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-//   class Header extends HTMLElement {
-//     constructor() {
-//       super();
-//       this.attachShadow({ mode: 'open' });
-//       const style = document.createElement('style');
-//       style.textContent = `@import '@/styles/layout/header.scss';`;
-//       // const bodySearch = document.createElement('body');
-//       // bodySearch.textContent = `@import '@/pages/search/index.html';`;
-//       // const bodyProfile = document.createElement('body');
-//       // bodyProfile.textContent = `@import '@/pages/profile/index.html';`;
+`;
 
-//       this.shadowRoot.innerHTML = `
-//         <style>
-//           ${style.textContent}
-//         </style>
-//         <header class="header">
+// if (!localStorage.getItem('auth')) {
+//   setStorage('auth', defaultAuthData);
+// }
 
-//           <nav class="nav">
-//             <h1 class="header__logo">
-//               <a class="header__logo__link" href="/index.html">
-//                 <svg class="logo1" role="img" aria-label="타잉">
-//                   <use href="/icons/stack.svg#live_default" />
-//                 </svg>
-//               </a>
-//             </h1>
-//             <ul class="header__menu">
-//               <li class="menu__list">
-//                 <a class="list__live" href="/">
-//                   <svg role="img" aria-label="라이브 페이지로 이동하기">
-//                     <use href="/icons/stack.svg#live_default" />
-//                   </svg>
-//                   <span>실시간</span>
-//                 </a>
-//               </li>
-//               <li class="menu__list">
-//                 <a class="list__tv" href="/">
-//                   <span>TV프로그램</span>
-//                 </a>
-//               </li>
-//               <li class="menu__list">
-//                 <a class="list__movie" href="/">
-//                   <span>영화</span>
-//                 </a>
-//               </li>
-//               <li class="menu__list">
-//                 <a class="list__paramount" href="/">
-//                 <svg role="img" aria-label="파라마운트 이동하기">
-//                   <use href="/icons/stack.svg#paramount_default" />
-//                 </svg>
-//                 </a>
-//               </li>
-//             </ul>
+export class Header extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+    this.shadowRoot.appendChild(headerTemplate.content.cloneNode(true));
+  }
+}
 
-//             <div class="header__actions">
-//               <svg class="actions__search" role="img" aria-label="검색하기">
-//                 <use href="/icons/stack.svg#search_defualt" />
-//               </svg>
-//               <!-- ${bodySearch.textContent} -->
-//               <svg class="actions__profile" role="img" aria-label="프로필 편집 또는 시청중인 컨텐츠, 로그아웃, 회원탈퇴 페이지로 이동하기">
-//                 <use href="/icons/stack.svg#profile_img" />
-//               </svg>
-//               <!-- ${bodyProfile.textContent} -->
-//             </div>
-          
-//           </nav>
-//         </header>
-//       `;
+customElements.define('c-header', Header);
 
-//       this.logout = this.shadowRoot.querySelector('.logout');
-//     }
+const cHeader = document.querySelector('c-header');
+const buttonProfile = cHeader.shadowRoot.querySelector('.button_profile_open');
+const profile = cHeader.shadowRoot.querySelector('.profile');
+const buttonDeleteID = cHeader.shadowRoot.querySelector('.deleteID_button');
+const buttonLogout = cHeader.shadowRoot.querySelector('.logout_button');
+const headerMenu = cHeader.shadowRoot.querySelector('.header__menu');
 
-//     connectedCallback() {
-//       this.logout?.addEventListener('click', this.logOut.bind(this));
-//     }
 
-//     logOut(e) {
-//       e.preventDefault();
+// 로그인 했을 때 모달 버튼 나오게 하기
+if (!localStorage.getItem('auth')) {
+  buttonProfile.classList.remove('header-signin');
+  headerMenu.classList.remove('header-signin');
+} else {
+  buttonProfile.classList.add('header-signin');
+  headerMenu.classList.add('header-signin');
+}
 
-//       pb.authStore.clear();
-//       setStorage('auth', defaultAuthData);
+let isActive = false;
 
-//       location.reload();
-//     }
-//   }
+// 프로필 모달창 열기
+buttonProfile.addEventListener('click', () => {
+  if (!isActive) {
+    profile.classList.add('active');
+    isActive = true;
+  }
+});
 
-//   customElements.define('c-header', Header);
-// })();
+// 프로필 모달창 닫기
+profile.addEventListener('click', () => {
+  if (isActive) {
+    profile.classList.remove('active');
+    isActive = false;
+  }
+});
+
+// 로그아웃
+buttonLogout.addEventListener('click', (e) => {
+  const target = e.target.closest('button');
+
+  if (target == e.currentTarget) {
+    if (!confirm('로그아웃 하시겠습니까?')) {
+      return;
+    } else {
+      deleteStorage('auth');
+      window.location.href = '/index.html';
+      return;
+    }
+  }
+});
+
+
+// 회원 탈퇴
+buttonDeleteID.addEventListener('click', async (e) => {
+  const target = e.target.closest('button');
+
+  if (target == e.currentTarget) {
+    if (!confirm('회원 탈퇴 하시겠습니까?')) {
+      return;
+    } else {
+      let user = await getStorage('auth');
+      pb.collection('users').delete(user.id);
+      return;
+    }
+  }
+});
