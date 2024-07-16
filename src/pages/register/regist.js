@@ -6,8 +6,6 @@ import { createData, getData } from '../../api/serverData';
 // 로그인 시 {token, model:{username, name, id, email}}
 const id = 'kor123@gmail.com';
 const pw = 'gksrnrtkfka12!';
-const avatarURL =
-  'https://yooniverse.pockethost.io/api/files/gym9pmfmkdf9wtq/dcbodtzpvpt5ulf/profile_2_desktop_ujnfC7hxCb.png?token=';
 
 const registerForm = getNode('.input-form');
 const idInput = getNode('#idInput');
@@ -15,6 +13,7 @@ const pwInput = getNode('#pwInput');
 const pwCheckInput = getNode('#pwCheckInput');
 const emailInput = getNode('#emailInput');
 const confirmButton = getNode('.confirm-button');
+const modal = getNode('.modal');
 
 const buttonState = {
   idState: false,
@@ -45,7 +44,6 @@ async function createAccount() {
     email: email,
     password: pw, //8자 이상
     passwordConfirm: pwCheck, //8자 이상
-    avatar: avatarURL,
     emailVisibility: true,
   };
 
@@ -58,11 +56,15 @@ async function createAccount() {
     alert('아이디 또는 이메일이 이미 존재합니다');
     return;
   } else {
+    modal.classList.add('modal-active');
     console.log('중복 ㄴㄴ');
 
     createData('users', data)
-      .then((data) => alert(`${data.username}님 가입이 완료되었습니다`))
-      .then(() => (location.href = 'src/pages/loginID/index.html'));
+      .then((data) => {
+        modal.classList.remove('modal-active');
+        alert(`${data.username}님 가입이 완료되었습니다`);
+      })
+      .then(() => (location.href = 'src/pages/loginid/'));
     registerForm.reset();
     // 입력 폼 초기화 추가
   }
@@ -72,38 +74,30 @@ async function createAccount() {
 function idValidation(e) {
   const value = e.target.value;
   const idReg = /^[a-z]+[a-z0-9]{5,12}$/g;
-  value.match(idReg)
-    ? (buttonState.idState = true)
-    : (buttonState.idState = false);
+  buttonState['idState'] = idReg.test(value);
   activeButtonState(buttonState);
 }
 
 function pwValidation(e) {
   const value = e.target.value;
   const symbolReg = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
-
-  value.match(symbolReg) && value.length >= 6 && value.length <= 16
-    ? (buttonState.pwState = true)
-    : (buttonState.pwState = false);
+  const result =
+    symbolReg.test(value) && value.length >= 6 && value.length <= 16;
+  buttonState['pwState'] = result;
   activeButtonState(buttonState);
 }
 
 function pwCheckValidation(e) {
   const value = e.target.value;
-  pwInput.value === value
-    ? (buttonState.pwCheckState = true)
-    : (buttonState.pwCheckState = false);
+  const result = pwInput.value === value;
+  buttonState['pwCheckState'] = result;
   activeButtonState(buttonState);
 }
 
 function emailValidation(e) {
   const value = e.target.value;
   const emailRule = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-
-  value.match(emailRule)
-    ? (buttonState.emailState = true)
-    : (buttonState.emailState = false);
-  console.log('buttonState', buttonState);
+  buttonState['emailState'] = emailRule.test(value);
   activeButtonState(buttonState);
 }
 
@@ -115,6 +109,7 @@ function activeButtonState({
   emailState,
   checkState,
 }) {
+  console.log(buttonState);
   if (idState && emailState && pwCheckState && pwState && checkState) {
     confirmButton.disabled = false;
     confirmButton.classList.add('active');
@@ -123,16 +118,6 @@ function activeButtonState({
     confirmButton.classList.remove('active');
   }
 }
-
-//계정 삭제
-// const deleteButton = document.querySelector('.delete');
-// deleteButton.addEventListener('click', deleteUser);
-// async function deleteUser(auth) {
-//   console.log('delete');
-//   await pb.collection('users').delete(auth.user.model.id);
-// }
-
-//계정 중복 확인
 
 //체크박스
 const checkAllButton = getNode('.check-all-checkbox');
@@ -143,9 +128,12 @@ checkAllButton.addEventListener('click', (e) => {
 
   if (checkAll) {
     checkListitems.forEach((item) => (item.checked = true));
+    buttonState.checkState = true;
   } else {
     checkListitems.forEach((item) => (item.checked = false));
+    buttonState.checkState = false;
   }
+  activeButtonState(buttonState);
 });
 
 function getCheckState() {
@@ -153,33 +141,16 @@ function getCheckState() {
   const length = Array.from(necessaryCheck).filter(
     (item) => item.checked
   ).length;
+  const result = length === necessaryCheck.length;
+  checkAllButton.checked = result;
+  buttonState['checkState'] = result;
 
-  length === necessaryCheck.length
-    ? (buttonState.checkState = true)
-    : (buttonState.checkState = false);
   activeButtonState(buttonState);
 }
 
 const checkListContainer = document.querySelector('.check-list-container');
 
-//closest? 수정
-checkListContainer.addEventListener('click', (e) => {
-  if (e.target.id !== 'checkState') return;
-  console.log('s');
+//closest 사용 필 나중에 수정
+checkListContainer.addEventListener('click', () => {
   getCheckState();
 });
-
-//로그인
-// await pb.collection('users').authWithPassword(data.name, data.password);
-
-//중복
-// function checkSameIdEmail(username, email) {
-//   return pb
-//     .collection('users')
-//     .getFullList({
-//       filter: `username='${username}'|| email='${email}'`,
-//     })
-//     .then((result) => result.length);
-//   // return result;
-//   //?filter=(id='abc' && created>'2022-01-01')
-// }
