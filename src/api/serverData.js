@@ -7,3 +7,7 @@ export function createData(src, data) {
 export function getData(src, option) {
   return pb.collection(src).getFullList(option);
 }
+
+export function getImageData(src) {
+  return pb.collection(src).getList(1, 1);
+}
