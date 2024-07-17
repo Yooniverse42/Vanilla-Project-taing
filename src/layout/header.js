@@ -49,30 +49,30 @@ headerTemplate.innerHTML = `
           <img src="/icons/stack.svg#search-defualt" alt="검색창으로 이동하기" />
         </button>
         <div class="search"></div> -->
-        <button type="button" class="button_profile_open">
-          <img src="/image/profile_4.png" alt="프로필 이동하기" />
-        </button>
-        <div class="profile">
-          <div class="profile_wrapper">
-            <div class="profile_container">
-              <img src="/image/profile_4.png" alt="프로필" />
-              <h2>이듬</h2>
-              <button type="button">
-                <span>프로필 편집</span>
-              </button>
-            </div>
-            <div class="button_container">
-              <button type="button" class="contents_button">
-                <img src="/image/icon_TV.svg" alt="티비 아이콘" />
-                <span>시청 중인 컨텐츠</span>
-              </button>
-              <button type="button" class="logout_button">
-                <img src="/image/icon_logout.svg" alt="로그아웃 아이콘" />
-                <span>로그아웃</span>
-              </button>
-              <button type="button" class="deleteID_button">
-                <span>회원탈퇴</span>
-              </button>
+          <button type="button" class="button_profile_open">
+            <img src="/image/profile_4.png" alt="프로필 이동하기" />
+          </button>
+          <div class="profile">
+            <div class="profile_wrapper">
+              <div class="profile_container">
+                <img src="/image/profile_4.png" alt="프로필" />
+                <h2>이듬</h2>
+                <button type="button">
+                  <span>프로필 편집</span>
+                </button>
+              </div>
+              <div class="button_container">
+                <button type="button" class="contents_button">
+                  <img src="/image/icon_TV.svg" alt="티비 아이콘" />
+                  <span>시청 중인 컨텐츠</span>
+                </button>
+                <button type="button" class="logout_button">
+                  <img src="/image/icon_logout.svg" alt="로그아웃 아이콘" />
+                  <span>로그아웃</span>
+                </button>
+                <button type="button" class="deleteID_button">
+                  <span>회원탈퇴</span>
+                </button>
             </div>
           </div>
         </div>
