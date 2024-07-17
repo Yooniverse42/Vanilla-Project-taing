@@ -71,7 +71,7 @@ headerTemplate.innerHTML = `
           />
           <button type="button" class="search__icon__button">
             <svg class="search__icon" role="img" aria-label="검색 아이콘">
-              <use href="/public/icons/stack.svg#search-defualt" />
+              <use href="/icons/stack.svg#search-defualt" />
             </svg>
           </button>
         </form>
@@ -248,7 +248,7 @@ function displayRecentSearch() {
     li.classList.add('delet__recent');
     li.innerHTML = `${search}
             <svg data-index ="${index}"  class="delet__icon" role="img" aria-label="삭제 아이콘">
-              <use href="/public/icons/stack.svg#delete-no-fiiled" />
+              <use href="/icons/stack.svg#delete-no-fiiled" />
             </svg>
             
           `;
