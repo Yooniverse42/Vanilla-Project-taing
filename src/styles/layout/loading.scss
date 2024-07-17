@@ -1,17 +1,15 @@
 @import '@/styles/index.scss';
 
 .loading {
+  @include size(100%, 100%);
   display: none;
   justify-content: center;
   align-items: center;
   position: absolute;
   left: 0;
   top: 0;
-  right: 0;
-  bottom: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 9999;
-  height: 100%;
 }
 
 .active {
@@ -23,23 +21,18 @@
 }
 
 .loading_wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flexbox(column, nowrap, center, center, $spacing-16);
+  @include size(100%, 50%);
   margin: 0 auto;
-  height: 100%;
-  gap: $text-16;
 
   h2 {
     color: $white;
   }
 
   .loading_inner {
+    @include size($spacing-28, $spacing-28);
     border: 3px solid $gray-500;
     border-top-color: white;
-    width: $text-28;
-    height: $text-28;
     border-radius: 100%;
   }
 }
