@@ -84,7 +84,7 @@ fieldset {
   background-image: url('/public/icons/stack.svg#hide-pw'); /* 비밀번호 보이기 아이콘 */
 }
 .hide__icon.visible {
-  background-image: url('/public/icons/stack.svg#');
+  background-image: url('/public/icons/stack.svg#open-pw');
   fill: $brand-red-3; /* 비밀번호 숨기기 아이콘 */
 }
 // error message

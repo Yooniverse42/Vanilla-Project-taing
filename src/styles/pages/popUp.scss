@@ -1,0 +1,61 @@
+@import '@/styles/index.scss';
+
+body {
+}
+
+.popup__container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.popup__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+.popup {
+  text-align: center;
+  overflow: hidden;
+  img {
+    width: 252px;
+  }
+  h2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: $spacing-12 0;
+    color: $white;
+    font-size: $text-12;
+    line-height: $line-160;
+
+    .today,
+    .close {
+      cursor: pointer;
+    }
+  }
+}
+
+@include mq(tablet) {
+  .popup {
+    img {
+      width: 328px;
+    }
+    h2 {
+      font-size: $text-16;
+    }
+  }
+}
+@include mq(desktop) {
+  .popup {
+    img {
+      width: 586px;
+    }
+    h2 {
+      font-size: $text-21;
+    }
+  }
+}
