@@ -3,7 +3,7 @@ import '@/layout/index';
 import { getNode, emailReg, debounce } from '@/library/index';
 import { getRecord } from '@/api/getRecords';
 
-const checkButton = getNode('.check_email');
+const checkButton = getNode('.check_email_button');
 const userId = getNode('#findId_email');
 const errorMessage = getNode('.error-message');
 const buttonDelete = getNode('.button_delete');
@@ -67,6 +67,8 @@ async function checkUserEmail() {
     alert('입력하신 이메일을 다시 확인 해주세요!');
   }
 }
+
+console.log(checkButton);
 
 // 이벤트 실행
 userId.addEventListener('keydown', debounce(handleEmailValid, 100));

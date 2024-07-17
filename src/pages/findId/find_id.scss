@@ -5,20 +5,20 @@ body {
   min-width: 20rem;
 }
 
-main {
+.main {
   width: 100%;
-
-  color: $gray-400;
+  color: $gray-200;
   font-size: $text-12;
 }
 
 .findId_container {
-  margin: $spacing-28 $spacing-48 6.25rem;
+  margin: 4rem $spacing-48;
 }
 
 .findId_title {
   text-align: center;
   font-size: $text-16;
+  font-weight: 700;
 }
 
 .findId_content {
@@ -31,7 +31,7 @@ main {
   }
 
   p {
-    color: $gray-400;
+    color: $gray-300;
     margin: $spacing-4 0 0 0;
   }
 
@@ -41,11 +41,11 @@ main {
   }
 
   #findId_email {
-    width: 100%;
-    height: 2.875rem;
-    background-color: $brand-dark-2;
+    @include size(100%, 2.875rem);
     @include paddingX($spacing-16);
+    background-color: $brand-dark-2;
     font-size: $text-12;
+    font-family: $base-font-family;
     color: $gray-400;
     border-radius: 0.25rem;
   }
@@ -68,10 +68,10 @@ main {
   }
 }
 
-/* 공통 에러 메세지 */
+// 공통 에러 메세지
 .error-message {
-  color: $brand-red-2;
   display: none;
+  color: $brand-red-2;
   font-size: $text-12;
   margin-top: $spacing-4;
 }
@@ -80,15 +80,15 @@ main {
   display: block;
 }
 
-//
+// 아이디 찾기 확인 버튼
 
-.check_email {
-  border-radius: 0.25rem;
-  font-size: $text-12;
-  color: $gray-400;
+.check_email_button {
+  @include size(100%, 2.625rem);
   margin-top: $spacing-20;
-  width: 100%;
-  height: 2.625rem;
+  color: $gray-400;
+  font-size: $text-12;
+  border-radius: 0.25rem;
+  cursor: pointer;
 }
 
 .line_border {
@@ -104,9 +104,8 @@ main {
     &::before {
       content: '';
       display: block;
-      width: 45%;
-      height: 1px;
-      background-color: $gray-600;
+      @include size(45%, 0.5px);
+      background-color: $gray-700;
       border: none;
       position: absolute;
       left: 0;
@@ -116,9 +115,8 @@ main {
     &::after {
       content: '';
       display: block;
-      width: 45%;
-      height: 1px;
-      background-color: $gray-600;
+      @include size(45%, 0.5px);
+      background-color: $gray-700;
       border: none;
       position: absolute;
       position: absolute;
@@ -134,18 +132,18 @@ main {
     color: $gray-200;
   }
   p {
-    color: $gray-400;
+    color: $gray-300;
     margin-top: $spacing-4;
   }
 
   button {
-    width: 100%;
-    height: 2.625rem;
+    @include size(100%, 2.625rem);
     margin-top: $spacing-16;
     border-radius: 0.25rem;
     background-color: $gray-100;
     font-family: $base-font-family;
     font-size: $text-12;
+    cursor: pointer;
   }
 }
 
@@ -153,25 +151,25 @@ main {
   @include marginY($spacing-48);
   @include marginX(auto);
   @include flexbox(row, nowrap, center, center, $spacing-24);
+  color: $gray-300;
 
   .line_divide::before {
     content: '';
+    @include size(1px, $spacing-12);
     display: block;
     background-color: $gray-600;
-    width: 1px;
-    height: 13px;
   }
 }
 
 @include mq(tablet) {
-  main {
+  .main {
     @include marginX(auto);
     max-width: 62.5rem;
     font-size: $text-16;
   }
 
   .findId_container {
-    margin: 2.75rem 10rem 6.25rem;
+    margin: 6rem 10rem;
   }
 
   .findId_title {
@@ -180,6 +178,7 @@ main {
 
   .findId_content {
     margin-top: $spacing-24;
+
     h2 {
       font-size: $text-16;
     }
@@ -215,7 +214,6 @@ main {
 
   .findId_nav {
     @include marginY(4rem);
-    gap: 2rem;
     font-size: $text-16;
 
     .line_divide::before {
@@ -233,17 +231,17 @@ main {
 }
 
 @include mq(desktop) {
-  main {
+  .main {
     font-size: 2.375rem;
   }
 
   .findId_container {
     min-width: 45.75rem;
-    margin: 6rem auto 10rem;
+    margin: 10rem auto;
   }
 
   .findId_title {
-    font-size: $text-28;
+    font-size: $text-38;
   }
 
   .findId_content {
@@ -267,7 +265,7 @@ main {
     }
   }
 
-  .check_email {
+  .check_email_button {
     font-size: $text-28;
     margin-top: $spacing-36;
     height: 6rem;
