@@ -83,6 +83,10 @@ body {
   cursor: pointer;
 }
 
+.check__email:disabled {
+  cursor: not-allowed;
+}
+
 @include mq(tablet) {
   .main {
     @include marginX(auto);

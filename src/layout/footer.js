@@ -44,7 +44,7 @@ footerTemplate.innerHTML = `
       </div>
       <div class="SNS">
         <div class="SNS_icon youtube">
-          <a href="/">
+          <a href="https://www.youtube.com/c/TVING_official">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="34"
@@ -60,7 +60,7 @@ footerTemplate.innerHTML = `
           </a>
         </div>
         <div class="SNS_icon instagram">
-          <a href="/">
+          <a href="https://www.instagram.com/tving.official/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="34"
@@ -88,7 +88,7 @@ footerTemplate.innerHTML = `
           </a>
         </div>
         <div class="SNS_icon twitter">
-          <a href="/">
+          <a href="https://x.com/tvingdotcom">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -111,7 +111,7 @@ footerTemplate.innerHTML = `
           </a>
         </div>
         <div class="SNS_icon facebook">
-          <a href="/">
+          <a href="https://www.facebook.com/CJTVING/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="22"

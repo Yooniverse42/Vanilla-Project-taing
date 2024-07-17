@@ -61,7 +61,7 @@ fieldset {
 .hide__icon {
   @include size($spacing-16, $spacing-16);
   background-size: cover;
-  background-image: url('/public/icons/stack.svg#hide-pw'); /* 비밀번호 보이기 아이콘 */
+  background-image: url('/icons/stack.svg#hide-pw'); /* 비밀번호 보이기 아이콘 */
   position: absolute;
   right: $spacing-10;
   top: 50%;
@@ -70,7 +70,7 @@ fieldset {
 }
 
 .hide__icon.visible {
-  background-image: url('/public/icons/stack.svg#open-pw');
+  background-image: url('/icons/stack.svg#open-pw');
   fill: $brand-red-3; /* 비밀번호 숨기기 아이콘 */
 }
 
@@ -111,12 +111,12 @@ fieldset {
 
   .check {
     @include size($spacing-12, $spacing-12);
-    background-image: url(/public/icons/stack.svg#check-filled-active);
+    background-image: url(/icons/stack.svg#check-filled-active);
     cursor: pointer;
   }
 
   .check.active {
-    background-image: url(/public/icons/stack.svg#check-filled-default);
+    background-image: url(/icons/stack.svg#check-filled-default);
   }
 
   .icon__check {
