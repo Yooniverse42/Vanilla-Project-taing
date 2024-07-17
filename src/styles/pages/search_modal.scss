@@ -1,16 +1,13 @@
 @use '@/styles/index' as *;
-body {
-  background-color: $black;
-}
 
 .button_search_open {
   display: none;
   width: 18px;
   height: 18px;
-  background-image: url("/icons/stack.svg#search-defualt");
+  background-image: url('/icons/stack.svg#search-defualt');
 
   &:hover {
-    background-image: url("/icons/stack.svg#search-hover");
+    background-image: url('/icons/stack.svg#search-hover');
   }
 }
 
