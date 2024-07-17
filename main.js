@@ -1,7 +1,13 @@
 import '/main.scss';
-import '@/layout/index';
+// import '@/layout/index';
 import 'swiper/css/bundle';
 import Swiper from 'swiper/bundle';
+import { renderImgList } from '@/library/index';
+import { getRecords } from '@/api/getRecords';
+
+// 서버에서 image collection 가져오기
+const imageCollection = getRecords('image');
+renderImgList(imageCollection, 'onboarding0', '.section0__background');
 
 new Swiper('.section1__swiper1', {
   autoplay: {
