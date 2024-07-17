@@ -46,5 +46,5 @@ function createSwiper(className, speed) {
   });
 }
 
-createSwiper('.section2__swiper1', 3100);
-createSwiper('.section2__swiper2', 3000);
+createSwiper('.section2__swiper1', 5000);
+createSwiper('.section2__swiper2', 5030);
