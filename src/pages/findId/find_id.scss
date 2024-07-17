@@ -25,9 +25,9 @@ body {
   @include flexbox(column, nowrap, null, null, 0);
   margin-top: $spacing-28;
 
-  h2 {
-    font-size: $text-12;
+  h3 {
     color: $gray-200;
+    font-size: $text-12;
   }
 
   p {
@@ -90,6 +90,10 @@ body {
   cursor: pointer;
 }
 
+.check_email_button:disabled {
+  cursor: not-allowed;
+}
+
 .line_border {
   @include flexbox(row, nowrap, center, center, 0);
   @include marginY($spacing-30);
@@ -126,7 +130,7 @@ body {
 }
 
 .findId_sub-content {
-  h2 {
+  h3 {
     font-size: $text-12;
     color: $gray-200;
   }
@@ -178,7 +182,7 @@ body {
   .findId_content {
     margin-top: $spacing-24;
 
-    h2 {
+    h3 {
       font-size: $text-16;
     }
 
@@ -188,7 +192,7 @@ body {
     }
   }
 
-  .check_email {
+  .check_email_button {
     font-size: $text-16;
     margin-top: $spacing-24;
     height: 3.375rem;
@@ -201,7 +205,7 @@ body {
   }
 
   .findId_sub-content {
-    h2 {
+    h3 {
       font-size: $text-16;
     }
 
@@ -246,7 +250,7 @@ body {
   .findId_content {
     margin-top: 5rem;
 
-    h2 {
+    h3 {
       font-size: $text-28;
     }
 
@@ -277,7 +281,7 @@ body {
   }
 
   .findId_sub-content {
-    h2 {
+    h3 {
       font-size: $text-28;
     }
 
