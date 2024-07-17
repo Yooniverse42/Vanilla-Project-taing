@@ -11,6 +11,10 @@ body {
   font-size: $text-12;
 }
 
+button {
+  cursor: pointer;
+}
+
 .findId_container {
   margin: 4rem $spacing-48;
 }

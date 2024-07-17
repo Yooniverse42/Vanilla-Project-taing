@@ -38,10 +38,12 @@
   }
 
   .menu__list {
+    display: none;
     font-size: $text-12;
 
     &:hover {
       color: $white;
+      scale: 1.1;
     }
   }
 
@@ -67,12 +69,12 @@
   }
 
   .list__paramount {
-    width: 50px;
+    width: 60px;
     height: 15px;
 
     span {
-      width: 50px;
-      height: 15px;
+      width: 60px;
+      height: 30px;
       display: inline-block;
       background: url('/icons/stack.svg#paramount-default');
       background-repeat: no-repeat;
@@ -85,16 +87,8 @@
 
   .header__actions {
     @include flexbox(row, nowrap, center, center, $spacing-16);
-    width: 50px;
-    height: 15px;
-
-    .actions__search {
-      width: 18px;
-    }
-
-    .actions__profile {
-      width: 18px;
-    }
+    width: 52px;
+    height: 18px;
   }
 }
 
@@ -103,6 +97,11 @@
   display: none;
   width: 18px;
   height: 18px;
+  background-color: transparent;
+
+  &:hover {
+    scale: 1.1;
+  }
 }
 
 .profile_container {
@@ -209,20 +208,14 @@
       }
     }
 
-    .header__menu {
-      // display: flex;
+    .menu__list {
+      display: block;
     }
 
     .header__actions {
       @include flexbox(row, nowrap, center, center, $spacing-24);
-
-      .actions__search {
-        width: 24px;
-      }
-
-      .actions__profile {
-        width: 24px;
-      }
+      width: 72px;
+      height: 24px;
     }
   }
 
@@ -230,6 +223,7 @@
     display: none;
     width: 24px;
     height: 24px;
+    background-color: transparent;
   }
 }
 
@@ -237,11 +231,6 @@
   .header {
     height: 100px;
     padding: 29px 70px;
-    background: linear-gradient(
-      to bottom,
-      rgba($brand-dark-1, 1) 10%,
-      rgba($gray-300, 0.2) 100%
-    );
 
     .header__logo {
       margin-right: $spacing-52;
@@ -293,14 +282,8 @@
 
     .header__actions {
       @include flexbox(row, nowrap, center, center, 40px);
-
-      .actions__search {
-        width: 40px;
-      }
-
-      .actions__profile {
-        width: 40px;
-      }
+      width: 120px;
+      height: 40px;
     }
   }
 
