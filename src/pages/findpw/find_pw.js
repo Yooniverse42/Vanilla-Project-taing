@@ -1,11 +1,10 @@
-import '/src/pages/findpw/find_pw.scss';
-
+import '@/pages/findpw/find_pw.scss';
 import '@/layout/index';
 import { getNode, emailReg, debounce } from '@/library/index';
 import { getRecord } from '@/api/getRecords';
 
 const checkButton = getNode('.check__email');
-const userId = getNode('#findPw__email');
+const userId = getNode('#findPw__id');
 const errorMessage = getNode('.error-message');
 const buttonDelete = getNode('.button__delete');
 
@@ -54,7 +53,9 @@ async function checkUserEmail() {
   const userRecord = await getRecord('users', filter);
 
   if (userRecord.items.length >= 1 && isEmailValid) {
-    alert(`등록하신 이메일로 비밀번호가 전송되었습니다. 이메일을 확인 해주세요.`);
+    alert(
+      `등록하신 이메일로 비밀번호가 전송되었습니다. 이메일을 확인 해주세요.`
+    );
   } else {
     alert('입력하신 아이디를 다시 확인 해주세요!');
   }
