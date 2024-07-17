@@ -29,6 +29,8 @@ emailInput.addEventListener('input', emailValidation);
 pwInput.addEventListener('input', pwValidation);
 pwCheckInput.addEventListener('input', pwCheckValidation);
 
+const errorMessage = getNode('.email__error');
+
 confirmButton.addEventListener('click', createAccount);
 
 // 입력 폼 초기화 추가
@@ -110,6 +112,11 @@ function pwCheckValidation(e) {
 function emailValidation(e) {
   const value = e.target.value;
   const emailRule = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+  if (emailRule.test(value) || value === '') {
+    errorMessage.classList.remove('display');
+  } else {
+    errorMessage.classList.add('display');
+  }
   buttonState['emailState'] = emailRule.test(value);
   activeButtonState(buttonState);
 }
