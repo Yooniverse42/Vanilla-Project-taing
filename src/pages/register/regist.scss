@@ -1,0 +1,291 @@
+@import '@/styles/index.scss';
+
+body {
+  background-color: $black;
+  min-width: 20rem;
+}
+
+.main {
+  width: 100%;
+  color: $gray-200;
+  font-size: $text-12;
+}
+
+.regist {
+  margin: 4rem $spacing-48;
+}
+
+.header-title {
+  color: $gray-200;
+  font-size: $text-16;
+  text-align: center;
+}
+
+.header-title-second {
+  margin-top: $spacing-16;
+  color: $gray-500;
+  font-size: $text-12;
+}
+
+//768 1920
+.content {
+  @include flexbox(column, nowrap, null, null, 0);
+  margin-top: $spacing-24;
+
+  input[type='checkbox'] {
+    @include size($spacing-16, $spacing-16);
+    position: absolute;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .check-state-label .check-icon {
+    @include size($spacing-16, $spacing-16);
+    background: url('/icons/stack.svg#check-no-filled-default') no-repeat 0 0 /100%;
+    display: block;
+  }
+
+  .check-state-checkbox:checked + .check-state-label .check-icon {
+    background: url('/icons/stack.svg#check-no-filled-active');
+  }
+
+  label {
+    display: flex;
+    gap: $spacing-4;
+    cursor: pointer;
+  }
+}
+
+.input-form {
+  @include flexbox(column, nowrap, null, null, $spacing-16);
+
+  input {
+    background-color: $brand-dark-2;
+    height: 2.875rem;
+    padding: 0 $spacing-16;
+    border-radius: 0.25rem;
+    color: $gray-600;
+    font-size: $text-12;
+    font-family: $base-font-family;
+  }
+
+  .user-email,
+  .user-password {
+    @include flexbox(column, nowrap, null, null, $spacing-4);
+    span {
+      font-size: $text-12;
+      color: $gray-500;
+    }
+  }
+}
+
+.check-all-container {
+  margin: $spacing-16 0;
+
+  .check-all-label .check-all-icon {
+    @include size($spacing-16, $spacing-16);
+    background: url('/icons/stack.svg#check-no-filled-default') no-repeat;
+    background-color: $gray-400;
+    border-radius: 100%;
+    cursor: pointer;
+  }
+
+  .check-all-checkbox:checked + .check-all-label .check-all-icon {
+    background: url('/icons/stack.svg#check-no-filled-active');
+    background-color: $gray-600;
+  }
+
+  label {
+    color: $gray-500;
+    font-size: $text-12;
+  }
+}
+
+// -webkit-appearance: none;
+//  appearance: none;
+
+.check-list-container {
+  @include flexbox(column, nowrap, null, null, $spacing-8);
+  font-size: $text-12;
+  color: $gray-500;
+
+  .check-list,
+  .check-marketing {
+    @include flexbox(column, nowrap, null, null, $spacing-8);
+  }
+  .check-marketing {
+    padding-left: $spacing-16;
+  }
+}
+
+.confirm-button {
+  @include size(100%, 2.625rem);
+  margin-top: $spacing-16;
+  background-color: $gray-700;
+  font-size: $text-12;
+  color: $gray-400;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.confirm-button.active {
+  background-color: $white;
+  color: $black;
+}
+
+.confirm-button:disabled {
+  cursor: not-allowed;
+}
+
+@include mq(tablet) {
+  .main {
+    @include marginX(auto);
+    max-width: 62.5rem;
+    font-size: $text-16;
+  }
+
+  .regist {
+    margin: 6rem 10rem;
+  }
+
+  .header-title {
+    font-size: $text-28;
+  }
+
+  .header-title-second {
+    font-size: $text-16;
+    text-align: center;
+  }
+
+  .input-form {
+    gap: $spacing-18;
+
+    input {
+      height: 3.375rem;
+    }
+  }
+
+  .content {
+    label {
+      gap: $spacing-12;
+    }
+  }
+
+  .check-all-container {
+    label {
+      gap: $spacing-4;
+    }
+  }
+
+  .confirm-button {
+    margin-top: $spacing-20;
+    height: 3.125rem;
+  }
+}
+
+@include mq(desktop) {
+  .regist {
+    min-width: 45.75rem;
+    margin: 10rem auto;
+  }
+
+  .header-title {
+    font-size: $text-38;
+  }
+
+  .header-title-second {
+    margin-top: $spacing-28;
+    font-size: $text-28;
+  }
+
+  .input-form {
+    margin-top: $spacing-60;
+    gap: $spacing-36;
+
+    input {
+      padding: 0 $spacing-28;
+      font-size: $text-28;
+      height: 6rem;
+    }
+
+    .user-email,
+    .user-password {
+      span {
+        font-size: $text-21;
+      }
+    }
+  }
+
+  .content {
+    label {
+      font-size: $text-21;
+      gap: $spacing-12;
+    }
+  }
+
+  .check-all-container {
+    margin: $spacing-36 0;
+    gap: $spacing-12;
+
+    .check-all-label .check-all-icon {
+      @include size($spacing-20, $spacing-20);
+    }
+  }
+  .check-list-container {
+    gap: $spacing-16;
+    .check-list,
+    .check-marketing {
+      gap: $spacing-12;
+      font-size: $text-21;
+    }
+  }
+  .confirm-button {
+    margin-top: $spacing-36;
+    height: 5.375rem;
+    font-size: $text-28;
+  }
+}
+
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-active {
+  display: flex;
+}
+
+.modal-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  gap: $text-16;
+
+  h2 {
+    color: $white;
+  }
+
+  .loading {
+    border: 3px solid $gray-500;
+    border-top-color: white;
+    width: $text-28;
+    height: $text-28;
+    border-radius: 100%;
+    animation: spin 2000ms ease-in-out infinite;
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

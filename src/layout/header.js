@@ -1,7 +1,5 @@
 import pb from '@/api/pocketbase';
-// import defaultAuthData from '@/api/defaultAuthData';
-import { getStorage, setStorage, deleteStorage, getNodes } from '@/library/index';
-import '@/styles/layout/header.scss';
+import { getStorage, deleteStorage, getNodes } from '@/library/index';
 import '@/pages/myInfo_modal/myInfo_modal.scss';
 import '@/styles/pages/search_modal.scss';
 import textCSS from '@/styles/layout/header.scss?inline';
@@ -73,7 +71,7 @@ headerTemplate.innerHTML = `
           />
           <button type="button" class="search__icon__button">
             <svg class="search__icon" role="img" aria-label="검색 아이콘">
-              <use href="/public/icons/stack.svg#search-defualt" />
+              <use href="/icons/stack.svg#search-defualt" />
             </svg>
           </button>
         </form>
@@ -173,10 +171,14 @@ const profile = cHeader.shadowRoot.querySelector('.profile');
 const buttonDeleteID = cHeader.shadowRoot.querySelector('.deleteID_button');
 const buttonLogout = cHeader.shadowRoot.querySelector('.logout_button');
 
-const searchBox1 = cHeader.shadowRoot.querySelector('#logout_button');
+const searchBox1 = cHeader.shadowRoot.querySelector('#search__box1');
 const searchBox2 = cHeader.shadowRoot.querySelector('#search__box2');
-const recentDeletButton = cHeader.shadowRoot.querySelector('#recent__delet__button');
-const recentSearchList = cHeader.shadowRoot.querySelector('#recent__search__list');
+const recentDeletButton = cHeader.shadowRoot.querySelector(
+  '#recent__delet__button'
+);
+const recentSearchList = cHeader.shadowRoot.querySelector(
+  '#recent__search__list'
+);
 
 // 로그인 했을 때 모달 버튼 나오게 하기
 if (!localStorage.getItem('auth')) {
@@ -246,7 +248,7 @@ function displayRecentSearch() {
     li.classList.add('delet__recent');
     li.innerHTML = `${search}
             <svg data-index ="${index}"  class="delet__icon" role="img" aria-label="삭제 아이콘">
-              <use href="/public/icons/stack.svg#delete-no-fiiled" />
+              <use href="/icons/stack.svg#delete-no-fiiled" />
             </svg>
             
           `;
@@ -276,8 +278,6 @@ document.addEventListener('DOMContentLoaded', displayRecentSearch);
 searchBox1.addEventListener('change', saveRecentSearch);
 searchBox2.addEventListener('change', saveRecentSearch);
 recentDeletButton.addEventListener('click', deletAllrecentsearch);
-
-
 
 // 로그아웃
 buttonLogout.addEventListener('click', (e) => {
