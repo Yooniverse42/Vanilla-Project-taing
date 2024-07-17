@@ -201,8 +201,9 @@ body {
     width: 40px;
     height: 40px;
   }
-  .search__main {
+  .search {
     padding: $spacing-52 220px;
+    top: 100px;
   }
   // 검색 바
   .search__bar__input {
