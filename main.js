@@ -1,6 +1,5 @@
 import '/main.scss';
-import '@/layout/header';
-import '@/layout/footer';
+import '@/layout/index';
 import 'swiper/css/bundle';
 import Swiper from 'swiper/bundle';
 

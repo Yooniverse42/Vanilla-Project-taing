@@ -187,6 +187,18 @@ async function loadingTaing() {
       slidesPerGroup: 2,
     });
   });
+
+  // 공지사항
+  new Swiper('.notice__swiper', {
+    direction: "vertical",
+    slidesPerView: 1,
+    spaceBetween: 10,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+    },
+    loop: true
+  });
 }
 
 async function renderTaing() {
