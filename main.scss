@@ -292,14 +292,33 @@ body {
 
   .swiper-wrapper {
     transition-timing-function: linear !important;
+    display: flex;
+    width: fit-content;
+    gap: 10px;
+  }
+
+  .section2__swiper1 {
+    .swiper-wrapper {
+      animation: loop-left 15s infinite linear;
+      // transform: translateX(-50.3%);
+      &:hover {
+        animation-play-state: paused;
+      }
+    }
   }
 
   .section2__swiper2 {
     .swiper-wrapper {
       margin-top: $spacing-12;
+      animation: loop-right 15s infinite linear;
+
+      &:hover {
+        animation-play-state: paused;
+      }
     }
   }
   .swiper-slide {
+    width: 30vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -307,6 +326,34 @@ body {
 
   .swiper-slide img {
     border-radius: 4px;
+  }
+}
+
+@keyframes loop-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50.3%);
+  }
+}
+
+@keyframes loop-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    // transform: translateX(-50.3%);
+    transform: translateX(-50.3%);
+  }
+}
+
+@keyframes loop-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50.3%);
   }
 }
 
