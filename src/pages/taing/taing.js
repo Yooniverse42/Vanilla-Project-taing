@@ -204,7 +204,7 @@ async function loadingTaing() {
 async function renderTaing() {
   showLoading();
   loadingTaing();
-  await delay(1500);
+  await delay(2000);
   hideLoading();
 }
 

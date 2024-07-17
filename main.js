@@ -1,12 +1,3 @@
-// import pb from '@/api/pocketbase';
-// import '/src/styles/pages/login_ID.scss';
-
-// const records = await pb.collection('test').getFullList({
-//   sort: '-created',
-// });
-
-// console.log(records);
-
 import '/main.scss';
 import '@/layout/index';
 import 'swiper/css/bundle';
