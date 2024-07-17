@@ -1,5 +1,5 @@
 import pb from '@/api/pocketbase';
-import defaultAuthData from '@/api/defaultAuthData';
+// import defaultAuthData from '@/api/defaultAuthData';
 import { getStorage, setStorage, deleteStorage, getNodes } from '@/library/index';
 import '@/styles/layout/header.scss';
 import '@/pages/myInfo_modal/myInfo_modal.scss';
@@ -7,7 +7,7 @@ import '@/styles/pages/search_modal.scss';
 import textCSS from '@/styles/layout/header.scss?inline';
 
 // 기본값
-setStorage('auth', defaultAuthData)
+// setStorage('auth', defaultAuthData)
 
 const headerTemplate = document.createElement('template');
 headerTemplate.innerHTML = `
