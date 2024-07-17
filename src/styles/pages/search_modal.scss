@@ -8,9 +8,11 @@ body {
   width: 18px;
   height: 18px;
   background-image: url("/icons/stack.svg#search-defualt");
+  background-color: transparent;
 
   &:hover {
     background-image: url("/icons/stack.svg#search-hover");
+    scale: 1.1;
   }
 }
 
@@ -134,11 +136,17 @@ body {
 }
 
 @include mq(tablet) {
-  .search__main {
+  .button_search_open {
+    display: none;
+    width: 24px;
+    height: 24px;
+  }
+  .search {
     padding-top: $spacing-28;
     padding-bottom: $spacing-52;
     padding-left: 123px;
     padding-right: 123px;
+    top: 58px;
   }
   // 검색바
   .search__bar__input {
@@ -188,6 +196,11 @@ body {
 }
 
 @include mq(desktop) {
+  .button_search_open {
+    display: none;
+    width: 40px;
+    height: 40px;
+  }
   .search__main {
     padding: $spacing-52 220px;
   }
