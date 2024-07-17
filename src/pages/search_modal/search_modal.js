@@ -33,7 +33,7 @@ function displayRecentSearch() {
     li.classList.add('delet__recent');
     li.innerHTML = `${search}
             <svg data-index ="${index}"  class="delet__icon" role="img" aria-label="삭제 아이콘">
-              <use href="/public/icons/stack.svg#delete-no-fiiled" />
+              <use href="/public/icons/stack.svg#cancel-default" />
             </svg>
             
           `;

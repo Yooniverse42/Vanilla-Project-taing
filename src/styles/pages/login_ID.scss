@@ -49,6 +49,7 @@ fieldset {
 
 .user__ID__input,
 .user__password__input {
+  position: relative;
   width: 288px;
   height: 46px;
   font-size: $text-12;
@@ -68,6 +69,24 @@ fieldset {
   color: $gray-600; //color 추후 변경
 }
 
+.input__wrapper {
+  position: relative;
+}
+.hide__icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  cursor: pointer;
+  background-image: url('/public/icons/stack.svg#hide-pw'); /* 비밀번호 보이기 아이콘 */
+}
+.hide__icon.visible {
+  background-image: url('/public/icons/stack.svg#open-pw');
+  fill: $brand-red-3; /* 비밀번호 숨기기 아이콘 */
+}
 // error message
 .login__form__error__message,
 .login__form__PWerror__message {
@@ -102,17 +121,22 @@ fieldset {
   align-items: center;
   gap: $spacing-4;
 
-  img {
+  .check {
     width: $text-12;
     height: $text-12;
     display: block;
     cursor: pointer;
+    background-image: url(/public/icons/stack.svg#check-filled-active);
+  }
+  .check.active {
+    background-image: url(/public/icons/stack.svg#check-filled-default);
   }
   .icon__check {
     color: $gray-500;
     font-size: $text-12;
   }
 }
+
 // 로그인 버튼
 .login__button {
   width: 100%;
@@ -173,7 +197,7 @@ fieldset {
   }
   .login__remember__me__label {
     gap: $spacing-12;
-    img {
+    .check {
       width: $text-16;
       height: $text-16;
     }
@@ -221,7 +245,7 @@ fieldset {
     gap: $spacing-16;
     margin-bottom: $spacing-36;
     margin-top: $spacing-16;
-    img {
+    .check {
       width: 26px;
       height: 26px;
     }

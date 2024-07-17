@@ -5,7 +5,9 @@ import {
   emailReg,
   pwReg,
   debounce,
+  getStorage,
   setStorage,
+  deleteStorage,
 } from '@/library/index';
 import { authWithPassword } from '@/api/getRecords';
 
@@ -14,7 +16,27 @@ const loginUserID = getNode('#userEmail');
 const loginUserPassword = getNode('#userPassword');
 const idMessageError = getNode('.login__form__error__message');
 const pwMessageError = getNode('.login__form__PWerror__message');
+const autoLoginCheck = getNode('.check');
+const passwordHideIcon = getNode('.hide__icon');
 
+// 지동로그인
+let autoLogin = getStorage('autoLogin') || false;
+if (autoLogin) {
+  autoLoginCheck.classList.add('active');
+}
+// 지동로그인 아이콘 클릭 이벤트
+autoLoginCheck.addEventListener('click', () => {
+  autoLogin = !autoLogin;
+  setStorage('autoLogin', autoLogin);
+  autoLoginCheck.classList.toggle('active');
+});
+// 비밀번호 표시
+let passwordVisible = false;
+passwordHideIcon.addEventListener('click', () => {
+  passwordVisible = !passwordVisible;
+  loginUserPassword.type = passwordVisible ? 'text' : 'password';
+  passwordHideIcon.classList.toggle('visible');
+});
 // 이메일 유효성 검사
 
 let emailValid = false;
