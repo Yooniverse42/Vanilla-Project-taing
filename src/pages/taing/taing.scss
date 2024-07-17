@@ -12,6 +12,21 @@ body {
   padding: $spacing-16;
 }
 
+.swiper2,
+.swiper3,
+.swiper4,
+.swiper5,
+.swiper6 {
+  li {
+    cursor: pointer;
+    transition: all ease-in 250ms;
+  }
+
+  li:hover {
+    transform: translateY(-8px);
+  }
+}
+
 .taing_banner {
   @include size(20rem, 8.875rem);
   margin: 0 auto;
@@ -25,6 +40,10 @@ body {
 
   .swiper-slide {
     @include flexbox(row, nowrap, center, center, null);
+  }
+
+  li {
+    cursor: pointer;
   }
 }
 
@@ -288,6 +307,10 @@ body {
   .swiper-slide img {
     @include size(19rem, $spacing-30);
   }
+
+  li {
+    cursor: pointer;
+  }
 }
 
 // 공지사항
@@ -489,30 +512,28 @@ body {
     @include flexbox(flex, row, space-between, center, $spacing-20);
     margin: 50px 0 $spacing-16;
     height: 19px;
-  
+
     .notice__heading {
       width: 42px;
       height: 19px;
       font-size: $text-12;
       line-height: $line-160;
     }
-  
+
     .notice__swiper {
       height: 19px;
     }
-  
+
     .notice__go {
       @include flexbox(flex, row, space-between, center, $spacing-16);
-  
-      .go__brand, .go__affiliate {
+
+      .go__brand,
+      .go__affiliate {
         @include flexbox(flex, row, space-between, center, $spacing-16);
-  
       }
     }
   }
 }
-
-
 
 // 미디어쿼리 desktop
 //
@@ -738,18 +759,18 @@ body {
     height: 34px;
     margin: 130px 0 $spacing-28;
     font-size: $text-21;
-  
+
     .notice__heading {
       width: 74px;
       height: 34px;
       font-size: $text-21;
       line-height: $line-160;
     }
-  
+
     .notice__swiper {
       height: 34px;
     }
-  
+
     .notice__go {
       @include flexbox(flex, row, space-between, center, $spacing-30);
     }
