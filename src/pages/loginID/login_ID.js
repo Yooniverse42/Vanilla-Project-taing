@@ -1,4 +1,4 @@
-import '@/styles/pages/login_ID.scss';
+import '@/pages/loginID/login_ID.scss';
 import '@/layout/index';
 import {
   getNode,
@@ -7,15 +7,14 @@ import {
   debounce,
   getStorage,
   setStorage,
-  deleteStorage,
 } from '@/library/index';
 import { authWithPassword } from '@/api/getRecords';
 
 const loginButton = getNode('.login__button');
 const loginUserID = getNode('#userEmail');
 const loginUserPassword = getNode('#userPassword');
-const idMessageError = getNode('.login__form__error__message');
-const pwMessageError = getNode('.login__form__PWerror__message');
+const idMessageError = getNode('.email__error__message');
+const pwMessageError = getNode('.pw__error__message');
 const autoLoginCheck = getNode('.check');
 const passwordHideIcon = getNode('.hide__icon');
 

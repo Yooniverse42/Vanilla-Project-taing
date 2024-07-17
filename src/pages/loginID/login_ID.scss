@@ -1,0 +1,275 @@
+@use '@/styles/index' as *;
+
+body {
+  background-color: $black;
+  min-width: 20rem;
+}
+
+.main__login {
+  width: 100%;
+
+  .login__container {
+    margin: 4rem $spacing-48;
+
+    .login__title {
+      text-align: center;
+      color: $gray-200;
+      font-size: $text-16;
+      font-weight: 700;
+    }
+  }
+}
+
+fieldset {
+  border: 0;
+}
+
+.login__form {
+  margin-top: $spacing-28;
+}
+
+.login__form__content {
+  @include flexbox(column, nowrap, center, center, 0);
+}
+
+.user__ID,
+.user__password {
+  @include flexbox(column, nowrap, null, null, $spacing-4);
+  @include size(100%, 100%);
+}
+
+.user__password {
+  margin-top: $spacing-8;
+}
+
+.user__ID__input,
+.user__password__input {
+  @include size(100%, 2.875rem);
+  @include paddingX($spacing-16);
+  position: relative;
+  background-color: $brand-dark-2;
+  font-size: $text-12;
+  font-family: $base-font-family;
+  color: $gray-400;
+  border-radius: 0.25rem;
+}
+
+.password__wrapper {
+  position: relative;
+}
+
+.hide__icon {
+  @include size($spacing-16, $spacing-16);
+  background-size: cover;
+  background-image: url('/public/icons/stack.svg#hide-pw'); /* 비밀번호 보이기 아이콘 */
+  position: absolute;
+  right: $spacing-10;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.hide__icon.visible {
+  background-image: url('/public/icons/stack.svg#open-pw');
+  fill: $brand-red-3; /* 비밀번호 숨기기 아이콘 */
+}
+
+// 공통 에러 메세지
+.id__error__message,
+.pw__error__message {
+  display: none;
+  color: $brand-red-2;
+  font-size: $text-12;
+}
+
+.is--invalid {
+  display: block;
+}
+
+// 채크벅스, 로그인 버튼
+.login__form__ip__checkbox__wrapper {
+  width: 100%;
+}
+
+// checkbox 자동로그인
+.login__ip__security__remember__me {
+  position: relative;
+  margin-top: $spacing-8;
+}
+
+.login__ip__remember__me {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  width: $text-12;
+  height: $text-12;
+  appearance: none;
+}
+
+.login__remember__me__label {
+  @include flexbox(row, nowrap, null, center, $spacing-4);
+
+  .check {
+    @include size($spacing-12, $spacing-12);
+    background-image: url(/public/icons/stack.svg#check-filled-active);
+    cursor: pointer;
+  }
+
+  .check.active {
+    background-image: url(/public/icons/stack.svg#check-filled-default);
+  }
+
+  .icon__check {
+    color: $gray-500;
+    font-size: $text-12;
+  }
+}
+
+// 로그인 버튼
+.login__button {
+  @include size(100%, 2.625rem);
+  margin-top: $spacing-16;
+  background-color: $brand-red-1;
+  color: $white;
+  font-size: $text-12;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+// 아이디 찾기, 비번 찾기, 계정 유무 물어 보기
+.login__form__search {
+  @include marginY($spacing-48);
+  @include flexbox(column, nowrap, center, center, $spacing-24);
+  width: 100%;
+  color: $gray-300;
+  font-size: $text-12;
+
+  .login__search__list {
+    @include flexbox(row, nowrap, center, center, $spacing-24);
+
+    .line_divide::before {
+      content: '';
+      @include size(1px, $spacing-12);
+      display: block;
+      background-color: $gray-600;
+    }
+  }
+}
+
+// 미디어 쿼리 tablet
+@include mq(tablet) {
+  .main__login {
+    @include marginX(auto);
+    max-width: 62.5rem;
+    font-size: $text-16;
+
+    .login__container {
+      margin: 6rem 10rem;
+
+      .login__title {
+        font-size: $text-28;
+      }
+    }
+  }
+
+  .login__form {
+    margin-top: $spacing-24;
+  }
+
+  .user__ID__input,
+  .user__password__input {
+    font-size: $text-16;
+  }
+
+  .login__remember__me__label {
+    gap: $spacing-12;
+
+    .check {
+      @include size($spacing-16, $spacing-16);
+    }
+
+    .icon__check {
+      font-size: $text-16;
+    }
+  }
+
+  .login__button {
+    font-size: $text-16;
+  }
+
+  .login__form__search {
+    @include marginY(4rem);
+    font-size: $text-16;
+
+    .login__search__list {
+      .line_divide::before {
+        height: $spacing-16;
+      }
+    }
+  }
+}
+
+@include mq(desktop) {
+  .main__login {
+    font-size: 2.375rem;
+
+    .login__container {
+      min-width: 45.75rem;
+      margin: 10rem auto;
+
+      .login__title {
+        font-size: $text-38;
+      }
+    }
+  }
+
+  .user__ID__input,
+  .user__password__input {
+    height: 6rem;
+    font-size: $text-28;
+  }
+
+  .user__password__input {
+    margin-top: $spacing-16;
+  }
+
+  .id__error__message,
+  .pw__error__message {
+    font-size: $text-28;
+  }
+
+  .hide__icon {
+    @include size($spacing-36, $spacing-36);
+    right: $spacing-28;
+  }
+
+  .login__remember__me__label {
+    margin-top: $spacing-16;
+
+    .check {
+      @include size(26px, 26px);
+    }
+
+    .icon__check {
+      font-size: $text-21;
+    }
+  }
+
+  .login__button {
+    height: 6rem;
+    margin-top: $spacing-32;
+    font-size: $text-28;
+  }
+
+  .login__form__search {
+    @include marginY(4rem);
+    font-size: $text-28;
+    gap: $spacing-48;
+
+    .login__search__list {
+      .line_divide::before {
+        height: 32px;
+      }
+    }
+  }
+}
