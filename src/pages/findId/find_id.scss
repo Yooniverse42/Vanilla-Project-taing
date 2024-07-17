@@ -12,6 +12,10 @@ main {
   font-size: $text-12;
 }
 
+button {
+  cursor: pointer;
+}
+
 .findId_container {
   margin: $spacing-28 $spacing-48 6.25rem;
 }
