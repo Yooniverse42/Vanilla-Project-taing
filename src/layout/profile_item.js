@@ -25,14 +25,15 @@ export function renderProfileItem(pageName) {
   //임시 이미지
 
   const profiles = [
-    { name: '슬비님', avatar: '/image/avatar1.png' },
-    { name: '범쌤', avatar: '/image/avatar2.png' },
-    { name: '야무', avatar: '/image/avatar3.png' },
+    { name: '슬비님', avatar: '/image/defaultavatar1.png' },
+    { name: '범쌤', avatar: '/image/defaultavatar2.png' },
+    { name: '야무', avatar: '/image/defaultavatar3.png' },
   ];
-
+  // /src/pages/${pageName === 'selectPage' ? 'taing' : 'profile_edit_detail'}/index.html
   [...profiles, newItem].forEach((item) => {
     const template = `    <figure class="avatar">
-          <a href="/src/pages/${pageName === 'selectPage' ? 'taing' : 'myInfo_modal'}/index.html" class="edit__icon__container">
+
+           <a href="#" class="edit__icon__container">
             <svg class="edit-icon" role="img" aria-label="편집 아이콘">
               <use href="/icons/stack.svg#${pageName === 'selectPage' ? 'profile-lock' : 'profile-pencil'}" />
             </svg>
