@@ -104,6 +104,12 @@ function pwValidation(e) {
     symbolReg.test(value) && value.length >= 6 && value.length <= 16;
   buttonState['pwState'] = result;
   activeButtonState(buttonState);
+
+  if (!result) {
+    getNode('.user-password > span').classList.add('error');
+  } else {
+    getNode('.user-password > span').classList.remove('error');
+  }
 }
 
 function pwCheckValidation(e) {
@@ -111,6 +117,13 @@ function pwCheckValidation(e) {
   const result = pwInput.value === value;
   buttonState['pwCheckState'] = result;
   activeButtonState(buttonState);
+
+  if (!result) {
+    getNode('.pwCheckInput__error').classList.add('error');
+  } else {
+    getNode('.pwCheckInput__error').classList.remove('error');
+  }
+  
 }
 
 function emailValidation(e) {

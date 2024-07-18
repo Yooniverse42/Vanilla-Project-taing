@@ -79,7 +79,13 @@ body {
 
     .error {
       color: $brand-red-2;
+      display: block;
     }
+  }
+
+  .pwCheckInput__error {
+    font-size: $text-16;
+    display: none;
   }
 }
 
@@ -97,14 +103,14 @@ body {
 
   .check-all-label .check-all-icon {
     @include size($spacing-16, $spacing-16);
-    background: url('/icons/stack.svg#check-no-filled-default') no-repeat;
+    background: url('/icons/stack.svg#check-filled-default') no-repeat;
     background-color: $gray-400;
     border-radius: 100%;
     cursor: pointer;
   }
 
   .check-all-checkbox:checked + .check-all-label .check-all-icon {
-    background: url('/icons/stack.svg#check-no-filled-active');
+    background: url('/icons/stack.svg#check-filled-active');
     background-color: $gray-600;
   }
 

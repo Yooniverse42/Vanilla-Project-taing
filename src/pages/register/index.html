@@ -39,13 +39,16 @@
                 />
                 <span>영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15자리</span>
               </div>
-              <label for="pwCheckInput" class="sr-only">비밀번호 확인</label>
-              <input
-                id="pwCheckInput"
-                type="password"
-                placeholder="비밀번호 확인"
-                autocomplete="off"
-              />
+              <div class="user-password">
+                <label for="pwCheckInput" class="sr-only">비밀번호 확인</label>
+                <input
+                  id="pwCheckInput"
+                  type="password"
+                  placeholder="비밀번호 확인"
+                  autocomplete="off"
+                />
+                <span class="pwCheckInput__error">비밀번호가 일치하지 않습니다.</span>
+              </div>
               <label for="emailInput" class="sr-only">이메일</label>
               <input id="emailInput" type="email" placeholder="이메일" />
               <span class="email__error">이메일 양식이 유효하지 않습니다</span>
