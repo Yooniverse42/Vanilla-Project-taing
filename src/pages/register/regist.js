@@ -77,7 +77,7 @@ async function createAccount() {
         modal.classList.remove('modal-active');
         alert(`${data.username}님 가입이 완료되었습니다`);
       })
-      .then(() => (location.href = 'src/pages/loginID/index.html'));
+      .then(() => (location.href = '/src/pages/loginID/index.html'));
     registerForm.reset();
     // 입력 폼 초기화 추가
   }
