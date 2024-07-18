@@ -8,6 +8,7 @@ renderProfileItem('editPage');
 const avatarsContainer = getNode('.profile__picture__container');
 avatarsContainer.addEventListener('click', saveAvatarInfo);
 
+//클릭한 아이템의 이름, 이미지 주소를 로컬 스토리지에 저장 후 이동
 function saveAvatarInfo(e) {
   const target = e.target;
   console.log('target', target);

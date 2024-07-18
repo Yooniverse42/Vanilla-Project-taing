@@ -7,6 +7,7 @@ renderProfileItem('selectPage');
 const avatarsContainer = getNode('.profile__picture__container');
 avatarsContainer.addEventListener('click', goToTaing);
 
+//타잉 페이지로 이동
 function goToTaing(e) {
   const target = e.target;
   console.log('target', target);
