@@ -124,7 +124,7 @@ headerTemplate.innerHTML = `
               <div class="profile_container">
                 <img src="/image/profile_4.png" alt="프로필" />
                 <h2>이듬</h2>
-                <button type="button">
+                <button type="button" onclick="location.href='/src/pages/profile_edit_detail/index.html'">
                   <span>프로필 편집</span>
                 </button>
               </div>
@@ -254,7 +254,7 @@ function displayRecentSearch() {
     recentSearchList.appendChild(li);
   });
 
-  getNodes('.delet__icon').forEach((button) => {
+  cHeader.shadowRoot.querySelectorAll('.delet__icon').forEach((button) => {
     button.addEventListener('click', deleteRecentSearch);
   });
 }
