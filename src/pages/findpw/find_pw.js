@@ -49,13 +49,14 @@ function deleteButtonOn() {
 // 입력한 이메일이 서버에 있으면 아이디 알려주기
 
 async function checkUserEmail() {
-  const filter = `id = "${userId.value}"`;
+  const filter = `username = "${userId.value}"`;
   const userRecord = await getRecord('users', filter);
 
   if (userRecord.items.length >= 1 && isEmailValid) {
     alert(
       `등록하신 이메일로 비밀번호가 전송되었습니다. 이메일을 확인 해주세요.`
     );
+    location.href="/src/pages/loginID/index.html"
   } else {
     alert('입력하신 아이디를 다시 확인 해주세요!');
   }
