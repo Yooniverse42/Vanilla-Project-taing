@@ -8,66 +8,64 @@
     <script type="module" src="/src/pages/taing/taing.js"></script>
   </head>
   <body>
+    <c-header></c-header>
     <main class="main">
-      <section class="taing_banner">
-        <div class="swiper1">
-          <ul class="swiper-wrapper"></ul>
-          <div class="swiper-arrow">
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+      <div class="section-wrapper">
+        <section class="taing_banner">
+          <div class="swiper1">
+            <ul class="swiper-wrapper"></ul>
+            <div class="swiper-arrow">
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="autoplaybutton_wrapper">
+              <input
+                type="checkbox"
+                id="autoplaybutton"
+                aria-label="일시정지/재생 버튼"
+              />
+            </div>
           </div>
-          <div class="swiper-pagination"></div>
-          <div class="autoplaybutton_wrapper">
-            <input
-              type="checkbox"
-              id="autoplaybutton"
-              aria-label="일시정지/재생 버튼"
-            />
+        </section>
+        <section class="must_watch">
+          <h2 class="must_watch_heading">티빙에서 꼭 봐야하는 콘텐츠</h2>
+          <div class="swiper2">
+            <ul class="swiper-wrapper"></ul>
           </div>
-        </div>
-      </section>
-
-      <section class="must_watch">
-        <h2 class="must_watch_heading">티빙에서 꼭 봐야하는 콘텐츠</h2>
-        <div class="swiper2">
-          <ul class="swiper-wrapper"></ul>
-        </div>
-      </section>
-      <section class="quick_vod">
-        <h2 class="quick_vod_heading">QUICK VOD</h2>
-        <div class="swiper3">
-          <ul class="swiper-wrapper"></ul>
-        </div>
-      </section>
-
-      <section class="ranking">
-        <h2 class="ranking_heading">실시간 인기 프로그램</h2>
-        <div class="swiper4">
-          <ul class="swiper-wrapper"></ul>
-        </div>
-      </section>
-      <section class="live_channel">
-        <h2 class="live_channel_heading">인기 LIVE 채널</h2>
-        <div class="swiper5">
-          <ul class="swiper-wrapper"></ul>
-        </div>
-      </section>
-
-      <section class="original">
-        <h2 class="original_heading">오직 티빙에만 있어요</h2>
-        <div class="swiper6">
-          <ul class="swiper-wrapper"></ul>
-        </div>
-      </section>
-
-      <div class="sub_banner"></div>
-
-      <section class="event">
-        <h2 class="event_heading">이벤트</h2>
-        <div class="swiper7">
-          <ul class="swiper-wrapper"></ul>
-        </div>
-      </section>
+        </section>
+        <section class="quick_vod">
+          <h2 class="quick_vod_heading">QUICK VOD</h2>
+          <div class="swiper3">
+            <ul class="swiper-wrapper"></ul>
+          </div>
+        </section>
+        <section class="ranking">
+          <h2 class="ranking_heading">실시간 인기 프로그램</h2>
+          <div class="swiper4">
+            <ul class="swiper-wrapper"></ul>
+          </div>
+        </section>
+        <section class="live_channel">
+          <h2 class="live_channel_heading">인기 LIVE 채널</h2>
+          <div class="swiper5">
+            <ul class="swiper-wrapper"></ul>
+          </div>
+        </section>
+        <section class="original">
+          <h2 class="original_heading">오직 티빙에만 있어요</h2>
+          <div class="swiper6">
+            <ul class="swiper-wrapper"></ul>
+          </div>
+        </section>
+        <div class="sub_banner"></div>
+        <section class="event">
+          <h2 class="event_heading">이벤트</h2>
+          <div class="swiper7">
+            <ul class="swiper-wrapper"></ul>
+          </div>
+        </section>
+      </div>
 
       <!-- 공지사항-->
       <article class="notice">
