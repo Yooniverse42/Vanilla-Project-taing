@@ -88,43 +88,47 @@ fieldset {
 
 // 채크벅스, 로그인 버튼
 .login__form__ip__checkbox__wrapper {
+  @include flexbox(row, nowrap, flex-start, center, null);
   width: 100%;
 }
 
 // checkbox 자동로그인
 .login__ip__security__remember__me {
-  position: relative;
   margin-top: $spacing-8;
-}
+  font-size: $text-12;
+  color: $gray-500;
+  position: relative;
 
-.login__ip__remember__me {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: $spacing-16;
-  height: $spacing-16;
-  appearance: none;
-  z-index: -1;
-}
+  .login__ip__remember__me {
+    position: absolute;
+    top: -1px;
+    left: 2px;
+    width: $spacing-16;
+    height: $spacing-16;
+    border-radius: 50%;
 
-.login__remember__me__label {
-  @include flexbox(row, nowrap, null, center, $spacing-4);
-
-  .check {
-    @include size($spacing-12, $spacing-12);
-    background-image: url(/icons/stack.svg#check-filled-active);
-    cursor: pointer;
+    &:checked + .login__remember__me__label {
+      width: 80px;
+      padding-left: calc($spacing-16 + $spacing-4);
+      display: flex;
+      align-items: center;
+      background: url("/icons/stack.svg#check-filled-active");
+      background-position: -30px;
+      background-repeat: no-repeat;
+    }
   }
 
-  .check.active {
-    background-image: url(/icons/stack.svg#check-filled-default);
-  }
-
-  .icon__check {
-    color: $gray-500;
-    font-size: $text-12;
+  .login__remember__me__label {
+    width: 80px;
+    padding-left: calc($spacing-16 + $spacing-4);
+    display: flex;
+    align-items: center;
+    background: url("/icons/stack.svg#check-filled-default");
+    background-position: -30px;
+    background-repeat: no-repeat;
   }
 }
+
 
 // 로그인 버튼
 .login__button {
@@ -182,15 +186,25 @@ fieldset {
     font-size: $text-16;
   }
 
-  .login__remember__me__label {
-    gap: $spacing-12;
-
-    .check {
-      @include size($spacing-16, $spacing-16);
+  .login__ip__security__remember__me {
+    margin-top: $spacing-12;
+    font-size: 0.875rem;
+  
+    .login__ip__remember__me {
+      width: $spacing-20;
+      height: $spacing-20;
+  
+      &:checked + .login__remember__me__label {
+        width: 100px;
+        padding-left: calc($spacing-20 + $spacing-8);
+        background-position: -38px;
+      }
     }
-
-    .icon__check {
-      font-size: $text-16;
+  
+    .login__remember__me__label {
+      width: 100px;
+      padding-left: calc($spacing-20 + $spacing-8);
+      background-position: -38px;
     }
   }
 
@@ -244,15 +258,25 @@ fieldset {
     right: $spacing-28;
   }
 
-  .login__remember__me__label {
+  .login__ip__security__remember__me {
     margin-top: $spacing-16;
-
-    .check {
-      @include size(26px, 26px);
+    font-size: $text-21;
+  
+    .login__ip__remember__me {
+      width: $spacing-26;
+      height: $spacing-26;
+  
+      &:checked + .login__remember__me__label {
+        width: 130px;
+        padding-left: calc($spacing-26 + $spacing-12);
+        background-position: -50px;
+      }
     }
-
-    .icon__check {
-      font-size: $text-21;
+    
+    .login__remember__me__label {
+      width: 130px;
+      padding-left: calc($spacing-26 + $spacing-12);
+      background-position: -50px;
     }
   }
 
