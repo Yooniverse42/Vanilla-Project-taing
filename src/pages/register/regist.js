@@ -17,10 +17,10 @@ const confirmButton = getNode('.confirm-button');
 const modal = getNode('.modal');
 
 const buttonState = {
-  idState: false,
-  emailState: false,
-  pwState: false,
-  pwCheckState: false,
+  // idState: false,
+  // emailState: false,
+  // pwState: false,
+  // pwCheckState: false,
   checkState: false,
 };
 
@@ -123,7 +123,6 @@ function pwCheckValidation(e) {
   } else {
     getNode('.pwCheckInput__error').classList.remove('error');
   }
-  
 }
 
 function emailValidation(e) {
@@ -174,11 +173,20 @@ checkAllButton.addEventListener('click', (e) => {
 
 function getCheckState() {
   const necessaryCheck = document.querySelectorAll('.necessary');
+  const checkItems = Array.from(checkListitems);
+  const checkCount = checkItems.filter((item) => item.checked).length;
+  if (checkItems.length === checkCount) {
+    checkAllButton.checked = true;
+  } else {
+    checkAllButton.checked = false;
+  }
+
   const length = Array.from(necessaryCheck).filter(
     (item) => item.checked
   ).length;
   const result = length === necessaryCheck.length;
-  checkAllButton.checked = result;
+  console.log(length, necessaryCheck.length);
+  // checkAllButton.checked = result;
   buttonState['checkState'] = result;
 
   activeButtonState(buttonState);
