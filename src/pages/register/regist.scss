@@ -1,83 +1,52 @@
 @import '@/styles/index.scss';
+
 body {
   background-color: $black;
-  position: relative;
+  min-width: 20rem;
 }
 
-input {
-  outline: none;
-}
-.a11y,
-legend {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  visibility: hidden;
-  clip: rect(0, 0, 0, 0);
-  clip-path: inset(50%);
+.main {
+  width: 100%;
+  color: $gray-200;
+  font-size: $text-12;
 }
 
 .regist {
-  margin: 0 auto;
-  background-color: $black;
-  width: 20rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-}
-
-.header-wrap {
-  padding-top: $spacing-28;
-  padding-bottom: $spacing-24;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  align-self: stretch;
+  margin: 4rem $spacing-48;
 }
 
 .header-title {
-  color: $white;
+  color: $gray-200;
   font-size: $text-16;
-  font-weight: 700;
-  line-height: $line-140;
+  text-align: center;
 }
 
 .header-title-second {
-  color: $gray-400;
+  margin-top: $spacing-16;
+  color: $gray-500;
   font-size: $text-12;
-  font-weight: 600;
-  line-height: calc($line-140 + 0.1);
 }
 
 //768 1920
 .content {
-  display: flex;
-  flex-direction: column;
+  @include flexbox(column, nowrap, null, null, 0);
+  margin-top: $spacing-24;
 
   input[type='checkbox'] {
-    cursor: pointer;
-    // border: 1px solid wheat;
-    background-color: transparent;
+    @include size($spacing-16, $spacing-16);
     position: absolute;
-    // left: 50px;
-    width: $text-16;
-    height: $text-16;
+    background-color: transparent;
+    cursor: pointer;
   }
 
   .check-state-label .check-icon {
-    background: url('/public/icons/stack.svg#check-no-filled-default') no-repeat
-      0 0 /100%;
+    @include size($spacing-16, $spacing-16);
+    background: url('/icons/stack.svg#check-no-filled-default') no-repeat 0 0 /100%;
     display: block;
-    width: $text-16;
-    height: $text-16;
   }
 
   .check-state-checkbox:checked + .check-state-label .check-icon {
-    background: url('/public/icons/stack.svg#check-no-filled-active');
+    background: url('/icons/stack.svg#check-no-filled-active');
   }
 
   label {
@@ -88,50 +57,50 @@ legend {
 }
 
 .input-form {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 16px;
+  @include flexbox(column, nowrap, null, null, $spacing-16);
 
   input {
-    display: flex;
-    height: 46px;
-    padding: 0 $spacing-20 0 $spacing-16;
-    border-radius: 4px;
     background-color: $brand-dark-2;
+    height: 2.875rem;
+    padding: 0 $spacing-16;
+    border-radius: 0.25rem;
     color: $gray-600;
     font-size: $text-12;
+    font-family: $base-font-family;
   }
 
   .user-email,
   .user-password {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    align-self: stretch;
+    @include flexbox(column, nowrap, null, null, $spacing-4);
     span {
+      font-size: $text-12;
       color: $gray-500;
-      font-size: 12px;
-      line-height: $line-160;
     }
   }
 }
 
+.email__error {
+  font-size: $text-16;
+  display: none;
+}
+
+.display {
+  display: block;
+}
+
 .check-all-container {
-  display: flex;
-  padding: $spacing-16 0;
+  margin: $spacing-16 0;
 
   .check-all-label .check-all-icon {
-    cursor: pointer;
-    background: url('/public/icons/stack.svg#check-no-filled-default') no-repeat;
+    @include size($spacing-16, $spacing-16);
+    background: url('/icons/stack.svg#check-no-filled-default') no-repeat;
     background-color: $gray-400;
-    border-radius: 14px;
-    width: $spacing-16;
-    height: $spacing-16;
+    border-radius: 100%;
+    cursor: pointer;
   }
 
   .check-all-checkbox:checked + .check-all-label .check-all-icon {
-    background: url('/public/icons/stack.svg#check-no-filled-active');
+    background: url('/icons/stack.svg#check-no-filled-active');
     background-color: $gray-600;
   }
 
@@ -140,22 +109,18 @@ legend {
     font-size: $text-12;
   }
 }
+
 // -webkit-appearance: none;
 //  appearance: none;
+
 .check-list-container {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  @include flexbox(column, nowrap, null, null, $spacing-8);
   font-size: $text-12;
-  font-weight: 600;
   color: $gray-500;
 
   .check-list,
   .check-marketing {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-8;
-    align-self: stretch;
+    @include flexbox(column, nowrap, null, null, $spacing-8);
   }
   .check-marketing {
     padding-left: $spacing-16;
@@ -163,27 +128,16 @@ legend {
 }
 
 .confirm-button {
-  margin-bottom: $spacing-52;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
+  @include size(100%, 2.625rem);
+  margin-top: $spacing-16;
   background-color: $gray-700;
   font-size: $text-12;
-  font-weight: 600;
   color: $gray-400;
-  width: 100%;
-  height: 42px;
-  margin-top: $spacing-16;
+  border-radius: 0.25rem;
   cursor: pointer;
 }
 
 .confirm-button.active {
-  background-color: $white;
-  color: $black;
-}
-
-.confirm-button:hover {
   background-color: $white;
   color: $black;
 }
@@ -193,17 +147,14 @@ legend {
 }
 
 @include mq(tablet) {
+  .main {
+    @include marginX(auto);
+    max-width: 62.5rem;
+    font-size: $text-16;
+  }
+
   .regist {
-    width: 416px;
-    gap: 24px;
-  }
-
-  .regist__inner {
-    width: 100%;
-  }
-
-  .header-wrap {
-    padding-top: 44px;
+    margin: 6rem 10rem;
   }
 
   .header-title {
@@ -212,23 +163,18 @@ legend {
 
   .header-title-second {
     font-size: $text-16;
+    text-align: center;
   }
 
   .input-form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
     gap: $spacing-18;
 
     input {
-      height: 54px;
+      height: 3.375rem;
     }
   }
 
   .content {
-    display: flex;
-    flex-direction: column;
-
     label {
       gap: $spacing-12;
     }
@@ -242,50 +188,33 @@ legend {
 
   .confirm-button {
     margin-top: $spacing-20;
-    height: 50px;
+    height: 3.125rem;
   }
 }
 
 @include mq(desktop) {
   .regist {
-    width: 732px;
-    gap: 24px;
-  }
-
-  .regist__inner {
-    width: 100%;
-  }
-
-  .header-wrap {
-    padding-top: 70px;
-    gap: $spacing-28;
-    padding-bottom: $spacing-60;
+    min-width: 45.75rem;
+    margin: 10rem auto;
   }
 
   .header-title {
-    font-size: $text-37;
+    font-size: $text-38;
   }
 
   .header-title-second {
+    margin-top: $spacing-28;
     font-size: $text-28;
-    font-weight: 600;
   }
 
   .input-form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: $spacing-18;
+    margin-top: $spacing-60;
+    gap: $spacing-36;
 
     input {
-      padding: 0 $spacing-28 0 $spacing-24;
-      border-radius: 4px;
-      background-color: $brand-dark-2;
-      color: $gray-600;
-      font-size: $text-12;
-      height: 96px;
-      font-weight: 400;
+      padding: 0 $spacing-28;
       font-size: $text-28;
+      height: 6rem;
     }
 
     .user-email,
@@ -297,20 +226,18 @@ legend {
   }
 
   .content {
-    display: flex;
-    flex-direction: column;
-
     label {
+      font-size: $text-21;
       gap: $spacing-12;
     }
   }
 
   .check-all-container {
-    padding: $spacing-28;
-    label {
-      span {
-        font-weight: 600;
-      }
+    margin: $spacing-36 0;
+    gap: $spacing-12;
+
+    .check-all-label .check-all-icon {
+      @include size($spacing-20, $spacing-20);
     }
   }
   .check-list-container {
@@ -323,7 +250,7 @@ legend {
   }
   .confirm-button {
     margin-top: $spacing-36;
-    height: 86px;
+    height: 5.375rem;
     font-size: $text-28;
   }
 }
