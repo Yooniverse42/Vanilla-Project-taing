@@ -3,6 +3,7 @@ import '@/layout/index';
 import { getNode } from '@/library/getNode';
 import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
+import { emailReg } from '../../library/validation';
 
 // 로그인 시 {token, model:{username, name, id, email}}
 const id = 'kor123@gmail.com';
@@ -67,19 +68,17 @@ async function createAccount() {
   }).then((result) => result.length);
 
   if (sameIdEmail) {
-    console.log('중복');
     alert('아이디 또는 이메일이 이미 존재합니다');
     return;
   } else {
     modal.classList.add('modal-active');
-    console.log('중복 ㄴㄴ');
 
     createData('users', data)
       .then((data) => {
         modal.classList.remove('modal-active');
         alert(`${data.username}님 가입이 완료되었습니다`);
       })
-      .then(() => (location.href = 'src/pages/loginID/'));
+      .then(() => (location.href = 'src/pages/loginID/index.html'));
     registerForm.reset();
     // 입력 폼 초기화 추가
   }
@@ -91,6 +90,12 @@ function idValidation(e) {
   const idReg = /^[a-z]+[a-z0-9]{5,12}$/g;
   buttonState['idState'] = idReg.test(value);
   activeButtonState(buttonState);
+
+  if(emailReg(value)){
+    getNode('.user-email > span').classList.add('error');
+  }else {
+    getNode('.user-email > span').classList.remove('error');
+  }
 }
 
 function pwValidation(e) {

@@ -76,6 +76,10 @@ body {
       font-size: $text-12;
       color: $gray-500;
     }
+
+    .error {
+      color: $brand-red-2;
+    }
   }
 }
 
