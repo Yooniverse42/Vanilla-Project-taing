@@ -1,9 +1,8 @@
 import '@/pages/register/regist.scss';
 import '@/layout/index';
-import { getNode } from '@/library/getNode';
 import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
-import { emailReg } from '../../library/validation';
+import { getNode, emailReg, idReg } from '@/library/index';
 
 // 로그인 시 {token, model:{username, name, id, email}}
 const id = 'kor123@gmail.com';
@@ -87,13 +86,14 @@ async function createAccount() {
 // 유효성
 function idValidation(e) {
   const value = e.target.value;
-  const idReg = /^[a-z]+[a-z0-9]{5,12}$/g;
-  buttonState['idState'] = idReg.test(value);
+  // const idReg = /^[a-z]+[a-z0-9]{5,12}$/g;
+  buttonState['idState'] = idReg(value);
   activeButtonState(buttonState);
 
-  if(emailReg(value)){
+  console.log(idReg(value));
+  if (!idReg(value)) {
     getNode('.user-email > span').classList.add('error');
-  }else {
+  } else {
     getNode('.user-email > span').classList.remove('error');
   }
 }
