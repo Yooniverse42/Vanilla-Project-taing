@@ -141,6 +141,16 @@
   display: block;
 }
 
+.button__cancel {
+  background: url('/icons/stack.svg#cancel-default');
+
+  &:hover {
+    // background: url('/icons/stack.svg#cancel-default');
+    background-image: url('/icons/stack.svg#cancel-hover');
+    scale: 1.2;
+  }
+}
+
 .header {
   .header-signin {
     display: flex;

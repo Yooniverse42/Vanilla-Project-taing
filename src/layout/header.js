@@ -199,9 +199,11 @@ let isSearchActive = false;
 buttonSearch.addEventListener('click', () => {
   if (!isSearchActive) {
     search.classList.add('active');
+    buttonSearch.classList.add('button__cancel');
     isSearchActive = true;
   } else {
     search.classList.remove('active');
+    buttonSearch.classList.remove('button__cancel');
     isSearchActive = false;
   }
 });
