@@ -182,6 +182,7 @@ function getCheckState() {
   buttonState['checkState'] = result;
 
   activeButtonState(buttonState);
+  console.log(buttonState);
 }
 
 const checkListContainer = document.querySelector('.check-list-container');
