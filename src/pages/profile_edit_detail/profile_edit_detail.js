@@ -4,6 +4,12 @@ import { getNode } from '../../library/getNode';
 import pb from '../../api/pocketbase';
 import { setStorage } from './../../library/storage';
 
+const prevButton = getNode('.prev__icon');
+
+prevButton.addEventListener('click', () => {
+  window.history.back();
+});
+
 const avatarImg = getNode('.avatar__img');
 const nameInput = getNode('.profileName__input');
 const submitButton = getNode('.submit');
