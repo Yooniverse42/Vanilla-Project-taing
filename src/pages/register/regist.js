@@ -2,7 +2,7 @@ import '@/pages/register/regist.scss';
 import '@/layout/index';
 import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
-import { getNode, emailReg, idReg } from '@/library/index';
+import { getNode, idReg } from '@/library/index';
 
 const registerForm = getNode('.input-form');
 const idInput = getNode('#idInput');

@@ -7,6 +7,7 @@ const headerTemplate = document.createElement('template');
 
 async function setUserDataOnTemplate() {
   const user = await getStorage('user');
+  const profile = await getStorage('profileInfo');
 
   headerTemplate.innerHTML = `
   <style>
@@ -126,7 +127,7 @@ async function setUserDataOnTemplate() {
             <div class="profile_wrapper">
               <div class="profile_container">
                 <img src="https://yooniverse.pockethost.io/api/files/${user.record.collectionId}/${user.record.id}/${user.record.avatar}" alt="프로필" />
-                <h2>${user.record.username}</h2>
+                <h2>${profile.name}</h2>
                 <button type="button" onclick="location.href='/src/pages/profile_edit_detail/index.html'">
                   <span>프로필 편집</span>
                 </button>
@@ -309,8 +310,10 @@ export class Header extends HTMLElement {
         return;
       } else {
         let user = await getStorage('user');
-        pb.collection('users').delete(user.id);
-        return;
+        pb.collection('users').delete(user.record.id);
+        deleteStorage('user');
+        alert('회원 탈퇴가 완료 되었습니다.');
+        return (location.href = '/index.html');
       }
     }
   });
