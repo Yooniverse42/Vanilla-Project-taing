@@ -76,7 +76,7 @@ loginButton.addEventListener('click', async (e) => {
       const response = await authWithPassword(userId, userPassword);
       if (response.success) {
         setStorage('user', response.authData); //사용자 정보 로컬 스토리지에 저장
-        location.href = '/src/pages/taing/index.html'; //로그인 성공!!
+        location.href = '/src/pages/profile_select/index.html'; //로그인 성공!!
       } else {
         alert('로그인 실패:' + response.error);
       }
