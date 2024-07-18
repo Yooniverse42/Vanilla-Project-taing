@@ -1,7 +1,6 @@
 import pb from '@/api/pocketbase';
 import { getStorage, deleteStorage, getNodes } from '@/library/index';
-import '@/pages/myInfo_modal/myInfo_modal.scss';
-import '@/styles/pages/search_modal.scss';
+import '@/styles/layout/search_modal.scss';
 import textCSS from '@/styles/layout/header.scss?inline';
 
 // 기본값

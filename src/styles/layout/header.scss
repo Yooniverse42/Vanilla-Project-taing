@@ -1,5 +1,5 @@
 @use '@/styles/index' as *;
-@import '@/styles/pages/search_modal.scss';
+@import '@/styles/layout/search_modal.scss';
 
 .header {
   position: absolute;
@@ -132,6 +132,7 @@
   background-color: $brand-dark-1;
   width: 20rem;
   margin: 5 auto;
+  z-index: 999;
 }
 
 .active {
