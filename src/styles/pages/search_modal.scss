@@ -79,6 +79,7 @@
     color: $gray-300;
     line-height: $line-160;
     margin-top: 12px;
+    width: 80%;
   }
 }
 #recent__delet__button {
@@ -95,6 +96,7 @@
 .delet__icon {
   width: $text-12;
   height: $text-12;
+  cursor: pointer;
 }
 // 실시간 인기 검색어
 .popular__search {
