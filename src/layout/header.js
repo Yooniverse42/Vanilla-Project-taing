@@ -1,5 +1,5 @@
 import pb from '@/api/pocketbase';
-import { getStorage, deleteStorage, getNodes } from '@/library/index';
+import { getStorage, deleteStorage } from '@/library/index';
 import '@/styles/layout/search_modal.scss';
 import textCSS from '@/styles/layout/header.scss?inline';
 
@@ -47,73 +47,75 @@ headerTemplate.innerHTML = `
         <button type="button" class="button_search_open" aria-label="검색창으로 이동하기">
         </button>
         <div class="search">
-          <form class="search__bar" action="URL" method="POST">
-          <input
-            class="search__bar__input"
-            id="search__box1"
-            type="text"
-            name="searchBox"
-            placeholder="검색"
-            required
-            aria-invalid="false"
-            aria-live="polite"
-          />
-          <input
-            class="search__bar__input2"
-            id="search__box2"
-            type="text"
-            name="searchBox"
-            placeholder="TV프로그램, 영화 제목 및 출연진으로 검색해보세요"
-            required
-            aria-invalid="false"
-            aria-live="polite"
-          />
-          <button type="button" class="search__icon__button">
-            <svg class="search__icon" role="img" aria-label="검색 아이콘">
-              <use href="/icons/stack.svg#search-defualt" />
-            </svg>
-          </button>
-        </form>
-        <!-- 검색 바 -->
-        <section class="search__list__container">
-          <div class="recent__search">
-            <h2>최근 검색어</h2>
-            <ul id="recent__search__list">
-              <li>검색 내역이 없습니다</li>
-            </ul>
-            <button type="button" id="recent__delet__button"></button>
-          </div>
-          <!-- 최근 검색어 -->
-          <div class="popular__search">
-            <h2>실시간 인기 검색어</h2>
-            <ul class="popular__list">
-              <li class="popular__list__order"><span>1</span>재벌집 막내아들</li>
-              <li class="popular__list__order">
-                <span>2</span>미드터트롯2: 새로운 전설의 시작
-              </li>
-              <li class="popular__list__order">
-                <span>3</span>유 퀴즈 온 더 블럭
-              </li>
-              <li class="popular__list__order"><span>4</span>대행사</li>
-              <li class="popular__list__order">
-                <span>5</span>SHOW MW THE MONEY 11
-              </li>
-              <li class="popular__list__order">
-                <span>6</span>미씽: 그들이 있었다2
-              </li>
-              <li class="popular__list__order"><span>7</span>술꾼도시여자들2</li>
-              <li class="popular__list__order"><span>8</span>캐나다 체크인</li>
-              <li class="popular__list__order">
-                <span>9</span>미씽:그들이 있었다 - 그들을 다만나다
-              </li>
-              <li class="popular__list__order"><span>10</span>술꾼도시여자들</li>
-            </ul>
+          <div class="search__wrapper">
+            <form class="search__bar" action="URL" method="POST">
+            <input
+              class="search__bar__input"
+              id="search__box1"
+              type="text"
+              name="searchBox"
+              placeholder="검색"
+              required
+              aria-invalid="false"
+              aria-live="polite"
+            />
+            <input
+              class="search__bar__input2"
+              id="search__box2"
+              type="text"
+              name="searchBox"
+              placeholder="TV프로그램, 영화 제목 및 출연진으로 검색해보세요"
+              required
+              aria-invalid="false"
+              aria-live="polite"
+            />
+            <button type="button" class="search__icon__button">
+              <svg class="search__icon" role="img" aria-label="검색 아이콘">
+                <use href="/icons/stack.svg#search-defualt" />
+              </svg>
+            </button>
+                    </form>
+                    <!-- 검색 바 -->
+                    <section class="search__list__container">
+            <div class="recent__search">
+              <h2>최근 검색어</h2>
+              <ul id="recent__search__list">
+                <li>검색 내역이 없습니다</li>
+              </ul>
+              <button type="button" id="recent__delet__button"></button>
+            </div>
+            <!-- 최근 검색어 -->
+            <div class="popular__search">
+              <h2>실시간 인기 검색어</h2>
+              <ul class="popular__list">
+                <li class="popular__list__order"><span>1</span>재벌집 막내아들</li>
+                <li class="popular__list__order">
+                  <span>2</span>미드터트롯2: 새로운 전설의 시작
+                </li>
+                <li class="popular__list__order">
+                  <span>3</span>유 퀴즈 온 더 블럭
+                </li>
+                <li class="popular__list__order"><span>4</span>대행사</li>
+                <li class="popular__list__order">
+                  <span>5</span>SHOW MW THE MONEY 11
+                </li>
+                <li class="popular__list__order">
+                  <span>6</span>미씽: 그들이 있었다2
+                </li>
+                <li class="popular__list__order"><span>7</span>술꾼도시여자들2</li>
+                <li class="popular__list__order"><span>8</span>캐나다 체크인</li>
+                <li class="popular__list__order">
+                  <span>9</span>미씽:그들이 있었다 - 그들을 다만나다
+                </li>
+                <li class="popular__list__order"><span>10</span>술꾼도시여자들</li>
+              </ul>
             
-            <div class="date">2024.07.14 오후 10시 41 기준</div>
-            <!-- 날짜 -->
+              <div class="date">2024.07.14 오후 10시 41 기준</div>
+              <!-- 날짜 -->
+            </div>
+            <!-- 실시간 인기 검색어 -->
+                    </section>
           </div>
-          <!-- 실시간 인기 검색어 -->
-        </section>
         </div>
         <!-- 프로필 --------------------------------------->
           <button type="button" class="button_profile_open">
@@ -286,7 +288,7 @@ buttonLogout.addEventListener('click', (e) => {
     if (!confirm('로그아웃 하시겠습니까?')) {
       return;
     } else {
-      deleteStorage('auth');
+      deleteStorage('user');
       window.location.href = '/index.html';
       return;
     }
@@ -301,7 +303,7 @@ buttonDeleteID.addEventListener('click', async (e) => {
     if (!confirm('회원 탈퇴 하시겠습니까?')) {
       return;
     } else {
-      let user = await getStorage('auth');
+      let user = await getStorage('user');
       pb.collection('users').delete(user.id);
       return;
     }

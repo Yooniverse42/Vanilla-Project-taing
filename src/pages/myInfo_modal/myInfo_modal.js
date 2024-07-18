@@ -35,7 +35,7 @@ buttonLogout.addEventListener('click', () => {
   if (!confirm('로그아웃 하시겠습니까?')) {
     return;
   } else {
-    deleteStorage('auth');
+    deleteStorage('user');
     window.location.href = '/index.html';
     return;
   }
@@ -47,7 +47,7 @@ buttonDeleteID.addEventListener('click', async () => {
   if (!confirm('회원 탈퇴 하시겠습니까?')) {
     return;
   } else {
-    let user = await getStorage('auth');
+    let user = await getStorage('user');
     pb.collection('users').delete(user.id);
     return;
   }
