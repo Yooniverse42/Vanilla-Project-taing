@@ -17,10 +17,10 @@ const confirmButton = getNode('.confirm-button');
 const modal = getNode('.modal');
 
 const buttonState = {
-  // idState: false,
-  // emailState: false,
-  // pwState: false,
-  // pwCheckState: false,
+  idState: false,
+  emailState: false,
+  pwState: false,
+  pwCheckState: false,
   checkState: false,
 };
 
