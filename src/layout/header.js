@@ -1,12 +1,18 @@
 import pb from '@/api/pocketbase';
-import { getStorage, deleteStorage } from '@/library/index';
+import defaultAuthData from '@/api/defaultAuthData';
+import { getStorage, deleteStorage, setStorage } from '@/library/index';
 import '@/styles/layout/search_modal.scss';
 import textCSS from '@/styles/layout/header.scss?inline';
 
 const headerTemplate = document.createElement('template');
 
 async function setUserDataOnTemplate() {
+  if (!localStorage.getItem('user')) {
+    setStorage('user', defaultAuthData);
+  }
+
   const user = await getStorage('user');
+  const profile = await getStorage('profileInfo');
 
   headerTemplate.innerHTML = `
   <style>
@@ -126,7 +132,7 @@ async function setUserDataOnTemplate() {
             <div class="profile_wrapper">
               <div class="profile_container">
                 <img src="https://yooniverse.pockethost.io/api/files/${user.record.collectionId}/${user.record.id}/${user.record.avatar}" alt="프로필" />
-                <h2>${user.record.username}</h2>
+                <h2>${profile.name}</h2>
                 <button type="button" onclick="location.href='/src/pages/profile_edit_detail/index.html'">
                   <span>프로필 편집</span>
                 </button>
@@ -156,10 +162,23 @@ export class Header extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(headerTemplate.content.cloneNode(true));
+
+    this.logout = this.shadowRoot.querySelector('.logout');
+  }
+
+  connectedCallback() {
+    this.logout?.addEventListener('click', this.logOut.bind(this));
+  }
+
+  logOut(e) {
+    e.preventDefault();
+    pb.authStore.clear();
+    setStorage('auth', defaultAuthData);
+    location.reload();
   }
 }
 
-(async function () {
+async function modal() {
   await setUserDataOnTemplate();
   await customElements.define('c-header', Header);
 
@@ -185,14 +204,14 @@ export class Header extends HTMLElement {
   );
 
   // 로그인 했을 때 모달 버튼 나오게 하기
-  if (!localStorage.getItem('user')) {
-    buttonSearch.classList.remove('header-signin');
-    buttonProfile.classList.remove('header-signin');
-    headerMenu.classList.remove('header-signin');
-  } else {
+  if (JSON.parse(localStorage.getItem('user')).record.username) {
     buttonSearch.classList.add('header-signin');
     buttonProfile.classList.add('header-signin');
     headerMenu.classList.add('header-signin');
+  } else {
+    buttonSearch.classList.remove('header-signin');
+    buttonProfile.classList.remove('header-signin');
+    headerMenu.classList.remove('header-signin');
   }
 
   let isActive = false;
@@ -309,9 +328,13 @@ export class Header extends HTMLElement {
         return;
       } else {
         let user = await getStorage('user');
-        pb.collection('users').delete(user.id);
-        return;
+        pb.collection('users').delete(user.record.id);
+        deleteStorage('user');
+        alert('회원 탈퇴가 완료 되었습니다.');
+        return (location.href = '/index.html');
       }
     }
   });
-})();
+}
+
+modal();

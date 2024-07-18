@@ -25,19 +25,21 @@
             이메일로 찾기
             <span>가입 시 등록한 이메일을 입력해주세요.</span>
           </h3>
-          <label class="findId_label" for="findId_email">
-            <input
-              id="findId_email"
-              type="email"
-              name="user_email"
-              placeholder="이메일"
-              required
-            />
+          <div class="findId_wrapper">
+            <label class="findId_label" for="findId_email">
+              <input
+                id="findId_email"
+                type="email"
+                name="user_email"
+                placeholder="이메일"
+                required
+              />
+            </label>
             <button class="button_delete" type="reset"></button>
-          </label>
-          <span class="error-message">
-            아이디는 이메일 형식으로 입력해 주세요.
-          </span>
+            <span class="error-message">
+              아이디는 이메일 형식으로 입력해 주세요.
+            </span>
+          </div>
         </form>
         <button class="check_email_button" type="button" disabled>확인</button>
 

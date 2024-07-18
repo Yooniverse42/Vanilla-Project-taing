@@ -67,8 +67,6 @@ async function checkUserEmail() {
   }
 }
 
-console.log(checkButton);
-
 // 이벤트 실행
 userId.addEventListener('input', handleEmailValid);
 userId.addEventListener('input', deleteButtonOn);
