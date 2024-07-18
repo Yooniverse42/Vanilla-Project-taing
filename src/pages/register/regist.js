@@ -4,10 +4,6 @@ import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
 import { getNode, emailReg, idReg } from '@/library/index';
 
-// 로그인 시 {token, model:{username, name, id, email}}
-const id = 'kor123@gmail.com';
-const pw = 'gksrnrtkfka12!';
-
 const registerForm = getNode('.input-form');
 const idInput = getNode('#idInput');
 const pwInput = getNode('#pwInput');
