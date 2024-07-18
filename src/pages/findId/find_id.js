@@ -28,7 +28,7 @@ function handleEmailValid() {
 
 // 확인 버튼 활성화 기능
 function checkButtonOn() {
-  if (!userId.value) {
+  if (!emailReg(userId.value)) {
     checkButton.disabled = 'disabled';
     checkButton.style.color = '#B6B7B4';
   } else {
@@ -70,9 +70,9 @@ async function checkUserEmail() {
 console.log(checkButton);
 
 // 이벤트 실행
-userId.addEventListener('keydown', debounce(handleEmailValid, 100));
-userId.addEventListener('keydown', debounce(deleteButtonOn, 100));
-userId.addEventListener('keydown', debounce(checkButtonOn, 100));
+userId.addEventListener('input', handleEmailValid);
+userId.addEventListener('input', deleteButtonOn);
+userId.addEventListener('input', checkButtonOn);
 buttonDelete.addEventListener('click', debounce(checkButtonOn, 100));
 buttonValidThirdparty.addEventListener('click', popUp);
 checkButton.addEventListener('click', checkUserEmail);
