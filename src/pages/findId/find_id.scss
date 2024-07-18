@@ -54,12 +54,16 @@ button {
     border-radius: 0.25rem;
   }
 
+  .findId_wrapper {
+    position: relative;
+  }
+
   .button_delete {
     @include size($spacing-16, $spacing-16);
     position: absolute;
-    top: 50%;
+    top: 25%;
     right: 0;
-    translate: 0 -50%;
+    // translate: 0 -700%;
     margin: 0 $spacing-14 0 0;
     background-image: url(/icons/stack.svg#delete-fiiled);
     background-color: transparent;

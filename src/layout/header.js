@@ -9,7 +9,8 @@ async function setUserDataOnTemplate() {
   const user = await getStorage('user');
   const profile = await getStorage('profileInfo');
 
-  headerTemplate.innerHTML = `
+  if (user && profile) {
+    headerTemplate.innerHTML = `
   <style>
     ${textCSS}
   </style>
@@ -150,6 +151,7 @@ async function setUserDataOnTemplate() {
         </div>
         </nav>
   `;
+  }
 }
 
 export class Header extends HTMLElement {
