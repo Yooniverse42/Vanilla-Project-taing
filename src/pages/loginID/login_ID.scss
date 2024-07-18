@@ -101,9 +101,10 @@ fieldset {
   position: absolute;
   top: 0px;
   left: 0px;
-  width: $text-12;
-  height: $text-12;
+  width: $spacing-16;
+  height: $spacing-16;
   appearance: none;
+  z-index: -1;
 }
 
 .login__remember__me__label {
