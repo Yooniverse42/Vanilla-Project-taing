@@ -12,7 +12,7 @@ body {
   padding: $spacing-16;
 }
 
-.section-wrapper {
+.section_wrapper {
   margin-top: 2rem;
 }
 
@@ -32,7 +32,7 @@ body {
 }
 
 .taing_banner {
-  @include size(20rem, 8.875rem);
+  @include size(100%, 8.875rem);
   margin: 0 auto;
   position: relative;
 }
@@ -353,7 +353,7 @@ body {
   }
 
   .taing_banner {
-    @include size(48rem, 21.375rem);
+    @include size(100%, 21.375rem);
   }
 
   // 티빙에서 꼭 봐야하는 콘텐츠
@@ -548,7 +548,7 @@ body {
   }
 
   .taing_banner {
-    @include size(120rem, 53.5rem);
+    @include size(100%, 53.5rem);
   }
 
   // 티빙에서 꼭 봐야하는 콘텐츠
