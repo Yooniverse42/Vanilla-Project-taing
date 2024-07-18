@@ -90,7 +90,6 @@ function idValidation(e) {
   buttonState['idState'] = idReg(value);
   activeButtonState(buttonState);
 
-  console.log(idReg(value));
   if (!idReg(value)) {
     getNode('.user-email > span').classList.add('error');
   } else {

@@ -11,6 +11,6 @@ export function pwReg(text) {
 }
 
 export function idReg(text) {
-  const re = /^(?=.*[a-zA-Z])(?=.*[0-9]).{5,12}$/g;
+  const re = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,12}$/g;
   return re.test(String(text).toLowerCase());
 }
