@@ -79,6 +79,15 @@ body {
   }
 }
 
+.email__error {
+  font-size: $text-16;
+  display: none;
+}
+
+.display {
+  display: block;
+}
+
 .check-all-container {
   margin: $spacing-16 0;
 
