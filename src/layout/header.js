@@ -181,7 +181,7 @@ const recentSearchList = cHeader.shadowRoot.querySelector(
 );
 
 // 로그인 했을 때 모달 버튼 나오게 하기
-if (!localStorage.getItem('auth')) {
+if (!localStorage.getItem('user')) {
   buttonSearch.classList.remove('header-signin');
   buttonProfile.classList.remove('header-signin');
   headerMenu.classList.remove('header-signin');

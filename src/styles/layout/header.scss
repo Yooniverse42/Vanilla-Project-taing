@@ -9,6 +9,7 @@
   background: transparent;
   top: 0;
   left: 0;
+  z-index: 10;
 
   .nav {
     @include flexbox(row, nowrap, space-between, center, $spacing-28);
