@@ -31,6 +31,7 @@
 
 @include mq(tablet) {
   .popup {
+    max-width: 789px;
     h2 {
       font-size: $text-16;
     }
@@ -38,6 +39,7 @@
 }
 @include mq(desktop) {
   .popup {
+    min-width: 1920px;
     h2 {
       font-size: $text-21;
     }
