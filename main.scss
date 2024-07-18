@@ -13,17 +13,6 @@ body {
 .section0 {
   @include flexbox(column, nowrap, center, center, null);
   width: 100%;
-  aspect-ratio: 16 / 9;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.6) 10%,
-      rgba(0, 0, 0, 0.8) 90%,
-      rgba(0, 0, 0, 1) 100%
-    ),
-    url(https://yooniverse.pockethost.io/api/files/poster/q1agi9w1i882os5/onboarding_bg_s_8BSHdaE8OO.png)
-      no-repeat center;
-  background-size: cover;
 
   .container {
     @include flexbox(column, nowrap, center, center, null);
@@ -74,21 +63,19 @@ body {
     font-weight: 400;
     line-height: $line-150;
   }
+
+  .section0__background {
+    width: 100%;
+    max-height: 382px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 }
 
-//url(https://yooniverse.pockethost.io/api/files/poster/0miz17ddkeq5egg/onboarding_bg_m_IgPeulahdq.png)
 @include mq(tablet) {
   .section0 {
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.6) 10%,
-        rgba(0, 0, 0, 0.8) 90%,
-        rgba(0, 0, 0, 1) 100%
-      ),
-      url(https://yooniverse.pockethost.io/api/files/poster/omaugf19clqumnw/onboarding_bg_l_6PCKVGwXhH.png)
-        no-repeat center;
-    background-size: cover;
 
     .container {
       width: 283px;
@@ -120,20 +107,16 @@ body {
       font-size: $text-16;
     }
   }
+
+  .section0__background {
+    width: 100%;
+    max-height: 536px;
+  }
 }
 
 @include mq(desktop) {
   .section0 {
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.6) 10%,
-        rgba(0, 0, 0, 0.8) 90%,
-        rgba(0, 0, 0, 1) 100%
-      ),
-      url(https://yooniverse.pockethost.io/api/files/poster/omaugf19clqumnw/onboarding_bg_l_6PCKVGwXhH.png)
-        no-repeat center;
-    background-size: cover;
+    height: 1080px;
 
     .container {
       width: 545px;
@@ -166,6 +149,11 @@ body {
     .button__message {
       font-size: $text-28;
     }
+  }
+
+  .section0__background {
+    width: 100%;
+    max-height: 1080px;
   }
 }
 

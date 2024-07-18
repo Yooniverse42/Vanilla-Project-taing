@@ -1,5 +1,4 @@
-@use '@/styles/utils/index' as *;
-@use '@/styles/base/index' as *;
+@use '@/styles/index' as *;
 @use '@/styles/components/snsIcon' as *;
 
 .footer {
@@ -80,6 +79,7 @@
   .footer {
     width: 120rem;
     padding: 0 4.25rem 10.625rem;
+    font-size: $text-21;
   }
 
   .footer_contents {
@@ -88,5 +88,13 @@
 
   .footer_util {
     gap: $spacing-36;
+  }
+
+  .copyright {
+    font-size: $text-21;
+  }
+
+  .copyright_container {
+    font-size: $text-21;
   }
 }

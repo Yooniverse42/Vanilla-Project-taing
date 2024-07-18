@@ -1,8 +1,8 @@
-import '@/styles/pages/regist.scss';
-import '@/layout/footer';
-import { getNode } from './../../library/getNode';
-import { createData, getData, getImageData } from '../../api/serverData';
-import getPbImageURL from './../../api/getPbImageURL';
+import '@/pages/register/regist.scss';
+import '@/layout/index';
+import { getNode } from '@/library/getNode';
+import { createData, getData, getImageData } from '@/api/serverData';
+import getPbImageURL from '@/api/getPbImageURL';
 
 // 로그인 시 {token, model:{username, name, id, email}}
 const id = 'kor123@gmail.com';

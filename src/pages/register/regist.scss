@@ -104,8 +104,7 @@ legend {
   }
 
   .user-email,
-  .user-password,
-  .emailInput__container {
+  .user-password {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -116,15 +115,6 @@ legend {
       line-height: $line-160;
     }
   }
-}
-
-.email__error {
-  font-size: $text-16;
-  display: none;
-}
-
-.display {
-  display: block;
 }
 
 .check-all-container {
