@@ -1,6 +1,6 @@
 import '@/pages/findpw/find_pw.scss';
 import '@/layout/index';
-import { getNode, emailReg, debounce } from '@/library/index';
+import { getNode, idReg, debounce } from '@/library/index';
 import { getRecord } from '@/api/getRecords';
 
 const checkButton = getNode('.check__email');
@@ -14,7 +14,7 @@ let isEmailValid = false;
 function handleEmailValid() {
   const value = userId.value;
 
-  if (emailReg(value)) {
+  if (idReg(value)) {
     // 유효한 값이면 true : display: none;
     errorMessage.classList.remove('is--invalid');
     isEmailValid = true;
@@ -49,7 +49,7 @@ function deleteButtonOn() {
 // 입력한 이메일이 서버에 있으면 아이디 알려주기
 
 async function checkUserEmail() {
-  const filter = `email = "${userId.value}"`;
+  const filter = `id = "${userId.value}"`;
   const userRecord = await getRecord('users', filter);
 
   if (userRecord.items.length >= 1 && isEmailValid) {

@@ -61,8 +61,7 @@ async function checkUserEmail() {
   const userInfo = userRecord.items[0];
 
   if (userRecord.items.length >= 1 && isEmailValid) {
-    alert(`입력하신 이메일로 아이디가 전송 되었습니다!
-    아이디 : ${userInfo.username}`);
+    alert(`아이디는 ${userInfo.username} 입니다`);
   } else {
     alert('입력하신 이메일을 다시 확인 해주세요!');
   }
