@@ -1,9 +1,5 @@
 const defaultAuthData = {
-  isAuth:false,
-  user:null,
-  token:''
-}
+  record: { isAuth: false, username: null, token: '', collectionId: '' },
+};
 
-
-
-export default defaultAuthData
+export default defaultAuthData;
