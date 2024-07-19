@@ -1,5 +1,5 @@
 import pb from '@/api/pocketbase';
-import defaultAuthData from '@/api/defaultAuthData';
+import defaultAuthData from '@/library/defaultAuthData';
 import { getStorage, deleteStorage, setStorage } from '@/library/index';
 import '@/styles/layout/search_modal.scss';
 import textCSS from '@/styles/layout/header.scss?inline';
