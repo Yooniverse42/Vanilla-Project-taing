@@ -1,5 +1,5 @@
 import '/main.scss';
-// import '@/layout/index';
+import '@/layout/index';
 import 'swiper/css/bundle';
 import Swiper from 'swiper/bundle';
 import { renderImgList } from '@/library/index';
