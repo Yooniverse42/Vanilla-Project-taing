@@ -173,7 +173,7 @@ export class Header extends HTMLElement {
   logOut(e) {
     e.preventDefault();
     pb.authStore.clear();
-    setStorage('auth', defaultAuthData);
+    setStorage('user', defaultAuthData);
     location.reload();
   }
 }
