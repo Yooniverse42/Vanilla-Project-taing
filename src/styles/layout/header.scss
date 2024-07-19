@@ -264,7 +264,7 @@
     }
 
     .header__menu {
-      @include flexbox(row, nowrap, null, center, $spacing-52);
+      // @include flexbox(row, nowrap, null, center, $spacing-52);
     }
 
     .menu__list {
