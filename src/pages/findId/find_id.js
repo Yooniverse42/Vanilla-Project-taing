@@ -28,7 +28,7 @@ function handleEmailValid() {
 
 // 확인 버튼 활성화 기능
 function checkButtonOn() {
-  if (!userId.value) {
+  if (!emailReg(userId.value)) {
     checkButton.disabled = 'disabled';
     checkButton.style.color = '#B6B7B4';
   } else {
@@ -61,19 +61,16 @@ async function checkUserEmail() {
   const userInfo = userRecord.items[0];
 
   if (userRecord.items.length >= 1 && isEmailValid) {
-    alert(`입력하신 이메일로 아이디가 전송 되었습니다!
-    아이디 : ${userInfo.username}`);
+    alert(`아이디는 ${userInfo.username} 입니다`);
   } else {
     alert('입력하신 이메일을 다시 확인 해주세요!');
   }
 }
 
-console.log(checkButton);
-
 // 이벤트 실행
-userId.addEventListener('keydown', debounce(handleEmailValid, 100));
-userId.addEventListener('keydown', debounce(deleteButtonOn, 100));
-userId.addEventListener('keydown', debounce(checkButtonOn, 100));
+userId.addEventListener('input', handleEmailValid);
+userId.addEventListener('input', deleteButtonOn);
+userId.addEventListener('input', checkButtonOn);
 buttonDelete.addEventListener('click', debounce(checkButtonOn, 100));
 buttonValidThirdparty.addEventListener('click', popUp);
 checkButton.addEventListener('click', checkUserEmail);

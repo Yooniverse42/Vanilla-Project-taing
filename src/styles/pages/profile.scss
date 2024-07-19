@@ -80,6 +80,10 @@ body {
   }
 }
 
+.avatar:last-child .edit__icon__container {
+  border: 3px solid white;
+}
+
 .edit__button {
   display: block;
   text-align: center;

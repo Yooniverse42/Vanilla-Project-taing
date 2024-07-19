@@ -1,12 +1,8 @@
 import '@/pages/register/regist.scss';
 import '@/layout/index';
-import { getNode } from '@/library/getNode';
 import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
-
-// 로그인 시 {token, model:{username, name, id, email}}
-const id = 'kor123@gmail.com';
-const pw = 'gksrnrtkfka12!';
+import { getNode, idReg } from '@/library/index';
 
 const registerForm = getNode('.input-form');
 const idInput = getNode('#idInput');
@@ -67,19 +63,17 @@ async function createAccount() {
   }).then((result) => result.length);
 
   if (sameIdEmail) {
-    console.log('중복');
     alert('아이디 또는 이메일이 이미 존재합니다');
     return;
   } else {
     modal.classList.add('modal-active');
-    console.log('중복 ㄴㄴ');
 
     createData('users', data)
       .then((data) => {
         modal.classList.remove('modal-active');
         alert(`${data.username}님 가입이 완료되었습니다`);
       })
-      .then(() => (location.href = 'src/pages/loginID/'));
+      .then(() => (location.href = '/src/pages/loginID/index.html'));
     registerForm.reset();
     // 입력 폼 초기화 추가
   }
@@ -88,9 +82,15 @@ async function createAccount() {
 // 유효성
 function idValidation(e) {
   const value = e.target.value;
-  const idReg = /^[a-z]+[a-z0-9]{5,12}$/g;
-  buttonState['idState'] = idReg.test(value);
+  // const idReg = /^[a-z]+[a-z0-9]{5,12}$/g;
+  buttonState['idState'] = idReg(value);
   activeButtonState(buttonState);
+
+  if (!idReg(value)) {
+    getNode('.user-email > span').classList.add('error');
+  } else {
+    getNode('.user-email > span').classList.remove('error');
+  }
 }
 
 function pwValidation(e) {
@@ -100,6 +100,12 @@ function pwValidation(e) {
     symbolReg.test(value) && value.length >= 6 && value.length <= 16;
   buttonState['pwState'] = result;
   activeButtonState(buttonState);
+
+  if (!result) {
+    getNode('.user-password > span').classList.add('error');
+  } else {
+    getNode('.user-password > span').classList.remove('error');
+  }
 }
 
 function pwCheckValidation(e) {
@@ -107,6 +113,12 @@ function pwCheckValidation(e) {
   const result = pwInput.value === value;
   buttonState['pwCheckState'] = result;
   activeButtonState(buttonState);
+
+  if (!result) {
+    getNode('.pwCheckInput__error').classList.add('error');
+  } else {
+    getNode('.pwCheckInput__error').classList.remove('error');
+  }
 }
 
 function emailValidation(e) {
@@ -157,14 +169,24 @@ checkAllButton.addEventListener('click', (e) => {
 
 function getCheckState() {
   const necessaryCheck = document.querySelectorAll('.necessary');
+  const checkItems = Array.from(checkListitems);
+  const checkCount = checkItems.filter((item) => item.checked).length;
+  if (checkItems.length === checkCount) {
+    checkAllButton.checked = true;
+  } else {
+    checkAllButton.checked = false;
+  }
+
   const length = Array.from(necessaryCheck).filter(
     (item) => item.checked
   ).length;
   const result = length === necessaryCheck.length;
-  checkAllButton.checked = result;
+  console.log(length, necessaryCheck.length);
+  // checkAllButton.checked = result;
   buttonState['checkState'] = result;
 
   activeButtonState(buttonState);
+  console.log(buttonState);
 }
 
 const checkListContainer = document.querySelector('.check-list-container');

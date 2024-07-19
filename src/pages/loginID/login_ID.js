@@ -2,7 +2,7 @@ import '@/pages/loginID/login_ID.scss';
 import '@/layout/index';
 import {
   getNode,
-  emailReg,
+  idReg,
   pwReg,
   debounce,
   getStorage,
@@ -11,9 +11,9 @@ import {
 import { authWithPassword } from '@/api/getRecords';
 
 const loginButton = getNode('.login__button');
-const loginUserID = getNode('#userEmail');
+const loginUserID = getNode('#userID');
 const loginUserPassword = getNode('#userPassword');
-const idMessageError = getNode('.email__error__message');
+const idMessageError = getNode('.id__error__message');
 const pwMessageError = getNode('.pw__error__message');
 const autoLoginCheck = getNode('.check');
 const passwordHideIcon = getNode('.hide__icon');
@@ -38,17 +38,17 @@ passwordHideIcon.addEventListener('click', () => {
 });
 // 이메일 유효성 검사
 
-let emailValid = false;
+let idValid = false;
 
-function handleEmailValid() {
+function handleIdValid() {
   const value = loginUserID.value;
 
-  if (emailReg(value)) {
+  if (idReg(value)) {
     idMessageError.classList.remove('is--invalid');
-    emailValid = true;
+    idValid = true;
   } else {
     idMessageError.classList.add('is--invalid');
-    emailValid = false;
+    idValid = false;
   }
 }
 // 비밀번호  유효성 검사
@@ -68,15 +68,15 @@ function handlePasswordValid() {
 loginButton.addEventListener('click', async (e) => {
   e.preventDefault();
   // 유효성 검사 통과 시 로그인 시도
-  if (emailValid && pwValid) {
-    const userEmail = loginUserID.value;
+  if (idValid && pwValid) {
+    const userId = loginUserID.value;
     const userPassword = loginUserPassword.value;
 
     try {
-      const response = await authWithPassword(userEmail, userPassword);
+      const response = await authWithPassword(userId, userPassword);
       if (response.success) {
         setStorage('user', response.authData); //사용자 정보 로컬 스토리지에 저장
-        location.href = '/src/pages/taing/index.html'; //로그인 성공!!
+        location.href = '/src/pages/profile_select/index.html'; //로그인 성공!!
       } else {
         alert('로그인 실패:' + response.error);
       }
@@ -90,7 +90,7 @@ loginButton.addEventListener('click', async (e) => {
 });
 
 //  이벤트 실행
-loginUserID.addEventListener('keydown', debounce(handleEmailValid, 100));
+loginUserID.addEventListener('keydown', debounce(handleIdValid, 100));
 loginUserPassword.addEventListener(
   'keydown',
   debounce(handlePasswordValid, 100)

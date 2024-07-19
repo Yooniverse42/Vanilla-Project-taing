@@ -9,3 +9,8 @@ export function pwReg(text) {
   const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
   return re.test(String(text).toLowerCase());
 }
+
+export function idReg(text) {
+  const re = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,12}$/g;
+  return re.test(String(text).toLowerCase());
+}

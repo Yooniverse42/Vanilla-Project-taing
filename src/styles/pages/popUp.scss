@@ -1,8 +1,11 @@
 @import '@/styles/index.scss';
 
+body {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .popup__container {
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .popup {

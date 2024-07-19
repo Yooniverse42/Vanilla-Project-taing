@@ -18,20 +18,20 @@
             <legend class="sr-only">로그인 폼</legend>
             <div class="login__form__content">
               <div class="user__ID">
-                <label for="userEmail" class="sr-only">아이디</label>
+                <label for="userID" class="sr-only">아이디</label>
                 <input
-                  type="email"
-                  id="userEmail"
+                  type="text"
+                  id="userID"
                   class="user__ID__input"
                   required
                   placeholder="아이디"
-                  name="userEmail"
+                  name="userID"
                   aria-invalid="false"
-                  aria-describedby="userEmailError"
+                  aria-describedby="userIdError"
                   aria-live="assertive"
                 />
-                <span id="userEmailError" class="id__error__message"
-                  >아이디는 이메일 형식으로 입력 해주세요</span
+                <span id="userIdError" class="id__error__message"
+                  >아이디를 입력해주세요.</span
                 >
               </div>
               <!-- user__ID -->
@@ -67,10 +67,8 @@
                   />
                   <label
                     for="loginRememberMe"
-                    class="login__remember__me__label"
-                  >
-                    <span class="check"></span>
-                    <span class="icon__check">자동로그인</span></label
+                    class="login__remember__me__label check"
+                  >자동로그인</label
                   >
                 </div>
               </div>
@@ -83,7 +81,7 @@
                     <span>아이디 찾기</span>
                   </a>
                   <div class="line_divide"></div>
-                  <a href="/src/pages/findPw/index.html">
+                  <a href="/src/pages/findpw/index.html">
                     <span>비밀번호 찾기 </span>
                   </a>
                 </li>

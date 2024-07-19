@@ -1,4 +1,4 @@
-import '@/layout/footer';
+import '@/layout/index';
 import '@/pages/taing/taing.scss';
 import '@/styles/layout/loading.scss';
 import Swiper from 'swiper/bundle';

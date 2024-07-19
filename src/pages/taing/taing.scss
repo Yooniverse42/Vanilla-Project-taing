@@ -10,6 +10,7 @@ body {
   color: $gray-400;
   font-size: $text-12;
   padding: $spacing-16;
+  padding-top: $spacing-40;
 }
 
 .swiper2,
@@ -28,7 +29,7 @@ body {
 }
 
 .taing_banner {
-  @include size(20rem, 8.875rem);
+  @include size(100%, 8.875rem);
   margin: 0 auto;
   position: relative;
 }
@@ -317,7 +318,7 @@ body {
 .notice {
   @include flexbox(flex, row, space-between, center, $spacing-4);
   height: 19px;
-  margin: 40px 0 $spacing-12;
+  margin: $spacing-40 0 $spacing-12;
   line-height: $line-160;
   color: $gray-200;
 
@@ -345,11 +346,11 @@ body {
 
 @include mq(tablet) {
   .main {
-    padding: 0 $spacing-40;
+    padding: $spacing-56 $spacing-40 0;
   }
 
   .taing_banner {
-    @include size(48rem, 21.375rem);
+    @include size(100%, 21.375rem);
   }
 
   // 티빙에서 꼭 봐야하는 콘텐츠
@@ -540,11 +541,11 @@ body {
 
 @include mq(desktop) {
   .main {
-    padding: 0 4.25rem;
+    padding: 6.25rem 4.25rem;
   }
 
   .taing_banner {
-    @include size(120rem, 53.5rem);
+    @include size(100%, 53.5rem);
   }
 
   // 티빙에서 꼭 봐야하는 콘텐츠
