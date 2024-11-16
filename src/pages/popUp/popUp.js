@@ -1,4 +1,4 @@
-import '@/styles/pages/popUp.scss';
+import '@/pages/popUp/popUp.scss';
 import '@/layout/index';
 import { getNode } from '@/library/index';
 const popUp = getNode('.popup__container');
