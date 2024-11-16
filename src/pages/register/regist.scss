@@ -27,7 +27,6 @@ body {
   font-size: $text-12;
 }
 
-//768 1920
 .content {
   @include flexbox(column, nowrap, null, null, 0);
   margin-top: $spacing-24;

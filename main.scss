@@ -71,17 +71,16 @@ body {
     left: 0;
     z-index: -1;
     img {
-    width: 100%;
-    min-height: 382px;
-    // max-height: 400px;
-    object-fit: cover;
+      width: 100%;
+      min-height: 382px;
+      // max-height: 400px;
+      object-fit: cover;
     }
   }
 }
 
 @include mq(tablet) {
   .section0 {
-
     .container {
       width: 283px;
       padding: 155px 0 183px;
@@ -234,7 +233,7 @@ body {
 @include mq(desktop) {
   .section1 {
     padding-top: 160px;
-    min-width: 1920px;
+    min-width: 1280px;
   }
   .container__message {
     margin-bottom: 40px;
@@ -492,7 +491,7 @@ body {
 
 @include mq(desktop) {
   .section3 {
-    width: 1920px;
+    width: 1280px;
     padding: 150px 0;
     gap: $spacing-36;
 

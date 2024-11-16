@@ -42,7 +42,7 @@ body {
 }
 @include mq(desktop) {
   .popup {
-    min-width: 1920px;
+    min-width: 1280px;
     h2 {
       font-size: $text-21;
     }
