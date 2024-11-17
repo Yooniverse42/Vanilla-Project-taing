@@ -15,7 +15,6 @@
     <c-header></c-header>
 
     <main class="main">
-      <!-- 지윤 -->
       <section class="section0">
         <div class="container">
           <h2 class="container__header">
@@ -38,10 +37,28 @@
             <span class="button__message">새로워진 타잉을 만나보세요!</span>
           </a>
         </div>
-        <div class="section0__background"></div>
+        <div class="section0__background">
+          <picture>
+            <source
+              srcset="
+                https://yooniverse.pockethost.io//api/files/6t4fpo6vst22qmz/z35pbk6k3jgwtnf/background_l_w6IVea0VtL.webp
+              "
+              media="(min-width: 1280px)"
+            />
+            <source
+              srcset="
+                https://yooniverse.pockethost.io//api/files/6t4fpo6vst22qmz/z35pbk6k3jgwtnf/background_m_URGfwhLzdo.webp
+              "
+              media="(min-width: 768px) and (max-width: 1279px)"
+            />
+            <img
+              src="https://yooniverse.pockethost.io//api/files/6t4fpo6vst22qmz/z35pbk6k3jgwtnf/background_s_pSS5aNdbE7.webp"
+              alt="타잉 콘텐츠 포스터 모음"
+            />
+          </picture>
+        </div>
       </section>
 
-      <!-- 다경 -->
       <section class="section1">
         <div class="container__message">
           <h2 class="container__message__header">티빙에만 있는 재미</h2>
@@ -54,11 +71,9 @@
             >
           </p>
         </div>
-        <!-- swiper 정상 구현릏 위해 section1__swiper__wrapper 추가 -->
         <div class="section1__swiper__wrapper">
           <div class="section1__swiper1">
             <div class="swiper-wrapper">
-              <!-- swiper slide에 picture 요소 수정 -->
               <div class="swiper-slide">
                 <picture class="swiper__slide__poster">
                   <source
@@ -120,7 +135,6 @@
         </div>
       </section>
 
-      <!-- 승헌 -->
       <section class="section2">
         <div class="container__message">
           <h2 class="container__message__header">내가 찾던 재미</h2>
@@ -264,7 +278,6 @@
         </div>
       </section>
 
-      <!-- 승수 -->
       <section class="section3">
         <svg class="logo2" role="img" aria-label="타잉">
           <use href="/icons/stack.svg#logo2" />
