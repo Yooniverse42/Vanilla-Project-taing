@@ -36,8 +36,8 @@
               </div>
 
               <div class="user__password">
-                <label for="userPassword" class="sr-only">비밀번호</label>
                 <div class="password__wrapper">
+                  <label for="userPassword" class="sr-only">비밀번호</label>
                   <input
                     type="password"
                     id="userPassword"
@@ -49,12 +49,19 @@
                     aria-describedby="userPasswordError"
                     aria-live="polite"
                   />
-                  <span
-                    class="hide__icon"
-                    role="button"
-                    tabindex="0"
-                    aria-label="비밀번호 숨기기"
-                  ></span>
+                  <label
+                    for="userPasswordToggle"
+                    class="user__password__toggle"
+                  >
+                    <input
+                      type="checkbox"
+                      id="userPasswordToggle"
+                      class="user__password__icon"
+                      role="button"
+                      tabindex="0"
+                      aria-label="비밀번호 숨기기"
+                    />
+                  </label>
                 </div>
                 <span id="userPasswordError" class="pw__error__message"
                   >비밀번호는 숫자와 특수문자 포함 6자리 이상 입력
