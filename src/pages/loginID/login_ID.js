@@ -13,21 +13,18 @@ import { authWithPassword } from '@/api/getRecords';
 const loginButton = getNode('.login__button');
 const loginUserID = getNode('#userID');
 const loginUserPassword = getNode('#userPassword');
+const passwordToggleIcon = getNode('#userPasswordToggle');
 const idMessageError = getNode('.id__error__message');
 const pwMessageError = getNode('.pw__error__message');
 const autoLoginCheck = getNode('.check');
-const passwordHideIcon = getNode('.hide__icon');
 
 // 비밀번호 표시/숨김 토글
-let passwordVisible = false;
-passwordHideIcon.addEventListener('click', () => {
-  passwordVisible = !passwordVisible;
-  loginUserPassword.type = passwordVisible ? 'text' : 'password';
-  passwordHideIcon.classList.toggle('visible');
-
-  passwordHideIcon.setAttribute(
+passwordToggleIcon.addEventListener('change', () => {
+  loginUserPassword.type = passwordToggleIcon.checked ? 'text' : 'password';
+  passwordToggleIcon.classList.toggle('visible');
+  passwordToggleIcon.setAttribute(
     'aria-label',
-    passwordVisible ? '비밀번호 숨기기' : '비밀번호 표시'
+    passwordToggleIcon.checked ? '비밀번호 숨기기' : '비밀번호 표시'
   );
 });
 
