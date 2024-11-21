@@ -13,29 +13,41 @@ import { authWithPassword } from '@/api/getRecords';
 const loginButton = getNode('.login__button');
 const loginUserID = getNode('#userID');
 const loginUserPassword = getNode('#userPassword');
+const passwordToggleIcon = getNode('#userPasswordToggle');
 const idMessageError = getNode('.id__error__message');
 const pwMessageError = getNode('.pw__error__message');
 const autoLoginCheck = getNode('.check');
-const passwordHideIcon = getNode('.hide__icon');
 
-// 지동로그인
-let autoLogin = getStorage('autoLogin') || false;
-if (autoLogin) {
-  autoLoginCheck.classList.add('active');
-}
-// 지동로그인 아이콘 클릭 이벤트
+// 비밀번호 표시/숨김 토글
+passwordToggleIcon.addEventListener('change', () => {
+  loginUserPassword.type = passwordToggleIcon.checked ? 'text' : 'password';
+  passwordToggleIcon.classList.toggle('visible');
+  passwordToggleIcon.setAttribute(
+    'aria-label',
+    passwordToggleIcon.checked ? '비밀번호 숨기기' : '비밀번호 표시'
+  );
+});
+
+// 자동로그인 초기 상태 설정
+let autoLogin = false;
+getStorage('autoLogin')
+  .then((result) => {
+    autoLogin = result || false;
+    if (autoLogin) {
+      autoLoginCheck.classList.add('active');
+    }
+  })
+  .catch(() => {
+    autoLogin = false;
+  });
+
+// 자동로그인 아이콘 클릭 이벤트
 autoLoginCheck.addEventListener('click', () => {
   autoLogin = !autoLogin;
   setStorage('autoLogin', autoLogin);
   autoLoginCheck.classList.toggle('active');
 });
-// 비밀번호 표시
-let passwordVisible = false;
-passwordHideIcon.addEventListener('click', () => {
-  passwordVisible = !passwordVisible;
-  loginUserPassword.type = passwordVisible ? 'text' : 'password';
-  passwordHideIcon.classList.toggle('visible');
-});
+
 // 이메일 유효성 검사
 
 let idValid = false;

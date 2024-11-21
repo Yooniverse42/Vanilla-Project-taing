@@ -58,7 +58,7 @@ fieldset {
   position: relative;
 }
 
-.hide__icon {
+.user__password__icon {
   @include size($spacing-16, $spacing-16);
   background-size: cover;
   background-image: url('/icons/stack.svg#hide-pw'); /* 비밀번호 보이기 아이콘 */
@@ -69,7 +69,7 @@ fieldset {
   cursor: pointer;
 }
 
-.hide__icon.visible {
+.user__password__icon.visible {
   background-image: url('/icons/stack.svg#open-pw');
   fill: $brand-red-3; /* 비밀번호 숨기기 아이콘 */
 }
@@ -86,14 +86,10 @@ fieldset {
   display: block;
 }
 
-// 채크벅스, 로그인 버튼
-.login__form__ip__checkbox__wrapper {
-  @include flexbox(row, nowrap, flex-start, center, null);
-  width: 100%;
-}
-
 // checkbox 자동로그인
 .login__ip__security__remember__me {
+  @include flexbox(row, nowrap, flex-start, center, null);
+  width: 100%;
   margin-top: $spacing-8;
   font-size: $text-12;
   color: $gray-500;
@@ -112,7 +108,7 @@ fieldset {
       padding-left: calc($spacing-16 + $spacing-4);
       display: flex;
       align-items: center;
-      background: url("/icons/stack.svg#check-filled-active");
+      background: url('/icons/stack.svg#check-filled-active');
       background-position: -30px;
       background-repeat: no-repeat;
     }
@@ -123,12 +119,11 @@ fieldset {
     padding-left: calc($spacing-16 + $spacing-4);
     display: flex;
     align-items: center;
-    background: url("/icons/stack.svg#check-filled-default");
+    background: url('/icons/stack.svg#check-filled-default');
     background-position: -30px;
     background-repeat: no-repeat;
   }
 }
-
 
 // 로그인 버튼
 .login__button {
@@ -142,23 +137,20 @@ fieldset {
 }
 
 // 아이디 찾기, 비번 찾기, 계정 유무 물어 보기
-.login__form__search {
-  @include marginY($spacing-48);
-  @include flexbox(column, nowrap, center, center, $spacing-24);
+.login__search__container,
+.login__register__container {
+  @include flexbox(row, nowrap, center, center, $spacing-12);
   width: 100%;
   color: $gray-300;
   font-size: $text-12;
+}
 
-  .login__search__list {
-    @include flexbox(row, nowrap, center, center, $spacing-24);
+.line_divide {
+  color: $gray-800;
+}
 
-    .line_divide::before {
-      content: '';
-      @include size(1px, $spacing-12);
-      display: block;
-      background-color: $gray-600;
-    }
-  }
+.login__register__container {
+  margin: $spacing-20 0 $spacing-48;
 }
 
 // 미디어 쿼리 tablet
@@ -189,18 +181,18 @@ fieldset {
   .login__ip__security__remember__me {
     margin-top: $spacing-12;
     font-size: 0.875rem;
-  
+
     .login__ip__remember__me {
       width: $spacing-20;
       height: $spacing-20;
-  
+
       &:checked + .login__remember__me__label {
         width: 100px;
         padding-left: calc($spacing-20 + $spacing-8);
         background-position: -38px;
       }
     }
-  
+
     .login__remember__me__label {
       width: 100px;
       padding-left: calc($spacing-20 + $spacing-8);
@@ -212,15 +204,8 @@ fieldset {
     font-size: $text-16;
   }
 
-  .login__form__search {
-    @include marginY(4rem);
+  .login__search__container .login__register__container {
     font-size: $text-16;
-
-    .login__search__list {
-      .line_divide::before {
-        height: $spacing-16;
-      }
-    }
   }
 }
 
@@ -253,26 +238,27 @@ fieldset {
     font-size: $text-28;
   }
 
-  .hide__icon {
+  .user__password__icon {
     @include size($spacing-36, $spacing-36);
     right: $spacing-28;
+    top: calc(50% + #{$spacing-36 / 4});
   }
 
   .login__ip__security__remember__me {
     margin-top: $spacing-16;
     font-size: $text-21;
-  
+
     .login__ip__remember__me {
       width: $spacing-26;
       height: $spacing-26;
-  
+
       &:checked + .login__remember__me__label {
         width: 130px;
         padding-left: calc($spacing-26 + $spacing-12);
         background-position: -50px;
       }
     }
-    
+
     .login__remember__me__label {
       width: 130px;
       padding-left: calc($spacing-26 + $spacing-12);
@@ -286,15 +272,13 @@ fieldset {
     font-size: $text-28;
   }
 
-  .login__form__search {
-    @include marginY(4rem);
+  .login__search__container,
+  .login__register__container {
     font-size: $text-28;
     gap: $spacing-48;
+  }
 
-    .login__search__list {
-      .line_divide::before {
-        height: 32px;
-      }
-    }
+  .login__register__container {
+    margin: $spacing-48 0 10rem;
   }
 }
