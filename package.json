@@ -21,6 +21,7 @@
   "dependencies": {
     "kind-tiger": "^1.0.1",
     "pocketbase": "^0.21.3",
+    "sweetalert2": "^11.14.5",
     "swiper": "^11.1.4"
   }
 }
