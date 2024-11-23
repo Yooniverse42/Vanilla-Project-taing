@@ -241,7 +241,7 @@ fieldset {
   .user__password__icon {
     @include size($spacing-36, $spacing-36);
     right: $spacing-28;
-    top: calc(50% + #{$spacing-36 / 4});
+    top: calc(50% + $spacing-8);
   }
 
   .login__ip__security__remember__me {
