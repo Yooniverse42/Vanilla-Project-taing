@@ -1,0 +1,111 @@
+@use '@/styles/index' as *;
+
+.swal2-title {
+  font-size: $text-16;
+}
+
+.swal2-text,
+.swal2-btn-confirm,
+.swal2-btn-cancel {
+  font-size: $text-12 !important;
+}
+
+.swal2-width {
+  width: 20rem;
+}
+
+.swal2-icon {
+  border-width: 0.2rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.5rem;
+}
+
+div:where(.swal2-icon).swal2-error [class^='swal2-x-mark-line'] {
+  top: 1rem !important;
+  width: 1rem !important;
+}
+
+/* toast width */
+.swal2-container.swal2-center.swal2-backdrop-show {
+  min-width: 20rem;
+  width: 28rem;
+}
+
+.swal2-toast-progressBar {
+  background-color: $brand-red-2;
+}
+
+//
+//
+@include mq(tablet) {
+  .swal2-title {
+    font-size: $text-28;
+  }
+
+  .swal2-text,
+  .swal2-btn-confirm,
+  .swal2-btn-cancel {
+    font-size: $text-16 !important;
+  }
+
+  .swal2-width {
+    width: 25rem;
+  }
+
+  .swal2-icon {
+    border-width: 0.3rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: $text-12;
+  }
+
+  div:where(.swal2-icon).swal2-error [class^='swal2-x-mark-line'] {
+    top: 1.4rem !important;
+    width: 1.4rem !important;
+  }
+
+  /* toast width */
+  .swal2-container.swal2-center.swal2-backdrop-show {
+    width: 28rem;
+  }
+}
+
+//
+//
+@include mq(desktop) {
+  .swal2-title {
+    font-size: $text-38;
+  }
+
+  .swal2-text,
+  .swal2-btn-confirm,
+  .swal2-btn-cancel {
+    font-size: $text-28 !important;
+  }
+
+  .swal2-width {
+    width: 40rem;
+  }
+
+  .swal2-icon {
+    border-width: 0.5rem;
+    width: 5rem;
+    height: 5rem;
+    font-size: $text-21;
+  }
+
+  div:where(.swal2-icon).swal2-error [class^='swal2-x-mark-line'] {
+    top: 2.3rem !important;
+    width: 2.3rem !important;
+  }
+
+  /* toast width */
+  .swal2-container.swal2-center.swal2-backdrop-show {
+    width: 45rem;
+
+    #swal2-title {
+      font-size: 1.7rem;
+    }
+  }
+}
