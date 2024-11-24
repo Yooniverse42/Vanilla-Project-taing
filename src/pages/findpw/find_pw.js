@@ -2,6 +2,7 @@ import '@/pages/findpw/find_pw.scss';
 import '@/layout/index';
 import { getNode, idReg, debounce } from '@/library/index';
 import { getRecord } from '@/api/getRecords';
+import { sweetConfirm, sweetToast } from '@/layout/sweetAlert';
 
 const checkButton = getNode('.check__email');
 const userId = getNode('#findPw__id');
@@ -47,18 +48,25 @@ function deleteButtonOn() {
 
 // 서버에서 아이디 찾기
 // 입력한 이메일이 서버에 있으면 아이디 알려주기
-
 async function checkUserEmail() {
   const filter = `username = "${userId.value}"`;
   const userRecord = await getRecord('users', filter);
 
   if (userRecord.items.length >= 1 && isEmailValid) {
-    alert(
-      `등록하신 이메일로 비밀번호가 전송되었습니다. 이메일을 확인 해주세요.`
-    );
-    location.href="/src/pages/loginID/index.html"
+    sweetConfirm(
+      'info',
+      '비밀번호 찾기 결과',
+      `등록하신 이메일로 비밀번호가 전송되었습니다.<br/>이메일을 확인해 주세요.`,
+      '로그인 하기',
+      null,
+      '취소'
+    ).then((res) => {
+      if (res.isConfirmed) {
+        window.location.href = '/src/pages/loginID/';
+      }
+    });
   } else {
-    alert('입력하신 아이디를 다시 확인 해주세요!');
+    sweetToast('info', '입력하신 아이디를 다시 확인해 주세요!');
   }
 }
 
@@ -68,3 +76,9 @@ userId.addEventListener('keydown', debounce(deleteButtonOn, 100));
 userId.addEventListener('keydown', debounce(checkButtonOn, 100));
 buttonDelete.addEventListener('click', debounce(checkButtonOn, 100));
 checkButton.addEventListener('click', checkUserEmail);
+userId.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    checkUserEmail();
+  }
+});
