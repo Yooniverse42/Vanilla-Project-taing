@@ -1,11 +1,16 @@
 @use '@/styles/index' as *;
 
+.swal2-container.swal2-center.swal2-backdrop-show {
+  width: 100%;
+}
+
 .swal2-title {
   font-size: $text-16;
 }
 
 .swal2-text,
 .swal2-btn-confirm,
+.swal2-btn-deny,
 .swal2-btn-cancel {
   font-size: $text-12 !important;
 }
@@ -27,17 +32,13 @@ div:where(.swal2-icon).swal2-error [class^='swal2-x-mark-line'] {
 }
 
 /* toast width */
-.swal2-container.swal2-center.swal2-backdrop-show {
-  min-width: 20rem;
-  width: 28rem;
+.swal2-toast-width {
+  width: 28rem !important;
 }
-
 .swal2-toast-progressBar {
   background-color: $brand-red-2;
 }
 
-//
-//
 @include mq(tablet) {
   .swal2-title {
     font-size: $text-28;
@@ -45,12 +46,13 @@ div:where(.swal2-icon).swal2-error [class^='swal2-x-mark-line'] {
 
   .swal2-text,
   .swal2-btn-confirm,
+  .swal2-btn-deny,
   .swal2-btn-cancel {
     font-size: $text-16 !important;
   }
 
   .swal2-width {
-    width: 25rem;
+    width: 30rem;
   }
 
   .swal2-icon {
@@ -66,13 +68,11 @@ div:where(.swal2-icon).swal2-error [class^='swal2-x-mark-line'] {
   }
 
   /* toast width */
-  .swal2-container.swal2-center.swal2-backdrop-show {
-    width: 28rem;
+  .swal2-toast-width {
+    width: 30rem !important;
   }
 }
 
-//
-//
 @include mq(desktop) {
   .swal2-title {
     font-size: $text-38;
@@ -80,12 +80,13 @@ div:where(.swal2-icon).swal2-error [class^='swal2-x-mark-line'] {
 
   .swal2-text,
   .swal2-btn-confirm,
+  .swal2-btn-deny,
   .swal2-btn-cancel {
     font-size: $text-28 !important;
   }
 
   .swal2-width {
-    width: 40rem;
+    width: 50rem;
   }
 
   .swal2-icon {
@@ -101,11 +102,11 @@ div:where(.swal2-icon).swal2-error [class^='swal2-x-mark-line'] {
   }
 
   /* toast width */
-  .swal2-container.swal2-center.swal2-backdrop-show {
-    width: 45rem;
+  .swal2-toast-width {
+    width: 45rem !important;
+  }
 
-    #swal2-title {
-      font-size: 1.7rem;
-    }
+  #swal2-title {
+    font-size: 1.7rem;
   }
 }
