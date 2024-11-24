@@ -61,7 +61,7 @@ fieldset {
 .user__password__icon {
   @include size($spacing-16, $spacing-16);
   background-size: cover;
-  background-image: url('/icons/stack.svg#hide-pw'); /* 비밀번호 보이기 아이콘 */
+  background-image: url('/icons/stack.svg#hide-pw');
   position: absolute;
   right: $spacing-10;
   top: 50%;
@@ -71,7 +71,7 @@ fieldset {
 
 .user__password__icon.visible {
   background-image: url('/icons/stack.svg#open-pw');
-  fill: $brand-red-3; /* 비밀번호 숨기기 아이콘 */
+  fill: $brand-red-3;
 }
 
 // 공통 에러 메세지
@@ -143,17 +143,21 @@ fieldset {
   width: 100%;
   color: $gray-300;
   font-size: $text-12;
+
+  a:hover {
+    color: $white;
+  }
 }
 
 .line_divide {
-  color: $gray-800;
+  font-size: $text-16;
+  color: $gray-600;
 }
 
 .login__register__container {
   margin: $spacing-20 0 $spacing-48;
 }
 
-// 미디어 쿼리 tablet
 @include mq(tablet) {
   .main__login {
     @include marginX(auto);
@@ -204,8 +208,14 @@ fieldset {
     font-size: $text-16;
   }
 
-  .login__search__container .login__register__container {
+  .login__search__container,
+  .login__register__container {
     font-size: $text-16;
+    gap: $spacing-32;
+  }
+
+  .line_divide {
+    font-size: $text-22;
   }
 }
 
@@ -276,6 +286,10 @@ fieldset {
   .login__register__container {
     font-size: $text-28;
     gap: $spacing-48;
+  }
+
+  .line_divide {
+    font-size: $text-34;
   }
 
   .login__register__container {

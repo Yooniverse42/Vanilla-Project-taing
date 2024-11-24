@@ -10,8 +10,12 @@ body {
   font-size: $text-12;
 }
 
+section {
+  @include marginX($spacing-48);
+}
+
 .findpw__container {
-  margin: 4rem $spacing-48;
+  margin-top: 4rem;
 }
 
 .findPw__title {
@@ -87,6 +91,22 @@ body {
   cursor: not-allowed;
 }
 
+.login__search__container {
+  @include marginY($spacing-48);
+  @include flexbox(row, nowrap, center, center, $spacing-12);
+  color: $gray-300;
+  font-size: $text-12;
+
+  a:hover {
+    color: $white;
+  }
+}
+
+.line_divide {
+  font-size: $text-16;
+  color: $gray-600;
+}
+
 @include mq(tablet) {
   .main {
     @include marginX(auto);
@@ -94,8 +114,12 @@ body {
     font-size: $text-16;
   }
 
+  section {
+    margin: 0 10rem;
+  }
+
   .findpw__container {
-    margin: 6rem 10rem;
+    margin-top: 6.25rem;
   }
 
   .findPw__title {
@@ -122,6 +146,16 @@ body {
     margin-top: $spacing-24;
     height: 3.375rem;
   }
+
+  .login__search__container {
+    @include marginY(4rem);
+    font-size: $text-16;
+    gap: $spacing-32;
+  }
+
+  .line_divide {
+    font-size: $text-22;
+  }
 }
 
 @include mq(desktop) {
@@ -129,10 +163,14 @@ body {
     font-size: 2.375rem;
   }
 
-  .findpw__container {
+  section {
     min-width: 45.75rem;
-    margin: 10rem auto;
+    margin: 0 auto;
+  }
+
+  .findpw__container {
     font-size: $text-28;
+    margin-top: 10.6rem;
   }
 
   .findPw__title {
@@ -166,5 +204,15 @@ body {
     margin-top: $spacing-36;
     font-size: $text-28;
     cursor: pointer;
+  }
+
+  .login__search__container {
+    @include marginY(6rem);
+    font-size: $text-28;
+    gap: $spacing-48;
+  }
+
+  .line_divide {
+    font-size: $text-34;
   }
 }

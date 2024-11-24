@@ -32,15 +32,25 @@ export function sweetError(title, content) {
   });
 }
 
-export function sweetConfirm(title, content, confirmText, cancelText = '취소') {
+export function sweetConfirm(
+  icon,
+  title,
+  content,
+  confirmText,
+  denyText,
+  cancelText
+) {
   return Swal.fire({
     ...defaultConfig,
+    icon,
     title,
-    icon: 'warning',
     html: content.html || content,
-    showCancelButton: true,
+    showDenyButton: denyText ? true : false,
+    showCancelButton: cancelText ? true : false,
+    denyButtonColor: '#023eb5',
     cancelButtonColor: '#404040',
     confirmButtonText: confirmText,
+    denyButtonText: denyText,
     cancelButtonText: cancelText,
     customClass: {
       icon: 'swal2-icon',
@@ -48,6 +58,7 @@ export function sweetConfirm(title, content, confirmText, cancelText = '취소')
       htmlContainer: 'swal2-text',
       popup: 'swal2-width',
       confirmButton: 'swal2-btn-confirm',
+      denyButton: 'swal2-btn-deny',
       cancelButton: 'swal2-btn-cancel',
     },
   });
@@ -59,10 +70,9 @@ export function sweetToast(icon, title) {
     icon,
     title,
     toast: true,
-    // iconColor: '#b50205',
     position: 'center-center',
     showConfirmButton: false,
-    timer: 3000,
+    timer: 1500,
     timerProgressBar: true,
     customClass: {
       icon: 'swal2-icon',
