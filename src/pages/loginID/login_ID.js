@@ -9,6 +9,7 @@ import {
   setStorage,
 } from '@/library/index';
 import { authWithPassword } from '@/api/getRecords';
+import { sweetError, sweetToast } from '@/layout/sweetAlert';
 
 const loginButton = getNode('.login__button');
 const loginUserID = getNode('#userID');
@@ -87,23 +88,36 @@ loginButton.addEventListener('click', async (e) => {
     try {
       const response = await authWithPassword(userId, userPassword);
       if (response.success) {
-        setStorage('user', response.authData); //사용자 정보 로컬 스토리지에 저장
-        location.href = '/src/pages/profile_select/index.html'; //로그인 성공!!
+        setStorage('user', response.authData);
+        location.href = '/src/pages/profile_select/index.html';
       } else {
-        alert('로그인 실패:' + response.error);
+        sweetError('로그인 실패', `아이디 또는 비밀번호를 확인해 주세요.`);
       }
     } catch (error) {
       console.error('로그인 오류:', error);
-      alert('로그인 중 오류가 발생했습니다.');
+      sweetToast(
+        'error',
+        '일시적인 오류로 로그인할 수 없습니다. 잠시 후 다시 이용해 주세요.'
+      );
     }
   } else {
-    alert('아이디와 비밀번호를 확인해 주세요.');
+    sweetToast('info', '아이디와 비밀번호를 확인해 주세요.');
+    loginUserID.focus();
   }
 });
 
 //  이벤트 실행
-loginUserID.addEventListener('keydown', debounce(handleIdValid, 100));
-loginUserPassword.addEventListener(
-  'keydown',
-  debounce(handlePasswordValid, 100)
-);
+loginUserID.addEventListener('input', debounce(handleIdValid, 100));
+loginUserID.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    loginUserPassword.focus();
+  }
+});
+loginUserPassword.addEventListener('input', debounce(handlePasswordValid, 100));
+loginUserPassword.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    loginButton.click();
+  }
+});
