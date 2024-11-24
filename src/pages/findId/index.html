@@ -16,14 +16,12 @@
 
     <main class="main">
       <section class="findId_container">
-        <!-- 타이틀 -->
         <h2 class="findId_title">아이디 찾기</h2>
 
-        <!-- 입력폼 -->
         <form class="findId_content" action="/">
           <h3>
             이메일로 찾기
-            <span>가입 시 등록한 이메일을 입력해주세요.</span>
+            <p>가입 시 등록한 이메일을 입력해주세요.</p>
           </h3>
           <label class="findId_label" for="findId_email">
             <input
@@ -40,26 +38,24 @@
           </span>
         </form>
         <button class="check_email_button" type="button" disabled>확인</button>
+      </section>
 
-        <div class="line_border"><p>또는</p></div>
+      <section class="line_border"><p>또는</p></section>
 
-        <div class="findId_sub-content">
-          <h3>
-            본인인증으로 찾기
-            <span>
-              이미 본인인증이 완료된 계정에 한하여 아이디 찾기가 가능합니다.
-            </span>
-          </h3>
-          <button class="button_valid_thirdparty" type="button">
-            본인인증하기
-          </button>
-        </div>
+      <section class="findId_sub-content">
+        <h3>
+          본인인증으로 찾기
+          <p>이미 본인인증이 완료된 계정에 한하여 아이디 찾기가 가능합니다.</p>
+        </h3>
+        <button class="button_valid_thirdparty" type="button">
+          본인인증하기
+        </button>
+      </section>
 
-        <nav class="findId_nav">
-          <a href="/src/pages/loginID/index.html">로그인하기</a>
-          <div class="line_divide"></div>
-          <a href="/src/pages/findPw/index.html">비밀번호 찾기</a>
-        </nav>
+      <section class="login__search__container">
+        <a href="/src/pages/loginID/index.html">로그인 하기</a>
+        <span class="line_divide" aria-hidden="true">|</span>
+        <a href="/src/pages/findpw/index.html">비밀번호 찾기</a>
       </section>
     </main>
 
