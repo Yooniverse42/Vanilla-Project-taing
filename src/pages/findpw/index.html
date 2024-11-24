@@ -16,7 +16,6 @@
 
     <main class="main">
       <section class="findpw__container">
-        <!-- 타이틀 -->
         <h1 class="findPw__title">비밀번호 찾기</h1>
 
         <p class="findPw__message">
@@ -24,7 +23,7 @@
           발송됩니다. 메일을 확인하여 12시간 이내에 비밀번호 재설정을
           완료해주세요.
         </p>
-        <!-- 입력폼 -->
+
         <form id="findPw__form" class="findPw__content" action="/">
           <label class="findPw__label sr-only" for="findPw__id"
             >비밀번호 찾기</label
@@ -46,6 +45,12 @@
         <button class="check__email" type="button" form="findPw__form" disabled>
           확인
         </button>
+      </section>
+
+      <section class="login__search__container">
+        <a href="/src/pages/loginID/index.html">로그인 하기</a>
+        <span class="line_divide" aria-hidden="true">|</span>
+        <a href="/src/pages/findId/index.html">아이디 찾기</a>
       </section>
     </main>
 
