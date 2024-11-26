@@ -8,17 +8,31 @@
     <title>TAING : 프로필 선택</title>
   </head>
   <body>
-    <section class="profile__page">
-      <div class="header__title__container">
-        <h2 class="header__title">프로필 선택</h2>
-        <p>시청할 프로필을 선택해주세요</p>
-      </div>
+    <header class="header">
+      <h1 class="header__logo">
+        <img class="logo1" src="/icons/stack.svg#logo" alt="타잉" />
+      </h1>
+    </header>
 
-      <div class="profile__picture__container"></div>
-      <a href="/src/pages/profile_edit/" type="button" class="edit__button"
-        >프로필 편집</a
-      >
-      <c-footer></c-footer>
-    </section>
+    <main class="profile__page">
+      <h2 class="header__title__container">
+        프로필 선택
+        <p>시청할 프로필을 선택해 주세요</p>
+      </h2>
+
+      <section class="profile__select__container">
+        <section class="profile__picture__container"></section>
+        <div class="profile__button__container">
+          <button type="button" class="edit__button profile__button">
+            프로필 편집
+          </button>
+          <button type="button" class="add__button profile__button">
+            프로필 추가
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <c-footer></c-footer>
   </body>
 </html>
