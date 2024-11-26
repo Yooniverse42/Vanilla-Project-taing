@@ -3,6 +3,7 @@ import '@/layout/index';
 import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
 import { getNode, idReg } from '@/library/index';
+import { getProfileImg } from '@/library/renderImgList';
 
 const registerForm = getNode('.input-form');
 const idInput = getNode('#idInput');
@@ -48,6 +49,21 @@ async function createAccount() {
   const form = new FormData();
   form.append('avatar', imageBlob);
   console.log(form.get('avatar'));
+
+  function getBreakpoint() {
+    const width = window.innerWidth;
+    if (width >= 1280) return 'desktop';
+    if (width >= 768) return 'tablet';
+    return 'mobile';
+  }
+
+  const defaultProfile = {
+    id: 'profile1',
+    name: id,
+    avatar: getProfileImg(1, getBreakpoint(), 'photo'),
+    isLocked: false,
+  };
+
   const data = {
     username: id,
     name: id,
@@ -56,6 +72,7 @@ async function createAccount() {
     passwordConfirm: pwCheck, //8자 이상
     emailVisibility: true,
     avatar: form.get('avatar'),
+    profiles: [defaultProfile],
   };
 
   const sameIdEmail = await getData('users', {
