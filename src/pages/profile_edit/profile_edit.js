@@ -1,10 +1,11 @@
 import '@/styles/pages/profile.scss';
 import '@/layout/footer';
 
-import { renderProfileItem } from '../../layout/profile_item';
-import { getNode } from '../../library/getNode';
+import { renderProfileItem } from '@/layout/profile_item';
+import { getNode } from '@/library/getNode';
 
-renderProfileItem('editPage');
+// renderProfileItem('editPage');
+renderProfileItem('edit');
 const avatarsContainer = getNode('.profile__picture__container');
 avatarsContainer.addEventListener('click', saveAvatarInfo);
 
