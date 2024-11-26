@@ -1,50 +1,39 @@
-import getPbImageURL from '../api/getPbImageURL';
-import { insertLast } from '../library/insert';
+import { insertLast } from '@/library/insert';
+import { renderProfileImg } from '@/library/renderImgList';
 
-export function renderProfileItem(pageName) {
-  const defaultImage = '/image/avatar2.png';
+export async function renderProfileItem(movePage) {
   const userData = JSON.parse(localStorage.getItem('user'));
   if (!userData) {
     location.href = '/src/pages/loginID/';
     return;
   }
+
   const { record } = userData;
+  const profiles = record.profiles || [];
 
-  const newItem = {
-    ...record,
-    avatar: getPbImageURL(
-      {
-        ...record,
-        avatar: [record.avatar],
-      },
-      'mobile',
-      'avatar'
-    ),
-  };
+  for (const [index, item] of profiles.entries()) {
+    let href;
+    if (movePage === 'main') {
+      href = item.isLocked ? '/index.html' : '/src/pages/taing/index.html';
+    } else if (movePage === 'edit') {
+      href = '/src/pages/profile_edit_detail/index.html';
+    } else {
+      href = '/src/pages/profile_select/';
+    }
 
-  //임시 이미지
-
-  const profiles = [
-    { name: '슬비님', avatar: '/image/defaultavatar1.png' },
-    { name: '범쌤', avatar: '/image/defaultavatar2.png' },
-    { name: '야무', avatar: '/image/defaultavatar3.png' },
-  ];
-  // /src/pages/${pageName === 'selectPage' ? 'taing' : 'profile_edit_detail'}/index.html
-  [...profiles, newItem].forEach((item) => {
-    const template = `    <figure class="avatar">
-
-           <a href="#" class="edit__icon__container">
-            <svg class="edit-icon" role="img" aria-label="편집 아이콘">
-              <use href="/icons/stack.svg#${pageName === 'selectPage' ? 'profile-lock' : 'profile-pencil'}" />
-            </svg>
-          </a>
-          <img
-            class="avatar__picture"
-            src=${item.avatar || defaultImage}
-            alt="프로필 아바타"
-          />
-          <figcaption class="avatar__name">${item.name}</figcaption>
-        </figure>`;
+    // 프로필 아이템의 기본 구조만 먼저 추가
+    const template = `
+      <figure class="avatar" data-index="${index}">
+        <a href="${href}" class="avatar__picture__container ${item.isLocked ? 'is--locked' : ''}">
+        </a>
+        <figcaption class="avatar__name">${item.name}</figcaption>
+      </figure>`;
     insertLast('.profile__picture__container', template);
-  });
+
+    // 방금 추가한 figure의 a 태그를 선택
+    const container = document.querySelector(
+      `[data-index="${index}"] .avatar__picture__container`
+    );
+    await renderProfileImg(index + 1, item.name, container);
+  }
 }
