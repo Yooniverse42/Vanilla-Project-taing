@@ -1,6 +1,7 @@
 @use '@/styles/index' as *;
+@use '@/styles/components/dialog' as *;
+
 body {
-  min-width: 20rem;
   background-color: $black;
 }
 
@@ -8,7 +9,7 @@ body {
   @include flexbox(row, nowrap, null, center);
   width: 100%;
   height: 38px;
-  margin: 0 16px;
+  padding: 0 16px;
   background: transparent;
 
   .header__logo {
@@ -67,6 +68,7 @@ body {
       &:hover,
       &:focus {
         outline: 3px solid $white;
+        border-radius: 4px;
       }
     }
 
@@ -100,12 +102,12 @@ body {
   }
 }
 
-.profile__button__container {
-  @include flexbox(row, nowrap, center, center, $gap: $spacing-24);
+.edit__button__container {
+  @include flexbox(row, nowrap, center, center);
 }
 
-.edit__button,
-.add__button {
+.edit__button {
+  @include flexbox(row, nowrap, center, center);
   width: 135px;
   height: 42px;
   border-radius: 4px;
@@ -127,7 +129,7 @@ body {
 @include mq(tablet) {
   .header {
     height: 56px;
-    margin: 0 40px;
+    padding: 0 40px;
 
     .header__logo {
       width: 77px;
@@ -136,7 +138,6 @@ body {
   }
 
   .profile__page {
-    @include marginX(auto);
     margin: 0 0 4.375rem;
     font-size: $text-16;
   }
@@ -173,12 +174,11 @@ body {
     }
   }
 
-  .profile__button__container {
-    @include flexbox(row, nowrap, center, center, $gap: $spacing-32);
+  .edit__button__container {
+    @include flexbox(row, nowrap, center, center);
   }
 
-  .edit__button,
-  .add__button {
+  .edit__button {
     width: 156px;
     height: 50px;
     border-radius: 4px;
@@ -189,7 +189,7 @@ body {
 @include mq(desktop) {
   .header {
     height: 100px;
-    margin: 0 70px;
+    padding: 0 70px;
 
     .header__logo {
       width: 132px;
@@ -239,12 +239,11 @@ body {
     }
   }
 
-  .profile__button__container {
-    @include flexbox(row, nowrap, center, center, $gap: $spacing-52);
+  .edit__button__container {
+    @include flexbox(row, nowrap, center, center);
   }
 
-  .edit__button,
-  .add__button {
+  .edit__button {
     width: 272px;
     height: 86px;
     font-size: $text-28;
