@@ -1,0 +1,143 @@
+@use '@/styles/utils/index' as *;
+
+dialog:not([open]) {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.dialog__container {
+  @include flexbox(column, nowrap, center, center, $spacing-28);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 2rem 3rem;
+  border: none;
+  color: $white;
+  background-color: $brand-dark-2;
+
+  .dialog__header {
+    @include flexbox(column, nowrap, center, center, $spacing-12);
+    font-size: $text-16;
+
+    p {
+      font-size: $text-12;
+    }
+
+    .header__content__notMatch {
+      text-align: center;
+      line-height: 150%;
+    }
+  }
+
+  .dialog__input__container {
+    @include flexbox(row, nowrap, center, center, $spacing-12);
+    width: 100%;
+  }
+
+  input[id^='profilePw'] {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    aspect-ratio: 1 / 1;
+    color: $white;
+    border-radius: 4px;
+    background-color: $brand-dark-1;
+    font-size: $text-21;
+  }
+
+  .dialog__button {
+    @include flexbox(column, nowrap, center, center, $spacing-12);
+  }
+
+  .dialog__exit {
+    padding: 0.5rem $spacing-14;
+    border-radius: 4px;
+    color: $white;
+    background-color: $brand-red-1;
+    font-size: $text-12;
+  }
+
+  .dialog__reset {
+    color: $gray-600;
+    background-color: transparent;
+    font-size: $text-12;
+  }
+}
+
+@include mq(tablet) {
+  .dialog__container {
+    @include flexbox(column, nowrap, center, center, $spacing-36);
+    padding: 4rem 6rem;
+
+    .dialog__header {
+      @include flexbox(column, nowrap, center, center, $spacing-28);
+      font-size: $text-28;
+
+      p {
+        font-size: $text-16;
+      }
+    }
+
+    .dialog__input__container {
+      @include flexbox(row, nowrap, center, center, $spacing-16);
+    }
+
+    input[id^='profilePw'] {
+      width: 55px;
+      font-size: $text-28;
+    }
+
+    .dialog__button {
+      @include flexbox(column, nowrap, center, center, $spacing-20);
+    }
+
+    .dialog__exit {
+      padding: 0.8rem $spacing-28;
+      font-size: $text-16;
+    }
+
+    .dialog__reset {
+      font-size: $text-16;
+    }
+  }
+}
+
+@include mq(desktop) {
+  .dialog__container {
+    @include flexbox(column, nowrap, center, center, $spacing-56);
+    padding: 5rem 10rem;
+
+    .dialog__header {
+      @include flexbox(column, nowrap, center, center, $spacing-48);
+      font-size: 2.8rem;
+
+      p {
+        font-size: $text-28;
+      }
+    }
+
+    .dialog__input__container {
+      @include flexbox(row, nowrap, center, center, $spacing-22);
+    }
+
+    input[id^='profilePw'] {
+      width: 80px;
+      font-size: $text-34;
+    }
+
+    .dialog__button {
+      @include flexbox(column, nowrap, center, center, $spacing-48);
+    }
+
+    .dialog__exit {
+      padding: $spacing-14 $spacing-32;
+      font-size: $text-28;
+    }
+
+    .dialog__reset {
+      font-size: $text-28;
+    }
+  }
+}
