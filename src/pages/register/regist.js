@@ -3,7 +3,7 @@ import '@/layout/index';
 import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
 import { getNode, idReg } from '@/library/index';
-import { getProfileImg } from '@/library/renderImgList';
+import { sweetConfirm } from '@/layout/sweetAlert';
 
 const registerForm = getNode('.input-form');
 const idInput = getNode('#idInput');
@@ -37,12 +37,16 @@ async function createAccount() {
   const pw = pwInput.value;
   const pwCheck = pwCheckInput.value;
   const email = emailInput.value;
-  const imageBlob = await getImageData('profile') //
+  const image = await getImageData('profile').then(
+    (response) => response.items[0].photo[Math.floor(Math.random() * 4)]
+  );
+
+  const imageBlob = await getImageData('profile')
     .then((response) => ({
       ...response.items[0],
-      photo: [response.items[0].field],
+      photo: [response.items[0].photo[Math.floor(Math.random() * 4)]],
     }))
-    .then((item) => getPbImageURL(item)) //
+    .then((item) => getPbImageURL(item))
     .then((url) => fetch(url))
     .then((response) => response.blob());
 
@@ -50,18 +54,11 @@ async function createAccount() {
   form.append('avatar', imageBlob);
   console.log(form.get('avatar'));
 
-  function getBreakpoint() {
-    const width = window.innerWidth;
-    if (width >= 1280) return 'desktop';
-    if (width >= 768) return 'tablet';
-    return 'mobile';
-  }
-
   const defaultProfile = {
     id: 'profile1',
     name: id,
-    avatar: getProfileImg(1, getBreakpoint(), 'photo'),
-    isLocked: false,
+    avatar: image,
+    lockPassword: null,
   };
 
   const data = {
@@ -80,7 +77,12 @@ async function createAccount() {
   }).then((result) => result.length);
 
   if (sameIdEmail) {
-    alert('아이디 또는 이메일이 이미 존재합니다');
+    sweetConfirm(
+      'info',
+      '회원가입 결과',
+      '아이디 또는 이메일이 이미 존재합니다',
+      '확인'
+    );
     return;
   } else {
     modal.classList.add('modal-active');
