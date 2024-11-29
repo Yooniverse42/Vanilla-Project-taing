@@ -32,7 +32,7 @@ export async function addProfile(userId, profileData) {
       id: `profile${currentProfiles.length + 1}`,
       name: profileData.name,
       avatar: profileData.avatar,
-      isLocked: false,
+      lockPassword: null,
     };
 
     const updatedProfiles = [...currentProfiles, newProfile];
