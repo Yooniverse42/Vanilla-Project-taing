@@ -22,6 +22,10 @@ export async function renderImgList(collection, categoryName, node) {
 }
 
 export async function renderProfileImg(profileNumber, avatarName, container) {
+  const user = JSON.parse(localStorage.getItem('user')).record.profiles;
+  const myProfileAvatar = user.find((item) => item.name == avatarName).avatar;
+  console.log(myProfileAvatar);
+
   const records = await getRecord('profile', `name='profile${profileNumber}'`);
   const item = records.items[0];
 
@@ -47,7 +51,7 @@ export async function getProfileImg(
   breakpoint = 'mobile',
   fileName = 'photo'
 ) {
-  const records = await getRecord('profile', `name=profile${profileNumber}`);
+  const records = await getRecord('profile', `name='profile${profileNumber}'`);
   const item = records.items[0];
 
   if (!item) return null;
