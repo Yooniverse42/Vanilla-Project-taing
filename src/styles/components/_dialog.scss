@@ -8,7 +8,8 @@ button {
   cursor: pointer;
 }
 
-.dialog__container {
+.dialog__container,
+.dialog__accountPw__container {
   @include flexbox(column, nowrap, center, center, $spacing-28);
   top: 50%;
   transform: translateY(-50%);
@@ -25,6 +26,8 @@ button {
       font-size: $text-12;
     }
 
+    .header__content__default,
+    .header__content__confirm,
     .header__content__notMatch {
       text-align: center;
       line-height: 150%;
@@ -51,7 +54,9 @@ button {
     @include flexbox(column, nowrap, center, center, $spacing-12);
   }
 
-  .dialog__exit {
+  .dialog__exit__button,
+  .password__reset__button,
+  #input__reset__password {
     padding: 0.5rem $spacing-14;
     border-radius: 4px;
     color: $white;
@@ -59,7 +64,14 @@ button {
     font-size: $text-12;
   }
 
-  .dialog__reset {
+  #input__reset__password {
+    padding: 0.5rem;
+    color: $white;
+    background-color: $black;
+  }
+
+  .dialog__reset__button,
+  .input__exit__button {
     color: $gray-600;
     background-color: transparent;
     font-size: $text-12;
@@ -67,7 +79,8 @@ button {
 }
 
 @include mq(tablet) {
-  .dialog__container {
+  .dialog__container,
+  .dialog__accountPw__container {
     @include flexbox(column, nowrap, center, center, $spacing-36);
     padding: 4rem 6rem;
 
@@ -93,19 +106,27 @@ button {
       @include flexbox(column, nowrap, center, center, $spacing-20);
     }
 
-    .dialog__exit {
+    .dialog__exit__button,
+    .password__reset__button,
+    #input__reset__password {
       padding: 0.8rem $spacing-28;
       font-size: $text-16;
     }
 
-    .dialog__reset {
+    #input__reset__password {
+      padding: 0.8rem;
+    }
+
+    .dialog__reset__button,
+    .input__exit__button {
       font-size: $text-16;
     }
   }
 }
 
 @include mq(desktop) {
-  .dialog__container {
+  .dialog__container,
+  .dialog__accountPw__container {
     @include flexbox(column, nowrap, center, center, $spacing-56);
     padding: 5rem 10rem;
 
@@ -131,12 +152,19 @@ button {
       @include flexbox(column, nowrap, center, center, $spacing-48);
     }
 
-    .dialog__exit {
+    .dialog__exit__button,
+    .password__reset__button,
+    #input__reset__password {
       padding: $spacing-14 $spacing-32;
       font-size: $text-28;
     }
 
-    .dialog__reset {
+    #input__reset__password {
+      padding: $spacing-14;
+    }
+
+    .dialog__reset__button,
+    .input__exit__button {
       font-size: $text-28;
     }
   }
