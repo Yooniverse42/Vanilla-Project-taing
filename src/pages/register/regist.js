@@ -3,7 +3,7 @@ import '@/layout/index';
 import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
 import { getNode, idReg } from '@/library/index';
-import { sweetConfirm } from '@/layout/sweetAlert';
+import { sweetConfirm, sweetBasic } from '@/layout/sweetAlert';
 
 const registerForm = getNode('.input-form');
 const idInput = getNode('#idInput');
@@ -37,27 +37,23 @@ async function createAccount() {
   const pw = pwInput.value;
   const pwCheck = pwCheckInput.value;
   const email = emailInput.value;
-  const image = await getImageData('profile').then(
-    (response) => response.items[0].photo[Math.floor(Math.random() * 4)]
-  );
 
-  const imageBlob = await getImageData('profile')
+  const imageURL = await getImageData('profile')
     .then((response) => ({
       ...response.items[0],
       photo: [response.items[0].photo[Math.floor(Math.random() * 4)]],
     }))
-    .then((item) => getPbImageURL(item))
-    .then((url) => fetch(url))
-    .then((response) => response.blob());
+    .then((item) => getPbImageURL(item));
+
+  const imageBlob = await fetch(imageURL).then((response) => response.blob());
 
   const form = new FormData();
   form.append('avatar', imageBlob);
   console.log(form.get('avatar'));
 
   const defaultProfile = {
-    id: 'profile1',
     name: id,
-    avatar: image,
+    avatar: imageURL,
     lockPassword: null,
   };
 
@@ -87,12 +83,25 @@ async function createAccount() {
   } else {
     modal.classList.add('modal-active');
 
-    createData('users', data)
-      .then((data) => {
-        modal.classList.remove('modal-active');
-        alert(`${data.username}님 가입이 완료되었습니다`);
-      })
-      .then(() => (location.href = '/src/pages/loginID/index.html'));
+    createData('users', data).then(async (data) => {
+      modal.classList.remove('modal-active');
+      await localStorage.setItem(
+        'currentProfile',
+        JSON.stringify({
+          name: id,
+          imgSrc: imageURL,
+          pw: null,
+        })
+      );
+      sweetBasic(
+        '회원가입 결과',
+        `${data.username}님 가입이 완료되었습니다`
+      ).then((res) => {
+        if (res.isConfirmed) {
+          location.href = '/src/pages/loginID/index.html';
+        }
+      });
+    });
     registerForm.reset();
     // 입력 폼 초기화 추가
   }
