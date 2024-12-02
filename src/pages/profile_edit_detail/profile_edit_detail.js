@@ -23,7 +23,6 @@ const { profiles } = userData.record;
 const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
 const currentUser = profiles.find((item) => item.name === currentProfile.name);
 
-console.log(currentUser.lockPassword);
 renderToggle();
 // 토글 렌더링
 function renderToggle() {
@@ -173,13 +172,13 @@ dialog.addEventListener('cancel', handleCloseModal);
 
 // 프로필 저장
 async function updataUserProfile() {
-  console.log('Current profile before update:', currentProfile);
+  const latestProfile = JSON.parse(localStorage.getItem('currentProfile'));
   const updateProfiles = profiles.map((profile) => {
-    if (profile.name === currentProfile.name) {
+    if (profile.name === latestProfile.name) {
       return {
         ...profile,
         name: nameInput.value || profile.name,
-        lockPassword: currentProfile.pw,
+        lockPassword: latestProfile.pw,
       };
     }
     return profile;
@@ -190,19 +189,15 @@ async function updataUserProfile() {
     profiles: updateProfiles,
   };
 
-  console.log('Updated data:', updatedData);
-
   try {
     await setStorage('user', { record: updatedData });
     await setStorage('currentProfile', {
       ...currentProfile,
-      name: nameInput.value || currentProfile.name,
-      pw: currentProfile.pw,
+      name: nameInput.value || latestProfile.name,
+      pw: latestProfile.pw,
     });
-    console.log('Storage updated');
 
     await pb.collection('users').update(userData.record.id, updatedData);
-    console.log('Database updated');
     sweetBasic('프로필 편집 결과', '프로필 업데이트가 완료되었습니다.').then(
       (res) => {
         if (res.isConfirmed) {
