@@ -32,13 +32,6 @@ function goToTaing(e) {
 }
 avatarsContainer.addEventListener('click', goToTaing);
 
-// 잠금 설정 프로필
-// 비밀번호 입력
-const lockedProfile = getNode('.is--locked');
-lockedProfile.addEventListener('click', () => {
-  dialog.showModal();
-});
-
 // dialog 닫기
 dialogCancelButton.addEventListener('click', () => {
   dialog.close();
