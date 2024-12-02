@@ -22,6 +22,76 @@
 
       <section class="profile__select__container">
         <section class="profile__picture__container"></section>
+
+        <dialog class="dialog__container">
+          <h3 class="dialog__header">
+            비밀번호 입력
+            <p class="header__content__default">
+              비밀번호 4자리를 입력해 주세요.
+            </p>
+            <p class="header__content__notMatch">
+              비밀번호가 일치하지 않습니다.<br />다시 입력해 주세요.
+            </p>
+          </h3>
+          <ul class="dialog__input__container">
+            <li class="dialog__input__wrapper">
+              <label for="profilePw1">
+                <input id="profilePw1" type="password" maxlength="1" />
+              </label>
+            </li>
+            <li class="dialog__input__wrapper">
+              <label for="profilePw2">
+                <input id="profilePw2" type="password" maxlength="1" />
+              </label>
+            </li>
+            <li class="dialog__input__wrapper">
+              <label for="profilePw3">
+                <input id="profilePw3" type="password" maxlength="1" />
+              </label>
+            </li>
+            <li class="dialog__input__wrapper">
+              <label for="profilePw4">
+                <input id="profilePw4" type="password" maxlength="1" />
+              </label>
+            </li>
+          </ul>
+
+          <div class="dialog__button">
+            <button class="dialog__exit__button">취소</button>
+            <button class="dialog__reset__button">비밀번호 초기화</button>
+          </div>
+        </dialog>
+
+        <dialog class="dialog__accountPw__container">
+          <h3 class="dialog__header">
+            계정 비밀번호 입력
+            <p class="header__content__default">
+              초기화를 위해서는 계정 비밀번호가 필요합니다.<br />로그인 시
+              입력한 비밀번호를 입력해 주세요.
+            </p>
+            <p class="header__content__notMatch">
+              비밀번호가 일치하지 않습니다.<br />로그인 시 입력한 비밀번호를
+              입력해 주세요.
+            </p>
+          </h3>
+
+          <div class="dialog__input__container">
+            <label>
+              <input
+                type="password"
+                minlength="8"
+                maxlength="15"
+                class="input__reset__password"
+              />
+            </label>
+            <button class="password__reset__button">확인</button>
+          </div>
+
+          <div class="dialog__button__container">
+            <button class="input__exit__button">취소</button>
+          </div>
+        </dialog>
+
         <div class="edit__button__container">
           <a type="button" class="edit__button" role="button" tabindex="0">
             완료
