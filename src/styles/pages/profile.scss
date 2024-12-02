@@ -1,92 +1,113 @@
 @use '@/styles/index' as *;
+@use '@/styles/components/dialog' as *;
+
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: $black;
 }
 
+.header {
+  @include flexbox(row, nowrap, null, center);
+  width: 100%;
+  height: 38px;
+  padding: 0 16px;
+  background: transparent;
+
+  .header__logo {
+    display: inline-block;
+    width: 46px;
+    height: 15px;
+
+    .logo1 {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
 .profile__page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 320px;
-  padding-top: $spacing-40;
-  gap: $spacing-32;
+  width: 100%;
+  margin: 2.75rem 0 $spacing-52;
+  font-size: $text-12;
 }
 
 .header__title__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: $spacing-28;
-  gap: $spacing-16;
-  color: white;
-
-  .header__title {
-    font-size: $text-28;
-    font-weight: 700;
-  }
+  @include flexbox(column, nowrap, center, center, $gap: $spacing-16);
+  padding: $spacing-28 0 $spacing-32;
+  color: $white;
+  font-size: $text-16;
+  font-weight: 700;
 
   p {
+    color: $gray-600;
+    font-size: $text-12;
     font-weight: 600;
   }
 }
 
-.profile__picture__container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  // padding: $spacing-28 0 $spacing-40 0;
-  gap: $spacing-24;
+.profile__select__container {
+  @include flexbox(column, nowrap, center, center, $gap: $spacing-32);
 }
 
-.avatar {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: $spacing-12;
-  color: $gray-300;
-  font-size: $text-12;
-  font-weight: 400;
-  border-radius: 4px;
-  cursor: pointer;
+.profile__picture__container {
+  @include flexbox(row, wrap, center, center, $gap: $spacing-24);
 
-  .avatar__picture {
+  .avatar {
+    @include flexbox(column, nowrap, null, center, $gap: $spacing-12);
+    border-radius: 4px;
     width: 114px;
-    height: 114px;
-  }
+    font-weight: 400;
+    color: $gray-300;
+    cursor: pointer;
 
-  .edit__icon__container {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 114px;
-    height: 114px;
-    border: 0.5px solid black;
-    .edit-icon {
-      width: 50px;
-      height: 50px;
+    .avatar__picture__container {
+      display: block;
+      width: 114px;
+      height: 114px;
+      position: relative;
+
+      &:hover,
+      &:focus {
+        outline: 3px solid $white;
+        border-radius: 4px;
+      }
+    }
+
+    .avatar__picture {
+      width: 100%;
+      height: 100%;
+    }
+
+    .is--locked::before,
+    .is--edit::before {
+      @include flexbox(row, nowrap, center, center);
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 50px;
+    }
+
+    .is--locked::before {
+      background-image: url('/icons/stack.svg#profile-lock');
+    }
+
+    .is--edit::before {
+      background-image: url('/icons/stack.svg#profile-pencil');
     }
   }
-
-  .edit__icon__container:focus {
-    background-color: rgba(0, 0, 0, 0.1);
-    z-index: -1;
-  }
 }
 
-.avatar:last-child .edit__icon__container {
-  border: 3px solid white;
+.edit__button__container {
+  @include flexbox(row, nowrap, center, center);
 }
 
 .edit__button {
-  display: block;
-  text-align: center;
+  @include flexbox(row, nowrap, center, center);
   width: 135px;
   height: 42px;
   border-radius: 4px;
@@ -97,119 +118,129 @@ body {
   color: $gray-600;
   padding: $spacing-12;
   line-height: 150%;
-}
 
-.edit__button:hover {
-  border: 1px solid white;
-  color: $white;
+  &:hover,
+  &:focus {
+    background-color: $white;
+    color: $black;
+  }
 }
 
 @include mq(tablet) {
+  .header {
+    height: 56px;
+    padding: 0 40px;
+
+    .header__logo {
+      width: 77px;
+      height: 24px;
+    }
+  }
+
   .profile__page {
-    width: 768px;
-    padding-top: $text-75;
+    margin: 0 0 4.375rem;
+    font-size: $text-16;
   }
 
   .header__title__container {
-    gap: $spacing-8;
-    color: white;
+    @include flexbox(column, nowrap, center, center, $gap: $spacing-8);
+    padding: 4.625rem 0 $spacing-28;
+    font-size: $text-28;
+
+    p {
+      font-size: $text-16;
+    }
+  }
+
+  .profile__select__container {
+    @include flexbox(column, nowrap, center, center, $gap: $spacing-32);
   }
 
   .profile__picture__container {
-    display: flex;
-    align-items: flex-start;
-    padding: $spacing-28 0 $spacing-40 0;
-    gap: $spacing-32;
-  }
+    @include flexbox(row, wrap, center, center, $gap: $spacing-32);
 
-  .avatar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $spacing-12;
-    color: $gray-300;
-    font-size: $text-12;
-    font-weight: 400;
-    border-radius: 4px;
-
-    .avatar__picture {
+    .avatar {
       width: 132px;
-      height: 132px;
-    }
 
-    .edit__icon__container {
-      width: 132px;
-      height: 132px;
+      .avatar__picture__container {
+        width: 132px;
+        height: 132px;
 
-      .edit-icon {
-        width: 41px;
-        height: 41px;
+        &:hover,
+        &:focus {
+          outline: 4px solid $white;
+        }
       }
     }
+  }
+
+  .edit__button__container {
+    @include flexbox(row, nowrap, center, center);
   }
 
   .edit__button {
     width: 156px;
     height: 50px;
     border-radius: 4px;
-    border: 1px solid $gray-600;
-    background-color: transparent;
-    font-size: $text-12;
-    font-weight: 600;
-    color: $gray-600;
-    line-height: 230%;
+    font-size: $text-16;
   }
 }
 
 @include mq(desktop) {
+  .header {
+    height: 100px;
+    padding: 0 70px;
+
+    .header__logo {
+      width: 132px;
+      height: 42px;
+    }
+  }
+
   .profile__page {
-    height: 888px;
-    padding: 8rem 0;
-    width: 1095px;
+    margin: 0 0 8.75rem;
+    font-size: $text-28;
   }
 
   .header__title__container {
-    padding-top: $spacing-28;
-    gap: $spacing-20;
-    color: white;
-
-    .header__title {
-      font-size: $text-50;
-      font-weight: 700;
-    }
+    @include flexbox(column, nowrap, center, center, $gap: $spacing-20);
+    padding: 8.125rem 0 2.75rem;
+    font-size: 3.125rem;
 
     p {
       font-size: $text-28;
-      font-weight: 600;
     }
+  }
+
+  .profile__select__container {
+    @include flexbox(column, nowrap, center, center, $gap: 4.125rem);
   }
 
   .profile__picture__container {
-    flex-wrap: nowrap;
-    // padding: $spacing-28 0 $spacing-40 0;
-    padding-top: $spacing-40;
-    gap: $spacing-52;
-  }
+    @include flexbox(row, wrap, center, center, $gap: $spacing-52);
 
-  .avatar {
-    gap: $spacing-16;
-    color: $gray-300;
-    font-size: $text-28;
-
-    .avatar__picture {
+    .avatar {
       width: 234px;
-      height: 234px;
-    }
 
-    .edit__icon__container {
-      width: 234px;
-      height: 234px;
+      .avatar__picture__container {
+        width: 234px;
+        height: 234px;
 
-      .edit-icon {
-        width: 60px;
-        height: 60px;
+        &:hover,
+        &:focus {
+          outline: 5px solid $white;
+        }
       }
     }
+
+    .is--locked::before,
+    .is--edit::before {
+      background-size: 60px;
+    }
+  }
+
+  .edit__button__container {
+    @include flexbox(row, nowrap, center, center);
   }
 
   .edit__button {
@@ -218,31 +249,3 @@ body {
     font-size: $text-28;
   }
 }
-
-// <section class="propile__page">
-// <div class="header__title__container">
-//   <h2 class="hearder__title">v프로필 선택</h2>
-//   <p>시청할 프로필을 선택해주세요</p>
-// </div>
-// <main>
-//   <div class="profile__picture__container">
-//     <figure class="avatar">
-//       <img class="avatar__picture" src="earth.jpg" alt="프로필 아바타" />
-//       <figcaption class="avatar__name">슬비님</figcaption>
-//     </figure>
-//     <figure class="avatar">
-//       <img class="avatar__picture" src="earth.jpg" alt="프로필 아바타" />
-//       <figcaption class="avatar__name">범쌤</figcaption>
-//     </figure>
-//     <figure class="avatar">
-//       <img class="avatar__picture" src="earth.jpg" alt="프로필 아바타" />
-//       <figcaption class="avatar__name">야무</figcaption>
-//     </figure>
-//     <figure class="avatar">
-//       <img class="avatar__picture" src="earth.jpg" alt="프로필 아바타" />
-//       <figcaption class="avatar__name">이듬</figcaption>
-//     </figure>
-//   </div>
-//   <button type="button" class="edit__button">프로필 편집</button>
-// </main>
-// </section>

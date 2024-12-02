@@ -16,7 +16,7 @@ const defaultConfig = {
 };
 
 export function sweetBasic(title, content) {
-  Swal.fire({
+  return Swal.fire({
     ...defaultConfig,
     title,
     html: content.html || content,

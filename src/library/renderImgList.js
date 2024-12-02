@@ -1,5 +1,6 @@
 import { insertLast } from '@/library/insert';
 import getPbImageURL from '@/api/getPbImageURL';
+import { getRecord } from '@/api/getRecords';
 
 export async function renderImgList(collection, categoryName, node) {
   const records = await collection;
@@ -20,12 +21,45 @@ export async function renderImgList(collection, categoryName, node) {
   });
 }
 
-export async function renderImg(collection, userName) {
-  const records = await collection;
-  let record = records.filter((item) => item.username == userName);
+export async function renderProfileImg(profileNumber, avatarName, container) {
+  const user = JSON.parse(localStorage.getItem('user')).record.profiles;
+  const myProfileAvatar = user.find((item) => item.name == avatarName).avatar;
+  console.log(myProfileAvatar);
+
+  const records = await getRecord('profile', `name='profile${profileNumber}'`);
+  const item = records.items[0];
+
+  if (!item) return;
 
   const template = `
-    <img src="${getPbImageURL(record[0], 'mobile', 'avatar')}" alt="프로필" />
+    <picture>
+      <source srcset="${getPbImageURL(item, 'tablet')}" media="(min-width: 768px) and (max-width: 1279px)" />
+      <source srcset="${getPbImageURL(item, 'desktop')}" media="(min-width: 1280px)"/>
+      <img 
+        class="avatar__picture"
+        src="${getPbImageURL(item)}"
+        alt="${avatarName}의 프로필" 
+      />
+    </picture>
   `;
-  return template;
+
+  container.innerHTML = template;
+}
+
+export async function getProfileImg(
+  profileNumber,
+  breakpoint = 'mobile',
+  fileName = 'photo'
+) {
+  const records = await getRecord('profile', `name='profile${profileNumber}'`);
+  const item = records.items[0];
+
+  if (!item) return null;
+
+  if (breakpoint === 'mobile')
+    return `${import.meta.env.VITE_PB_API}/files/${item.collectionId}/${item.id}/${item[fileName][0]}`;
+  if (breakpoint === 'tablet')
+    return `${import.meta.env.VITE_PB_API}/files/${item.collectionId}/${item.id}/${item[fileName][1]}`;
+  if (breakpoint === 'desktop')
+    return `${import.meta.env.VITE_PB_API}/files/${item.collectionId}/${item.id}/${item[fileName][2]}`;
 }

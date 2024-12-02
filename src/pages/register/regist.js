@@ -3,6 +3,7 @@ import '@/layout/index';
 import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
 import { getNode, idReg } from '@/library/index';
+import { sweetConfirm, sweetBasic } from '@/layout/sweetAlert';
 
 const registerForm = getNode('.input-form');
 const idInput = getNode('#idInput');
@@ -36,18 +37,26 @@ async function createAccount() {
   const pw = pwInput.value;
   const pwCheck = pwCheckInput.value;
   const email = emailInput.value;
-  const imageBlob = await getImageData('profile') //
+
+  const imageURL = await getImageData('profile')
     .then((response) => ({
       ...response.items[0],
-      photo: [response.items[0].field],
+      photo: [response.items[0].photo[Math.floor(Math.random() * 4)]],
     }))
-    .then((item) => getPbImageURL(item)) //
-    .then((url) => fetch(url))
-    .then((response) => response.blob());
+    .then((item) => getPbImageURL(item));
+
+  const imageBlob = await fetch(imageURL).then((response) => response.blob());
 
   const form = new FormData();
   form.append('avatar', imageBlob);
   console.log(form.get('avatar'));
+
+  const defaultProfile = {
+    name: id,
+    avatar: imageURL,
+    lockPassword: null,
+  };
+
   const data = {
     username: id,
     name: id,
@@ -56,6 +65,7 @@ async function createAccount() {
     passwordConfirm: pwCheck, //8자 이상
     emailVisibility: true,
     avatar: form.get('avatar'),
+    profiles: [defaultProfile],
   };
 
   const sameIdEmail = await getData('users', {
@@ -63,17 +73,35 @@ async function createAccount() {
   }).then((result) => result.length);
 
   if (sameIdEmail) {
-    alert('아이디 또는 이메일이 이미 존재합니다');
+    sweetConfirm(
+      'info',
+      '회원가입 결과',
+      '아이디 또는 이메일이 이미 존재합니다',
+      '확인'
+    );
     return;
   } else {
     modal.classList.add('modal-active');
 
-    createData('users', data)
-      .then((data) => {
-        modal.classList.remove('modal-active');
-        alert(`${data.username}님 가입이 완료되었습니다`);
-      })
-      .then(() => (location.href = '/src/pages/loginID/index.html'));
+    createData('users', data).then(async (data) => {
+      modal.classList.remove('modal-active');
+      await localStorage.setItem(
+        'currentProfile',
+        JSON.stringify({
+          name: id,
+          imgSrc: imageURL,
+          pw: null,
+        })
+      );
+      sweetBasic(
+        '회원가입 결과',
+        `${data.username}님 가입이 완료되었습니다`
+      ).then((res) => {
+        if (res.isConfirmed) {
+          location.href = '/src/pages/loginID/index.html';
+        }
+      });
+    });
     registerForm.reset();
     // 입력 폼 초기화 추가
   }
