@@ -28,3 +28,20 @@ export async function authWithPassword(email, password) {
     return { success: false, error: error.message };
   }
 }
+
+// 프로필 정보 서버에서 불러오기
+export async function getMyProfile(userId, profileName, profileKey) {
+  const userData = await pb.collection('users').getOne(userId);
+  const profile = userData.profiles.find((item) => item.name === profileName);
+
+  switch (profileKey) {
+    case 'img':
+      return profile.avatar;
+    case 'name':
+      return profile.name;
+    case 'pin':
+      return profile.lockPassword;
+    default:
+      return profile;
+  }
+}
