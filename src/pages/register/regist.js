@@ -51,12 +51,6 @@ async function createAccount() {
   form.append('avatar', imageBlob);
   console.log(form.get('avatar'));
 
-  const defaultProfile = {
-    name: id,
-    avatar: imageURL,
-    lockPassword: null,
-  };
-
   const data = {
     username: id,
     name: id,
@@ -65,7 +59,6 @@ async function createAccount() {
     passwordConfirm: pwCheck, //8자 이상
     emailVisibility: true,
     avatar: form.get('avatar'),
-    profiles: [defaultProfile],
   };
 
   const sameIdEmail = await getData('users', {
@@ -84,15 +77,17 @@ async function createAccount() {
     modal.classList.add('modal-active');
 
     createData('users', data).then(async (data) => {
+      const profileinfo = {
+        user: data.id,
+        name: id,
+        avatar: imageURL,
+        pin: null,
+      };
+
+      await createData('profileinfo', profileinfo);
+
       modal.classList.remove('modal-active');
-      await localStorage.setItem(
-        'currentProfile',
-        JSON.stringify({
-          name: id,
-          imgSrc: imageURL,
-          pw: null,
-        })
-      );
+
       sweetBasic(
         '회원가입 결과',
         `${data.username}님 가입이 완료되었습니다`

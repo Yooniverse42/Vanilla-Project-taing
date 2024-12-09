@@ -1,6 +1,6 @@
-import { insertLast } from '@/library/insert';
-import { getNode, getNodes, setStorage, debounce } from '@/library/index';
-import { authWithPassword } from '@/api/getRecords';
+import { getNode, getNodes, setStorage } from '@/library/index';
+import { authWithPassword, getRecords, updateRecord } from '@/api/getRecords';
+import gsap from 'gsap';
 
 export async function renderProfileItem(movePage) {
   const userData = JSON.parse(localStorage.getItem('user'));
@@ -12,45 +12,35 @@ export async function renderProfileItem(movePage) {
   }
 
   const { record } = userData;
-  const profiles = record.profiles || [];
+  const profiles = await getRecords('profileinfo', {
+    filter: `user="${record.id}"`,
+  });
 
-  for (const item of profiles) {
-    let href;
-    if (movePage === 'main') {
-      href = '/src/pages/taing/index.html';
-    } else if (movePage === 'edit') {
-      href = '/src/pages/profile_edit_detail/index.html';
-    } else {
-      href = '/src/pages/profile_select/';
-    }
+  const templates = profiles
+    .map((item) => {
+      let href;
+      if (movePage === 'main') {
+        href = '/src/pages/taing/index.html';
+      } else if (movePage === 'edit') {
+        href = '/src/pages/profile_edit_detail/index.html';
+      } else {
+        href = '/src/pages/profile_select/';
+      }
 
-    // 프로필 아이템의 기본 구조만 먼저 추가
-    const template = `
+      return `
       <figure class="avatar">
-        <a href="${href}" class="avatar__picture__container">
+        <a href="${href}" class="avatar__picture__container${
+          movePage === 'main' && Boolean(item.pin) ? ' is--locked' : ''
+        }${movePage === 'edit' ? ' is--edit' : ''}">
           <img src="${item.avatar}" alt="${item.name}의 프로필" />
         </a>
         <figcaption class="avatar__name">${item.name}</figcaption>
       </figure>`;
-    insertLast('.profile__picture__container', template);
+    })
+    .join('');
 
-    const links = getNodes('.avatar__picture__container');
-    links.forEach((link) => {
-      const img = link.querySelector('img');
-      const myProfileName = img.alt.replace('의 프로필', '');
-      const password = profiles.find(
-        (myProfile) => myProfile.name === myProfileName
-      ).lockPassword;
-
-      if (movePage === 'main' && password) {
-        link.classList.add('is--locked');
-      }
-
-      if (movePage === 'edit') {
-        link.classList.add('is--edit');
-      }
-    });
-  }
+  const container = document.querySelector('.profile__picture__container');
+  container.innerHTML = templates;
 
   const avatars = getNodes('.avatar');
   const dialog = getNode('.dialog__container');
@@ -61,25 +51,38 @@ export async function renderProfileItem(movePage) {
   const resetMoalOpenButton = getNode('.dialog__reset__button');
   const inputAcctPassword = getNode('.input__reset__password');
   const cancelButton = getNodes('[class*="exit"]');
+  const resetInput = getNode('#input__reset__pin');
   const resetButton = getNode('.password__reset__button');
 
   avatars.forEach((avatar) => {
-    avatar.addEventListener('click', (e) => {
+    gsap.fromTo(avatar, { scale: 0 }, { scale: 1 });
+    avatar.addEventListener('mouseenter', () => {
+      gsap.to(avatar, { y: -20 });
+    });
+    avatar.addEventListener('mouseleave', () => {
+      gsap.to(avatar, { y: 0 });
+    });
+    avatar.addEventListener('click', async (e) => {
       e.preventDefault();
       const link = avatar.querySelector('a');
       const selectProfile = link.querySelector('img');
       const selectProfileName = selectProfile.alt.replace('의 프로필', '');
-      const selectProfilePassword = profiles.find(
-        (item) => item.name === selectProfileName
-      ).lockPassword;
+      const profile = profiles.find((item) => item.name === selectProfileName);
+      const pin = profile.pin;
 
-      if (selectProfilePassword) {
+      await setStorage('currentProfile', {
+        name: selectProfileName,
+        imgSrc: selectProfile.src,
+        isPin: Boolean(pin),
+      });
+
+      if (pin) {
         updateDialogTitle('dialog', 'default');
         dialog.showModal();
 
         inputs.forEach((input) => {
           input.addEventListener('input', (e) => {
-            checkPassword(e, selectProfilePassword, link);
+            checkPassword(e, pin, link);
           });
         });
       } else {
@@ -89,7 +92,7 @@ export async function renderProfileItem(movePage) {
   });
 
   // 비밀번호 확인
-  function checkPassword(e, pw, link) {
+  function checkPassword(e, pin, link) {
     const inputPassword = Array.from(inputs)
       .map((input) => input.value)
       .join('');
@@ -107,7 +110,7 @@ export async function renderProfileItem(movePage) {
     }
 
     if (inputPassword.length === 4) {
-      if (inputPassword == pw) {
+      if (inputPassword == pin) {
         dialog.close();
         location.href = link.getAttribute('href');
       } else {
@@ -120,7 +123,7 @@ export async function renderProfileItem(movePage) {
   }
 
   // 비밀번호 초기화 모달 오픈
-  async function resetModalOpen() {
+  function resetModalOpen() {
     dialog.close();
     updateDialogTitle('dialogAcct', 'default');
     dialogAcct.showModal();
@@ -137,15 +140,24 @@ export async function renderProfileItem(movePage) {
         inputAcctPassword.value
       );
       if (response.success) {
-        userData.record.profiles = userData.record.profiles.map((profile) => {
-          if (profile.name === currentUser) {
-            return { ...profile, lockPassword: null };
-          }
-          return profile;
-        });
-        setStorage('currentProfile', { ...currentProfile, pw: null });
-        setStorage('user', userData);
         dialogAcct.close();
+        setStorage('currentProfile', { ...currentProfile, isPin: false });
+
+        const currentProfileImg = document.querySelector(
+          `img[alt="${currentUser}의 프로필"]`
+        );
+        if (currentProfileImg) {
+          const linkContainer = currentProfileImg.closest(
+            '.avatar__picture__container'
+          );
+          linkContainer.classList.remove('is--locked');
+        }
+
+        updateRecord(
+          'profileinfo',
+          `user="${record.id}" && name="${currentUser}"`,
+          { pin: null }
+        );
       } else {
         updateDialogTitle('dialogAcct', 'notMatch');
         inputAcctPassword.value = '';
@@ -157,12 +169,12 @@ export async function renderProfileItem(movePage) {
       inputAcctPassword.value = '';
     }
   }
-  const debouncedPasswordReset = debounce(passwordReset, 1000);
-  resetButton.addEventListener('click', debouncedPasswordReset);
-  resetButton.addEventListener('keydown', (e) => {
+
+  resetButton.addEventListener('click', passwordReset);
+  resetInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      debouncedPasswordReset;
+      passwordReset();
     }
   });
 
