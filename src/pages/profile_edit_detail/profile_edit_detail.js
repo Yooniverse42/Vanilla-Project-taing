@@ -1,9 +1,8 @@
 import '@/layout/footer';
 import '@/pages/profile_edit_detail/profile_edit_detail.scss';
-import { getNode, getNodes } from '@/library/getNode';
-import pb from '@/api/pocketbase';
-import { setStorage } from '@/library/storage';
+import { getNode, getNodes, setStorage } from '@/library/index';
 import { sweetConfirm, sweetBasic, sweetError } from '@/layout/sweetAlert';
+import { getMyProfile, updateRecord } from '@/api/getRecords';
 
 const avatarImg = getNode('.avatar__img');
 const nameInput = getNode('.profileName__input');
@@ -18,21 +17,22 @@ const dialogCancelButton = getNode('.dialog__exit__button');
 const prevButton = getNode('.prev__icon');
 
 // 유저 정보 가져오기
-const userData = JSON.parse(localStorage.getItem('user'));
-const { profiles } = userData.record;
+const { record } = JSON.parse(localStorage.getItem('user'));
 const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
-const currentUser = profiles.find((item) => item.name === currentProfile.name);
+const currentProfileDB = getMyProfile(record.id, currentProfile.name);
 
 renderToggle();
 // 토글 렌더링
 function renderToggle() {
-  if (currentUser.lockPassword) {
+  if (currentProfile.isPin) {
     toggleLabel.classList.remove('toggle__unlocked');
     toggleLabel.classList.add('toggle__locked');
   }
 }
 
 // 뒤로가기 버튼
+history.pushState(null, null, location.href);
+
 function handlePrevButton() {
   sweetConfirm(
     'warning',
@@ -43,18 +43,23 @@ function handlePrevButton() {
   ).then((res) => {
     if (res.isConfirmed) {
       setStorage('currentProfile', {
-        name: currentUser.name,
-        imgSrc: currentUser.avatar,
-        pw: currentUser.lockPassword,
+        name: currentProfileDB.name,
+        imgSrc: currentProfileDB.avatar,
+        isPin: currentProfileDB.isPin,
       });
-      window.history.back();
+      location.href = document.referrer;
+    } else {
+      history.pushState(null, null, location.href);
     }
   });
 }
-prevButton.addEventListener('click', handlePrevButton);
 
-//현재 사용자 이름, 사진으로 속성 설정
+prevButton.addEventListener('click', handlePrevButton);
+window.addEventListener('popstate', handlePrevButton);
+
 function renderProfile() {
+  if (!currentProfile) return;
+
   nameInput.placeholder = `현재 사용자 이름 : ${currentProfile.name}`;
   avatarImg.setAttribute('src', currentProfile.imgSrc);
   avatarImg.setAttribute('alt', `${currentProfile.name}의 프로필`);
@@ -114,7 +119,7 @@ async function handlePasswordInput(e) {
         dialog.close();
         await setStorage('currentProfile', {
           ...currentProfile,
-          pw: myLockPassword,
+          isPin: true,
         });
       } else {
         // 불일치
@@ -127,12 +132,15 @@ async function handlePasswordInput(e) {
 
 // 토글 클릭 시 열기
 async function profileLocked(e) {
+  if (!currentProfile) return;
+
   const label = e.target.closest('#toggle__button__label');
 
   if (label.classList.contains('toggle__unlocked')) {
     dialog.showModal();
 
     inputs.forEach((input) => {
+      input.removeEventListener('input', handlePasswordInput);
       input.addEventListener('input', async (e) => {
         await handlePasswordInput(e);
       });
@@ -148,9 +156,9 @@ async function profileLocked(e) {
     label.classList.remove('toggle__locked');
     label.classList.add('toggle__unlocked');
 
-    setStorage('currentProfile', {
+    await setStorage('currentProfile', {
       ...currentProfile,
-      pw: null,
+      isPin: false,
     });
 
     toggleButton.setAttribute('aria-label', '프로필이 잠겨있지 않습니다.');
@@ -171,33 +179,28 @@ dialogCancelButton.addEventListener('click', handleCloseModal);
 dialog.addEventListener('cancel', handleCloseModal);
 
 // 프로필 저장
-async function updataUserProfile() {
-  const latestProfile = JSON.parse(localStorage.getItem('currentProfile'));
-  const updateProfiles = profiles.map((profile) => {
-    if (profile.name === latestProfile.name) {
-      return {
-        ...profile,
-        name: nameInput.value || profile.name,
-        lockPassword: latestProfile.pw,
-      };
-    }
-    return profile;
-  });
+async function updateUserProfile() {
+  if (!currentProfile) return;
 
-  const updatedData = {
-    ...userData.record,
-    profiles: updateProfiles,
-  };
+  const newName = nameInput.value || currentProfile.name;
+  const latestProfile = JSON.parse(localStorage.getItem('currentProfile'));
 
   try {
-    await setStorage('user', { record: updatedData });
+    await updateRecord(
+      'profileinfo',
+      `user="${record.id}" && name="${currentProfile.name}"`,
+      {
+        name: newName,
+        pin: latestProfile.isPin ? myLockPassword : null,
+      }
+    );
+
     await setStorage('currentProfile', {
-      ...currentProfile,
-      name: nameInput.value || latestProfile.name,
-      pw: latestProfile.pw,
+      name: newName,
+      imgSrc: currentProfile.imgSrc,
+      isPin: latestProfile.isPin,
     });
 
-    await pb.collection('users').update(userData.record.id, updatedData);
     sweetBasic('프로필 편집 결과', '프로필 업데이트가 완료되었습니다.').then(
       (res) => {
         if (res.isConfirmed) {
@@ -214,4 +217,4 @@ async function updataUserProfile() {
   }
 }
 
-submitButton.addEventListener('click', updataUserProfile);
+submitButton.addEventListener('click', updateUserProfile);
