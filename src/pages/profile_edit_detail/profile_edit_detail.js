@@ -1,5 +1,5 @@
 import '@/layout/footer';
-import '@/pages/profile_edit_detail/profile_edit_detail.scss';
+import '@/styles/pages/profile_detail.scss';
 import { getNode, getNodes, setStorage } from '@/library/index';
 import { sweetConfirm, sweetBasic, sweetError } from '@/layout/sweetAlert';
 import { getMyProfile, updateRecord } from '@/api/getRecords';
