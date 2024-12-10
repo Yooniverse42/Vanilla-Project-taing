@@ -22,10 +22,25 @@ const { record } = JSON.parse(localStorage.getItem('user'));
 const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
 const currentProfileDB = getMyProfile(record.id, currentProfile.name);
 
+function getToggleDistance() {
+  const width = window.innerWidth;
+  if (width >= 1280) {
+    return 59;
+  } else if (width >= 768) {
+    return 27.5;
+  } else {
+    return 19;
+  }
+}
+
 renderToggle();
 // 토글 렌더링
 function renderToggle() {
   if (currentProfile.isPin) {
+    gsap.to(toggleButton, {
+      x: getToggleDistance(),
+      duration: 0.3,
+    });
     toggleLabel.classList.remove('toggle__unlocked');
     toggleLabel.classList.add('toggle__locked');
   }
@@ -133,16 +148,6 @@ async function handlePasswordInput(e) {
 
 // 토글 클릭 시 열기
 async function profileLocked(e) {
-  function getToggleDistance() {
-    const width = window.innerWidth;
-    if (width >= 1280) {
-      return 59;
-    } else if (width >= 768) {
-      return 27.5;
-    } else {
-      return 19;
-    }
-  }
   if (!currentProfile) return;
 
   const label = e.target.closest('#toggle__button__label');
