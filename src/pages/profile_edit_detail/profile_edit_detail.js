@@ -3,6 +3,7 @@ import '@/styles/pages/profile_detail.scss';
 import { getNode, getNodes, setStorage } from '@/library/index';
 import { sweetConfirm, sweetBasic, sweetError } from '@/layout/sweetAlert';
 import { getMyProfile, updateRecord } from '@/api/getRecords';
+import gsap from 'gsap';
 
 const avatarImg = getNode('.avatar__img');
 const nameInput = getNode('.profileName__input');
@@ -132,6 +133,16 @@ async function handlePasswordInput(e) {
 
 // 토글 클릭 시 열기
 async function profileLocked(e) {
+  function getToggleDistance() {
+    const width = window.innerWidth;
+    if (width >= 1280) {
+      return 59;
+    } else if (width >= 768) {
+      return 27.5;
+    } else {
+      return 19;
+    }
+  }
   if (!currentProfile) return;
 
   const label = e.target.closest('#toggle__button__label');
@@ -147,12 +158,17 @@ async function profileLocked(e) {
     });
     updateDialogTitle('default');
 
+    gsap.to(toggleButton, {
+      x: getToggleDistance(),
+      duration: 0.3,
+    });
     label.classList.add('toggle__locked');
     label.classList.remove('toggle__unlocked');
     toggleButton.setAttribute('aria-label', '프로필이 잠겨있습니다.');
 
     toggleButton.setAttribute('aria-expanded', 'true');
   } else {
+    gsap.to(toggleButton, { x: 0, duration: 0.3 });
     label.classList.remove('toggle__locked');
     label.classList.add('toggle__unlocked');
 
@@ -169,6 +185,7 @@ toggleLabel.addEventListener('click', profileLocked);
 
 // 모달 닫기(ESC, 취소 버튼)
 function handleCloseModal() {
+  gsap.to(toggleButton, { x: 0, duration: 0.3 });
   toggleLabel.classList.remove('toggle__locked');
   toggleLabel.classList.add('toggle__unlocked');
   toggleButton.setAttribute('aria-expanded', 'false');
