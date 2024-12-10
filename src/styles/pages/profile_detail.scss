@@ -142,13 +142,6 @@ body {
   transform: translateY(-50%);
   border-radius: 50%;
   background: $white;
-}
-
-.toggle__locked .toggle__button {
-  right: 3px;
-}
-
-.toggle__unlocked .toggle__button {
   left: 3px;
 }
 
@@ -231,13 +224,6 @@ body {
   .toggle__unlocked .toggle__button {
     width: 22.5px;
     height: 22.5px;
-  }
-
-  .toggle__locked .toggle__button {
-    right: 5px;
-  }
-
-  .toggle__unlocked .toggle__button {
     left: 5px;
   }
 }
@@ -318,13 +304,6 @@ body {
   .toggle__unlocked .toggle__button {
     width: 45px;
     height: 45px;
-  }
-
-  .toggle__locked .toggle__button {
-    right: 8px;
-  }
-
-  .toggle__unlocked .toggle__button {
     left: 8px;
   }
 }

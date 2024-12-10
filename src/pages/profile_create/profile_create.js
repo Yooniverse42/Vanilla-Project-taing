@@ -2,7 +2,8 @@ import '@/layout/footer';
 import '@/styles/pages/profile_detail.scss';
 import { getNode, getNodes, setStorage } from '@/library/index';
 import { sweetConfirm, sweetBasic, sweetError } from '@/layout/sweetAlert';
-import { getMyProfile, updateRecord } from '@/api/getRecords';
+import { getRecords } from '@/api/getRecords';
+import { getImageData, createData } from '@/api/serverData';
 import gsap from 'gsap';
 
 const avatarImg = getNode('.avatar__img');
@@ -19,32 +20,6 @@ const prevButton = getNode('.prev__icon');
 
 // 유저 정보 가져오기
 const { record } = JSON.parse(localStorage.getItem('user'));
-const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
-const currentProfileDB = getMyProfile(record.id, currentProfile.name);
-
-function getToggleDistance() {
-  const width = window.innerWidth;
-  if (width >= 1280) {
-    return 59;
-  } else if (width >= 768) {
-    return 27.5;
-  } else {
-    return 19;
-  }
-}
-
-renderToggle();
-// 토글 렌더링
-function renderToggle() {
-  if (currentProfile.isPin) {
-    gsap.to(toggleButton, {
-      x: getToggleDistance(),
-      duration: 0.3,
-    });
-    toggleLabel.classList.remove('toggle__unlocked');
-    toggleLabel.classList.add('toggle__locked');
-  }
-}
 
 // 뒤로가기 버튼
 history.pushState(null, null, location.href);
@@ -52,17 +27,13 @@ history.pushState(null, null, location.href);
 function handlePrevButton() {
   sweetConfirm(
     'warning',
-    '변경사항을 취소하시겠습니까?',
-    '이 페이지를 벗어나면 변경된 내용은 저장되지 않습니다.',
+    '프로필 생성을 중단하시겠습니까?',
+    '이 페이지를 벗어나면 프로필이 생성되지 않습니다.',
     '확인',
     '취소'
   ).then((res) => {
     if (res.isConfirmed) {
-      setStorage('currentProfile', {
-        name: currentProfileDB.name,
-        imgSrc: currentProfileDB.avatar,
-        isPin: currentProfileDB.isPin,
-      });
+      localStorage.removeItem('currentProfile');
       location.href = document.referrer;
     } else {
       history.pushState(null, null, location.href);
@@ -73,12 +44,37 @@ function handlePrevButton() {
 prevButton.addEventListener('click', handlePrevButton);
 window.addEventListener('popstate', handlePrevButton);
 
-function renderProfile() {
-  if (!currentProfile) return;
+async function renderProfile() {
+  const profiles = await getRecords('profileinfo', `user="${record.id}`);
 
-  nameInput.placeholder = `현재 사용자 이름 : ${currentProfile.name}`;
-  avatarImg.setAttribute('src', currentProfile.imgSrc);
-  avatarImg.setAttribute('alt', `${currentProfile.name}의 프로필`);
+  const existingAvatars = profiles.map((profile) => {
+    return profile.avatar.split('/').pop();
+  });
+
+  const profileImages = await getImageData('profile').then(
+    (response) => response.items[0].photo
+  );
+
+  const availableImages = profileImages.filter(
+    (image) => !existingAvatars.includes(image)
+  );
+
+  const randomImage =
+    availableImages[Math.floor(Math.random() * availableImages.length)];
+
+  const urlParts = profiles[0].avatar.split('/');
+  urlParts[urlParts.length - 1] = randomImage;
+  const newAvatarUrl = urlParts.join('/');
+
+  if (newAvatarUrl) {
+    avatarImg.setAttribute('src', newAvatarUrl);
+    avatarImg.setAttribute('alt', '새로운 프로필');
+    setStorage('currentProfile', {
+      name: null,
+      imgSrc: newAvatarUrl,
+      isPin: null,
+    });
+  }
 }
 renderProfile();
 
@@ -133,6 +129,7 @@ async function handlePasswordInput(e) {
 
       if (currentPassword === myLockPassword) {
         dialog.close();
+        const currentProfile = localStorage.getItem('currentProfile');
         await setStorage('currentProfile', {
           ...currentProfile,
           isPin: true,
@@ -148,7 +145,16 @@ async function handlePasswordInput(e) {
 
 // 토글 클릭 시 열기
 async function profileLocked(e) {
-  if (!currentProfile) return;
+  function getToggleDistance() {
+    const width = window.innerWidth;
+    if (width >= 1280) {
+      return 59;
+    } else if (width >= 768) {
+      return 27.5;
+    } else {
+      return 19;
+    }
+  }
 
   const label = e.target.closest('#toggle__button__label');
 
@@ -177,6 +183,7 @@ async function profileLocked(e) {
     label.classList.remove('toggle__locked');
     label.classList.add('toggle__unlocked');
 
+    const currentProfile = localStorage.getItem('currentProfile');
     await setStorage('currentProfile', {
       ...currentProfile,
       isPin: false,
@@ -202,39 +209,46 @@ dialog.addEventListener('cancel', handleCloseModal);
 
 // 프로필 저장
 async function updateUserProfile() {
-  if (!currentProfile) return;
-
-  const newName = nameInput.value || currentProfile.name;
+  const newName = nameInput.value;
   const latestProfile = JSON.parse(localStorage.getItem('currentProfile'));
 
   try {
-    await updateRecord(
-      'profileinfo',
-      `user="${record.id}" && name="${currentProfile.name}"`,
-      {
-        name: newName,
-        pin: latestProfile.isPin ? myLockPassword : null,
-      }
-    );
+    const profiles = await getRecords('profileinfo', {
+      filter: `user="${record.id}"`,
+    });
 
+    const isNameExists = profiles.some((profile) => profile.name === newName);
+    if (isNameExists) {
+      sweetError(
+        '프로필 생성 실패',
+        '이미 사용 중인 프로필 이름입니다.<br/>다른 이름을 입력해 주세요.'
+      );
+      return;
+    }
+
+    const newProfile = {
+      user: record.id,
+      name: newName,
+      avatar: latestProfile.imgSrc,
+      pin: latestProfile.isPin ? myLockPassword : null,
+    };
+    await createData('profileinfo', newProfile);
     await setStorage('currentProfile', {
       name: newName,
-      imgSrc: currentProfile.imgSrc,
+      imgSrc: latestProfile.imgSrc,
       isPin: latestProfile.isPin,
     });
 
-    sweetBasic('프로필 편집 결과', '프로필 업데이트가 완료되었습니다.').then(
-      (res) => {
-        if (res.isConfirmed) {
-          location.href = '/src/pages/profile_edit/index.html';
-        }
+    sweetBasic('프로필 생성 결과', '프로필이 생성되었습니다.').then((res) => {
+      if (res.isConfirmed) {
+        location.href = '/src/pages/profile_select/index.html';
       }
-    );
+    });
   } catch (error) {
     console.log('Error updating user profile:', error);
     sweetError(
-      '프로필 편집 결과',
-      '프로필 업데이트 중 오류가 발생했습니다.<br/>잠시 후 다시 시도해 주세요.'
+      '프로필 생성 결과',
+      '프로필 생성 중 오류가 발생했습니다.<br/>잠시 후 다시 시도해 주세요.'
     );
   }
 }
