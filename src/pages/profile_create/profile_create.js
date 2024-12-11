@@ -129,7 +129,10 @@ async function handlePasswordInput(e) {
 
       if (currentPassword === myLockPassword) {
         dialog.close();
-        const currentProfile = localStorage.getItem('currentProfile');
+        const currentProfile = JSON.parse(
+          localStorage.getItem('currentProfile')
+        );
+
         await setStorage('currentProfile', {
           ...currentProfile,
           isPin: true,
@@ -183,7 +186,7 @@ async function profileLocked(e) {
     label.classList.remove('toggle__locked');
     label.classList.add('toggle__unlocked');
 
-    const currentProfile = localStorage.getItem('currentProfile');
+    const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
     await setStorage('currentProfile', {
       ...currentProfile,
       isPin: false,
@@ -210,7 +213,16 @@ dialog.addEventListener('cancel', handleCloseModal);
 // 프로필 저장
 async function updateUserProfile() {
   const newName = nameInput.value;
+  if (!newName) {
+    sweetError(
+      '프로필 이름 미작성',
+      '프로필 이름이 비어있습니다.<br/>이름을 입력해주세요!'
+    );
+    return;
+  }
   const latestProfile = JSON.parse(localStorage.getItem('currentProfile'));
+  console.log(latestProfile);
+  console.log(latestProfile.imgSrc);
 
   try {
     const profiles = await getRecords('profileinfo', {
@@ -232,12 +244,14 @@ async function updateUserProfile() {
       avatar: latestProfile.imgSrc,
       pin: latestProfile.isPin ? myLockPassword : null,
     };
+    console.log(latestProfile.imgSrc);
     await createData('profileinfo', newProfile);
     await setStorage('currentProfile', {
       name: newName,
       imgSrc: latestProfile.imgSrc,
       isPin: latestProfile.isPin,
     });
+    console.log(latestProfile.imgSrc);
 
     sweetBasic('프로필 생성 결과', '프로필이 생성되었습니다.').then((res) => {
       if (res.isConfirmed) {
