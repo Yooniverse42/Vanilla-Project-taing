@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2';
-import '@/styles/layout/sweetalert.scss';
+import '@/styles/components/sweetalert.scss';
 
 const defaultConfig = {
   color: '#fff',
