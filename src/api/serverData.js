@@ -1,5 +1,5 @@
 import pb from './pocketbase';
-import { sweetConfirm, sweetToast, sweetError } from '@/layout/sweetAlert';
+import { sweetConfirm, sweetToast, sweetError } from '@/components/sweetAlert';
 
 export function createData(src, data) {
   return pb.collection(src).create(data);

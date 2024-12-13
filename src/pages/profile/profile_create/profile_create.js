@@ -1,7 +1,7 @@
 import '@/layout/footer';
 import '@/styles/pages/profile_detail.scss';
 import { getNode, getNodes, setStorage } from '@/library/index';
-import { sweetConfirm, sweetBasic, sweetError } from '@/layout/sweetAlert';
+import { sweetConfirm, sweetBasic, sweetError } from '@/components/sweetAlert';
 import { getRecords } from '@/api/getRecords';
 import { getImageData, createData } from '@/api/serverData';
 import gsap from 'gsap';
@@ -255,7 +255,7 @@ async function updateUserProfile() {
 
     sweetBasic('프로필 생성 결과', '프로필이 생성되었습니다.').then((res) => {
       if (res.isConfirmed) {
-        location.href = '/src/pages/profile_select/index.html';
+        location.href = '/src/pages/profile/profile_select/index.html';
       }
     });
   } catch (error) {

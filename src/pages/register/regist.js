@@ -3,7 +3,7 @@ import '@/layout/index';
 import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
 import { getNode, idReg } from '@/library/index';
-import { sweetConfirm, sweetBasic } from '@/layout/sweetAlert';
+import { sweetConfirm, sweetBasic } from '@/components/sweetAlert';
 
 const registerForm = getNode('.input-form');
 const idInput = getNode('#idInput');

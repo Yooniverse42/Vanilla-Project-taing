@@ -22,9 +22,9 @@ export async function renderProfileItem(movePage) {
       if (movePage === 'main') {
         href = '/src/pages/taing/index.html';
       } else if (movePage === 'edit') {
-        href = '/src/pages/profile_edit_detail/index.html';
+        href = '/src/pages/profile/profile_edit_detail/index.html';
       } else {
-        href = '/src/pages/profile_select/';
+        href = '/src/pages/profile/profile_select/';
       }
 
       return `

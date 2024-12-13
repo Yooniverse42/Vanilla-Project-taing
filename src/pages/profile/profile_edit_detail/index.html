@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="ko-KR">
   <head>
-    <title>TAING : 프로필 생성</title>
+    <title>TAING : 프로필 편집</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
     <script
       type="module"
-      src="/src/pages/profile_create/profile_create.js"
+      src="/src/pages/profile/profile_edit_detail/profile_edit_detail.js"
     ></script>
   </head>
   <body>
@@ -21,7 +21,7 @@
       <header class="profile__edit__header">
         <div class="header__left">
           <button class="prev__icon" aria-label="뒤로 가기"></button>
-          <h2>프로필 생성</h2>
+          <h2>프로필 편집</h2>
         </div>
 
         <button type="button" class="submit">확인</button>
@@ -33,20 +33,17 @@
         </div>
 
         <div class="profileName">
-          <label for="profileName" class="a11y">프로필 이름 작성란</label>
+          <label for="profileName" class="a11y">프로필 이름 변경란</label>
           <input
             type="text"
-            id="profileNameCreate"
+            id="profileName"
             class="profileName__input"
-            name="profileNameCreate"
-            aria-describedby="createProfileName"
+            name="profileName"
+            aria-describedby="changeProfileName"
             minlength="2"
             maxlength="10"
-            placeholder="프로필 이름을 입력해주세요."
-            required
           />
-          <!-- Input, span id변경함 -->
-          <span class="input__description" id="createProfileName"
+          <span class="input__description" id="changeProfileName"
             >*2자 이상 10자 이내의 한글, 영문, 숫자 입력 가능합니다.</span
           >
         </div>

@@ -1,6 +1,6 @@
 import '@/layout/index';
 import '@/pages/taing/taing.scss';
-import '@/styles/layout/loading.scss';
+import '@/styles/components/loading.scss';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 import { renderImgList, getNodes, getNode } from '@/library/index';
@@ -190,14 +190,14 @@ async function loadingTaing() {
 
   // 공지사항
   new Swiper('.notice__swiper', {
-    direction: "vertical",
+    direction: 'vertical',
     slidesPerView: 1,
     spaceBetween: 10,
     autoplay: {
       delay: 2000,
       disableOnInteraction: false,
     },
-    loop: true
+    loop: true,
   });
 }
 

@@ -1,7 +1,7 @@
 import '@/layout/footer';
 import '@/styles/pages/profile_detail.scss';
 import { getNode, getNodes, setStorage } from '@/library/index';
-import { sweetConfirm, sweetBasic, sweetError } from '@/layout/sweetAlert';
+import { sweetConfirm, sweetBasic, sweetError } from '@/components/sweetAlert';
 import { getMyProfile, updateRecord } from '@/api/getRecords';
 import gsap from 'gsap';
 
@@ -226,7 +226,7 @@ async function updateUserProfile() {
     sweetBasic('프로필 편집 결과', '프로필 업데이트가 완료되었습니다.').then(
       (res) => {
         if (res.isConfirmed) {
-          location.href = '/src/pages/profile_edit/index.html';
+          location.href = '/src/pages/profile/profile_edit/index.html';
         }
       }
     );
