@@ -9,7 +9,7 @@ import {
   setStorage,
 } from '@/library/index';
 import { authWithPassword } from '@/api/getRecords';
-import { sweetError, sweetToast } from '@/layout/sweetAlert';
+import { sweetError, sweetToast } from '@/components/sweetAlert';
 
 const loginButton = getNode('.login__button');
 const loginUserID = getNode('#userID');

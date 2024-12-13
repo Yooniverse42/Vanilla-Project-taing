@@ -1,7 +1,7 @@
 import '@/layout/footer';
 import '@/styles/pages/profile_detail.scss';
 import { getNode, getNodes, setStorage } from '@/library/index';
-import { sweetConfirm, sweetBasic, sweetError } from '@/layout/sweetAlert';
+import { sweetConfirm, sweetBasic, sweetError } from '@/components/sweetAlert';
 import { getRecords } from '@/api/getRecords';
 import { getImageData, createData } from '@/api/serverData';
 import gsap from 'gsap';

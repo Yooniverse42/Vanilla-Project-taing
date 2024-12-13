@@ -2,7 +2,7 @@ import '@/pages/findpw/find_pw.scss';
 import '@/layout/index';
 import { getNode, idReg, debounce } from '@/library/index';
 import { getRecord } from '@/api/getRecords';
-import { sweetConfirm, sweetToast } from '@/layout/sweetAlert';
+import { sweetConfirm, sweetToast } from '@/components/sweetAlert';
 
 const checkButton = getNode('.check__email');
 const userId = getNode('#findPw__id');

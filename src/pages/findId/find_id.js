@@ -2,7 +2,7 @@ import '/src/pages/findId/find_id.scss';
 import '@/layout/index';
 import { getNode, emailReg, debounce } from '@/library/index';
 import { getRecord } from '@/api/getRecords';
-import { sweetConfirm, sweetToast } from '@/layout/sweetAlert';
+import { sweetConfirm, sweetToast } from '@/components/sweetAlert';
 
 const checkButton = getNode('.check_email_button');
 const userId = getNode('#findId_email');
