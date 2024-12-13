@@ -1,23 +1,24 @@
 @import '@/styles/index.scss';
 
-.loading {
+:host {
   @include size(100%, 100%);
   display: none;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.6);
   z-index: 9999;
+
+  &.active {
+    display: block;
+  }
 }
 
-.active {
-  display: block;
-
-  .loading_inner {
-    animation: spin 2000ms ease-in-out infinite;
-  }
+.loading {
+  @include size(100%, 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .loading_wrapper {
@@ -34,11 +35,5 @@
     border: 3px solid $gray-500;
     border-top-color: white;
     border-radius: 100%;
-  }
-}
-
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
   }
 }
