@@ -1,5 +1,6 @@
 import '@/pages/register/regist.scss';
 import '@/layout/index';
+import '@/components/loading.js';
 import { createData, getData, getImageData } from '@/api/serverData';
 import getPbImageURL from '@/api/getPbImageURL';
 import { getNode, idReg } from '@/library/index';
@@ -11,7 +12,7 @@ const pwInput = getNode('#pwInput');
 const pwCheckInput = getNode('#pwCheckInput');
 const emailInput = getNode('#emailInput');
 const confirmButton = getNode('.confirm-button');
-const modal = getNode('.modal');
+const loading = getNode('c-loading');
 
 const buttonState = {
   idState: false,
@@ -74,7 +75,7 @@ async function createAccount() {
     );
     return;
   } else {
-    modal.classList.add('modal-active');
+    loading.show();
 
     createData('users', data).then(async (data) => {
       const profileinfo = {
@@ -86,7 +87,7 @@ async function createAccount() {
 
       await createData('profileinfo', profileinfo);
 
-      modal.classList.remove('modal-active');
+      loading.hide();
 
       sweetBasic(
         '회원가입 결과',
