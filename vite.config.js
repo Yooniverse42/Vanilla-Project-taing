@@ -18,12 +18,19 @@ export default defineConfig({
         taing: resolve(__dirname, 'src/pages/taing/index.html'),
         profile_select: resolve(
           __dirname,
-          'src/pages/profile_select/index.html'
+          'src/pages/profile/profile_select/index.html'
         ),
-        profile_edit: resolve(__dirname, 'src/pages/profile_edit/index.html'),
+        profile_edit: resolve(
+          __dirname,
+          'src/pages/profile/profile_edit/index.html'
+        ),
         profile_edit_detail: resolve(
           __dirname,
-          '/src/pages/profile_edit_detail/index.html'
+          '/src/pages/profile/profile_edit_detail/index.html'
+        ),
+        profile_create: resolve(
+          __dirname,
+          '/src/pages/profile/profile_create/index.html'
         ),
         // page 구현 시 연결할 html 파일
         // detail: resolve(__dirname, 'src/pages/detail/index.html'),
