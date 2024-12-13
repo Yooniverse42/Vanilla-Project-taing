@@ -5,7 +5,7 @@ import {
   setStorage,
   defaultAuthData,
 } from '@/library/index';
-import '@/styles/layout/search_modal.scss';
+import '@/styles/components/search_modal.scss';
 import textCSS from '@/styles/layout/header.scss?inline';
 
 const headerTemplate = document.createElement('template');
