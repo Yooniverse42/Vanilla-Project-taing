@@ -11,7 +11,7 @@ function renderAddProfileButton() {
   if (avatars.length < 4) {
     const addButtonTemplate = `
       <figure class="avatar avatar__add__button">
-        <a href="/src/pages/profile_create/index.html" class="avatar__picture__container add__profile">
+        <a href="/src/pages/profile/profile_create/index.html" class="avatar__picture__container add__profile">
 
         </a>
         <figcaption class="avatar__name">프로필 추가</figcaption>
@@ -41,6 +41,6 @@ initializePage();
 
 // 프로필 편집 (전체 페이지)
 function editPage() {
-  location.href = '/src/pages/profile_edit/index.html';
+  location.href = '/src/pages/profile/profile_edit/index.html';
 }
 avatarsEditButton.addEventListener('click', editPage);

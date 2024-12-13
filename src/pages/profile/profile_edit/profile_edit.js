@@ -7,5 +7,5 @@ renderProfileItem('edit');
 const avatarsEditButton = getNode('.edit__button');
 
 avatarsEditButton.addEventListener('click', () => {
-  location.href = '/src/pages/profile_select/index.html';
+  location.href = '/src/pages/profile/profile_select/index.html';
 });

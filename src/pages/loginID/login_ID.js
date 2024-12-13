@@ -89,7 +89,7 @@ loginButton.addEventListener('click', async (e) => {
       const response = await authWithPassword(userId, userPassword);
       if (response.success) {
         setStorage('user', response.authData);
-        location.href = '/src/pages/profile_select/index.html';
+        location.href = '/src/pages/profile/profile_select/index.html';
       } else {
         sweetError('로그인 실패', `아이디 또는 비밀번호를 확인해 주세요.`);
       }

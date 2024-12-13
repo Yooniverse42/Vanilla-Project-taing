@@ -255,7 +255,7 @@ async function updateUserProfile() {
 
     sweetBasic('프로필 생성 결과', '프로필이 생성되었습니다.').then((res) => {
       if (res.isConfirmed) {
-        location.href = '/src/pages/profile_select/index.html';
+        location.href = '/src/pages/profile/profile_select/index.html';
       }
     });
   } catch (error) {
