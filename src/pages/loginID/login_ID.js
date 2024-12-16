@@ -1,5 +1,6 @@
 import '@/pages/loginID/login_ID.scss';
 import '@/layout/index';
+import '@/components/loading.js';
 import {
   getNode,
   idReg,
@@ -11,6 +12,7 @@ import {
 import { authWithPassword } from '@/api/getRecords';
 import { sweetError, sweetToast } from '@/components/sweetAlert';
 
+const loading = getNode('c-loading');
 const loginButton = getNode('.login__button');
 const loginUserID = getNode('#userID');
 const loginUserPassword = getNode('#userPassword');
@@ -79,6 +81,7 @@ function handlePasswordValid() {
 }
 // 로그인
 loginButton.addEventListener('click', async (e) => {
+  loading.show();
   e.preventDefault();
   // 유효성 검사 통과 시 로그인 시도
   if (idValid && pwValid) {
@@ -88,12 +91,14 @@ loginButton.addEventListener('click', async (e) => {
     try {
       const response = await authWithPassword(userId, userPassword);
       if (response.success) {
-        setStorage('user', response.authData);
+        await setStorage('user', response.authData);
         location.href = '/src/pages/profile/profile_select/index.html';
       } else {
+        loading.hide();
         sweetError('로그인 실패', `아이디 또는 비밀번호를 확인해 주세요.`);
       }
     } catch (error) {
+      loading.hide();
       console.error('로그인 오류:', error);
       sweetToast(
         'error',
@@ -101,6 +106,7 @@ loginButton.addEventListener('click', async (e) => {
       );
     }
   } else {
+    loading.hide();
     sweetToast('info', '아이디와 비밀번호를 확인해 주세요.');
     loginUserID.focus();
   }

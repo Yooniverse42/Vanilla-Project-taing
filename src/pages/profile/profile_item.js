@@ -1,12 +1,16 @@
 import { getNode, getNodes, setStorage } from '@/library/index';
 import { authWithPassword, getRecords, updateRecord } from '@/api/getRecords';
 import gsap from 'gsap';
+import '@/components/loading.js';
 
 export async function renderProfileItem(movePage) {
+  const loading = getNode('c-loading');
+  loading.show();
   const userData = JSON.parse(localStorage.getItem('user'));
   const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
 
   if (!userData) {
+    loading.hide();
     location.href = '/src/pages/loginID/';
     return;
   }
@@ -41,6 +45,7 @@ export async function renderProfileItem(movePage) {
 
   const container = document.querySelector('.profile__picture__container');
   container.innerHTML = templates;
+  loading.hide();
 
   const avatars = getNodes('.avatar');
   const dialog = getNode('.dialog__container');

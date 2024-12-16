@@ -1,29 +1,18 @@
 import '@/layout/index';
+import '@/components/loading.js';
 import '@/pages/taing/taing.scss';
-import '@/styles/components/loading.scss';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 import { renderImgList, getNodes, getNode } from '@/library/index';
 import { getRecords } from '@/api/getRecords';
 
-// 서버에서 image collection 가져오기
 const imageCollection = getRecords('image');
-
-// loading 함수
-const loading = getNode('.loading');
-
-function showLoading() {
-  loading.classList.add('active');
-}
+const loading = getNode('c-loading');
 
 function delay(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
-}
-
-async function hideLoading() {
-  loading.classList.remove('active');
 }
 
 // 스와이퍼 랜더링 함수
@@ -202,10 +191,10 @@ async function loadingTaing() {
 }
 
 async function renderTaing() {
-  showLoading();
+  loading.show();
   loadingTaing();
   await delay(2000);
-  hideLoading();
+  loading.hide();
 }
 
 renderTaing();
