@@ -44,12 +44,12 @@ export class Loading extends HTMLElement {
   }
 
   show() {
-    this.classList.add('active');
+    this.style.display = 'block';
     this.#spinnerAnimation.play();
   }
 
   hide() {
-    this.classList.remove('active');
+    this.style.display = 'none';
     this.#spinnerAnimation.pause();
   }
 }
