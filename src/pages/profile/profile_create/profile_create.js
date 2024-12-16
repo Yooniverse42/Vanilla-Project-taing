@@ -5,7 +5,10 @@ import { sweetConfirm, sweetBasic, sweetError } from '@/components/sweetAlert';
 import { getRecords } from '@/api/getRecords';
 import { getImageData, createData } from '@/api/serverData';
 import gsap from 'gsap';
+import '@/components/loading.js';
 
+const loading = getNode('c-loading');
+loading.show();
 const avatarImg = getNode('.avatar__img');
 const nameInput = getNode('.profileName__input');
 const submitButton = getNode('.submit');
@@ -75,6 +78,7 @@ async function renderProfile() {
       isPin: null,
     });
   }
+  loading.hide();
 }
 renderProfile();
 
@@ -212,8 +216,10 @@ dialog.addEventListener('cancel', handleCloseModal);
 
 // 프로필 저장
 async function updateUserProfile() {
+  loading.show();
   const newName = nameInput.value;
   if (!newName) {
+    loading.hide();
     sweetError(
       '프로필 이름 미작성',
       '프로필 이름이 비어있습니다.<br/>이름을 입력해주세요!'
@@ -221,8 +227,6 @@ async function updateUserProfile() {
     return;
   }
   const latestProfile = JSON.parse(localStorage.getItem('currentProfile'));
-  console.log(latestProfile);
-  console.log(latestProfile.imgSrc);
 
   try {
     const profiles = await getRecords('profileinfo', {
@@ -231,6 +235,7 @@ async function updateUserProfile() {
 
     const isNameExists = profiles.some((profile) => profile.name === newName);
     if (isNameExists) {
+      loading.hide();
       sweetError(
         '프로필 생성 실패',
         '이미 사용 중인 프로필 이름입니다.<br/>다른 이름을 입력해 주세요.'
@@ -244,21 +249,22 @@ async function updateUserProfile() {
       avatar: latestProfile.imgSrc,
       pin: latestProfile.isPin ? myLockPassword : null,
     };
-    console.log(latestProfile.imgSrc);
+
     await createData('profileinfo', newProfile);
     await setStorage('currentProfile', {
       name: newName,
       imgSrc: latestProfile.imgSrc,
       isPin: latestProfile.isPin,
     });
-    console.log(latestProfile.imgSrc);
 
+    loading.hide();
     sweetBasic('프로필 생성 결과', '프로필이 생성되었습니다.').then((res) => {
       if (res.isConfirmed) {
         location.href = '/src/pages/profile/profile_select/index.html';
       }
     });
   } catch (error) {
+    loading.hide();
     console.log('Error updating user profile:', error);
     sweetError(
       '프로필 생성 결과',

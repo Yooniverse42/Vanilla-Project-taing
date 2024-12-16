@@ -4,6 +4,10 @@ import { getNode, getNodes, setStorage } from '@/library/index';
 import { sweetConfirm, sweetBasic, sweetError } from '@/components/sweetAlert';
 import { getMyProfile, updateRecord } from '@/api/getRecords';
 import gsap from 'gsap';
+import '@/components/loading.js';
+
+const loading = getNode('c-loading');
+loading.show();
 
 const avatarImg = getNode('.avatar__img');
 const nameInput = getNode('.profileName__input');
@@ -79,6 +83,7 @@ function renderProfile() {
   nameInput.placeholder = `현재 사용자 이름 : ${currentProfile.name}`;
   avatarImg.setAttribute('src', currentProfile.imgSrc);
   avatarImg.setAttribute('alt', `${currentProfile.name}의 프로필`);
+  loading.hide();
 }
 renderProfile();
 
@@ -202,6 +207,7 @@ dialog.addEventListener('cancel', handleCloseModal);
 
 // 프로필 저장
 async function updateUserProfile() {
+  loading.show();
   if (!currentProfile) return;
 
   const newName = nameInput.value || currentProfile.name;
@@ -223,6 +229,7 @@ async function updateUserProfile() {
       isPin: latestProfile.isPin,
     });
 
+    loading.hide();
     sweetBasic('프로필 편집 결과', '프로필 업데이트가 완료되었습니다.').then(
       (res) => {
         if (res.isConfirmed) {
@@ -231,6 +238,7 @@ async function updateUserProfile() {
       }
     );
   } catch (error) {
+    loading.hide();
     console.log('Error updating user profile:', error);
     sweetError(
       '프로필 편집 결과',
