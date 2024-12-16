@@ -34,6 +34,7 @@ confirmButton.addEventListener('click', createAccount);
 // 입력 폼 초기화 추가
 // 중복 요소
 async function createAccount() {
+  loading.show();
   const id = idInput.value;
   const pw = pwInput.value;
   const pwCheck = pwCheckInput.value;
@@ -56,8 +57,8 @@ async function createAccount() {
     username: id,
     name: id,
     email: email,
-    password: pw, //8자 이상
-    passwordConfirm: pwCheck, //8자 이상
+    password: pw,
+    passwordConfirm: pwCheck,
     emailVisibility: true,
     avatar: form.get('avatar'),
   };
@@ -67,6 +68,7 @@ async function createAccount() {
   }).then((result) => result.length);
 
   if (sameIdEmail) {
+    loading.hide();
     sweetConfirm(
       'info',
       '회원가입 결과',
@@ -75,8 +77,6 @@ async function createAccount() {
     );
     return;
   } else {
-    loading.show();
-
     createData('users', data).then(async (data) => {
       const profileinfo = {
         user: data.id,
@@ -86,7 +86,6 @@ async function createAccount() {
       };
 
       await createData('profileinfo', profileinfo);
-
       loading.hide();
 
       sweetBasic(
