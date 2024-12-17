@@ -175,13 +175,17 @@ export async function renderProfileItem(movePage) {
     }
   }
 
-  resetButton.addEventListener('click', passwordReset);
-  resetInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      passwordReset();
-    }
-  });
+  if (resetButton) {
+    resetButton.addEventListener('click', passwordReset);
+  }
+  if (resetInput) {
+    resetInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        passwordReset();
+      }
+    });
+  }
 
   // 취소버튼
   function closeDialog() {
