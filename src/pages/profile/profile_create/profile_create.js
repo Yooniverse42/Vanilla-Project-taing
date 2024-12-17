@@ -48,7 +48,9 @@ prevButton.addEventListener('click', handlePrevButton);
 window.addEventListener('popstate', handlePrevButton);
 
 async function renderProfile() {
-  const profiles = await getRecords('profileinfo', `user="${record.id}`);
+  const profiles = await getRecords('profileinfo', {
+    filter: `user="${record.id}"`,
+  });
 
   const existingAvatars = profiles.map((profile) => {
     return profile.avatar.split('/').pop();
