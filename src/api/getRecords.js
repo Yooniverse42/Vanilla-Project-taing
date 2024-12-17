@@ -13,8 +13,19 @@ export function getRecord(storage, option = false) {
   }
 }
 
-export function getRecords(storage) {
-  return pb.collection(storage).getFullList();
+export function getRecords(storage, options = {}) {
+  return pb.collection(storage).getFullList(options);
+}
+
+export async function updateRecord(storage, filter, updateItem = {}) {
+  try {
+    const record = await pb.collection(storage).getFirstListItem(filter);
+
+    return await pb.collection(storage).update(record.id, updateItem);
+  } catch (error) {
+    console.error('Record update error:', error);
+    throw error;
+  }
 }
 
 // 로그인 정보 서버에서 불러오기
@@ -26,5 +37,27 @@ export async function authWithPassword(email, password) {
     return { success: true, authData };
   } catch (error) {
     return { success: false, error: error.message };
+  }
+}
+
+// 프로필 정보 서버에서 불러오기
+export async function getMyProfile(userId, profileName, profileKey) {
+  const profileInfo = await pb
+    .collection('profileinfo')
+    .getFirstListItem(`user="${userId}" && name="${profileName}"`);
+
+  switch (profileKey) {
+    case 'img':
+      return profileInfo.avatar;
+    case 'name':
+      return profileInfo.name;
+    case 'pin':
+      return profileInfo.pin;
+    default:
+      return {
+        name: profileInfo.name,
+        avatar: profileInfo.avatar,
+        isPin: Boolean(profileInfo.pin),
+      };
   }
 }

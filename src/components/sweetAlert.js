@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2';
-import '@/styles/layout/sweetalert.scss';
+import '@/styles/components/sweetalert.scss';
 
 const defaultConfig = {
   color: '#fff',
@@ -16,7 +16,7 @@ const defaultConfig = {
 };
 
 export function sweetBasic(title, content) {
-  Swal.fire({
+  return Swal.fire({
     ...defaultConfig,
     title,
     html: content.html || content,

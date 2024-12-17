@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>TAING : 프로필 생성</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <script
+      type="module"
+      src="/src/pages/profile/profile_create/profile_create.js"
+    ></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__logo">
+        <img class="logo1" src="/icons/stack.svg#logo" alt="타잉" />
+      </h1>
+    </header>
+
+    <main class="profile__edit__detail__page">
+      <header class="profile__edit__header">
+        <div class="header__left">
+          <button class="prev__icon" aria-label="뒤로 가기"></button>
+          <h2>프로필 생성</h2>
+        </div>
+
+        <button type="button" class="submit">확인</button>
+      </header>
+
+      <section class="profile__edit__container">
+        <div class="avatar">
+          <img class="avatar__img" />
+        </div>
+
+        <div class="profileName">
+          <label for="profileName" class="a11y">프로필 이름 작성란</label>
+          <input
+            type="text"
+            id="profileNameCreate"
+            class="profileName__input"
+            name="profileNameCreate"
+            aria-describedby="createProfileName"
+            minlength="2"
+            maxlength="10"
+            placeholder="프로필 이름을 입력해주세요."
+            required
+          />
+          <!-- Input, span id변경함 -->
+          <span class="input__description" id="createProfileName"
+            >*2자 이상 10자 이내의 한글, 영문, 숫자 입력 가능합니다.</span
+          >
+        </div>
+
+        <article class="profile__locked__container">
+          <span id="changeProfileLock">프로필 잠금 설정</span>
+          <div class="lock">
+            <input type="checkbox" id="toggle" hidden />
+            <label
+              for="toggle"
+              id="toggle__button__label"
+              class="toggle__unlocked"
+            >
+              <button
+                class="toggle__button"
+                tabindex="0"
+                aria-label="프로필이 잠겨있지 않습니다."
+                aria-describedby="changeProfileLock"
+                aria-haspopup="dialog"
+                aria-expanded="false"
+                aria-controls="dialog__container"
+              ></button>
+            </label>
+          </div>
+
+          <dialog class="dialog__container">
+            <h3 class="dialog__header">
+              비밀번호 입력
+              <p class="header__content__default">
+                사용할 비밀번호 4자리를 입력해 주세요.
+              </p>
+              <p class="header__content__confirm">
+                확인을 위해 한 번 더 입력해 주세요.
+              </p>
+              <p class="header__content__notMatch">
+                비밀번호가 일치하지 않습니다.<br />다시 입력해 주세요.
+              </p>
+            </h3>
+
+            <ul class="dialog__input__container">
+              <li class="dialog__input__wrapper">
+                <label for="profilePw1">
+                  <input id="profilePw1" type="password" maxlength="1" />
+                </label>
+              </li>
+              <li class="dialog__input__wrapper">
+                <label for="profilePw2">
+                  <input id="profilePw2" type="password" maxlength="1" />
+                </label>
+              </li>
+              <li class="dialog__input__wrapper">
+                <label for="profilePw3">
+                  <input id="profilePw3" type="password" maxlength="1" />
+                </label>
+              </li>
+              <li class="dialog__input__wrapper">
+                <label for="profilePw4">
+                  <input id="profilePw4" type="password" maxlength="1" />
+                </label>
+              </li>
+            </ul>
+
+            <button class="dialog__exit__button">취소</button>
+          </dialog>
+        </article>
+      </section>
+    </main>
+
+    <c-footer></c-footer>
+    <c-loading></c-loading>
+  </body>
+</html>

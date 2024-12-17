@@ -5,7 +5,7 @@ import {
   setStorage,
   defaultAuthData,
 } from '@/library/index';
-import '@/styles/layout/search_modal.scss';
+import '@/styles/components/search_modal.scss';
 import textCSS from '@/styles/layout/header.scss?inline';
 
 const headerTemplate = document.createElement('template');
@@ -137,7 +137,7 @@ async function setUserDataOnTemplate() {
               <div class="profile_container">
                 <img src="https://yooniverse.pockethost.io/api/files/${user.record.collectionId}/${user.record.id}/${user.record.avatar}" alt="프로필" />
                 <h2>${user.record.name}</h2>
-                <button type="button" onclick="location.href='/src/pages/profile_edit_detail/index.html'">
+                <button type="button" onclick="location.href='/src/pages/profile/profile_edit_detail/index.html'">
                   <span>프로필 편집</span>
                 </button>
               </div>
