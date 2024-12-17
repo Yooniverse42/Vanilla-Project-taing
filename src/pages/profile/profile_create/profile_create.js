@@ -23,6 +23,43 @@ const prevButton = getNode('.prev__icon');
 
 // 유저 정보 가져오기
 const { record } = JSON.parse(localStorage.getItem('user'));
+const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
+
+function getToggleDistance() {
+  const width = window.innerWidth;
+  if (width >= 1280) {
+    return 59;
+  } else if (width >= 768) {
+    return 27.5;
+  } else {
+    return 19;
+  }
+}
+
+function initToggleButton() {
+  // 초기 위치 설정
+  gsap.set(toggleButton, {
+    x: 0,
+    yPercent: -50,
+  });
+}
+
+function updateTogglePosition(isLocked = false) {
+  gsap.to(toggleButton, {
+    x: isLocked ? getToggleDistance() : 0,
+    yPercent: -50,
+    duration: 0.3,
+  });
+}
+
+// 초기화
+initToggleButton();
+
+window.addEventListener('resize', () => {
+  if (currentProfile.isPin) {
+    updateTogglePosition(true);
+  }
+});
 
 // 뒤로가기 버튼
 history.pushState(null, null, location.href);
@@ -154,17 +191,6 @@ async function handlePasswordInput(e) {
 
 // 토글 클릭 시 열기
 async function profileLocked(e) {
-  function getToggleDistance() {
-    const width = window.innerWidth;
-    if (width >= 1280) {
-      return 59;
-    } else if (width >= 768) {
-      return 27.5;
-    } else {
-      return 19;
-    }
-  }
-
   const label = e.target.closest('#toggle__button__label');
 
   if (label.classList.contains('toggle__unlocked')) {
@@ -178,17 +204,14 @@ async function profileLocked(e) {
     });
     updateDialogTitle('default');
 
-    gsap.to(toggleButton, {
-      x: getToggleDistance(),
-      duration: 0.3,
-    });
+    updateTogglePosition(true);
     label.classList.add('toggle__locked');
     label.classList.remove('toggle__unlocked');
     toggleButton.setAttribute('aria-label', '프로필이 잠겨있습니다.');
 
     toggleButton.setAttribute('aria-expanded', 'true');
   } else {
-    gsap.to(toggleButton, { x: 0, duration: 0.3 });
+    updateTogglePosition(false);
     label.classList.remove('toggle__locked');
     label.classList.add('toggle__unlocked');
 
@@ -206,7 +229,7 @@ toggleLabel.addEventListener('click', profileLocked);
 
 // 모달 닫기(ESC, 취소 버튼)
 function handleCloseModal() {
-  gsap.to(toggleButton, { x: 0, duration: 0.3 });
+  updateTogglePosition(false);
   toggleLabel.classList.remove('toggle__locked');
   toggleLabel.classList.add('toggle__unlocked');
   toggleButton.setAttribute('aria-expanded', 'false');
