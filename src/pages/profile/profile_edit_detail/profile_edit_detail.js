@@ -37,14 +37,36 @@ function getToggleDistance() {
   }
 }
 
+function initToggleButton() {
+  // 초기 위치 설정
+  gsap.set(toggleButton, {
+    x: 0,
+    yPercent: -50,
+  });
+}
+
+function updateTogglePosition(isLocked = false) {
+  gsap.to(toggleButton, {
+    x: isLocked ? getToggleDistance() : 0,
+    yPercent: -50,
+    duration: 0.3,
+  });
+}
+
+// 초기화
+initToggleButton();
+
+window.addEventListener('resize', () => {
+  if (currentProfile.isPin) {
+    updateTogglePosition(true);
+  }
+});
+
 renderToggle();
 // 토글 렌더링
 function renderToggle() {
   if (currentProfile.isPin) {
-    gsap.to(toggleButton, {
-      x: getToggleDistance(),
-      duration: 0.3,
-    });
+    updateTogglePosition(true);
     toggleLabel.classList.remove('toggle__unlocked');
     toggleLabel.classList.add('toggle__locked');
   }
@@ -168,17 +190,14 @@ async function profileLocked(e) {
     });
     updateDialogTitle('default');
 
-    gsap.to(toggleButton, {
-      x: getToggleDistance(),
-      duration: 0.3,
-    });
+    updateTogglePosition(true);
     label.classList.add('toggle__locked');
     label.classList.remove('toggle__unlocked');
     toggleButton.setAttribute('aria-label', '프로필이 잠겨있습니다.');
 
     toggleButton.setAttribute('aria-expanded', 'true');
   } else {
-    gsap.to(toggleButton, { x: 0, duration: 0.3 });
+    updateTogglePosition(false);
     label.classList.remove('toggle__locked');
     label.classList.add('toggle__unlocked');
 
@@ -195,7 +214,7 @@ toggleLabel.addEventListener('click', profileLocked);
 
 // 모달 닫기(ESC, 취소 버튼)
 function handleCloseModal() {
-  gsap.to(toggleButton, { x: 0, duration: 0.3 });
+  updateTogglePosition(false);
   toggleLabel.classList.remove('toggle__locked');
   toggleLabel.classList.add('toggle__unlocked');
   toggleButton.setAttribute('aria-expanded', 'false');
