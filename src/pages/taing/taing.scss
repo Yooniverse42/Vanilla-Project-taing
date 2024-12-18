@@ -1,16 +1,19 @@
 @use '@/styles/index' as *;
 
 body {
-  background-color: $black;
   min-width: 20rem;
-  position: relative;
+  background-color: $black;
 }
 
 .main {
-  color: $gray-400;
+  padding: $spacing-40 $spacing-16 $spacing-16;
   font-size: $text-12;
-  padding: $spacing-16;
-  padding-top: $spacing-40;
+  color: $gray-400;
+}
+
+.section_wrapper {
+  position: relative;
+  z-index: 10;
 }
 
 .swiper2,
