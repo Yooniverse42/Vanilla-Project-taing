@@ -74,7 +74,6 @@ body {
 }
 
 // 티빙에서 꼭 봐야하는 콘텐츠
-
 .must_watch {
   @include flexbox(column, nowrap, null, null, $spacing-4);
   @include size(100%, 10.75rem);
@@ -108,7 +107,6 @@ body {
 }
 
 // QUICK VOD
-
 .quick_vod {
   @include flexbox(column, nowrap, null, null, $spacing-4);
   @include size(100%, 9.875rem);
@@ -143,7 +141,6 @@ body {
 }
 
 // 실시간 인기 프로그램
-
 .ranking {
   @include flexbox(column, nowrap, null, null, $spacing-4);
   @include size(100%, 12rem);
@@ -192,7 +189,6 @@ body {
 }
 
 // 인기 LIVE 채널
-
 .live_channel {
   @include flexbox(column, nowrap, null, null, $spacing-4);
   @include size(100%, 10.875rem);
@@ -236,7 +232,6 @@ body {
 }
 
 // 오직 티빙에만 있어요
-
 .original {
   @include flexbox(column, nowrap, null, null, $spacing-4);
   @include size(100%, 19.75rem);
@@ -265,7 +260,6 @@ body {
 }
 
 // 이벤트
-
 .event {
   @include flexbox(column, nowrap, null, null, $spacing-4);
   @include size(100%, 5.5rem);
@@ -294,19 +288,24 @@ body {
 }
 
 // 서브 배너
-
 .sub_banner {
-  @include size(100%, $spacing-30);
-  margin: 0 0 $spacing-16 0;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 304 / 30;
+  margin: $spacing-16 auto;
 
-  .swiper-slide {
-    @include size(19rem, $spacing-30);
-    margin: 0 auto;
-    border-radius: 0.25rem;
+  .swiper-slide,
+  picture {
+    display: block;
+    width: 100%;
+    max-width: 500px;
   }
 
   .swiper-slide img {
-    @include size(19rem, $spacing-30);
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    border-radius: 0.25rem;
   }
 
   li {
@@ -341,9 +340,6 @@ body {
   }
 }
 
-// 미디어쿼리 tablet
-//
-
 @include mq(tablet) {
   .main {
     padding: $spacing-56 $spacing-40 0;
@@ -375,7 +371,6 @@ body {
   }
 
   // QUICK VOD
-
   .quick_vod {
     @include size(null, 12.875rem);
     margin: 0 0 $spacing-40 0;
@@ -401,7 +396,6 @@ body {
   }
 
   // 실시간 인기 프로그램
-
   .ranking {
     @include size(null, 16.25rem);
     gap: $spacing-8;
@@ -456,7 +450,6 @@ body {
   }
 
   // 오직 티빙에만 있어요
-
   .original {
     @include size(100%, 24.625rem);
     gap: $spacing-8;
@@ -472,7 +465,6 @@ body {
   }
 
   // 이벤트
-
   .event {
     @include size(100%, 8.25rem);
     gap: $spacing-8;
@@ -488,18 +480,17 @@ body {
   }
 
   // SPOTV 이벤트
-
   .sub_banner {
-    @include size(100%, 4.25rem);
-    margin: 0 0 $spacing-40 0;
+    max-width: 800px;
+    margin: $spacing-28 auto;
 
-    .swiper-slide {
-      @include size(38.25rem, 4.25rem);
-      margin: 0 auto;
+    .swiper-slide,
+    picture {
+      max-width: 800px;
     }
 
     .swiper-slide img {
-      @include size(38.25rem, 4.25rem);
+      max-width: 800px;
     }
   }
 
@@ -536,9 +527,6 @@ body {
   }
 }
 
-// 미디어쿼리 desktop
-//
-
 @include mq(desktop) {
   .main {
     padding: 6.25rem 4.25rem;
@@ -549,7 +537,6 @@ body {
   }
 
   // 티빙에서 꼭 봐야하는 콘텐츠
-
   .must_watch {
     @include size(100, 27.5rem);
     margin: $spacing-36 0 $spacing-48 0;
@@ -573,7 +560,6 @@ body {
   }
 
   // QUICK VOD
-
   .quick_vod {
     @include size(100%, 19.75rem);
     margin: 0 0 $spacing-48 0;
@@ -604,7 +590,6 @@ body {
   }
 
   // 실시간 인기 프로그램
-
   .ranking {
     @include size(100%, 27.5rem);
     gap: $spacing-8;
@@ -636,7 +621,6 @@ body {
   }
 
   // 인기 LIVE 채널
-
   .live_channel {
     @include size(100%, 21.5625rem);
     gap: $spacing-12;
@@ -681,7 +665,6 @@ body {
   }
 
   // 오직 티빙에만 있어요
-
   .original {
     @include size(100%, 35.625rem);
     gap: $spacing-12;
@@ -701,7 +684,6 @@ body {
   }
 
   // 이벤트
-
   .event {
     @include size(100%, 10.75rem);
     gap: $spacing-12;
@@ -721,18 +703,17 @@ body {
   }
 
   // SPOTV 이벤트
-
   .sub_banner {
-    @include size(100%, 11.125rem);
-    margin: 0 0 $spacing-48 0;
+    max-width: 1800px;
+    margin: $spacing-36 auto;
 
-    .swiper-slide {
-      @include size(120rem, 10rem);
-      margin: 0 auto;
+    .swiper-slide,
+    picture {
+      max-width: 1800px;
     }
 
     .swiper-slide img {
-      @include size(120rem, 10rem);
+      max-width: 1800px;
     }
   }
 
