@@ -1,4 +1,4 @@
-import '@/layout/footer';
+import '@/layout/index';
 import '@/styles/pages/profile_detail.scss';
 import { getNode, getNodes, setStorage } from '@/library/index';
 import { sweetConfirm, sweetBasic, sweetError } from '@/components/sweetAlert';

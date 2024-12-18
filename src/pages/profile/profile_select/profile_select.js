@@ -1,5 +1,5 @@
 import '@/styles/pages/profile.scss';
-import '@/layout/footer';
+import '@/layout/index';
 import { renderProfileItem } from '@/pages/profile/profile_item';
 import { getNode, getNodes, insertLast } from '@/library/index';
 import gsap from 'gsap';
