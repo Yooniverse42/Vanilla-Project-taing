@@ -6,7 +6,7 @@ body {
 }
 
 .main {
-  padding: $spacing-40 $spacing-16 $spacing-16;
+  padding: 0 $spacing-16;
   font-size: $text-12;
   color: $gray-400;
 }
@@ -345,7 +345,7 @@ body {
 
 @include mq(tablet) {
   .main {
-    padding: $spacing-56 $spacing-40 0;
+    padding: 0 $spacing-40;
   }
 
   .taing_banner {
@@ -532,7 +532,7 @@ body {
 
 @include mq(desktop) {
   .main {
-    padding: 6.25rem 4.25rem;
+    padding: 0 4.25rem;
   }
 
   .taing_banner {
