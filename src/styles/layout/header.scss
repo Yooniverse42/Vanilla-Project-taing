@@ -1,19 +1,18 @@
 @use '@/styles/index' as *;
-@import '@/styles/components/search_modal.scss';
+@import '@/styles/components/searchModal.scss';
+@import '@/styles/components/headerSearch.scss';
 
 .header {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 38px;
   padding: 10px 12px;
   background: transparent;
-  top: 0;
-  left: 0;
-  z-index: 50;
+  z-index: 100;
 
   .nav {
     @include flexbox(row, nowrap, space-between, center, $spacing-28);
     color: $gray-200;
+    height: 18px;
   }
 
   .header__logo {
@@ -21,13 +20,14 @@
     height: 15px;
 
     .header__logo__link {
+      display: block;
       width: 100%;
       height: 15px;
 
       .logo1 {
+        display: block;
         width: 100%;
         height: 15px;
-        margin-bottom: 2px;
       }
     }
   }
@@ -39,184 +39,83 @@
   }
 
   .menu__list {
-    display: none;
     font-size: $text-12;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $white;
       scale: 1.1;
     }
   }
 
   .list__live {
+    display: inline-block;
     width: 56px;
     height: 20px;
+    line-height: 20px;
+    background: url('/icons/stack.svg#live-default');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    padding-left: $spacing-24;
 
-    span {
-      width: 56px;
-      height: 15px;
-      display: inline-flex;
-      align-items: center;
-
-      background: url('/icons/stack.svg#live-default');
-      background-position: -17px;
-      background-repeat: no-repeat;
-      padding-left: $spacing-24;
-
-      &:hover {
-        background-image: url('/icons/stack.svg#live-hover');
-      }
+    &:hover {
+      background-image: url('/icons/stack.svg#live-hover');
     }
   }
 
   .list__paramount {
+    display: inline-block;
     width: 60px;
-    height: 15px;
+    height: 30px;
+    background: url('/icons/stack.svg#paramount-default');
+    background-repeat: no-repeat;
 
-    span {
-      width: 60px;
-      height: 30px;
-      display: inline-block;
-      background: url('/icons/stack.svg#paramount-default');
-      background-repeat: no-repeat;
-
-      &:hover {
-        background-image: url('/icons/stack.svg#paramount-hover');
-      }
+    &:hover {
+      background-image: url('/icons/stack.svg#paramount-hover');
     }
   }
 
   .header__actions {
-    @include flexbox(row, nowrap, center, center, $spacing-16);
+    @include flexbox(row, nowrap, space-between, center);
     width: 52px;
     height: 18px;
   }
-}
 
-// 프로필 버튼
-.button_profile_open {
-  display: none;
-  width: 18px;
-  height: 18px;
-  background-color: transparent;
-  cursor: pointer;
+  .button_search_open {
+    background-image: url('/icons/stack.svg#search-defualt');
 
-  &:hover {
-    scale: 1.1;
-  }
-}
-
-.profile_container {
-  img {
-    width: 114px;
-    height: 114px;
-  }
-}
-
-.profile {
-  display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  translate: (-50%, -50%);
-  background: rgba(0, 0, 0, 0.6);
-
-  width: 100%;
-  height: 100%;
-}
-
-.profile_wrapper {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: $brand-dark-1;
-  width: 20rem;
-  margin: 5rem auto;
-  z-index: 999;
-  border-radius: 1rem;
-}
-
-.active {
-  display: block;
-}
-
-.button__cancel {
-  background: url('/icons/stack.svg#cancel-default');
-
-  &:hover {
-    // background: url('/icons/stack.svg#cancel-default');
-    background-image: url('/icons/stack.svg#cancel-hover');
-    scale: 1.2;
-  }
-}
-
-.header {
-  .header-signin {
-    display: flex;
-  }
-}
-
-.header-signin {
-  display: block;
-}
-
-.profile_container {
-  @include flexbox(column, nowrap, null, center, $spacing-12);
-
-  margin: $spacing-32 0 $spacing-32;
-  font-size: $text-16;
-
-  h2 {
-    font-size: $text-16;
-    color: $gray-400;
-  }
-  button {
-    @include size(18rem, 2.625rem);
-    background-color: $brand-dark-1;
-    font-size: $text-12;
-    color: $gray-500;
-    border: 1px solid $gray-500;
-    border-radius: 0.25rem;
-    cursor: pointer;
-  }
-}
-
-.button_container {
-  @include flexbox(column, nowrap, null, center, $spacing-16);
-
-  button {
-    @include size(18rem, 2.625rem);
-    padding: 0 $spacing-12;
-    font-size: $text-12;
-    background-color: $brand-dark-2;
-    color: $gray-500;
-    cursor: pointer;
-
-    img {
-      @include size($spacing-16, $spacing-16);
+    &:hover {
+      background-image: url('/icons/stack.svg#search-hover');
     }
   }
 
-  .deleteID_button {
-    background-color: $brand-dark-1;
+  .button_search_open,
+  .button_profile_open {
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
     cursor: pointer;
+
+    &:hover,
+    &:focus {
+      scale: 1.1;
+    }
   }
 }
 
-// 미디어 쿼리
 @include mq(tablet) {
   .header {
-    height: 56px;
     padding: 16px 40px;
 
+    .nav {
+      height: 24px;
+    }
+
     .header__logo {
-      display: inline-block;
       margin-right: $spacing-28;
       height: 24px;
 
       .header__logo__link {
-        display: inline-block;
         height: 24px;
 
         .logo1 {
@@ -225,8 +124,8 @@
       }
     }
 
-    .menu__list {
-      display: block;
+    .header__menu {
+      display: flex;
     }
 
     .header__actions {
@@ -234,20 +133,22 @@
       width: 72px;
       height: 24px;
     }
-  }
 
-  .button_profile_open {
-    display: none;
-    width: 24px;
-    height: 24px;
-    background-color: transparent;
+    .button_search_open,
+    .button_profile_open {
+      width: 24px;
+      height: 24px;
+    }
   }
 }
 
 @include mq(desktop) {
   .header {
-    height: 100px;
     padding: 29px 70px;
+
+    .nav {
+      height: 42px;
+    }
 
     .header__logo {
       margin-right: $spacing-52;
@@ -264,27 +165,19 @@
     }
 
     .header__menu {
-      // @include flexbox(row, nowrap, null, center, $spacing-52);
+      @include flexbox(row, nowrap, null, center, $spacing-52);
     }
 
     .menu__list {
       font-size: $text-21;
-
-      &:hover {
-        color: $white;
-      }
     }
 
     .list__live {
       width: 100px;
       height: 34px;
-
-      span {
-        width: 100px;
-        height: 34px;
-        background-position: -33px;
-        padding-left: 44px;
-      }
+      line-height: 34px;
+      background-size: 34px;
+      padding-left: 44px;
     }
 
     .list__paramount {
@@ -302,11 +195,11 @@
       width: 120px;
       height: 40px;
     }
-  }
 
-  .button_profile_open {
-    display: none;
-    width: 40px;
-    height: 40px;
+    .button_search_open,
+    .button_profile_open {
+      width: 40px;
+      height: 40px;
+    }
   }
 }
