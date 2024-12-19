@@ -14,6 +14,8 @@ export class Header extends HTMLElement {
   async connectedCallback() {
     const user = JSON.parse(localStorage.getItem('user'));
     const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
+    const currentPath = window.location.pathname;
+    const isTaingPage = currentPath.includes('/pages/taing/');
 
     if (!user) {
       setStorage('user', defaultAuthData);
@@ -24,7 +26,7 @@ export class Header extends HTMLElement {
       <header class="header">
         <nav class="nav">
           <h1 class="header__logo">
-            <a class="header__logo__link" href="${currentProfile ? '/src/pages/taing/' : '/'}">
+            <a class="header__logo__link" href="${currentProfile ? '/src/pages/taing/' : user ? '/src/pages/profile/profile_select/' : '/'}">
               <svg class="logo1" role="img" aria-label="타잉">
                 <use href="/icons/stack.svg#logo" />
               </svg>
@@ -32,7 +34,7 @@ export class Header extends HTMLElement {
           </h1>
 
           ${
-            currentProfile
+            currentProfile && isTaingPage
               ? `<ul class="header__menu">
               <li class="menu__list">
                 <a class="list__live" href="/src/pages/taing/">
@@ -58,21 +60,25 @@ export class Header extends HTMLElement {
             <div class="header__actions">
               <button type="button" class="button_search_open" aria-label="검색창으로 이동하기"></button>
               <button type="button" class="button_profile_open">
-                <img src="${currentProfile.imgSrc}" alt="프로필 메뉴 열기" />
+                <img src="${currentProfile?.imgSrc}" alt="프로필 메뉴 열기" />
               </button>
             </div>
             `
               : ''
           }
         </nav>
-        <c-search></c-search>
-        <c-profile></c-profile>
+        ${
+          currentProfile && isTaingPage
+            ? `<c-search></c-search>
+              <c-profile></c-profile>`
+            : ''
+        }
       </header>
     `;
 
     this.shadowRoot.appendChild(headerTemplate.content.cloneNode(true));
 
-    if (currentProfile) {
+    if (currentProfile && isTaingPage) {
       this.setupModalButtons();
     }
   }
@@ -83,52 +89,21 @@ export class Header extends HTMLElement {
     const searchModal = this.shadowRoot.querySelector('c-search');
     const profileModal = this.shadowRoot.querySelector('c-profile');
 
-    if (!buttonProfile || !profileModal) {
-      console.error('Required modal elements not found');
-      return;
-    }
-
-    let isSearchActive = false;
-    let isProfileActive = false;
-
     if (buttonSearch && searchModal) {
       buttonSearch.addEventListener('click', () => {
-        if (!isSearchActive) {
-          searchModal.open();
-          buttonSearch.classList.add('button__cancel');
-          isSearchActive = true;
-        } else {
-          searchModal.close();
-          buttonSearch.classList.remove('button__cancel');
-          isSearchActive = false;
-        }
+        searchModal.open();
       });
     }
 
-    buttonProfile.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+    searchModal.addEventListener('close', () => {
+      buttonSearch.classList.remove('button__cancel');
+    });
 
-      if (!isProfileActive) {
+    if (buttonProfile && profileModal) {
+      buttonProfile.addEventListener('click', () => {
         profileModal.open();
-        isProfileActive = true;
-      } else {
-        profileModal.close();
-        isProfileActive = false;
-      }
-    });
-
-    // 모달 외부 클릭 시 닫기
-    document.addEventListener('click', (e) => {
-      if (
-        isProfileActive &&
-        !profileModal.contains(e.target) &&
-        !buttonProfile.contains(e.target)
-      ) {
-        profileModal.close();
-        isProfileActive = false;
-      }
-    });
+      });
+    }
   }
 }
 

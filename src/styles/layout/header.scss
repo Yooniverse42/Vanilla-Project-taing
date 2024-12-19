@@ -1,12 +1,9 @@
 @use '@/styles/index' as *;
-@import '@/styles/components/searchModal.scss';
-@import '@/styles/components/headerSearch.scss';
 
 .header {
-  position: relative;
   width: 100%;
   padding: 10px 12px;
-  background: transparent;
+  background-color: transparent;
   z-index: 100;
 
   .nav {
@@ -86,6 +83,11 @@
 
     &:hover {
       background-image: url('/icons/stack.svg#search-hover');
+    }
+
+    &.button__cancel {
+      background-image: url('/icons/stack.svg#cancel-default');
+      scale: 1.2;
     }
   }
 
