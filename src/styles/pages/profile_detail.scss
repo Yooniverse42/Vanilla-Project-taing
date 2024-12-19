@@ -10,25 +10,6 @@ body {
   color: $white;
 }
 
-.header {
-  @include flexbox(row, nowrap, null, center);
-  width: 100%;
-  height: 38px;
-  padding: 0 16px;
-  background: transparent;
-
-  .header__logo {
-    display: inline-block;
-    width: 46px;
-    height: 15px;
-
-    .logo1 {
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-
 .profile__edit__detail__page {
   width: 100%;
   margin: 0 0 $spacing-52;
@@ -139,23 +120,12 @@ body {
   height: 15px;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   border-radius: 50%;
   background: $white;
   left: 3px;
 }
 
 @include mq(tablet) {
-  .header {
-    height: 56px;
-    padding: 0 40px;
-
-    .header__logo {
-      width: 77px;
-      height: 24px;
-    }
-  }
-
   .profile__edit__detail__page {
     margin: 0 0 4rem;
     padding: 0 $spacing-28;
@@ -229,16 +199,6 @@ body {
 }
 
 @include mq(desktop) {
-  .header {
-    height: 100px;
-    padding: 0 70px;
-
-    .header__logo {
-      width: 132px;
-      height: 42px;
-    }
-  }
-
   .profile__edit__detail__page {
     margin: 0 0 8rem;
     padding: 0 $spacing-52;

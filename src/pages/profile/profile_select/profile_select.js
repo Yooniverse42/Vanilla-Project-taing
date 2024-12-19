@@ -1,10 +1,8 @@
 import '@/styles/pages/profile.scss';
-import '@/layout/footer';
+import '@/layout/index';
 import { renderProfileItem } from '@/pages/profile/profile_item';
 import { getNode, getNodes, insertLast } from '@/library/index';
 import gsap from 'gsap';
-
-const avatarsEditButton = getNode('.edit__button');
 
 function renderAddProfileButton() {
   const avatars = getNodes('.avatar');
@@ -38,9 +36,3 @@ async function initializePage() {
 }
 
 initializePage();
-
-// 프로필 편집 (전체 페이지)
-function editPage() {
-  location.href = '/src/pages/profile/profile_edit/index.html';
-}
-avatarsEditButton.addEventListener('click', editPage);

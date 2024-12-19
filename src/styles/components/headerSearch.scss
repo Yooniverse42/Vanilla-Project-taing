@@ -1,27 +1,17 @@
 @use '@/styles/index' as *;
 
-.button_search_open {
-  display: none;
-  width: 18px;
-  height: 18px;
-  background-image: url('/icons/stack.svg#search-defualt');
-  background-color: transparent;
-
-  &:hover {
-    background-image: url('/icons/stack.svg#search-hover');
-    scale: 1.1;
-  }
-}
-
 .search {
-  display: none;
   position: fixed;
   top: 38px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   height: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
   color: $white;
-  background: rgba(0, 0, 0, 0.6);
 }
 
 .search__wrapper {
@@ -59,7 +49,6 @@
   color: $gray-500;
 }
 .search__icon__button {
-  outline: none;
   background-color: transparent;
 }
 .search__icon {
@@ -82,25 +71,26 @@
     line-height: $line-150;
   }
   #recent__search__list {
-    font-size: $text-16;
-    color: $gray-300;
-    line-height: $line-160;
+    width: 100%;
     margin-top: 12px;
-    width: 80%;
+    padding-right: 72px;
+    color: $gray-300;
+    font-size: $text-16;
+    line-height: $line-160;
   }
 }
-#recent__delet__button {
+#recent__delete__button {
   background-color: transparent;
   outline: none;
 }
 // 자바스크립트 안 버튼
-.delet__recent {
+.delete__recent {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: $spacing-12;
 }
-.delet__icon {
+.delete__icon {
   width: $text-12;
   height: $text-12;
   cursor: pointer;
@@ -137,19 +127,9 @@
   margin-top: $spacing-16;
 }
 
-.active {
-  display: block;
-}
-
 @include mq(tablet) {
-  .button_search_open {
-    display: none;
-    width: 24px;
-    height: 24px;
-  }
-
   .search {
-    top: 58px;
+    top: 56px;
   }
 
   // 검색바
@@ -200,11 +180,6 @@
 }
 
 @include mq(desktop) {
-  .button_search_open {
-    display: none;
-    width: 40px;
-    height: 40px;
-  }
   .search {
     top: 100px;
   }
@@ -232,12 +207,12 @@
       font-weight: 400;
     }
   }
-  #recent__delet__button {
+  #recent__delete__button {
     background-color: transparent;
     outline: none;
   }
   //   자바스크립트 안 버튼
-  .delet__icon {
+  .delete__icon {
     width: 15px;
     height: 15px;
     cursor: pointer;
