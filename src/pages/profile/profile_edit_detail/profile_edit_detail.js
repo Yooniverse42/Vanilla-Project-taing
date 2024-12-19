@@ -1,9 +1,10 @@
 import '@/layout/index';
 import '@/styles/pages/profile_detail.scss';
-import { getNode, getNodes, setStorage } from '@/library/index';
-import { sweetConfirm, sweetBasic, sweetError } from '@/components/sweetAlert';
+import { getNode, getNodes, setStorage, deleteStorage } from '@/library/index';
+import { sweetConfirm, sweetBasic, sweetToast } from '@/components/sweetAlert';
 import { getMyProfile, updateRecord } from '@/api/getRecords';
 import gsap from 'gsap';
+import pb from '@/api/pocketbase';
 import '@/components/loading.js';
 
 const loading = getNode('c-loading');
@@ -20,6 +21,7 @@ const headerConfirm = getNode('.header__content__confirm');
 const headerNotMatch = getNode('.header__content__notMatch');
 const dialogCancelButton = getNode('.dialog__exit__button');
 const prevButton = getNode('.prev__icon');
+const deleteProfileButton = getNode('.profile__delete');
 
 // 유저 정보 가져오기
 const { record } = JSON.parse(localStorage.getItem('user'));
@@ -259,11 +261,54 @@ async function updateUserProfile() {
   } catch (error) {
     loading.hide();
     console.log('Error updating user profile:', error);
-    sweetError(
-      '프로필 편집 결과',
+    sweetToast(
+      'warning',
       '프로필 업데이트 중 오류가 발생했습니다.<br/>잠시 후 다시 시도해 주세요.'
     );
   }
 }
 
 submitButton.addEventListener('click', updateUserProfile);
+
+function deleteProfile() {
+  sweetConfirm(
+    'warning',
+    '정말 삭제하시겠습니까?',
+    '삭제 시 시청내역과 구매내역 모두 삭제되며,<br />이 작업은 되돌릴 수 없습니다.',
+    '확인',
+    false,
+    '취소'
+  ).then(async (res) => {
+    if (res.isConfirmed) {
+      try {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const currentProfile = JSON.parse(
+          localStorage.getItem('currentProfile')
+        );
+
+        const records = await pb.collection('profileinfo').getFullList({
+          filter: `user = "${user.record.id}" && name = "${currentProfile.name}"`,
+        });
+
+        if (records.length > 0) {
+          await pb.collection('profileinfo').delete(records[0].id);
+          deleteStorage('currentProfile');
+          sweetBasic(
+            '프로필 삭제 완료',
+            '확인을 누르면 프로필 선택 페이지로 이동합니다.'
+          ).then((res) => {
+            if (res.isConfirmed) {
+              location.href = '/src/pages/profile/profile_select/';
+            }
+          });
+        } else {
+          throw new Error('삭제할 프로필을 찾을 수 없습니다.');
+        }
+      } catch (error) {
+        console.error('프로필 삭제 중 오류 발생:', error);
+        sweetToast('warning', '프로필 삭제 중 오류가 발생했습니다.');
+      }
+    }
+  });
+}
+deleteProfileButton.addEventListener('click', deleteProfile);

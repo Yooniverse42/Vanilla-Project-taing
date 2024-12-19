@@ -2,6 +2,17 @@ import '/main.scss';
 import '@/layout/index';
 import 'swiper/css/bundle';
 import Swiper from 'swiper/bundle';
+import gsap from 'gsap';
+
+let tl = gsap.timeline();
+gsap.defaults({
+  opacity: 0,
+  y: 100,
+  duration: 1,
+});
+tl.from('.section0__background, .section1, .section2, .section3', {})
+  .from('.container__header, .container__message', {}, '-=0.3')
+  .from('.login__move', {}, '-=0.5');
 
 new Swiper('.section1__swiper1', {
   autoplay: {

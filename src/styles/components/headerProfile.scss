@@ -41,14 +41,24 @@
     color: $gray-200;
   }
 
-  a {
-    display: block;
+  .profile_button_wrapper {
+    @include flexbox(row, nowrap, null, center, $spacing-12);
     width: 100%;
-    padding: $spacing-12 0;
-    border: 1px solid $gray-600;
-    border-radius: 4px;
-    color: $white;
-    text-align: center;
+
+    a {
+      display: block;
+      width: 100%;
+      padding: $spacing-12 0;
+      border: 1px solid $gray-600;
+      border-radius: 4px;
+      color: $white;
+      text-align: center;
+
+      &:hover {
+        color: $black;
+        background-color: $gray-600;
+      }
+    }
   }
 }
 
@@ -121,8 +131,12 @@
       font-size: $text-21;
     }
 
-    a {
-      padding: $spacing-16 0;
+    .profile_button_wrapper {
+      @include flexbox(row, nowrap, null, center, $spacing-16);
+
+      a {
+        padding: $spacing-16 0;
+      }
     }
   }
 
@@ -170,8 +184,12 @@
       font-size: $text-28;
     }
 
-    a {
-      padding: $spacing-22 0;
+    .profile_button_wrapper {
+      @include flexbox(row, nowrap, null, center, $spacing-24);
+
+      a {
+        padding: $spacing-22 0;
+      }
     }
   }
 

@@ -32,7 +32,8 @@ body {
 }
 
 .taing_banner {
-  @include size(100%, 8.875rem);
+  width: 100%;
+  aspect-ratio: 1920 / 750;
   margin: 0 auto;
   position: relative;
 }
@@ -44,6 +45,11 @@ body {
 
   .swiper-slide {
     @include flexbox(row, nowrap, center, center, null);
+
+    & img {
+      @include size(100%, 100%);
+      object-fit: cover;
+    }
   }
 
   li {
@@ -348,10 +354,6 @@ body {
     padding: 0 $spacing-40;
   }
 
-  .taing_banner {
-    @include size(100%, 21.375rem);
-  }
-
   // 티빙에서 꼭 봐야하는 콘텐츠
 
   .must_watch {
@@ -535,10 +537,6 @@ body {
     padding: 0 4.25rem;
   }
 
-  .taing_banner {
-    @include size(100%, 53.5rem);
-  }
-
   // 티빙에서 꼭 봐야하는 콘텐츠
   .must_watch {
     @include size(100, 27.5rem);
@@ -643,21 +641,11 @@ body {
 
     .swiper-slide {
       h3 {
-        margin: $spacing-8 0 0 0;
+        margin: $spacing-4 0 0 0;
 
         .index {
           font-size: $text-75;
         }
-
-        .text_wrapper {
-          margin: $spacing-8;
-        }
-      }
-    }
-
-    .swiper-slide {
-      h3 {
-        margin: $spacing-4 0 0 0;
 
         .text_wrapper {
           margin: $spacing-8;
