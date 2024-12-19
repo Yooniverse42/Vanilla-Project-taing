@@ -18,7 +18,7 @@ function delay(ms) {
 // 스와이퍼 랜더링 함수
 async function loadingTaing() {
   // 메인 배너
-  renderImgList(imageCollection, 'main_banner', '.swiper1 > ul').then(() => {
+  renderImgList(imageCollection, 'taing_banner', '.swiper1 > ul').then(() => {
     const swiper1 = new Swiper('.swiper1', {
       pagination: {
         el: '.swiper-pagination',
@@ -34,10 +34,8 @@ async function loadingTaing() {
         delay: 2000,
         disableOnInteraction: false,
       },
-
-      keyboard: {
-        enabled: true,
-      },
+      mousewheel: true,
+      keyboard: true,
       loop: true,
       speed: 1000,
       parallax: true,
@@ -77,7 +75,6 @@ async function loadingTaing() {
       new Swiper('.swiper2', {
         parallax: true,
         freeMode: true,
-        // slidesPerGroup: 2,
       });
     });
 
