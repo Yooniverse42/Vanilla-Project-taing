@@ -1,0 +1,201 @@
+@use '@/styles/index' as *;
+
+.profile {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  position: fixed;
+  inset: 0;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.profile_container {
+  @include flexbox(column, nowrap, center, center, $spacing-32);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 22rem;
+  padding: $spacing-32;
+  border-radius: 1rem;
+  background-color: $brand-dark-1;
+  z-index: 999;
+  font-size: $text-12;
+}
+
+.profile_wrapper {
+  @include flexbox(column, nowrap, center, center, $spacing-12);
+  width: 100%;
+
+  img {
+    width: 114px;
+    height: 114px;
+  }
+
+  h2 {
+    font-size: $text-16;
+    color: $gray-200;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    padding: $spacing-12 0;
+    border: 1px solid $gray-600;
+    border-radius: 4px;
+    color: $white;
+    text-align: center;
+  }
+}
+
+.button_container {
+  @include flexbox(column, nowrap, null, center, $spacing-16);
+  width: 100%;
+  button {
+    width: 100%;
+    padding: $spacing-12;
+    font-size: $text-12;
+    border-radius: 4px;
+    background-image: url('/image/button_arrow.svg');
+    background-color: $brand-dark-2;
+    background-repeat: no-repeat;
+    background-position: right 5px center;
+    background-size: 22px;
+    color: $gray-200;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .contents_button,
+  .logout_button {
+    span {
+      width: 102px;
+      padding-left: 21px;
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 16px;
+    }
+  }
+
+  .contents_button {
+    span {
+      background-image: url('/image/icon_TV.svg');
+    }
+  }
+
+  .logout_button {
+    span {
+      background-image: url('/image/icon_logout.svg');
+    }
+  }
+}
+
+.deleteID_button {
+  background-color: transparent;
+  font-size: $text-12;
+  color: $gray-500;
+  cursor: pointer;
+}
+
+@include mq(tablet) {
+  .profile_container {
+    @include flexbox(column, nowrap, center, center, $spacing-48);
+    width: 30rem;
+    padding: 4.625rem;
+    font-size: $text-16;
+  }
+
+  .profile_wrapper {
+    @include flexbox(column, nowrap, center, center, $spacing-32);
+
+    img {
+      width: 132px;
+      height: 132px;
+    }
+
+    h2 {
+      font-size: $text-21;
+    }
+
+    a {
+      padding: $spacing-16 0;
+    }
+  }
+
+  .button_container {
+    @include flexbox(column, nowrap, null, center, $spacing-24);
+    button {
+      width: 100%;
+      padding: $spacing-16;
+      font-size: $text-16;
+      background-position: right 10px center;
+      background-size: 25px;
+    }
+
+    .contents_button,
+    .logout_button {
+      span {
+        width: 157px;
+        padding-left: 35px;
+        background-size: 25px;
+      }
+    }
+  }
+
+  .deleteID_button {
+    font-size: $text-16;
+  }
+}
+
+@include mq(desktop) {
+  .profile_container {
+    @include flexbox(column, nowrap, center, center, 4rem);
+    width: 40rem;
+    font-size: $text-22;
+  }
+
+  .profile_wrapper {
+    @include flexbox(column, nowrap, center, center, $spacing-32);
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
+
+    h2 {
+      font-size: $text-28;
+    }
+
+    a {
+      padding: $spacing-22 0;
+    }
+  }
+
+  .button_container {
+    @include flexbox(column, nowrap, null, center, $spacing-28);
+    button {
+      width: 100%;
+      padding: $spacing-22;
+      font-size: $text-22;
+      background-position: right 15px center;
+      background-size: 35px;
+    }
+
+    .contents_button,
+    .logout_button {
+      span {
+        width: 200px;
+        padding-left: 55px;
+        background-size: 35px;
+      }
+    }
+  }
+
+  .deleteID_button {
+    font-size: $text-22;
+  }
+}
