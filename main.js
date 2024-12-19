@@ -38,3 +38,7 @@ function createSwiper(className, speed) {
 
 createSwiper('.section2__swiper1', 5000);
 createSwiper('.section2__swiper2', 5030);
+
+const cHeader = document.querySelector('c-header');
+const header = cHeader.shadowRoot.querySelector('header');
+header.style.position = 'absolute';
