@@ -6,7 +6,15 @@ export async function renderImgList(collection, categoryName, node) {
   let record = records.filter((item) => item.category == categoryName);
 
   record.forEach((item) => {
-    const template = `
+    if (item.photo.length === 1) {
+      const template = `
+      <li class="swiper-slide">
+        <img src="${getPbImageURL(item)}" alt="${item.title}" />
+      </li>
+      `;
+      insertLast(node, template);
+    } else {
+      const template = `
       <li class="swiper-slide">
         <picture>
           <source srcset="${getPbImageURL(item, 'tablet')}" media="(min-width: 768px) and (max-width: 1279px)" />
@@ -15,6 +23,7 @@ export async function renderImgList(collection, categoryName, node) {
         </picture>
       </li>
     `;
-    insertLast(node, template);
+      insertLast(node, template);
+    }
   });
 }
