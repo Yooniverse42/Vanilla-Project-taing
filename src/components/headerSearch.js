@@ -26,8 +26,8 @@ searchTemplate.innerHTML = `
           aria-invalid="false"
           aria-live="polite"
         />
-        <button type="button" class="search__icon__button">
-          <svg class="search__icon" role="img" aria-label="검색 아이콘">
+        <button type="button" class="search__icon__button" aria-label="검색하기">
+          <svg class="search__icon" role="img">
             <use href="/icons/stack.svg#search-defualt" />
           </svg>
         </button>
@@ -38,7 +38,7 @@ searchTemplate.innerHTML = `
           <ul id="recent__search__list">
             <li>검색 내역이 없습니다</li>
           </ul>
-          <button type="button" id="recent__delete__button"></button>
+          <button type="button" id="recent__delete__button" aria-label="검색 내역 삭제하기"></button>
         </div>
         <div class="popular__search">
           <h2>실시간 인기 검색어</h2>
@@ -135,9 +135,6 @@ export class SearchModal extends HTMLElement {
     this.getRootNode()
       .host.shadowRoot.querySelector('.button_search_open')
       .classList.remove('button__cancel');
-    this.getRootNode()
-      .host.shadowRoot.querySelector('.button_search_open')
-      .focus();
   }
 
   saveRecentSearch(e) {
