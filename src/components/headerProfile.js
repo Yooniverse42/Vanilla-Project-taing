@@ -1,7 +1,7 @@
 import pb from '@/api/pocketbase';
 import { getStorage, deleteStorage } from '@/library/index';
 import textCSS from '@/styles/components/headerProfile.scss?inline';
-import { sweetConfirm } from '@/components/sweetAlert';
+import { sweetConfirm, sweetBasic } from '@/components/sweetAlert';
 
 const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
 
@@ -10,19 +10,22 @@ profileTemplate.innerHTML = `
   <style>${textCSS}</style>
     <dialog class="profile">
       <div class="profile_container">
-        <div class="profile_wrapper">
+        <section class="profile_wrapper">
           <img src="${currentProfile?.imgSrc}" alt="${currentProfile?.name}" />
           <h2>${currentProfile?.name}</h2>
-          <a href="/src/pages/profile/profile_edit_detail/">프로필 편집</a>
-        </div>
-        <div class="button_container">
+          <div class="profile_button_wrapper">
+            <a href="/src/pages/profile/profile_edit_detail/">프로필 편집</a>
+            <a href="/src/pages/profile/profile_select/">프로필 전환</a>
+          </div>
+        </section>
+        <section class="button_container">
           <button type="button" class="contents_button">
             <span>시청 중인 컨텐츠</span>
           </button>
           <button type="button" class="logout_button">
             <span>로그아웃</span>
           </button>
-        </div>
+        </section>
         <button type="button" class="deleteID_button">
           <span>회원탈퇴</span>
         </button>
@@ -112,8 +115,14 @@ export class ProfileModal extends HTMLElement {
             await pb.collection('profileinfo').delete(user.record.id);
             deleteStorage('user');
             deleteStorage('currentProfile');
-            alert('회원 탈퇴가 완료 되었습니다.');
-            location.href = '/';
+            sweetBasic(
+              '회원 탈퇴 완료',
+              '확인을 누르면 메인 페이지로 이동합니다.'
+            ).then((res) => {
+              if (res.isConfirmed) {
+                location.href = '/';
+              }
+            });
           }
         });
       }
