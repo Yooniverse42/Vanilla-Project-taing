@@ -7,7 +7,7 @@ export async function renderProfileItem(movePage) {
   const loading = getNode('c-loading');
   loading.show();
   const userData = JSON.parse(localStorage.getItem('user'));
-  const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
+  let currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
 
   if (!userData) {
     loading.hide();
@@ -80,6 +80,7 @@ export async function renderProfileItem(movePage) {
         imgSrc: selectProfile.src,
         isPin: Boolean(pin),
       });
+      currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
 
       if (pin) {
         updateDialogTitle('dialog', 'default');
