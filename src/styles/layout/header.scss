@@ -6,6 +6,10 @@
   background-color: transparent;
   z-index: 100;
 
+  &.search--open {
+    background-color: $gray-800;
+  }
+
   .nav {
     @include flexbox(row, nowrap, space-between, center, $spacing-28);
     color: $gray-200;
@@ -41,7 +45,7 @@
     &:hover,
     &:focus {
       color: $white;
-      scale: 1.1;
+      scale: 1.2;
     }
   }
 
@@ -88,6 +92,11 @@
     &.button__cancel {
       background-image: url('/icons/stack.svg#cancel-default');
       scale: 1.2;
+
+      &:hover {
+        background-image: url('/icons/stack.svg#cancel-hover');
+        scale: 1.4;
+      }
     }
   }
 
@@ -100,7 +109,7 @@
 
     &:hover,
     &:focus {
-      scale: 1.1;
+      scale: 1.2;
     }
   }
 }
