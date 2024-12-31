@@ -85,9 +85,14 @@ body {
 // 티빙에서 꼭 봐야하는 콘텐츠
 .must_watch {
   @include flexbox(column, nowrap, null, null, $spacing-4);
-  @include size(100%, 10.75rem);
+  width: 100%;
+  min-width: calc(320px + (16px * 2));
   margin: $spacing-8 0 $spacing-16 0;
-  overflow: hidden;
+  overflow: visible;
+
+  .swiper {
+    width: 100%;
+  }
 }
 
 .must_watch_heading {
@@ -95,8 +100,6 @@ body {
 }
 
 .swiper2 {
-  @include size(5.75rem, 8.375rem);
-
   .swiper-wrapper {
     gap: $spacing-8;
   }
@@ -357,7 +360,6 @@ body {
   // 티빙에서 꼭 봐야하는 콘텐츠
 
   .must_watch {
-    @include size(null, 15.125rem);
     margin: $spacing-30 0 $spacing-28;
     gap: $spacing-8;
   }
@@ -367,8 +369,6 @@ body {
   }
 
   .swiper2 {
-    @include size(8.125rem, 11.875rem);
-
     h3 {
       display: block;
       margin: $spacing-8 0 0 0;
@@ -539,7 +539,6 @@ body {
 
   // 티빙에서 꼭 봐야하는 콘텐츠
   .must_watch {
-    @include size(100, 27.5rem);
     margin: $spacing-36 0 $spacing-48 0;
     gap: $spacing-12;
   }
@@ -549,8 +548,6 @@ body {
   }
 
   .swiper2 {
-    @include size(15rem, 24.125rem);
-
     .swiper-wrapper {
       gap: $spacing-16;
     }

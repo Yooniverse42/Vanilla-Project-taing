@@ -34,7 +34,6 @@ async function loadingTaing() {
         delay: 2000,
         disableOnInteraction: false,
       },
-      mousewheel: true,
       keyboard: true,
       loop: true,
       speed: 1000,
@@ -73,8 +72,23 @@ async function loadingTaing() {
     })
     .then(() => {
       new Swiper('.swiper2', {
-        parallax: true,
-        freeMode: true,
+        slidesPerView: 4,
+        slidesPerGroup: 4,
+        centeredSlides: false,
+        grabCursor: true,
+        keyboard: {
+          enabled: true,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 6,
+            slidesPerGroup: 6,
+          },
+          1280: {
+            slidesPerView: 8,
+            slidesPerGroup: 8,
+          },
+        },
       });
     });
 
