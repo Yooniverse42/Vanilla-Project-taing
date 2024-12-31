@@ -85,6 +85,7 @@ export class Header extends HTMLElement {
   }
 
   setupModalButtons() {
+    const header = this.shadowRoot.querySelector('.header');
     const buttonSearch = this.shadowRoot.querySelector('.button_search_open');
     const buttonProfile = this.shadowRoot.querySelector('.button_profile_open');
     const searchModal = this.shadowRoot.querySelector('c-search');
@@ -92,12 +93,24 @@ export class Header extends HTMLElement {
 
     if (buttonSearch && searchModal) {
       buttonSearch.addEventListener('click', () => {
-        searchModal.open();
+        if (buttonSearch.classList.contains('button__cancel')) {
+          searchModal.close();
+          header.classList.remove('search--open');
+          buttonSearch.classList.remove('button__cancel');
+        } else {
+          searchModal.open();
+          header.classList.add('search--open');
+          buttonSearch.classList.add('button__cancel');
+        }
       });
     }
 
-    searchModal.addEventListener('close', () => {
-      buttonSearch.classList.remove('button__cancel');
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && header.classList.contains('search--open')) {
+        searchModal.close();
+        header.classList.remove('search--open');
+        buttonSearch.classList.remove('button__cancel');
+      }
     });
 
     if (buttonProfile && profileModal) {

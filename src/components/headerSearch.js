@@ -3,7 +3,7 @@ import textCSS from '@/styles/components/headerSearch.scss?inline';
 const searchTemplate = document.createElement('template');
 searchTemplate.innerHTML = `
   <style>${textCSS}</style>
-  <dialog class="search">
+  <div class="search">
     <div class="search__wrapper">
       <form class="search__bar" action="URL" method="POST">
         <input
@@ -68,48 +68,36 @@ searchTemplate.innerHTML = `
         </div>
       </section>
     </div>
-  </dialog>
+  </div>
 `;
 
 export class SearchModal extends HTMLElement {
-  #dialog;
+  #container;
+  #searchBox1;
+  #searchBox2;
 
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(searchTemplate.content.cloneNode(true));
-    this.#dialog = this.shadowRoot.querySelector('dialog');
 
-    this.searchBox1 = this.shadowRoot.querySelector('#search__box1');
-    this.searchBox2 = this.shadowRoot.querySelector('#search__box2');
+    this.#container = this.shadowRoot.querySelector('.search');
+    this.#searchBox1 = this.shadowRoot.querySelector('#search__box1');
+    this.#searchBox2 = this.shadowRoot.querySelector('#search__box2');
     this.recentdeleteButton = this.shadowRoot.querySelector(
       '#recent__delete__button'
     );
     this.recentSearchList = this.shadowRoot.querySelector(
       '#recent__search__list'
     );
-
-    this.#dialog.addEventListener('click', (e) => {
-      if (e.target.closest('.search__wrapper')) {
-        return;
-      }
-
-      this.close();
-    });
-
-    this.#dialog.addEventListener('close', () => {
-      this.getRootNode()
-        .host.shadowRoot.querySelector('.button_search_open')
-        .classList.remove('button__cancel');
-    });
   }
 
   connectedCallback() {
-    this.searchBox1.addEventListener(
+    this.#searchBox1.addEventListener(
       'change',
       this.saveRecentSearch.bind(this)
     );
-    this.searchBox2.addEventListener(
+    this.#searchBox2.addEventListener(
       'change',
       this.saveRecentSearch.bind(this)
     );
@@ -122,19 +110,12 @@ export class SearchModal extends HTMLElement {
   }
 
   open() {
-    this.#dialog.showModal();
-    this.getRootNode()
-      .host.shadowRoot.querySelector('.button_search_open')
-      .classList.add('button__cancel');
-
-    this.searchBox1.focus();
+    this.#container.classList.add('is--open');
+    this.#searchBox1.focus() || this.#searchBox2.focus();
   }
 
   close() {
-    this.#dialog.close();
-    this.getRootNode()
-      .host.shadowRoot.querySelector('.button_search_open')
-      .classList.remove('button__cancel');
+    this.#container.classList.remove('is--open');
   }
 
   saveRecentSearch(e) {
@@ -162,6 +143,7 @@ export class SearchModal extends HTMLElement {
     const recentSearch =
       JSON.parse(localStorage.getItem(`${currentProfile.name}RecentSearch`)) ||
       [];
+
     this.recentSearchList.innerHTML = recentSearch.length
       ? ''
       : '<li>검색 내역이 없습니다</li>';
@@ -177,9 +159,9 @@ export class SearchModal extends HTMLElement {
       this.recentSearchList.appendChild(li);
     });
 
-    this.searchBox1.value = '';
-    this.searchBox2.value = '';
-    this.searchBox1.focus();
+    this.#searchBox1.value = '';
+    this.#searchBox2.value = '';
+    this.#searchBox1.focus() || this.#searchBox2.focus();
 
     this.shadowRoot.querySelectorAll('.delete__icon').forEach((button) => {
       button.addEventListener('click', this.deleteRecentSearch.bind(this));
@@ -187,6 +169,7 @@ export class SearchModal extends HTMLElement {
   }
 
   deleteRecentSearch(e) {
+    e.stopPropagation();
     const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
     const index = e.target.getAttribute('data-index');
     let recentSearch =
