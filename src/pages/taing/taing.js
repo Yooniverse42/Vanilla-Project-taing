@@ -202,6 +202,10 @@ async function loadingTaing() {
 }
 
 async function renderTaing() {
+  const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
+  if (currentProfile?.name === null || !currentProfile) {
+    location.href = '/src/pages/profile/profile_select/';
+  }
   loading.show();
   loadingTaing();
   await delay(2000);
