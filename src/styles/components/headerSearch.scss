@@ -22,9 +22,11 @@
 
 .search__wrapper {
   margin: 0 auto;
-  padding: $spacing-20 $spacing-36;
+  padding: $spacing-24;
   background-color: $gray-800;
   width: 100%;
+  max-height: calc(100vh - 38px);
+  overflow-y: auto;
 }
 
 .search__bar {
@@ -74,6 +76,7 @@
 
 .recent__search {
   display: none;
+  position: relative;
 
   h2 {
     font-size: $text-21;
@@ -81,31 +84,54 @@
     color: $gray-200;
     line-height: $line-150;
   }
+
   #recent__search__list {
+    max-height: 345px;
     width: 100%;
     margin-top: 12px;
     padding-right: 72px;
     color: $gray-300;
     font-size: $text-16;
     line-height: $line-160;
+    overflow: hidden;
   }
 }
 
 #recent__delete__button {
+  display: none;
+  position: absolute;
+  top: 7.5px;
+  left: 120px;
+  padding-left: 20px;
   background-color: transparent;
-  outline: none;
+  background-image: url('/icons/stack.svg#delete-fiiled');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 15px;
+  color: $gray-300;
+  font-size: $text-16;
+  cursor: pointer;
 }
 
 .delete__recent {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flexbox(row, nowrap, space-between, center);
   padding: $spacing-12;
+
+  button {
+    background-color: transparent;
+    color: $gray-300;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: $brand-red-3;
+    }
+  }
 }
 
 .delete__icon {
-  width: $text-12;
-  height: $text-12;
+  width: 12px;
+  height: 12px;
   cursor: pointer;
 }
 
@@ -119,15 +145,25 @@
   .popular__list {
     margin-top: 20px;
     .popular__list__order {
-      font-size: $text-12;
-      font-weight: 600;
-      line-height: $line-150;
-      color: $gray-300;
-      padding-bottom: 9px;
-      cursor: pointer;
-      span {
-        color: $brand-red-3;
-        padding-right: 5px;
+      button {
+        font-size: $text-12;
+        font-weight: 600;
+        line-height: $line-150;
+        color: $gray-300;
+        background-color: transparent;
+        padding-bottom: 9px;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+          color: $brand-red-3;
+        }
+        span {
+          display: inline-block;
+          width: $spacing-18;
+          text-align: start;
+          color: $brand-red-3;
+        }
       }
     }
   }
@@ -143,6 +179,11 @@
 @include mq(tablet) {
   .search {
     top: 56px;
+  }
+
+  .search__wrapper {
+    padding: $spacing-36;
+    max-height: calc(100vh - 56px);
   }
 
   .search__bar__input {
@@ -183,7 +224,13 @@
     }
     .popular__list {
       .popular__list__order {
-        font-size: $text-16;
+        button {
+          font-size: $text-16;
+
+          span {
+            width: $spacing-28;
+          }
+        }
       }
     }
   }
@@ -196,6 +243,11 @@
 @include mq(desktop) {
   .search {
     top: 100px;
+  }
+
+  .search__wrapper {
+    padding: $spacing-48;
+    max-height: calc(100vh - 100px);
   }
 
   .search__bar__input {
@@ -219,21 +271,25 @@
     h2 {
       font-size: $text-28;
     }
+
     #recent__search__list {
+      max-height: 470px;
       font-size: $text-21;
       font-weight: 400;
     }
   }
 
   #recent__delete__button {
-    background-color: transparent;
-    outline: none;
+    top: 10px;
+    left: 150px;
+    padding-left: 30px;
+    background-size: 20px;
+    font-size: $text-21;
   }
 
   .delete__icon {
     width: 15px;
     height: 15px;
-    cursor: pointer;
   }
 
   .popular__search {
@@ -244,9 +300,12 @@
     }
     .popular__list {
       .popular__list__order {
-        font-size: $text-21;
-        span {
-          padding-right: $spacing-14;
+        button {
+          font-size: $text-21;
+
+          span {
+            width: $spacing-36;
+          }
         }
       }
     }
