@@ -1,0 +1,183 @@
+@use '@/styles/index' as *;
+
+body {
+  min-width: 20rem;
+  background-color: $black;
+}
+
+.main {
+  padding: 0 $spacing-16 7.5rem;
+  font-size: $text-12;
+  color: $gray-400;
+}
+
+.search__bar {
+  margin: $spacing-24;
+}
+
+.notSearch__poster__container {
+  @include flexbox(row, nowrap, center, center);
+
+  .notSearch {
+    @include flexbox(column, nowrap, center, center, $spacing-16);
+
+    #popularSearch {
+      font-size: 0.875rem;
+    }
+
+    .recommend__list {
+      @include flexbox(column, nowrap, center, center, $spacing-8);
+
+      button {
+        background-color: transparent;
+        color: $gray-400;
+        font-size: $text-12;
+        cursor: pointer;
+      }
+
+      button:hover,
+      button:focus {
+        color: $brand-red-3;
+      }
+    }
+  }
+
+  .notSearch__header {
+    @include flexbox(column, nowrap, center, center, $spacing-8);
+    font-size: $text-16;
+    font-weight: bold;
+    color: $white;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      margin: $spacing-8;
+    }
+  }
+}
+
+.search__poster__list {
+  @include flexbox(row, wrap, null, center, $spacing-16);
+
+  figure {
+    @include flexbox(column, nowrap, null, center, $spacing-8);
+    width: 5.75rem;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    figcaption {
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+@include mq(tablet) {
+  .main {
+    padding: 0 $spacing-40 11.25rem;
+  }
+
+  .search__bar {
+    margin: $spacing-36;
+  }
+
+  .notSearch__poster__container {
+    .notSearch {
+      @include flexbox(column, nowrap, center, center, $spacing-28);
+
+      #popularSearch {
+        font-size: $text-22;
+      }
+
+      .recommend__list {
+        @include flexbox(column, nowrap, center, center, $spacing-14);
+
+        button {
+          font-size: $text-16;
+        }
+      }
+    }
+
+    .notSearch__header {
+      @include flexbox(column, nowrap, center, center, $spacing-18);
+      font-size: $text-28;
+
+      svg {
+        width: 45px;
+        height: 45px;
+        margin: $spacing-18;
+      }
+    }
+  }
+
+  .search__poster__list {
+    @include flexbox(row, wrap, null, center, $spacing-28);
+
+    figure {
+      @include flexbox(column, nowrap, null, center, $spacing-16);
+      width: 8.125rem;
+      cursor: pointer;
+
+      figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@include mq(desktop) {
+  .main {
+    padding: 0 4.25rem 15rem;
+  }
+
+  .search__bar {
+    margin: $spacing-48;
+  }
+
+  .notSearch__poster__container {
+    .notSearch {
+      @include flexbox(column, nowrap, center, center, $spacing-36);
+
+      #popularSearch {
+        font-size: $text-28;
+      }
+
+      .recommend__list {
+        @include flexbox(column, nowrap, center, center, $spacing-18);
+
+        button {
+          font-size: $text-22;
+        }
+      }
+    }
+
+    .notSearch__header {
+      @include flexbox(column, nowrap, center, center, $spacing-24);
+      font-size: $text-34;
+
+      svg {
+        width: 70px;
+        height: 70px;
+        margin: $spacing-24;
+      }
+    }
+  }
+
+  .search__poster__list {
+    @include flexbox(row, wrap, null, center, $spacing-48);
+
+    figure {
+      @include flexbox(column, nowrap, null, center, $spacing-36);
+      width: 15rem;
+
+      figcaption {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
