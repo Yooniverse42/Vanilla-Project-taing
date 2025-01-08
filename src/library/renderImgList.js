@@ -36,19 +36,21 @@ export async function renderSearchList(
   searchValue
 ) {
   const records = await getRecords(collection, {
-    filter: `category = ${categoryName} && title.include(${searchValue})`,
+    filter: `category='${categoryName}' && title~'${searchValue}'`,
   });
 
   records.forEach((item) => {
     const template = `
-    <figure>
-      <picture>
-        <source srcset="${getPbImageURL(item, 'tablet')}" media="(min-width: 768px) and (max-width: 1279px)" />
-        <source srcset="${getPbImageURL(item, 'desktop')}" media="(min-width: 1280px)"/>
-        <img src="${getPbImageURL(item)}" alt="${item.title}" />
-      </picture>
-      <figcaption>${item.title}</figcaption>
-    </figure>
+    <li>
+      <figure>
+        <picture>
+          <source srcset="${getPbImageURL(item, 'tablet')}" media="(min-width: 768px) and (max-width: 1279px)" />
+          <source srcset="${getPbImageURL(item, 'desktop')}" media="(min-width: 1280px)"/>
+          <img src="${getPbImageURL(item)}" alt="${item.title}" />
+        </picture>
+        <figcaption>${item.title}</figcaption>
+      </figure>
+    </li>
   `;
     insertLast(node, template);
   });
