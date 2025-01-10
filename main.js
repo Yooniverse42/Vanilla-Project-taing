@@ -1,7 +1,8 @@
 import '/main.scss';
 import '@/layout/index';
 import 'swiper/css/bundle';
-import { getNode } from '@/library/index';
+import { getNode, renderImgList } from '@/library/index';
+import { getRecords } from '@/api/getRecords';
 import Swiper from 'swiper/bundle';
 import gsap from 'gsap';
 
@@ -15,20 +16,35 @@ tl.from('.section0__background, .section1, .section2, .section3', {})
   .from('.container__header, .container__message', {}, '-=0.3')
   .from('.login__move', {}, '-=0.5');
 
-new Swiper('.section1__swiper1', {
-  autoplay: {
-    delay: 1500,
-  },
-
-  slidesPerView: 1.5,
-  spaceBetween: 12,
-  centeredSlides: true,
-  breakepoint: {
-    768: {
-      spaceBetween: 20,
+function renderSection1Swiper() {
+  const getImage = getRecords('image');
+  renderImgList(getImage, 'onboarding1', '.section1__swiper .swiper-wrapper');
+  new Swiper('.section1__swiper .swiper-container', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    initialSlide: 1,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
     },
-  },
-});
+    loop: true,
+    spaceBetween: 5,
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+      },
+      1280: {
+        slidesPerView: 3,
+      },
+    },
+  });
+}
+renderSection1Swiper();
 
 const pageLink = getNode('.login__move');
 
