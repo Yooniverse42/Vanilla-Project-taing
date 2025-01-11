@@ -274,7 +274,7 @@ body {
 
   .section1__swiper {
     .swiper-container {
-      max-width: 100%;
+      max-width: 1700px;
       padding: 51px 0;
     }
   }
@@ -315,7 +315,6 @@ body {
     transition-timing-function: linear !important;
     display: flex;
     width: fit-content;
-    gap: 10px;
   }
 
   .section2__swiper1 {

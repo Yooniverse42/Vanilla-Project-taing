@@ -16,39 +16,8 @@ tl.from('.section0__background, .section1, .section2, .section3', {})
   .from('.container__header, .container__message', {}, '-=0.3')
   .from('.login__move', {}, '-=0.5');
 
-function renderSection1Swiper() {
-  const getImage = getRecords('image');
-  renderImgList(getImage, 'onboarding1', '.section1__swiper .swiper-wrapper');
-  new Swiper('.section1__swiper .swiper-container', {
-    effect: 'coverflow',
-    grabCursor: true,
-    centeredSlides: true,
-    slidesPerView: 'auto',
-    initialSlide: 1,
-    coverflowEffect: {
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: true,
-    },
-    loop: true,
-    spaceBetween: 5,
-    breakpoints: {
-      768: {
-        slidesPerView: 3,
-      },
-      1280: {
-        slidesPerView: 3,
-      },
-    },
-  });
-}
-renderSection1Swiper();
-
-const pageLink = getNode('.login__move');
-
 function checkUserAuth() {
+  const pageLink = getNode('.login__move');
   const { record } = JSON.parse(localStorage.getItem('user'));
   if (record.id) {
     const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
@@ -75,17 +44,55 @@ function createSwiper(className, speed) {
     speed: speed,
     loop: true,
     spaceBetween: 12,
-    slidesPerView: 1.7,
+    slidesPerView: 4,
     breakpoints: {
       768: {
-        slidesPerView: 4,
+        slidesPerView: 5,
+      },
+      1000: {
+        slidesPerView: 6,
       },
     },
   });
 }
 
-createSwiper('.section2__swiper1', 5000);
-createSwiper('.section2__swiper2', 5030);
+function renderSwiper() {
+  const getImage = getRecords('image');
+  renderImgList(getImage, 'onboarding1', '.section1__swiper .swiper-wrapper');
+  new Swiper('.section1__swiper .swiper-container', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    initialSlide: 1,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    loop: true,
+    spaceBetween: 5,
+    breakpoints: {
+      768: {
+        slidesPerView: 3,
+      },
+      1280: {
+        slidesPerView: 3,
+      },
+    },
+  });
+
+  renderImgList(getImage, 'onboarding2', '.section2__swiper1 .swiper-wrapper');
+  renderImgList(getImage, 'onboarding2', '.section2__swiper2 .swiper-wrapper');
+  renderImgList(getImage, 'onboarding2', '.section2__swiper1 .swiper-wrapper');
+  renderImgList(getImage, 'onboarding2', '.section2__swiper2 .swiper-wrapper');
+
+  createSwiper('.section2__swiper1', 5000);
+  createSwiper('.section2__swiper2', 5030);
+}
+renderSwiper();
 
 const cHeader = document.querySelector('c-header');
 const header = cHeader.shadowRoot.querySelector('header');
