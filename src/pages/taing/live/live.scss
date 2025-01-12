@@ -1,0 +1,17 @@
+@use '@/styles/index' as *;
+
+.search__poster__list {
+  @include flexbox(row, wrap, center, center, $spacing-16);
+}
+
+@include mq(tablet) {
+  .search__poster__list {
+    @include flexbox(row, wrap, center, center, $spacing-28);
+  }
+}
+
+@include mq(desktop) {
+  .search__poster__list {
+    @include flexbox(row, wrap, center, center, $spacing-48);
+  }
+}
