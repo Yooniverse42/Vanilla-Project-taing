@@ -44,11 +44,12 @@ export async function renderSearchList(
   collection,
   categoryName,
   node,
-  searchValue
+  searchValue = false
 ) {
-  const records = await getRecords(collection, {
-    filter: `category='${categoryName}' && title~'${searchValue}'`,
-  });
+  const filter = searchValue
+    ? `category='${categoryName}' && title~'${searchValue}'`
+    : `category='${categoryName}'`;
+  const records = await getRecords(collection, { filter });
 
   records.forEach((item) => {
     const template = `
