@@ -1,0 +1,69 @@
+@use '@/styles/index' as *;
+
+.popUp {
+  @include flexbox(row, nowrap, center, center);
+  @include size(100%, 100%);
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: $black;
+
+  &.is--hidden {
+    display: none;
+  }
+}
+
+.popUp__container {
+  width: 250px;
+}
+
+.popUp__actions {
+  @include flexbox(row, nowrap, space-evenly, center);
+  width: 100%;
+  padding: $spacing-8 0;
+  font-size: $text-16;
+  font-weight: 200;
+  color: $white;
+
+  button {
+    font-size: $text-12;
+    color: $white;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.2;
+      color: $brand-red-3;
+    }
+  }
+}
+
+@include mq(tablet) {
+  .popUp__container {
+    width: 350px;
+  }
+
+  .popUp__actions {
+    padding: $spacing-12 0;
+    font-size: $text-21;
+
+    button {
+      font-size: $text-16;
+    }
+  }
+}
+
+@include mq(desktop) {
+  .popUp__container {
+    width: 450px;
+  }
+
+  .popUp__actions {
+    padding: $spacing-16 0;
+    font-size: $text-28;
+
+    button {
+      font-size: $text-21;
+    }
+  }
+}

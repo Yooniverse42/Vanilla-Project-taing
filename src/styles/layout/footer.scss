@@ -9,33 +9,26 @@
 }
 
 .footer_contents {
-  @include flexbox(column, nowrap, null, null, $gap: $spacing-16);
+  @include flexbox(column, nowrap, null, null, $spacing-16);
   border-top: 1px solid $brand-dark-2;
 }
 
 .footer_util {
-  @include flexbox(column, nowrap, null, null, $gap: $spacing-4);
+  @include flexbox(column, nowrap, null, null, $spacing-8);
   margin-top: $spacing-8;
 }
 
 .SNS {
-  @include flexbox(row, nowrap, null, flex-start, $gap: $spacing-8);
-}
+  @include flexbox(row, nowrap, null, flex-start, $spacing-8);
 
-.youtube {
-  padding: $spacing-10;
-}
-
-.instagram {
-  padding: $spacing-8 $spacing-10;
-}
-
-.twitter {
-  padding: $spacing-10;
-}
-
-.facebook {
-  padding: $spacing-8 $spacing-16;
+  .SNS_icon {
+    width: 25px;
+    height: 25px;
+  }
+  img {
+    width: 15px;
+    height: 15px;
+  }
 }
 
 .copyright_container {
@@ -43,7 +36,7 @@
 }
 
 .copyright {
-  color: $gray-500;
+  color: $gray-700;
   font-size: $text-12;
   font-weight: 400;
   line-height: $line-160;
@@ -67,11 +60,34 @@
   .copyright_container {
     display: block;
     font-size: $text-12;
-    color: $gray-500;
+    color: $gray-700;
+
+    p {
+      margin-bottom: $spacing-4;
+
+      span::after {
+        content: '|';
+        padding: 0 $spacing-8;
+        color: $gray-800;
+      }
+
+      span:last-child::after {
+        content: '';
+      }
+    }
   }
 
   .SNS {
-    gap: $spacing-8;
+    gap: $spacing-12;
+
+    .SNS_icon {
+      width: 35px;
+      height: 35px;
+    }
+    img {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 
@@ -95,5 +111,22 @@
 
   .copyright_container {
     font-size: $text-21;
+
+    p {
+      margin-bottom: $spacing-8;
+    }
+  }
+
+  .SNS {
+    gap: $spacing-16;
+
+    .SNS_icon {
+      width: 55px;
+      height: 55px;
+    }
+    img {
+      width: 30px;
+      height: 30px;
+    }
   }
 }
