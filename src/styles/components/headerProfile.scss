@@ -14,17 +14,17 @@
 }
 
 .profile_container {
-  @include flexbox(column, nowrap, center, center, $spacing-32);
+  @include flexbox(column, nowrap, center, center, $spacing-16);
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 22rem;
-  padding: $spacing-32;
+  width: 15rem;
+  padding: $spacing-32 $spacing-16;
   border-radius: 1rem;
   background-color: $brand-dark-1;
   z-index: 999;
-  font-size: $text-12;
+  font-size: $text-10;
 }
 
 .profile_wrapper {
@@ -32,12 +32,12 @@
   width: 100%;
 
   img {
-    width: 114px;
-    height: 114px;
+    width: 57px;
+    height: 57px;
   }
 
   h2 {
-    font-size: $text-16;
+    font-size: $text-12;
     color: $gray-200;
   }
 
@@ -48,7 +48,7 @@
     a {
       display: block;
       width: 100%;
-      padding: $spacing-12 0;
+      padding: $spacing-8 0;
       border: 1px solid $gray-600;
       border-radius: 4px;
       color: $white;
@@ -67,8 +67,8 @@
   width: 100%;
   button {
     width: 100%;
-    padding: $spacing-12;
-    font-size: $text-12;
+    padding: $spacing-8 $spacing-12;
+    font-size: $text-10;
     border-radius: 4px;
     background-image: url('/image/button_arrow.svg');
     background-color: $brand-dark-2;
@@ -83,6 +83,7 @@
   .contents_button,
   .logout_button {
     span {
+      display: block;
       width: 102px;
       padding-left: 21px;
       background-repeat: no-repeat;
@@ -106,45 +107,45 @@
 
 .deleteID_button {
   background-color: transparent;
-  font-size: $text-12;
+  font-size: $text-10;
   color: $gray-500;
   cursor: pointer;
 }
 
 @include mq(tablet) {
   .profile_container {
-    @include flexbox(column, nowrap, center, center, $spacing-48);
-    width: 30rem;
-    padding: 4.625rem;
+    @include flexbox(column, nowrap, center, center, $spacing-24);
+    width: 23rem;
+    padding: 3.5rem $spacing-28;
     font-size: $text-16;
   }
 
   .profile_wrapper {
-    @include flexbox(column, nowrap, center, center, $spacing-32);
+    @include flexbox(column, nowrap, center, center, $spacing-18);
 
     img {
-      width: 132px;
-      height: 132px;
+      width: 100px;
+      height: 100px;
     }
 
     h2 {
-      font-size: $text-21;
+      font-size: 1.25rem;
     }
 
     .profile_button_wrapper {
       @include flexbox(row, nowrap, null, center, $spacing-16);
 
       a {
-        padding: $spacing-16 0;
+        padding: $spacing-12 0;
       }
     }
   }
 
   .button_container {
-    @include flexbox(column, nowrap, null, center, $spacing-24);
+    @include flexbox(column, nowrap, null, center, $spacing-22);
     button {
       width: 100%;
-      padding: $spacing-16;
+      padding: $spacing-12 $spacing-16;
       font-size: $text-16;
       background-position: right 10px center;
       background-size: 25px;
@@ -167,28 +168,29 @@
 
 @include mq(desktop) {
   .profile_container {
-    @include flexbox(column, nowrap, center, center, 4rem);
-    width: 40rem;
-    font-size: $text-22;
+    @include flexbox(column, nowrap, center, center, $spacing-36);
+    width: 30rem;
+    padding: 4rem 3rem;
+    font-size: 1.25rem;
   }
 
   .profile_wrapper {
-    @include flexbox(column, nowrap, center, center, $spacing-32);
+    @include flexbox(column, nowrap, center, center, $spacing-28);
 
     img {
-      width: 150px;
-      height: 150px;
+      width: 130px;
+      height: 130px;
     }
 
     h2 {
-      font-size: $text-28;
+      font-size: $text-22;
     }
 
     .profile_button_wrapper {
       @include flexbox(row, nowrap, null, center, $spacing-24);
 
       a {
-        padding: $spacing-22 0;
+        padding: $spacing-18 0;
       }
     }
   }
@@ -197,8 +199,8 @@
     @include flexbox(column, nowrap, null, center, $spacing-28);
     button {
       width: 100%;
-      padding: $spacing-22;
-      font-size: $text-22;
+      padding: $spacing-24 $spacing-18;
+      font-size: 1.25rem;
       background-position: right 15px center;
       background-size: 35px;
     }
@@ -206,7 +208,7 @@
     .contents_button,
     .logout_button {
       span {
-        width: 200px;
+        width: 250px;
         padding-left: 55px;
         background-size: 35px;
       }
@@ -214,6 +216,6 @@
   }
 
   .deleteID_button {
-    font-size: $text-22;
+    font-size: 1.25rem;
   }
 }
