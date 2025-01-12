@@ -6,36 +6,31 @@ body {
 }
 
 .main {
-  padding: 0 $spacing-16;
   font-size: $text-12;
   color: $gray-400;
 }
 
-.section_wrapper {
-  position: relative;
-  z-index: 10;
+.banner__wrapper {
+  padding: 0 $spacing-16;
 }
-
-.swiper2,
-.swiper3,
-.swiper4,
-.swiper5,
-.swiper6 {
-  li {
-    cursor: pointer;
-    transition: all ease-in 250ms;
-  }
-
-  li:hover {
-    transform: translateY(-8px);
-  }
-}
-
 .taing_banner {
   width: 100%;
   aspect-ratio: 1920 / 750;
-  margin: 0 auto;
   position: relative;
+}
+
+.section_wrapper {
+  padding-left: $spacing-16;
+  position: relative;
+  z-index: 10;
+
+  section {
+    h2[class$='heading'] {
+      font-size: $text-12;
+      margin-bottom: $spacing-4;
+      color: $white;
+    }
+  }
 }
 
 .swiper1 {
@@ -82,37 +77,48 @@ body {
   --swiper-pagination-bullet-inactive-color: #898989;
 }
 
-// 티빙에서 꼭 봐야하는 콘텐츠
-.must_watch {
-  @include flexbox(column, nowrap, null, null, $spacing-4);
-  width: 100%;
-  min-width: calc(320px + (16px * 2));
-  margin: $spacing-8 0 $spacing-16 0;
-  overflow: visible;
+.swiper2,
+.swiper3,
+.swiper4,
+.swiper5,
+.swiper6 {
+  .swiper-slide {
+    font-size: $text-12;
+    padding-right: $spacing-8;
 
-  .swiper {
-    width: 100%;
+    img {
+      border-radius: 0.25rem;
+    }
+
+    h3 {
+      width: 100%;
+      margin-top: $spacing-4;
+
+      span {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  li {
+    cursor: pointer;
+    transition: all ease-in 250ms;
+  }
+
+  li:hover {
+    transform: translateY(-8px);
   }
 }
 
-.must_watch_heading {
-  font-size: $text-12;
+// 티빙에서 꼭 봐야하는 콘텐츠
+.must_watch {
+  margin: $spacing-8 0 $spacing-16 0;
 }
 
 .swiper2 {
-  .swiper-wrapper {
-    gap: $spacing-8;
-  }
-
-  .swiper-slide {
-    @include flexbox(column, nowrap, null, null, null);
-    font-size: $text-12;
-  }
-
-  .swiper-slide img {
-    border-radius: 0.25rem;
-  }
-
   h3 {
     display: none;
   }
@@ -120,186 +126,107 @@ body {
 
 // QUICK VOD
 .quick_vod {
-  @include flexbox(column, nowrap, null, null, $spacing-4);
-  @include size(100%, 9.875rem);
   margin: 0 0 $spacing-16 0;
-  overflow: hidden;
-}
-
-.quick_vod_heading {
-  font-size: $text-12;
 }
 
 .swiper3 {
-  @include size(9.125rem, 5.125rem);
-
-  .swiper-wrapper {
-    gap: $spacing-8;
-  }
-
-  .swiper-slide {
-    @include flexbox(column, nowrap, null, null, null);
-
-    h3 {
-      @include flexbox(column, nowrap, null, null, null);
-      margin: $spacing-4 0 0 0;
-      font-size: $text-12;
+  h3 {
+    font-size: $text-12;
+    :nth-child(1) {
+      font-weight: bold;
     }
-  }
-
-  .swiper-slide img {
-    border-radius: 0.25rem;
+    :nth-child(2) {
+      font-weight: 400;
+    }
   }
 }
 
 // 실시간 인기 프로그램
 .ranking {
-  @include flexbox(column, nowrap, null, null, $spacing-4);
-  @include size(100%, 12rem);
   margin: 0 0 $spacing-16 0;
-  overflow: hidden;
-}
-
-.ranking_heading {
-  font-size: $text-12;
 }
 
 .swiper4 {
-  @include size(5.75rem, 8.25rem);
-
-  .swiper-wrapper {
-    gap: $spacing-8;
-  }
-
   .swiper-slide {
-    @include flexbox(column, nowrap, null, null, null);
-
     h3 {
-      @include flexbox(row, nowrap, end, null, null);
+      @include flexbox(row, nowrap, null, flex-end, $spacing-4);
       position: relative;
-      font-size: $text-10;
-      margin: $spacing-4 0 0 0;
+      top: -20px;
+      left: 0;
+      font-size: $text-12;
 
       :nth-child(1) {
+        font-style: italic;
         font-size: $text-34;
+        font-weight: bold;
         color: $white;
-        position: absolute;
-        left: 0;
-        bottom: 0;
+        overflow: visible;
       }
 
       :nth-child(2) {
-        height: $spacing-22;
-        vertical-align: baseline;
+        padding-bottom: $spacing-4;
       }
     }
-  }
-
-  .swiper-slide img {
-    border-radius: 0.25rem;
   }
 }
 
 // 인기 LIVE 채널
 .live_channel {
-  @include flexbox(column, nowrap, null, null, $spacing-4);
-  @include size(100%, 10.875rem);
   margin: 0 0 $spacing-16 0;
-  overflow: hidden;
-}
-
-.live_channel_heading {
-  font-size: $text-12;
 }
 
 .swiper5 {
-  @include size(9.125rem, 5.125rem);
-
-  .swiper-wrapper {
-    gap: $spacing-8;
-  }
-
   .swiper-slide {
-    @include flexbox(column, nowrap, null, null, null);
-
     h3 {
       @include flexbox(row, nowrap, null, null, $spacing-8);
       margin: $spacing-4 0 0 0;
 
       .index {
+        font-style: italic;
         font-size: $text-34;
+        font-weight: bold;
         color: $white;
+        overflow: visible;
       }
 
       .text_wrapper {
         @include flexbox(column, nowrap, null, null, null);
         font-size: $text-12;
+        font-weight: 400;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        :nth-child(1) {
+          font-weight: bold;
+        }
       }
     }
-  }
-
-  .swiper-slide img {
-    border-radius: 0.25rem;
   }
 }
 
 // 오직 티빙에만 있어요
 .original {
-  @include flexbox(column, nowrap, null, null, $spacing-4);
-  @include size(100%, 19.75rem);
   margin: 0 0 $spacing-16 0;
-  overflow: hidden;
-}
-
-.original_heading {
-  font-size: $text-12;
-}
-
-.swiper6 {
-  @include size(8.75rem, 17.375rem);
-
-  .swiper-wrapper {
-    gap: $spacing-8;
-  }
-
-  .swiper-slide {
-    @include flexbox(row, nowrap, null, null, null);
-  }
-
-  .swiper-slide img {
-    border-radius: 0.25rem;
-  }
 }
 
 // 이벤트
 .event {
-  @include flexbox(column, nowrap, null, null, $spacing-4);
-  @include size(100%, 5.5rem);
   margin: 0 0 $spacing-16 0;
-  overflow: hidden;
-}
-
-.event_heading {
-  font-size: $text-12;
-}
-
-.swiper7 {
-  @include size(9.125rem, 3.125rem);
-
-  .swiper-wrapper {
-    gap: $spacing-8;
-  }
 
   .swiper-slide {
-    @include flexbox(row, nowrap, null, null, null);
-  }
+    padding-right: 0.5rem;
 
-  .swiper-slide img {
-    border-radius: 0.25rem;
+    img {
+      border-radius: 0.25rem;
+    }
   }
 }
 
 // 서브 배너
+.sub__banner__wrapper {
+  padding-right: $spacing-16;
+}
 .sub_banner {
   width: 100%;
   max-width: 500px;
@@ -330,6 +257,7 @@ body {
   @include flexbox(flex, row, space-between, center, $spacing-4);
   height: 19px;
   margin: $spacing-40 0 $spacing-12;
+  padding: 0 $spacing-16;
   line-height: $line-160;
   color: $gray-200;
 
@@ -353,75 +281,77 @@ body {
 }
 
 @include mq(tablet) {
-  .main {
+  .banner__wrapper {
     padding: 0 $spacing-40;
   }
 
-  // 티빙에서 꼭 봐야하는 콘텐츠
+  .section_wrapper {
+    padding-left: $spacing-40;
 
-  .must_watch {
-    margin: $spacing-30 0 $spacing-28;
-    gap: $spacing-8;
+    section {
+      h2[class$='heading'] {
+        font-size: $text-16;
+        margin-bottom: $spacing-8;
+      }
+    }
   }
 
-  .must_watch_heading {
-    font-size: $text-16;
-  }
+  .swiper2,
+  .swiper3,
+  .swiper4,
+  .swiper5,
+  .swiper6 {
+    .swiper-slide {
+      padding-right: $spacing-12;
+    }
 
-  .swiper2 {
     h3 {
       display: block;
-      margin: $spacing-8 0 0 0;
+      margin-top: $spacing-8;
     }
+  }
+
+  // 티빙에서 꼭 봐야하는 콘텐츠
+  .must_watch {
+    margin: $spacing-30 0 $spacing-28;
   }
 
   // QUICK VOD
   .quick_vod {
-    @include size(null, 12.875rem);
     margin: 0 0 $spacing-40 0;
-    gap: $spacing-8;
-  }
-
-  .quick_vod_heading {
-    font-size: $text-16;
   }
 
   .swiper3 {
-    @include size(14rem, 7.875rem);
-
-    .swiper-slide {
-      h3 {
-        margin: $spacing-8 0 0 0;
-
-        :nth-child(n) {
-          height: $spacing-18;
-        }
+    h3 {
+      font-size: $text-12;
+      :nth-child(1) {
+        margin-bottom: $spacing-4;
+        font-weight: bold;
+      }
+      :nth-child(2) {
+        font-weight: 400;
       }
     }
   }
 
   // 실시간 인기 프로그램
   .ranking {
-    @include size(null, 16.25rem);
-    gap: $spacing-8;
     margin: 0 0 $spacing-40 0;
   }
 
-  .ranking_heading {
-    font-size: $text-16;
-  }
-
   .swiper4 {
-    @include size(8.125rem, 11.875rem);
-
     .swiper-slide {
       h3 {
-        height: $spacing-20;
+        position: relative;
+        top: -30px;
         font-size: $text-12;
 
         :nth-child(1) {
           font-size: $text-50;
-          bottom: -0.75rem;
+        }
+
+        :nth-child(2) {
+          padding-bottom: $spacing-12;
         }
       }
     }
@@ -429,25 +359,19 @@ body {
 
   // 인기 LIVE 채널
   .live_channel {
-    @include size(null, 13.875rem);
-    gap: $spacing-8;
     margin: 0 0 $spacing-40 0;
   }
 
-  .live_channel_heading {
-    font-size: $text-16;
-  }
-
   .swiper5 {
-    @include size(14.125rem, 7.875rem);
-
     .swiper-slide {
       h3 {
+        margin: 0;
         .index {
           font-size: $text-50;
         }
 
         .text_wrapper {
+          @include flexbox(column, nowrap, null, null, $spacing-4);
           margin: $spacing-8;
         }
       }
@@ -456,35 +380,22 @@ body {
 
   // 오직 티빙에만 있어요
   .original {
-    @include size(100%, 24.625rem);
-    gap: $spacing-8;
     margin: 0 0 $spacing-40 0;
-  }
-
-  .original_heading {
-    font-size: $text-16;
-  }
-
-  .swiper6 {
-    @include size(10.5rem, 21rem);
   }
 
   // 이벤트
   .event {
-    @include size(100%, 8.25rem);
-    gap: $spacing-8;
     margin: 0 0 $spacing-40 0;
-  }
 
-  .event_heading {
-    font-size: $text-16;
-  }
-
-  .swiper7 {
-    @include size(13.375rem, 4.625rem);
+    .swiper-slide {
+      padding-right: 0.75rem;
+    }
   }
 
   // SPOTV 이벤트
+  .sub__banner__wrapper {
+    padding-right: $spacing-28;
+  }
   .sub_banner {
     max-width: 800px;
     margin: $spacing-28 auto;
@@ -508,6 +419,7 @@ body {
   .notice {
     @include flexbox(flex, row, space-between, center, $spacing-20);
     margin: 50px 0 $spacing-16;
+    padding: 0 $spacing-40;
     height: 19px;
 
     .notice__heading {
@@ -533,86 +445,77 @@ body {
 }
 
 @include mq(desktop) {
-  .main {
+  .banner__wrapper {
     padding: 0 4.25rem;
+  }
+
+  .section_wrapper {
+    padding-left: 4.25rem;
+
+    section {
+      h2[class$='heading'] {
+        font-size: $text-28;
+        margin-bottom: $spacing-12;
+      }
+    }
+  }
+
+  .swiper2,
+  .swiper3,
+  .swiper4,
+  .swiper5,
+  .swiper6 {
+    .swiper-slide {
+      padding-right: $spacing-16;
+    }
+
+    h3 {
+      font-size: $text-22;
+      margin-top: $spacing-12;
+    }
   }
 
   // 티빙에서 꼭 봐야하는 콘텐츠
   .must_watch {
     margin: $spacing-36 0 $spacing-48 0;
-    gap: $spacing-12;
-  }
-
-  .must_watch_heading {
-    font-size: $text-28;
-  }
-
-  .swiper2 {
-    .swiper-wrapper {
-      gap: $spacing-16;
-    }
-
-    h3 {
-      font-size: $text-22;
-    }
   }
 
   // QUICK VOD
   .quick_vod {
-    @include size(100%, 19.75rem);
     margin: 0 0 $spacing-48 0;
-    gap: $spacing-12;
-  }
-
-  .quick_vod_heading {
-    font-size: $text-28;
   }
 
   .swiper3 {
-    @include size(21.625rem, 12.125rem);
-
-    .swiper-wrapper {
-      gap: $spacing-16;
-    }
-
-    .swiper-slide {
-      h3 {
-        margin: 0.5rem 0 0.25rem 0;
-        font-size: $text-22;
-
-        :nth-child(n) {
-          height: $spacing-32;
-        }
+    h3 {
+      font-size: $text-21;
+      :nth-child(1) {
+        margin-bottom: $spacing-8;
+        font-weight: bold;
+      }
+      :nth-child(2) {
+        font-weight: 400;
+        font-size: $text-16;
       }
     }
   }
 
   // 실시간 인기 프로그램
   .ranking {
-    @include size(100%, 27.5rem);
-    gap: $spacing-8;
     margin: 0 0 $spacing-48 0;
   }
 
-  .ranking_heading {
-    font-size: $text-28;
-  }
-
   .swiper4 {
-    @include size(15rem, 21.625rem);
-
-    .swiper-wrapper {
-      gap: $spacing-16;
-    }
-
     .swiper-slide {
       h3 {
-        margin: 0.875rem 0 0 0;
-        font-size: $text-28;
+        top: -30px;
+        font-size: $text-21;
 
         :nth-child(1) {
-          font-size: $text-75;
-          bottom: -$spacing-16;
+          font-size: 3.75rem;
+        }
+
+        :nth-child(2) {
+          padding-bottom: $spacing-12;
         }
       }
     }
@@ -620,33 +523,23 @@ body {
 
   // 인기 LIVE 채널
   .live_channel {
-    @include size(100%, 21.5625rem);
-    gap: $spacing-12;
     margin: 0 0 $spacing-48 0;
   }
 
-  .live_channel_heading {
-    font-size: $text-28;
-  }
-
   .swiper5 {
-    @include size(21.625rem, 12.125rem);
-
-    .swiper-wrapper {
-      gap: $spacing-16;
-    }
-
     .swiper-slide {
       h3 {
-        margin: $spacing-4 0 0 0;
-
         .index {
-          font-size: $text-75;
+          font-size: 3.75rem;
         }
 
         .text_wrapper {
-          margin: $spacing-8;
-          font-size: $text-28;
+          @include flexbox(column, nowrap, null, null, $spacing-4);
+          font-size: $text-16;
+
+          :nth-child(1) {
+            font-size: $text-21;
+          }
         }
       }
     }
@@ -654,43 +547,22 @@ body {
 
   // 오직 티빙에만 있어요
   .original {
-    @include size(100%, 35.625rem);
-    gap: $spacing-12;
     margin: 0 0 $spacing-48 0;
-  }
-
-  .original_heading {
-    font-size: $text-28;
-  }
-
-  .swiper6 {
-    @include size(17.875rem, 35.625rem);
-
-    .swiper-wrapper {
-      gap: $spacing-16;
-    }
   }
 
   // 이벤트
   .event {
-    @include size(100%, 10.75rem);
-    gap: $spacing-12;
     margin: 0 0 $spacing-48 0;
-  }
 
-  .event_heading {
-    font-size: $text-28;
-  }
-
-  .swiper7 {
-    @include size(21.75rem, 7.5rem);
-
-    .swiper-wrapper {
-      gap: $spacing-16;
+    .swiper-slide {
+      padding-right: 1rem;
     }
   }
 
   // SPOTV 이벤트
+  .sub__banner__wrapper {
+    padding-right: 4.25rem;
+  }
   .sub_banner {
     max-width: 1800px;
     margin: $spacing-36 auto;
@@ -728,6 +600,7 @@ body {
   .notice {
     height: 34px;
     margin: 130px 0 $spacing-28;
+    padding: 0 4.25rem;
     font-size: $text-21;
 
     .notice__heading {
