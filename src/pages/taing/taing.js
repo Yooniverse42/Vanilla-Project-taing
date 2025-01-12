@@ -6,9 +6,6 @@ import 'swiper/css/bundle';
 import { renderImgList, getNodes, getNode } from '@/library/index';
 import { getRecords } from '@/api/getRecords';
 
-const imageCollection = getRecords('image');
-const loading = getNode('c-loading');
-
 function delay(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
@@ -17,6 +14,7 @@ function delay(ms) {
 
 // 스와이퍼 랜더링 함수
 async function loadingTaing() {
+  const imageCollection = getRecords('image');
   // 메인 배너
   renderImgList(imageCollection, 'taing_banner', '.swiper1 > ul').then(() => {
     const swiper1 = new Swiper('.swiper1', {
@@ -55,6 +53,38 @@ async function loadingTaing() {
     });
   });
 
+  function createSwiper(
+    className,
+    mobileSlides,
+    mobileLargeSlides,
+    tabletSlides,
+    desktopSlides
+  ) {
+    return new Swiper(className, {
+      slidesPerView: mobileSlides,
+      slidesPerGroup: mobileSlides,
+      centeredSlides: false,
+      grabCursor: true,
+      keyboard: {
+        enabled: true,
+      },
+      breakpoints: {
+        430: {
+          slidesPerView: mobileLargeSlides,
+          slidesPerGroup: mobileLargeSlides,
+        },
+        768: {
+          slidesPerView: tabletSlides,
+          slidesPerGroup: tabletSlides,
+        },
+        1280: {
+          slidesPerView: desktopSlides,
+          slidesPerGroup: desktopSlides,
+        },
+      },
+    });
+  }
+
   // 메인 포스터
   renderImgList(imageCollection, 'main_poster', '.swiper2 > ul')
     .then(async () => {
@@ -71,25 +101,7 @@ async function loadingTaing() {
       }
     })
     .then(() => {
-      new Swiper('.swiper2', {
-        slidesPerView: 4,
-        slidesPerGroup: 4,
-        centeredSlides: false,
-        grabCursor: true,
-        keyboard: {
-          enabled: true,
-        },
-        breakpoints: {
-          768: {
-            slidesPerView: 6,
-            slidesPerGroup: 6,
-          },
-          1280: {
-            slidesPerView: 8,
-            slidesPerGroup: 8,
-          },
-        },
-      });
+      createSwiper('.swiper2', 4.2, 5, 6.2, 7.8);
     });
 
   // QUICK VOD
@@ -109,23 +121,21 @@ async function loadingTaing() {
       }
     })
     .then(() => {
-      new Swiper('.swiper3', {
-        parallax: true,
-        freeMode: true,
-        slidesPerGroup: 2,
-      });
+      createSwiper('.swiper3', 2.5, 3.5, 4.5, 5.5);
     });
 
   // 실시간 인기 프로그램
-  renderImgList(imageCollection, 'main_poster', '.swiper4 > ul')
+  renderImgList(imageCollection, 'main_poster', '.swiper4 > ul', 'ranking')
     .then(async () => {
       const list = getNodes('.swiper4 > ul > li');
       const records = await imageCollection;
-      let record = records.filter((item) => item.category == 'main_poster');
+      let record = records
+        .filter((item) => item.category == 'main_poster')
+        .sort((a, b) => a.ranking - b.ranking);
       for (let i = 0; i < record.length; i++) {
         const template = `
         <h3>
-          <span>${i + 1}</span>
+          <span>${record[i].ranking}</span>
           <span>${record[i].title}</span>
         </h3>
         `;
@@ -133,11 +143,7 @@ async function loadingTaing() {
       }
     })
     .then(() => {
-      new Swiper('.swiper4', {
-        parallax: true,
-        freeMode: true,
-        slidesPerGroup: 3,
-      });
+      createSwiper('.swiper4', 4.2, 5, 6.2, 7.8);
     });
 
   // 인기 LIVE 채널
@@ -161,19 +167,12 @@ async function loadingTaing() {
       }
     })
     .then(() => {
-      new Swiper('.swiper5', {
-        parallax: true,
-        freeMode: true,
-        slidesPerGroup: 2,
-      });
+      createSwiper('.swiper5', 2.5, 3.5, 4.5, 5.5);
     });
 
   // 오직 티빙에만 있어요
   renderImgList(imageCollection, 'original', '.swiper6 > ul').then(() => {
-    new Swiper('.swiper6', {
-      parallax: true,
-      freeMode: true,
-    });
+    createSwiper('.swiper6', 2.3, 3.3, 4.3, 6.3);
   });
 
   // SPOTV 이벤트
@@ -181,11 +180,7 @@ async function loadingTaing() {
 
   // 이벤트
   renderImgList(imageCollection, 'event', '.swiper7 > ul').then(() => {
-    new Swiper('.swiper7', {
-      parallax: true,
-      freeMode: true,
-      slidesPerGroup: 2,
-    });
+    createSwiper('.swiper7', 2.1, 2.9, 3.5, 5.3);
   });
 
   // 공지사항
@@ -202,6 +197,7 @@ async function loadingTaing() {
 }
 
 async function renderTaing() {
+  const loading = getNode('c-loading');
   const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
   if (currentProfile?.name === null || !currentProfile) {
     location.href = '/src/pages/profile/profile_select/';
