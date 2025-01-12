@@ -54,11 +54,14 @@ export async function renderSearchList(
     const template = `
     <li class="swiper-slide">
       <a href="javascript:void(0)">
-        <picture>
-          <source srcset="${getPbImageURL(item, 'tablet')}" media="(min-width: 768px) and (max-width: 1279px)" />
-          <source srcset="${getPbImageURL(item, 'desktop')}" media="(min-width: 1280px)"/>
-          <img src="${getPbImageURL(item)}" alt="${item.title}" />
-        </picture>
+        <figure>
+          <picture>
+            <source srcset="${getPbImageURL(item, 'tablet')}" media="(min-width: 768px) and (max-width: 1279px)" />
+            <source srcset="${getPbImageURL(item, 'desktop')}" media="(min-width: 1280px)"/>
+            <img src="${getPbImageURL(item)}" alt="${item.title}" />
+          </picture>
+          <figcaption>${item.title}</figcaption>
+        </figure>
       </a>
     </li>
     `;
