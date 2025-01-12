@@ -38,22 +38,22 @@ export class Header extends HTMLElement {
             currentProfile && isTaingPage
               ? `<ul class="header__menu">
               <li class="menu__list">
-                <a class="list__live" href="/src/pages/taing/">
+                <a class="list__live" href="/src/pages/taing/live/">
                   실시간
                 </a>
               </li>
               <li class="menu__list">
-                <a class="list__tv" href="/src/pages/taing/">
+                <a class="list__tv" href="/src/pages/taing/live/">
                   TV프로그램
                 </a>
               </li>
               <li class="menu__list">
-                <a class="list__movie" href="/src/pages/taing/">
+                <a class="list__movie" href="/src/pages/taing/live/">
                   영화
                 </a>
               </li>
               <li class="menu__list">
-                <a class="list__paramount" href="/src/pages/taing/" aria-label="파라마운트">
+                <a class="list__paramount" href="/src/pages/taing/live/" aria-label="파라마운트">
                 </a>
               </li>
             </ul>
