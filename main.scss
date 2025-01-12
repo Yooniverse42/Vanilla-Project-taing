@@ -167,8 +167,9 @@ body {
 
 .section1 {
   padding-top: $spacing-48;
-  margin: 0 auto;
-  width: 320px;
+  margin: 0;
+  width: 100%;
+  min-width: 320px;
 }
 .container__message {
   margin-bottom: $spacing-20;
@@ -191,20 +192,29 @@ body {
   align-items: center;
 }
 
-.section1__swiper__wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.section1__swiper1 {
-  position: relative;
-  left: 0;
-  top: 30%;
-  width: 100vw;
-  overflow: hidden;
-  & img {
-    border-radius: 4px;
+.section1__swiper {
+  margin: 0;
+  padding: 0;
+
+  .swiper-container {
+    max-width: 655px;
+    padding: 26px 0;
+  }
+
+  .swiper-wrapper {
+    @include flexbox(row, nowrap, space-between, center);
+    width: 100%;
+    overflow: visible;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 220px;
+  }
+
+  .swiper-slide > img {
+    display: block;
     width: 100%;
     height: 100%;
   }
@@ -228,6 +238,17 @@ body {
   .message__wrapper__text2 {
     font-size: $text-12;
   }
+
+  .section1__swiper {
+    .swiper-container {
+      max-width: 1000px;
+      padding: 32px 0;
+    }
+
+    .swiper-slide {
+      width: 227px;
+    }
+  }
 }
 
 @include mq(desktop) {
@@ -249,6 +270,13 @@ body {
   }
   .message__wrapper__text2 {
     font-size: $text-21;
+  }
+
+  .section1__swiper {
+    .swiper-container {
+      max-width: 1700px;
+      padding: 51px 0;
+    }
   }
 }
 
@@ -287,7 +315,6 @@ body {
     transition-timing-function: linear !important;
     display: flex;
     width: fit-content;
-    gap: 10px;
   }
 
   .section2__swiper1 {

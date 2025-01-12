@@ -14,8 +14,9 @@ export class Header extends HTMLElement {
   async connectedCallback() {
     const user = JSON.parse(localStorage.getItem('user'));
     const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
-    const currentPath = window.location.pathname;
+    const currentPath = location.pathname;
     const isTaingPage = currentPath.includes('/pages/taing/');
+    const isCreatePage = currentPath.includes('/pages/profile/profile_create/');
 
     if (!user) {
       setStorage('user', defaultAuthData);
@@ -26,7 +27,7 @@ export class Header extends HTMLElement {
       <header class="header">
         <nav class="nav">
           <h1 class="header__logo">
-            <a class="header__logo__link" href="${currentProfile ? '/src/pages/taing/' : user ? '/src/pages/profile/profile_select/' : '/'}">
+            <a class="header__logo__link" href="${currentProfile && !isCreatePage ? '/src/pages/taing/' : user ? '/src/pages/profile/profile_select/' : '/'}">
               <svg class="logo1" role="img" aria-label="타잉">
                 <use href="/icons/stack.svg#logo" />
               </svg>
@@ -91,13 +92,13 @@ export class Header extends HTMLElement {
 
     if (buttonSearch && searchModal) {
       buttonSearch.addEventListener('click', () => {
-        searchModal.open();
+        if (buttonSearch.classList.contains('button__cancel')) {
+          searchModal.close();
+        } else {
+          searchModal.open();
+        }
       });
     }
-
-    searchModal.addEventListener('close', () => {
-      buttonSearch.classList.remove('button__cancel');
-    });
 
     if (buttonProfile && profileModal) {
       buttonProfile.addEventListener('click', () => {

@@ -83,11 +83,17 @@ export class ProfileModal extends HTMLElement {
           '확인',
           false,
           '취소'
-        ).then((res) => {
-          if (res.isConrimed) {
-            deleteStorage('user');
-            deleteStorage('currentProfile');
-            window.location.href = '/';
+        ).then(async (res) => {
+          if (res.isConfirmed) {
+            await deleteStorage('user');
+            await deleteStorage('currentProfile');
+
+            Object.keys(localStorage).forEach((key) => {
+              if (key.includes('RecentSearch')) {
+                deleteStorage(key);
+              }
+            });
+            location.href = '/';
           }
         });
       }
