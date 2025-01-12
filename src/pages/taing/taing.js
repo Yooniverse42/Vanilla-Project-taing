@@ -12,6 +12,32 @@ function delay(ms) {
   });
 }
 
+function checkPopupDate() {
+  const popupDate = localStorage.getItem('popupDate');
+  const today = new Date().toLocaleDateString();
+
+  return popupDate === today;
+}
+
+function handlePopupButton() {
+  const popUp = getNode('.popUp');
+  const todayButton = getNode('.popUp__actions__today');
+  const closeButton = getNode('.popUp__actions__close');
+
+  return new Promise((resolve) => {
+    const hidePopup = (isToday = false) => {
+      popUp.classList.add('is--hidden');
+      if (isToday) {
+        localStorage.setItem('popupDate', new Date().toLocaleDateString());
+      }
+      resolve();
+    };
+
+    todayButton.addEventListener('click', () => hidePopup(true));
+    closeButton.addEventListener('click', () => hidePopup(false));
+  });
+}
+
 // 스와이퍼 랜더링 함수
 async function loadingTaing() {
   const imageCollection = getRecords('image');
@@ -198,14 +224,39 @@ async function loadingTaing() {
 
 async function renderTaing() {
   const loading = getNode('c-loading');
+  const popUp = getNode('.popUp');
   const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
   if (currentProfile?.name === null || !currentProfile) {
     location.href = '/src/pages/profile/profile_select/';
+    return;
   }
-  loading.show();
-  loadingTaing();
-  await delay(2000);
-  loading.hide();
+
+  if (checkPopupDate()) {
+    popUp.classList.add('is--hidden');
+  }
+
+  let loadingPromise = loadingTaing();
+  let isLoadingComplete = false;
+
+  loadingPromise.then(() => {
+    isLoadingComplete = true;
+  });
+
+  if (popUp.classList.contains('is--hidden')) {
+    loading.show();
+    await delay(1000);
+    await loadingPromise;
+    loading.hide();
+  } else {
+    await handlePopupButton();
+
+    if (!isLoadingComplete) {
+      loading.show();
+      await delay(1000);
+      await loadingPromise;
+      loading.hide();
+    }
+  }
 }
 
 renderTaing();
