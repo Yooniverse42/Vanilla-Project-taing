@@ -33,6 +33,7 @@ export default defineConfig({
           '/src/pages/profile/profile_create/index.html'
         ),
         search: resolve(__dirname, '/src/pages/taing/search/index.html'),
+        live: resolve(__dirname, '/src/pages/taing/live/index.html'),
         // page 구현 시 연결할 html 파일
         // detail: resolve(__dirname, 'src/pages/detail/index.html'),
       },

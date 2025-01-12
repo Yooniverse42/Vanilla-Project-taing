@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <title>TAING</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <script type="module" src="/src/pages/taing/live/live.js"></script>
+  </head>
+  <body>
+    <c-header></c-header>
+    <main class="main">
+      <div class="section_wrapper">
+        <section>
+          <form class="search__bar">
+            <input
+              class="search__bar__input"
+              id="search__box01"
+              type="text"
+              name="searchBox"
+              placeholder="검색"
+              aria-invalid="false"
+              aria-live="polite"
+            />
+            <input
+              class="search__bar__input2"
+              id="search__box02"
+              type="text"
+              name="searchBox"
+              placeholder="TV프로그램, 영화 제목 및 출연진으로 검색해보세요"
+              aria-invalid="false"
+              aria-live="polite"
+            />
+            <button
+              type="button"
+              class="search__icon__button"
+              aria-label="검색하기"
+            >
+              <svg class="search__icon" role="img">
+                <use href="/icons/stack.svg#search-defualt" />
+              </svg>
+            </button>
+          </form>
+        </section>
+        <section class="search__poster__container">
+          <ul class="search__poster__list"></ul>
+        </section>
+      </div>
+    </main>
+    <c-footer></c-footer>
+
+    <c-loading></c-loading>
+  </body>
+</html>
