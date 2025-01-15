@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <link rel="stylesheet" href="/src/styles/components/fouc.scss" />
+    <script type="module" src="/src/components/fouc.js"></script>
     <script type="module" src="/src/pages/loginID/login_ID.js"></script>
     <title>TAING : 로그인</title>
   </head>
@@ -29,6 +31,7 @@
                   aria-invalid="false"
                   aria-describedby="userIdError"
                   aria-live="assertive"
+                  autocomplete="username"
                 />
                 <span id="userIdError" class="id__error__message"
                   >아이디를 입력해주세요.</span
@@ -48,6 +51,7 @@
                     aria-invalid="false"
                     aria-describedby="userPasswordError"
                     aria-live="polite"
+                    autocomplete="current-password"
                   />
                   <label
                     for="userPasswordToggle"
