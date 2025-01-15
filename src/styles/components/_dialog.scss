@@ -8,11 +8,13 @@ button {
   cursor: pointer;
 }
 
+fieldset {
+  border: none;
+}
+
 .dialog__container,
 .dialog__accountPw__container {
   @include flexbox(column, nowrap, center, center, $spacing-28);
-  top: 50%;
-  transform: translateY(-50%);
   padding: 2rem 3rem;
   border: none;
   color: $white;

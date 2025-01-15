@@ -80,29 +80,38 @@
                 비밀번호가 일치하지 않습니다.<br />다시 입력해 주세요.
               </p>
             </h3>
+            <form class="dialog__form">
+              <input
+                type="text"
+                autocomplete="username"
+                style="display: none"
+                aria-hidden="true"
+                tabindex="-1"
+              />
 
-            <ul class="dialog__input__container">
-              <li class="dialog__input__wrapper">
-                <label for="profilePw1">
-                  <input id="profilePw1" type="password" maxlength="1" />
-                </label>
-              </li>
-              <li class="dialog__input__wrapper">
-                <label for="profilePw2">
-                  <input id="profilePw2" type="password" maxlength="1" />
-                </label>
-              </li>
-              <li class="dialog__input__wrapper">
-                <label for="profilePw3">
-                  <input id="profilePw3" type="password" maxlength="1" />
-                </label>
-              </li>
-              <li class="dialog__input__wrapper">
-                <label for="profilePw4">
-                  <input id="profilePw4" type="password" maxlength="1" />
-                </label>
-              </li>
-            </ul>
+              <ul class="dialog__input__container">
+                <li class="dialog__input__wrapper">
+                  <label for="profilePw1">
+                    <input id="profilePw1" type="password" maxlength="1" />
+                  </label>
+                </li>
+                <li class="dialog__input__wrapper">
+                  <label for="profilePw2">
+                    <input id="profilePw2" type="password" maxlength="1" />
+                  </label>
+                </li>
+                <li class="dialog__input__wrapper">
+                  <label for="profilePw3">
+                    <input id="profilePw3" type="password" maxlength="1" />
+                  </label>
+                </li>
+                <li class="dialog__input__wrapper">
+                  <label for="profilePw4">
+                    <input id="profilePw4" type="password" maxlength="1" />
+                  </label>
+                </li>
+              </ul>
+            </form>
 
             <button class="dialog__exit__button">취소</button>
           </dialog>
