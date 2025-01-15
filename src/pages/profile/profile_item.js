@@ -28,7 +28,7 @@ export async function renderProfileItem(movePage) {
       } else if (movePage === 'edit') {
         href = '/src/pages/profile/profile_edit_detail/index.html';
       } else {
-        href = '/src/pages/profile/profile_select/';
+        href = '/src/pages/profile/profile_select/index.html';
       }
 
       return `
@@ -159,11 +159,21 @@ export async function renderProfileItem(movePage) {
           linkContainer.classList.remove('is--locked');
         }
 
-        updateRecord(
+        loading.show();
+        await updateRecord(
           'profileinfo',
           `user="${record.id}" && name="${currentUser}"`,
           { pin: null }
         );
+        loading.hide();
+
+        if (movePage === 'main') {
+          location.href = '/src/pages/taing/index.html';
+        } else if (movePage === 'edit') {
+          location.href = '/src/pages/profile/profile_edit_detail/index.html';
+        } else {
+          location.href = '/src/pages/profile/profile_select/index.html';
+        }
       } else {
         updateDialogTitle('dialogAcct', 'notMatch');
         inputAcctPassword.value = '';
