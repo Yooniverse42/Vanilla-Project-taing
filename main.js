@@ -21,7 +21,7 @@ function checkUserAuth() {
   const { record } = JSON.parse(localStorage.getItem('user'));
   if (record.id) {
     const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
-    if (currentProfile.name) {
+    if (currentProfile?.name) {
       pageLink.setAttribute('href', '/src/pages/taing/');
       pageLink.setAttribute('aria-label', '메인 페이지로 이동');
     } else {
