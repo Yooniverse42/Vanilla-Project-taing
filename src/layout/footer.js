@@ -44,23 +44,23 @@ footerTemplate.innerHTML = `
       </div>
       <div class="SNS">
         <div class="SNS_icon youtube">
-          <a href="https://www.youtube.com/c/TVING_official">
-            <img src="/image/youtube.svg" alt="유튜브 공식 페이지" />
+          <a href="https://www.youtube.com/c/TVING_official" target="_blank" rel="noopener noreferrer">
+            <img src="/image/youtube.svg" alt="타잉 유튜브" />
           </a>
         </div>
         <div class="SNS_icon instagram">
-          <a href="https://www.instagram.com/tving.official/">
-            <img src="/image/instagram.svg" alt="유튜브 공식 페이지" />
+          <a href="https://www.instagram.com/tving.official/" target="_blank" rel="noopener noreferrer">
+            <img src="/image/instagram.svg" alt="타잉 인스타그램" />
           </a>
         </div>
         <div class="SNS_icon twitter">
-          <a href="https://x.com/tvingdotcom">
-            <img src="/image/twitter.svg" alt="유튜브 공식 페이지" />
+          <a href="https://x.com/tvingdotcom" target="_blank" rel="noopener noreferrer">
+            <img src="/image/twitter.svg" alt="타잉 트위터" />
           </a>
         </div>
         <div class="SNS_icon facebook">
-          <a href="https://www.facebook.com/CJTVING/">
-            <img src="/image/facebook.svg" alt="유튜브 공식 페이지" />
+          <a href="https://www.facebook.com/CJTVING/" target="_blank" rel="noopener noreferrer">
+            <img src="/image/facebook.svg" alt="타잉 페이스북" />
           </a>
         </div>
       </div>
