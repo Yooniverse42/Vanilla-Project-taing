@@ -58,7 +58,13 @@ function createSwiper(className, speed) {
 
 function renderSwiper() {
   const getImage = getRecords('image');
-  renderImgList(getImage, 'onboarding1', '.section1__swiper .swiper-wrapper');
+  renderImgList(
+    getImage,
+    'onboarding1',
+    '.section1__swiper .swiper-wrapper',
+    null,
+    false
+  );
   new Swiper('.section1__swiper .swiper-container', {
     effect: 'coverflow',
     grabCursor: true,
@@ -84,10 +90,34 @@ function renderSwiper() {
     },
   });
 
-  renderImgList(getImage, 'onboarding2', '.section2__swiper1 .swiper-wrapper');
-  renderImgList(getImage, 'onboarding2', '.section2__swiper2 .swiper-wrapper');
-  renderImgList(getImage, 'onboarding2', '.section2__swiper1 .swiper-wrapper');
-  renderImgList(getImage, 'onboarding2', '.section2__swiper2 .swiper-wrapper');
+  renderImgList(
+    getImage,
+    'onboarding2',
+    '.section2__swiper1 .swiper-wrapper',
+    null,
+    false
+  );
+  renderImgList(
+    getImage,
+    'onboarding2',
+    '.section2__swiper2 .swiper-wrapper',
+    null,
+    false
+  );
+  renderImgList(
+    getImage,
+    'onboarding2',
+    '.section2__swiper1 .swiper-wrapper',
+    null,
+    false
+  );
+  renderImgList(
+    getImage,
+    'onboarding2',
+    '.section2__swiper2 .swiper-wrapper',
+    null,
+    false
+  );
 
   createSwiper('.section2__swiper1', 5000);
   createSwiper('.section2__swiper2', 5030);
