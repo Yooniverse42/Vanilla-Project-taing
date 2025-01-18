@@ -1,7 +1,7 @@
 import '/main.scss';
 import '@/layout/index';
 import 'swiper/css/bundle';
-import { getNode, renderImgList } from '@/library/index';
+import { getNodes, renderImgList } from '@/library/index';
 import { getRecords } from '@/api/getRecords';
 import Swiper from 'swiper/bundle';
 import gsap from 'gsap';
@@ -17,21 +17,24 @@ tl.from('.section0__background, .section1, .section2, .section3', {})
   .from('.login__move', {}, '-=0.5');
 
 function checkUserAuth() {
-  const pageLink = getNode('.login__move');
+  const pageLinks = getNodes('.login__move');
   const { record } = JSON.parse(localStorage.getItem('user'));
-  if (record.id) {
-    const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
-    if (currentProfile?.name) {
-      pageLink.setAttribute('href', '/src/pages/taing/');
-      pageLink.setAttribute('aria-label', '메인 페이지로 이동');
+
+  pageLinks.forEach((pageLink) => {
+    if (record.id) {
+      const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
+      if (currentProfile?.name) {
+        pageLink.setAttribute('href', '/src/pages/taing/');
+        pageLink.setAttribute('aria-label', '메인 페이지로 이동');
+      } else {
+        pageLink.setAttribute('href', '/src/pages/profile/profile_select/');
+        pageLink.setAttribute('aria-label', '프로필 선택 페이지로 이동');
+      }
     } else {
-      pageLink.setAttribute('href', '/src/pages/profile/profile_select/');
-      pageLink.setAttribute('aria-label', '프로필 선택 페이지로 이동');
+      pageLink.setAttribute('href', '/src/pages/loginID/');
+      pageLink.setAttribute('aria-label', '로그인 페이지로 이동');
     }
-  } else {
-    pageLink.setAttribute('href', '/src/pages/loginID/');
-    pageLink.setAttribute('aria-label', '로그인 페이지로 이동');
-  }
+  });
 }
 checkUserAuth();
 
@@ -58,7 +61,13 @@ function createSwiper(className, speed) {
 
 function renderSwiper() {
   const getImage = getRecords('image');
-  renderImgList(getImage, 'onboarding1', '.section1__swiper .swiper-wrapper');
+  renderImgList(
+    getImage,
+    'onboarding1',
+    '.section1__swiper .swiper-wrapper',
+    null,
+    false
+  );
   new Swiper('.section1__swiper .swiper-container', {
     effect: 'coverflow',
     grabCursor: true,
@@ -84,10 +93,34 @@ function renderSwiper() {
     },
   });
 
-  renderImgList(getImage, 'onboarding2', '.section2__swiper1 .swiper-wrapper');
-  renderImgList(getImage, 'onboarding2', '.section2__swiper2 .swiper-wrapper');
-  renderImgList(getImage, 'onboarding2', '.section2__swiper1 .swiper-wrapper');
-  renderImgList(getImage, 'onboarding2', '.section2__swiper2 .swiper-wrapper');
+  renderImgList(
+    getImage,
+    'onboarding2',
+    '.section2__swiper1 .swiper-wrapper',
+    null,
+    false
+  );
+  renderImgList(
+    getImage,
+    'onboarding2',
+    '.section2__swiper2 .swiper-wrapper',
+    null,
+    false
+  );
+  renderImgList(
+    getImage,
+    'onboarding2',
+    '.section2__swiper1 .swiper-wrapper',
+    null,
+    false
+  );
+  renderImgList(
+    getImage,
+    'onboarding2',
+    '.section2__swiper2 .swiper-wrapper',
+    null,
+    false
+  );
 
   createSwiper('.section2__swiper1', 5000);
   createSwiper('.section2__swiper2', 5030);

@@ -1,10 +1,20 @@
 @use '@/styles/index' as *;
-@use '@/styles/components/snsIcon' as *;
+
+.SNS_icon {
+  display: flex;
+  width: $spacing-52;
+  height: $spacing-52;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 1.875rem;
+  background-color: $gray-800;
+}
 
 .footer {
   padding: 0 1rem;
   width: 100%;
-  color: $gray-400;
+  color: $gray-200;
   font-size: $text-12;
 }
 
@@ -14,8 +24,8 @@
 }
 
 .footer_util {
-  @include flexbox(column, nowrap, null, null, $spacing-8);
-  margin-top: $spacing-8;
+  @include flexbox(column, nowrap, null, null, $spacing-12);
+  margin-top: $spacing-12;
 }
 
 .SNS {
@@ -36,7 +46,7 @@
 }
 
 .copyright {
-  color: $gray-700;
+  color: $gray-400;
   font-size: $text-12;
   font-weight: 400;
   line-height: $line-160;
@@ -60,7 +70,7 @@
   .copyright_container {
     display: block;
     font-size: $text-12;
-    color: $gray-700;
+    color: $gray-300;
 
     p {
       margin-bottom: $spacing-4;

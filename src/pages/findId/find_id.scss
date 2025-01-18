@@ -37,7 +37,8 @@ button {
     font-size: $text-12;
     color: $white;
 
-    p {
+    span {
+      display: block;
       margin-top: $spacing-4;
       color: $gray-300;
     }
@@ -140,7 +141,8 @@ button {
     font-size: $text-12;
     color: $white;
 
-    p {
+    span {
+      display: block;
       margin-top: $spacing-4;
       color: $gray-300;
     }

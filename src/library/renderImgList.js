@@ -6,7 +6,8 @@ export async function renderImgList(
   collection,
   categoryName,
   node,
-  sortField = null
+  sortField = null,
+  needLink = true
 ) {
   const records = await collection;
   let record = records.filter((item) => item.category == categoryName);
@@ -18,23 +19,34 @@ export async function renderImgList(
   record.forEach((item) => {
     if (item.photo.length === 1) {
       const template = `
-      <li class="swiper-slide">
+      <div class="swiper-slide">
         <img src="${getPbImageURL(item)}" alt="${item.title}" />
-      </li>
+      </div>
       `;
       insertLast(node, template);
     } else {
-      const template = `
-      <li class="swiper-slide">
-        <a href="javascript:void(0)">
-          <picture>
-            <source srcset="${getPbImageURL(item, 'tablet')}" media="(min-width: 768px) and (max-width: 1279px)" />
-            <source srcset="${getPbImageURL(item, 'desktop')}" media="(min-width: 1280px)"/>
-            <img src="${getPbImageURL(item)}" alt="${item.title}" />
-          </picture>
-        </a>
-      </li>
+      const pictureContent = `
+        <picture>
+          <source srcset="${getPbImageURL(item, 'tablet')}" media="(min-width: 768px) and (max-width: 1279px)" />
+          <source srcset="${getPbImageURL(item, 'desktop')}" media="(min-width: 1280px)"/>
+          <img src="${getPbImageURL(item)}" alt="${item.title}" />
+        </picture>
       `;
+
+      const template = needLink
+        ? `
+          <div class="swiper-slide">
+            <a href="/src/pages/taing/index.html">
+              ${pictureContent}
+            </a>
+          </div>
+          `
+        : `
+          <div class="swiper-slide">
+            ${pictureContent}
+          </div>
+          `;
+
       insertLast(node, template);
     }
   });
@@ -53,8 +65,8 @@ export async function renderSearchList(
 
   records.forEach((item) => {
     const template = `
-    <li class="swiper-slide">
-      <a href="javascript:void(0)">
+    <div class="swiper-slide">
+      <a href="/src/pages/taing/index.html">
         <figure>
           <picture>
             <source srcset="${getPbImageURL(item, 'tablet')}" media="(min-width: 768px) and (max-width: 1279px)" />
@@ -64,7 +76,7 @@ export async function renderSearchList(
           <figcaption>${item.title}</figcaption>
         </figure>
       </a>
-    </li>
+    </div>
     `;
     insertLast(node, template);
   });

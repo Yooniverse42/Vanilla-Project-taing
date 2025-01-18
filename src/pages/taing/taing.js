@@ -5,6 +5,24 @@ import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 import { renderImgList, getNodes, getNode } from '@/library/index';
 import { getRecords } from '@/api/getRecords';
+import gsap from 'gsap';
+
+function posterAnimation() {
+  const posters = getNodes('.swiper-slide');
+
+  posters.forEach((poster) => {
+    const isExcludedBanner = poster.closest('.swiper1');
+    const isExcludedNotice = poster.closest('.notice__swiper');
+    if (isExcludedBanner || isExcludedNotice) return;
+
+    poster.addEventListener('mouseenter', () => {
+      gsap.to(poster, { y: -10 });
+    });
+    poster.addEventListener('mouseleave', () => {
+      gsap.to(poster, { y: 0 });
+    });
+  });
+}
 
 function delay(ms) {
   return new Promise((resolve) => {
@@ -42,7 +60,11 @@ function handlePopupButton() {
 async function loadingTaing() {
   const imageCollection = getRecords('image');
   // 메인 배너
-  renderImgList(imageCollection, 'taing_banner', '.swiper1 > ul').then(() => {
+  renderImgList(
+    imageCollection,
+    'taing_banner',
+    '.swiper1 > .swiper-wrapper'
+  ).then(() => {
     const swiper1 = new Swiper('.swiper1', {
       pagination: {
         el: '.swiper-pagination',
@@ -112,9 +134,9 @@ async function loadingTaing() {
   }
 
   // 메인 포스터
-  renderImgList(imageCollection, 'main_poster', '.swiper2 > ul')
+  renderImgList(imageCollection, 'main_poster', '.swiper2 > .swiper-wrapper')
     .then(async () => {
-      const list = getNodes('.swiper2 > ul > li');
+      const list = getNodes('.swiper2 .swiper-slide');
       const records = await imageCollection;
       let record = records.filter((item) => item.category == 'main_poster');
       for (let i = 0; i < record.length; i++) {
@@ -131,9 +153,9 @@ async function loadingTaing() {
     });
 
   // QUICK VOD
-  renderImgList(imageCollection, 'quick_vod', '.swiper3 > ul')
+  renderImgList(imageCollection, 'quick_vod', '.swiper3 > .swiper-wrapper')
     .then(async () => {
-      const list = getNodes('.swiper3 > ul > li');
+      const list = getNodes('.swiper3 .swiper-slide');
       const records = await imageCollection;
       let record = records.filter((item) => item.category == 'quick_vod');
       for (let i = 0; i < record.length; i++) {
@@ -151,9 +173,14 @@ async function loadingTaing() {
     });
 
   // 실시간 인기 프로그램
-  renderImgList(imageCollection, 'main_poster', '.swiper4 > ul', 'ranking')
+  renderImgList(
+    imageCollection,
+    'main_poster',
+    '.swiper4 > .swiper-wrapper',
+    'ranking'
+  )
     .then(async () => {
-      const list = getNodes('.swiper4 > ul > li');
+      const list = getNodes('.swiper4 .swiper-slide');
       const records = await imageCollection;
       let record = records
         .filter((item) => item.category == 'main_poster')
@@ -173,9 +200,9 @@ async function loadingTaing() {
     });
 
   // 인기 LIVE 채널
-  renderImgList(imageCollection, 'live_channel', '.swiper5 > ul')
+  renderImgList(imageCollection, 'live_channel', '.swiper5 > .swiper-wrapper')
     .then(async () => {
-      const list = getNodes('.swiper5 > ul > li');
+      const list = getNodes('.swiper5 .swiper-slide');
       const records = await imageCollection;
       const record = records.filter((item) => item.category == 'live_channel');
       for (let i = 0; i < record.length; i++) {
@@ -197,17 +224,21 @@ async function loadingTaing() {
     });
 
   // 오직 티빙에만 있어요
-  renderImgList(imageCollection, 'original', '.swiper6 > ul').then(() => {
-    createSwiper('.swiper6', 2.3, 3.3, 4.3, 6.3);
-  });
+  renderImgList(imageCollection, 'original', '.swiper6 > .swiper-wrapper').then(
+    () => {
+      createSwiper('.swiper6', 2.3, 3.3, 4.3, 6.3);
+    }
+  );
 
   // SPOTV 이벤트
   renderImgList(imageCollection, 'sub_banner', '.sub_banner');
 
   // 이벤트
-  renderImgList(imageCollection, 'event', '.swiper7 > ul').then(() => {
-    createSwiper('.swiper7', 2.1, 2.9, 3.5, 5.3);
-  });
+  renderImgList(imageCollection, 'event', '.swiper7 > .swiper-wrapper').then(
+    () => {
+      createSwiper('.swiper7', 2.1, 2.9, 3.5, 5.3);
+    }
+  );
 
   // 공지사항
   new Swiper('.notice__swiper', {
@@ -257,6 +288,7 @@ async function renderTaing() {
       loading.hide();
     }
   }
+  posterAnimation();
 }
 
 renderTaing();
