@@ -10,7 +10,7 @@ function renderAddProfileButton() {
     const addButtonTemplate = `
       <figure class="avatar avatar__add__button">
         <a href="/src/pages/profile/profile_create/index.html" class="avatar__picture__container add__profile">
-
+          <span class="sr-only">프로필 추가하기</span>
         </a>
         <figcaption class="avatar__name">프로필 추가</figcaption>
       </figure>
