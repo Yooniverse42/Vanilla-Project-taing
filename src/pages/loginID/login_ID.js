@@ -27,7 +27,9 @@ passwordToggleIcon.addEventListener('change', () => {
   passwordToggleIcon.classList.toggle('visible');
   passwordToggleIcon.setAttribute(
     'aria-label',
-    passwordToggleIcon.checked ? '비밀번호 숨기기' : '비밀번호 표시'
+    passwordToggleIcon.checked
+      ? '비밀번호가 표시됩니다.'
+      : '비밀번호가 표시되지 않습니다.'
   );
 });
 

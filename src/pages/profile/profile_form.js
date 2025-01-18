@@ -22,6 +22,7 @@ export function renderProfileForm(pageName) {
   // 유저 정보 가져오기
   const { record } = JSON.parse(localStorage.getItem('user'));
   const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
+  setToggleButtonAria();
 
   function getToggleDistance() {
     const width = window.innerWidth;
@@ -57,12 +58,20 @@ export function renderProfileForm(pageName) {
     }
   });
 
-  renderToggle();
-  function renderToggle() {
+  function setToggleButtonAria() {
     if (currentProfile?.isPin) {
+      toggleButton.setAttribute(
+        'aria-label',
+        '이 프로필은 현재 잠금 설정이 되어있습니다. 프로필을 선택하면 잠금이 해제됩니다.'
+      );
       updateTogglePosition(true);
       toggleLabel.classList.remove('toggle__unlocked');
       toggleLabel.classList.add('toggle__locked');
+    } else {
+      toggleButton.setAttribute(
+        'aria-label',
+        '이 프로필은 현재 잠금 설정이 되어있지 않습니다. 프로필을 선택하면 PIN 번호를 설정하여 잠금을 설정할 수 있습니다.'
+      );
     }
   }
 
@@ -188,7 +197,10 @@ export function renderProfileForm(pageName) {
       updateTogglePosition(true);
       label.classList.add('toggle__locked');
       label.classList.remove('toggle__unlocked');
-      toggleButton.setAttribute('aria-label', '프로필이 잠겨있습니다.');
+      toggleButton.setAttribute(
+        'aria-label',
+        '프로필 잠금 설정이 완료 되어있습니다.'
+      );
 
       toggleButton.setAttribute('aria-expanded', 'true');
     } else {
@@ -200,7 +212,10 @@ export function renderProfileForm(pageName) {
         isPin: false,
       });
 
-      toggleButton.setAttribute('aria-label', '프로필이 잠겨있지 않습니다.');
+      toggleButton.setAttribute(
+        'aria-label',
+        '프로필 잠금 설정을 취소하셨습니다. 이 프로필은 현재 잠금 설정이 되어있지 않습니다.'
+      );
     }
   }
 
@@ -209,9 +224,23 @@ export function renderProfileForm(pageName) {
   // 모달 닫기(ESC, 취소 버튼)
 
   function handleCloseModal() {
-    updateTogglePosition(false);
-    toggleLabel.classList.remove('toggle__locked');
-    toggleLabel.classList.add('toggle__unlocked');
+    if (currentProfile?.isPin) {
+      updateTogglePosition(true);
+      toggleLabel.classList.remove('toggle__unlocked');
+      toggleLabel.classList.add('toggle__locked');
+      toggleButton.setAttribute(
+        'aria-label',
+        '설정을 취소하셨습니다. 이 프로필은 현재 잠금 설정이 되어 있습니다.'
+      );
+    } else {
+      updateTogglePosition(false);
+      toggleLabel.classList.remove('toggle__locked');
+      toggleLabel.classList.add('toggle__unlocked');
+      toggleButton.setAttribute(
+        'aria-label',
+        '설정을 취소하셨습니다. 이 프로필은 현재 잠금 설정이 되어있지 않습니다.'
+      );
+    }
     toggleButton.setAttribute('aria-expanded', 'false');
     dialog.close();
     clearInputs();
