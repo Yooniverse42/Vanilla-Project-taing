@@ -22,6 +22,13 @@ export function renderProfileForm(pageName) {
   // 유저 정보 가져오기
   const { record } = JSON.parse(localStorage.getItem('user'));
   const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
+
+  if (!currentProfile && pageName === 'edit') {
+    loading.hide();
+    location.href = '/src/pages/profile/profile_select/index.html';
+    return;
+  }
+
   setToggleButtonAria();
 
   function getToggleDistance() {
