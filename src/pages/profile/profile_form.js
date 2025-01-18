@@ -307,6 +307,7 @@ export function renderProfileForm(pageName) {
 
   async function createUserProfile(ProfilePinNumber) {
     loading.show();
+    const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
     const newName = nameInput.value;
 
     if (!newName) {
