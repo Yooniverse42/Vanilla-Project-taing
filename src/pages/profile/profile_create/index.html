@@ -4,6 +4,10 @@
     <title>TAING : 프로필 생성</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="타잉 서비스에서 사용할 프로필을 생성하는 페이지입니다."
+    />
     <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
     <link rel="stylesheet" href="/src/styles/components/fouc.scss" />
     <script type="module" src="/src/components/fouc.js"></script>
@@ -72,24 +76,25 @@
           <dialog class="dialog__container">
             <h3 class="dialog__header">
               비밀번호 입력
-              <p class="header__content__default">
+              <span class="header__content__default">
                 사용할 비밀번호 4자리를 입력해 주세요.
-              </p>
-              <p class="header__content__confirm">
+              </span>
+              <span class="header__content__confirm">
                 확인을 위해 한 번 더 입력해 주세요.
-              </p>
-              <p class="header__content__notMatch">
+              </span>
+              <span class="header__content__notMatch">
                 비밀번호가 일치하지 않습니다.<br />다시 입력해 주세요.
-              </p>
+              </span>
             </h3>
             <form class="dialog__form">
-              <input
-                type="text"
-                autocomplete="username"
-                style="display: none"
-                aria-hidden="true"
-                tabindex="-1"
-              />
+              <label>
+                <input
+                  type="text"
+                  autocomplete="username"
+                  style="display: none"
+                  aria-hidden="true"
+                  tabindex="-1"
+              /></label>
 
               <ul class="dialog__input__container">
                 <li class="dialog__input__wrapper">

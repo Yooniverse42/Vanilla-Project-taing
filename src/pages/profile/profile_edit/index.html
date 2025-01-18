@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="타잉 서비스에서 사용할 프로필을 선택하여 편집하는 페이지입니다."
+    />
     <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
     <link rel="stylesheet" href="/src/styles/components/fouc.scss" />
     <script type="module" src="/src/components/fouc.js"></script>
@@ -15,7 +19,7 @@
     <main class="profile__page">
       <h2 class="header__title__container">
         프로필 편집
-        <p>편집할 프로필을 선택해 주세요</p>
+        <span>편집할 프로필을 선택해 주세요</span>
       </h2>
 
       <section class="profile__select__container">
@@ -24,21 +28,22 @@
         <dialog class="dialog__container">
           <h3 class="dialog__header">
             비밀번호 입력
-            <p class="header__content__default">
+            <span class="header__content__default">
               비밀번호 4자리를 입력해 주세요.
-            </p>
-            <p class="header__content__notMatch">
+            </span>
+            <span class="header__content__notMatch">
               비밀번호가 일치하지 않습니다.<br />다시 입력해 주세요.
-            </p>
+            </span>
           </h3>
           <form class="dialog__form">
-            <input
-              type="text"
-              autocomplete="username"
-              style="display: none"
-              aria-hidden="true"
-              tabindex="-1"
-            />
+            <label>
+              <input
+                type="text"
+                autocomplete="username"
+                style="display: none"
+                aria-hidden="true"
+                tabindex="-1"
+            /></label>
             <fieldset>
               <legend class="sr-only">프로필 PIN번호 입력</legend>
               <ul class="dialog__input__container">
@@ -92,24 +97,25 @@
         <dialog class="dialog__accountPw__container">
           <h3 class="dialog__header">
             계정 비밀번호 입력
-            <p class="header__content__default">
+            <span class="header__content__default">
               초기화를 위해서는 계정 비밀번호가 필요합니다.<br />로그인 시
               입력한 비밀번호를 입력해 주세요.
-            </p>
-            <p class="header__content__notMatch">
+            </span>
+            <span class="header__content__notMatch">
               비밀번호가 일치하지 않습니다.<br />로그인 시 입력한 비밀번호를
               입력해 주세요.
-            </p>
+            </span>
           </h3>
 
           <form class="dialog__input__container">
-            <input
-              type="text"
-              autocomplete="username"
-              style="display: none"
-              aria-hidden="true"
-              tabindex="-1"
-            />
+            <label>
+              <input
+                type="text"
+                autocomplete="username"
+                style="display: none"
+                aria-hidden="true"
+                tabindex="-1"
+            /></label>
             <label for="input__reset__pin">
               <input
                 id="input__reset__pin"

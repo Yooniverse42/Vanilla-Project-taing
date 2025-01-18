@@ -8,13 +8,13 @@ footerTemplate.innerHTML = `
   <footer class="footer">
     <section class="footer_contents">
       <nav class="footer_util">
-        <span><a href="javascript:void(0)">고객센터</a></span>
-        <span><a href="javascript:void(0)">이용약관</a></span>
-        <span><a href="javascript:void(0)">개인정보처리방침</a></span>
-        <span><a href="javascript:void(0)">청소년 보호정책</a></span>
-        <span><a href="javascript:void(0)">법적고지</a></span>
-        <span><a href="javascript:void(0)">이벤트</a></span>
-        <span><a href="javascript:void(0)">인재채용</a></span>
+        <span><a href="https://www.tving.com/help/notice" target="_blank" rel="noopener noreferrer">고객센터</a></span>
+        <span><a href="https://www.tving.com/policy/terms" target="_blank" rel="noopener noreferrer">이용약관</a></span>
+        <span><a href="https://www.tving.com/policy/privacy" target="_blank" rel="noopener noreferrer">개인정보처리방침</a></span>
+        <span><a href="https://www.tving.com/policy/youth" target="_blank" rel="noopener noreferrer">청소년 보호정책</a></span>
+        <span><a href="https://www.tving.com/policy/legal" target="_blank" rel="noopener noreferrer">법적고지</a></span>
+        <span><a href="https://www.tving.com/event/list" target="_blank" rel="noopener noreferrer">이벤트</a></span>
+        <span><a href="https://team.tving.com/" target="_blank" rel="noopener noreferrer">인재채용</a></span>
       </nav>
       <div class="copyright_container">
         <p>
@@ -44,23 +44,23 @@ footerTemplate.innerHTML = `
       </div>
       <div class="SNS">
         <div class="SNS_icon youtube">
-          <a href="https://www.youtube.com/c/TVING_official">
-            <img src="/image/youtube.svg" alt="유튜브 공식 페이지" />
+          <a href="https://www.youtube.com/c/TVING_official" target="_blank" rel="noopener noreferrer">
+            <img src="/image/youtube.svg" alt="타잉 유튜브" />
           </a>
         </div>
         <div class="SNS_icon instagram">
-          <a href="https://www.instagram.com/tving.official/">
-            <img src="/image/instagram.svg" alt="유튜브 공식 페이지" />
+          <a href="https://www.instagram.com/tving.official/" target="_blank" rel="noopener noreferrer">
+            <img src="/image/instagram.svg" alt="타잉 인스타그램" />
           </a>
         </div>
         <div class="SNS_icon twitter">
-          <a href="https://x.com/tvingdotcom">
-            <img src="/image/twitter.svg" alt="유튜브 공식 페이지" />
+          <a href="https://x.com/tvingdotcom" target="_blank" rel="noopener noreferrer">
+            <img src="/image/twitter.svg" alt="타잉 트위터" />
           </a>
         </div>
         <div class="SNS_icon facebook">
-          <a href="https://www.facebook.com/CJTVING/">
-            <img src="/image/facebook.svg" alt="유튜브 공식 페이지" />
+          <a href="https://www.facebook.com/CJTVING/" target="_blank" rel="noopener noreferrer">
+            <img src="/image/facebook.svg" alt="타잉 페이스북" />
           </a>
         </div>
       </div>

@@ -28,7 +28,7 @@ body {
   section {
     h2[class$='heading'] {
       font-size: $text-12;
-      margin-bottom: $spacing-4;
+      margin-top: $spacing-16;
       color: $white;
     }
   }
@@ -48,7 +48,7 @@ body {
     }
   }
 
-  li {
+  div {
     cursor: pointer;
   }
 }
@@ -83,9 +83,13 @@ body {
 .swiper4,
 .swiper5,
 .swiper6 {
+  .swiper-wrapper {
+    margin-top: $spacing-12;
+  }
   .swiper-slide {
     font-size: $text-12;
     padding-right: $spacing-8;
+    cursor: pointer;
 
     img {
       border-radius: 0.25rem;
@@ -102,15 +106,6 @@ body {
         text-overflow: ellipsis;
       }
     }
-  }
-
-  li {
-    cursor: pointer;
-    transition: all ease-in 250ms;
-  }
-
-  li:hover {
-    transform: translateY(-8px);
   }
 }
 
@@ -248,7 +243,7 @@ body {
     border-radius: 0.25rem;
   }
 
-  li {
+  div {
     cursor: pointer;
   }
 }
@@ -292,7 +287,7 @@ body {
     section {
       h2[class$='heading'] {
         font-size: $text-16;
-        margin-bottom: $spacing-8;
+        margin-top: $spacing-20;
       }
     }
   }
@@ -456,7 +451,7 @@ body {
     section {
       h2[class$='heading'] {
         font-size: $text-28;
-        margin-bottom: $spacing-12;
+        margin-top: $spacing-28;
       }
     }
   }
