@@ -8,13 +8,13 @@ footerTemplate.innerHTML = `
   <footer class="footer">
     <section class="footer_contents">
       <nav class="footer_util">
-        <span><a href="javascript:void(0)">고객센터</a></span>
-        <span><a href="javascript:void(0)">이용약관</a></span>
-        <span><a href="javascript:void(0)">개인정보처리방침</a></span>
-        <span><a href="javascript:void(0)">청소년 보호정책</a></span>
-        <span><a href="javascript:void(0)">법적고지</a></span>
-        <span><a href="javascript:void(0)">이벤트</a></span>
-        <span><a href="javascript:void(0)">인재채용</a></span>
+        <span><a href="https://www.tving.com/help/notice" target="_blank" rel="noopener noreferrer">고객센터</a></span>
+        <span><a href="https://www.tving.com/policy/terms" target="_blank" rel="noopener noreferrer">이용약관</a></span>
+        <span><a href="https://www.tving.com/policy/privacy" target="_blank" rel="noopener noreferrer">개인정보처리방침</a></span>
+        <span><a href="https://www.tving.com/policy/youth" target="_blank" rel="noopener noreferrer">청소년 보호정책</a></span>
+        <span><a href="https://www.tving.com/policy/legal" target="_blank" rel="noopener noreferrer">법적고지</a></span>
+        <span><a href="https://www.tving.com/event/list" target="_blank" rel="noopener noreferrer">이벤트</a></span>
+        <span><a href="https://team.tving.com/" target="_blank" rel="noopener noreferrer">인재채용</a></span>
       </nav>
       <div class="copyright_container">
         <p>
