@@ -24,8 +24,8 @@
 }
 
 .footer_util {
-  @include flexbox(column, nowrap, null, null, $spacing-8);
-  margin-top: $spacing-8;
+  @include flexbox(column, nowrap, null, null, $spacing-12);
+  margin-top: $spacing-12;
 }
 
 .SNS {
@@ -70,7 +70,7 @@
   .copyright_container {
     display: block;
     font-size: $text-12;
-    color: $gray-700;
+    color: $gray-300;
 
     p {
       margin-bottom: $spacing-4;
