@@ -24,7 +24,7 @@ fieldset {
     @include flexbox(column, nowrap, center, center, $spacing-12);
     font-size: $text-16;
 
-    p {
+    span {
       font-size: $text-12;
     }
 
@@ -90,7 +90,7 @@ fieldset {
       @include flexbox(column, nowrap, center, center, $spacing-28);
       font-size: $text-28;
 
-      p {
+      span {
         font-size: $text-16;
       }
     }
@@ -136,7 +136,7 @@ fieldset {
       @include flexbox(column, nowrap, center, center, $spacing-48);
       font-size: 2.8rem;
 
-      p {
+      span {
         font-size: $text-28;
       }
     }
