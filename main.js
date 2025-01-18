@@ -1,7 +1,7 @@
 import '/main.scss';
 import '@/layout/index';
 import 'swiper/css/bundle';
-import { getNode, renderImgList } from '@/library/index';
+import { getNodes, renderImgList } from '@/library/index';
 import { getRecords } from '@/api/getRecords';
 import Swiper from 'swiper/bundle';
 import gsap from 'gsap';
@@ -17,21 +17,24 @@ tl.from('.section0__background, .section1, .section2, .section3', {})
   .from('.login__move', {}, '-=0.5');
 
 function checkUserAuth() {
-  const pageLink = getNode('.login__move');
+  const pageLinks = getNodes('.login__move');
   const { record } = JSON.parse(localStorage.getItem('user'));
-  if (record.id) {
-    const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
-    if (currentProfile?.name) {
-      pageLink.setAttribute('href', '/src/pages/taing/');
-      pageLink.setAttribute('aria-label', '메인 페이지로 이동');
+
+  pageLinks.forEach((pageLink) => {
+    if (record.id) {
+      const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
+      if (currentProfile?.name) {
+        pageLink.setAttribute('href', '/src/pages/taing/');
+        pageLink.setAttribute('aria-label', '메인 페이지로 이동');
+      } else {
+        pageLink.setAttribute('href', '/src/pages/profile/profile_select/');
+        pageLink.setAttribute('aria-label', '프로필 선택 페이지로 이동');
+      }
     } else {
-      pageLink.setAttribute('href', '/src/pages/profile/profile_select/');
-      pageLink.setAttribute('aria-label', '프로필 선택 페이지로 이동');
+      pageLink.setAttribute('href', '/src/pages/loginID/');
+      pageLink.setAttribute('aria-label', '로그인 페이지로 이동');
     }
-  } else {
-    pageLink.setAttribute('href', '/src/pages/loginID/');
-    pageLink.setAttribute('aria-label', '로그인 페이지로 이동');
-  }
+  });
 }
 checkUserAuth();
 
