@@ -148,9 +148,9 @@ function emailValidation(e) {
   const value = e.target.value;
   const emailRule = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
   if (emailRule.test(value) || value === '') {
-    errorMessage.classList.remove('display');
+    errorMessage.classList.remove('error');
   } else {
-    errorMessage.classList.add('display');
+    errorMessage.classList.add('error');
   }
   buttonState['emailState'] = emailRule.test(value);
   activeButtonState(buttonState);
