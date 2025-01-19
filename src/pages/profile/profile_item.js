@@ -137,7 +137,10 @@ export async function renderProfileItem(movePage) {
   resetMoalOpenButton.addEventListener('click', resetModalOpen);
 
   // 비밀번호 초기화 진행
-  async function passwordReset() {
+  async function passwordReset(e) {
+    if (e) {
+      e.preventDefault();
+    }
     const currentUser = currentProfile.name;
 
     try {
@@ -145,7 +148,7 @@ export async function renderProfileItem(movePage) {
         record.email,
         inputAcctPassword.value
       );
-      if (response.success) {
+      if (response) {
         dialogAcct.close();
         setStorage('currentProfile', { ...currentProfile, isPin: false });
 
@@ -187,13 +190,16 @@ export async function renderProfileItem(movePage) {
   }
 
   if (resetButton) {
-    resetButton.addEventListener('click', passwordReset);
+    resetButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      passwordReset(e);
+    });
   }
   if (resetInput) {
     resetInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         e.preventDefault();
-        passwordReset();
+        passwordReset(e);
       }
     });
   }
