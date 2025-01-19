@@ -210,6 +210,9 @@ export function renderProfileForm(pageName) {
       );
 
       toggleButton.setAttribute('aria-expanded', 'true');
+      clearInputs();
+      myLockPassword = '';
+      updateDialogTitle('default');
     } else {
       updateTogglePosition(false);
       label.classList.remove('toggle__locked');
@@ -223,6 +226,9 @@ export function renderProfileForm(pageName) {
         'aria-label',
         '프로필 잠금 설정을 취소하셨습니다. 이 프로필은 현재 잠금 설정이 되어있지 않습니다.'
       );
+      clearInputs();
+      myLockPassword = '';
+      updateDialogTitle('default');
     }
   }
 
@@ -250,7 +256,10 @@ export function renderProfileForm(pageName) {
     }
     toggleButton.setAttribute('aria-expanded', 'false');
     dialog.close();
+
     clearInputs();
+    myLockPassword = '';
+    updateDialogTitle('default');
   }
   dialogCancelButton.addEventListener('click', handleCloseModal);
   dialog.addEventListener('cancel', handleCloseModal);
