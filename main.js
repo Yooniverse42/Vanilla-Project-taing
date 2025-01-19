@@ -47,13 +47,20 @@ function createSwiper(className, speed) {
     speed: speed,
     loop: true,
     spaceBetween: 12,
-    slidesPerView: 4,
+    slidesPerView: 3,
+    slidesPerGroup: 3,
     breakpoints: {
+      430: {
+        slidesPerView: 3.5,
+        slidesPerGroup: 3.5,
+      },
       768: {
-        slidesPerView: 5,
+        slidesPerView: 4,
+        slidesPerGroup: 4,
       },
       1000: {
         slidesPerView: 6,
+        slidesPerGroup: 6,
       },
     },
   });
@@ -72,7 +79,7 @@ function renderSwiper() {
     effect: 'coverflow',
     grabCursor: true,
     centeredSlides: true,
-    slidesPerView: 'auto',
+    slidesPerView: 2.3,
     initialSlide: 1,
     coverflowEffect: {
       rotate: 50,
@@ -88,7 +95,7 @@ function renderSwiper() {
         slidesPerView: 3,
       },
       1280: {
-        slidesPerView: 3,
+        slidesPerView: 2,
       },
     },
   });
