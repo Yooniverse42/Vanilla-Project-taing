@@ -27,7 +27,7 @@ export class Header extends HTMLElement {
       <header class="header">
         <nav class="nav">
           <h1 class="header__logo">
-            <a class="header__logo__link" href="${currentProfile && !isCreatePage ? '/src/pages/taing/' : user ? '/src/pages/profile/profile_select/' : '/'}">
+            <a class="header__logo__link" href="${currentProfile && !isCreatePage ? '/src/pages/taing/' : user.record.id ? '/src/pages/profile/profile_select/' : '/'}">
               <svg class="logo1" role="img" aria-label="타잉">
                 <use href="/icons/stack.svg#logo" />
               </svg>
