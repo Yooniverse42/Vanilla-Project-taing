@@ -6,13 +6,19 @@ body {
 }
 
 .main {
+  @include flexbox(flex, nowrap, center, center);
   width: 100%;
   color: $gray-200;
   font-size: $text-12;
 }
 
+.section__container {
+  width: 100%;
+  max-width: calc(448px + 32px);
+}
+
 section {
-  @include marginX($spacing-48);
+  @include marginX($spacing-16);
 }
 
 button {
@@ -20,7 +26,7 @@ button {
 }
 
 .findId_container {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .findId_title {
@@ -182,12 +188,16 @@ button {
     font-size: $text-16;
   }
 
+  .section__container {
+    max-width: 100%;
+  }
+
   section {
     margin: 0 10rem;
   }
 
   .findId_container {
-    margin-top: 6.25rem;
+    margin-top: 4rem;
   }
 
   .findId_title {
@@ -258,7 +268,7 @@ button {
   }
 
   .findId_container {
-    margin-top: 10.6rem;
+    margin-top: 6rem;
   }
 
   .findId_title {

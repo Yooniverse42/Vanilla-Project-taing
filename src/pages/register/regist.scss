@@ -12,7 +12,9 @@ body {
 }
 
 .regist {
-  margin: 4rem $spacing-48;
+  max-width: calc(448px + 32px);
+  padding: 3rem $spacing-16;
+  margin: 0 auto;
 }
 
 .header-title {
@@ -25,6 +27,7 @@ body {
   margin-top: $spacing-16;
   color: $gray-500;
   font-size: $text-12;
+  text-align: center;
 }
 
 .content {
@@ -158,12 +161,12 @@ body {
 @include mq(tablet) {
   .main {
     @include marginX(auto);
-    max-width: 62.5rem;
     font-size: $text-16;
   }
 
   .regist {
-    margin: 6rem 10rem;
+    max-width: 62.5rem;
+    padding: 4rem 10rem;
   }
 
   .header-title {
@@ -203,8 +206,9 @@ body {
 
 @include mq(desktop) {
   .regist {
+    max-width: 100%;
     min-width: 45.75rem;
-    margin: 10rem auto;
+    padding: 6rem 10rem;
   }
 
   .header-title {
