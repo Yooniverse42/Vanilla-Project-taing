@@ -17,96 +17,93 @@
     <c-header></c-header>
 
     <main class="main__login">
-      <section class="login__container">
-        <h2 class="login__title">TAING ID 로그인</h2>
-        <form class="login__form" method="post">
-          <fieldset>
-            <legend class="sr-only">로그인 하기</legend>
-            <div class="login__form__content">
-              <div class="user__ID">
-                <label for="userID" class="sr-only">아이디</label>
-                <input
-                  type="text"
-                  id="userID"
-                  class="user__ID__input"
-                  required
-                  placeholder="아이디"
-                  name="userID"
-                  aria-invalid="false"
-                  aria-describedby="userIdError"
-                  aria-live="assertive"
-                  autocomplete="username"
-                />
-                <span id="userIdError" class="id__error__message"
-                  >아이디를 입력해주세요.</span
-                >
-              </div>
-
-              <div class="user__password">
-                <div class="password__wrapper">
-                  <label for="userPassword" class="sr-only">비밀번호</label>
+      <div class="section__container">
+        <section class="login__container">
+          <h2 class="login__title">TAING ID 로그인</h2>
+          <form class="login__form" method="post">
+            <fieldset>
+              <legend class="sr-only">로그인 하기</legend>
+              <div class="login__form__content">
+                <div class="user__ID">
+                  <label for="userID" class="sr-only">아이디</label>
                   <input
-                    type="password"
-                    id="userPassword"
-                    class="user__password__input"
+                    type="text"
+                    id="userID"
+                    class="user__ID__input"
                     required
-                    placeholder="비밀번호"
-                    name="userPassword"
+                    placeholder="아이디"
+                    name="userID"
                     aria-invalid="false"
-                    aria-describedby="userPasswordError"
-                    aria-live="polite"
-                    autocomplete="current-password"
+                    aria-describedby="userIdError"
+                    aria-live="assertive"
+                    autocomplete="username"
+                  />
+                  <span id="userIdError" class="id__error__message"
+                    >아이디를 입력해주세요.</span
+                  >
+                </div>
+                <div class="user__password">
+                  <div class="password__wrapper">
+                    <label for="userPassword" class="sr-only">비밀번호</label>
+                    <input
+                      type="password"
+                      id="userPassword"
+                      class="user__password__input"
+                      required
+                      placeholder="비밀번호"
+                      name="userPassword"
+                      aria-invalid="false"
+                      aria-describedby="userPasswordError"
+                      aria-live="polite"
+                      autocomplete="current-password"
+                    />
+                    <label
+                      for="userPasswordToggle"
+                      class="user__password__toggle"
+                    >
+                      <input
+                        type="checkbox"
+                        id="userPasswordToggle"
+                        class="user__password__icon"
+                        aria-label="비밀번호가 표시되지 않습니다."
+                      />
+                    </label>
+                  </div>
+                  <span id="userPasswordError" class="pw__error__message"
+                    >비밀번호는 숫자와 특수문자 포함 6자리 이상 입력
+                    해주세요</span
+                  >
+                </div>
+                <div class="login__ip__security__remember__me">
+                  <input
+                    type="checkbox"
+                    id="loginRememberMe"
+                    class="login__ip__remember__me"
+                    name="rememberMe"
                   />
                   <label
-                    for="userPasswordToggle"
-                    class="user__password__toggle"
+                    for="loginRememberMe"
+                    class="login__remember__me__label check"
+                    >자동로그인</label
                   >
-                    <input
-                      type="checkbox"
-                      id="userPasswordToggle"
-                      class="user__password__icon"
-                      aria-label="비밀번호가 표시되지 않습니다."
-                    />
-                  </label>
                 </div>
-                <span id="userPasswordError" class="pw__error__message"
-                  >비밀번호는 숫자와 특수문자 포함 6자리 이상 입력
-                  해주세요</span
-                >
+                <button class="login__button" type="button">로그인하기</button>
               </div>
-
-              <div class="login__ip__security__remember__me">
-                <input
-                  type="checkbox"
-                  id="loginRememberMe"
-                  class="login__ip__remember__me"
-                  name="rememberMe"
-                />
-                <label
-                  for="loginRememberMe"
-                  class="login__remember__me__label check"
-                  >자동로그인</label
-                >
-              </div>
-
-              <button class="login__button" type="button">로그인하기</button>
-            </div>
-          </fieldset>
-        </form>
-      </section>
-
-      <section class="login__search__container">
-        <a href="/src/pages/findId/index.html"> 아이디 찾기 </a>
-        <span class="line_divide" aria-hidden="true">|</span>
-        <a href="/src/pages/findpw/index.html"> 비밀번호 찾기 </a>
-      </section>
-
-      <section class="login__register__container">
-        <span>아직 계정이 없으신가요?</span>
-        <a href="/src/pages/register/index.html" class="click">
-          회원가입하기
-        </a>
-      </section>
+            </fieldset>
+          </form>
+        </section>
+        <section class="login__search__container">
+          <a href="/src/pages/findId/index.html"> 아이디 찾기 </a>
+          <span class="line_divide" aria-hidden="true">|</span>
+          <a href="/src/pages/findpw/index.html"> 비밀번호 찾기 </a>
+        </section>
+        <section class="login__register__container">
+          <span>아직 계정이 없으신가요?</span>
+          <a href="/src/pages/register/index.html" class="click">
+            회원가입하기
+          </a>
+        </section>
+      </div>
     </main>
 
     <c-footer></c-footer>

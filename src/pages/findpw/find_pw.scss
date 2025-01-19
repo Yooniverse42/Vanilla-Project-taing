@@ -6,16 +6,22 @@ body {
 }
 
 .main {
+  @include flexbox(flex, nowrap, center, center);
   width: 100%;
   font-size: $text-12;
 }
 
+.section__container {
+  width: 100%;
+  max-width: calc(448px + 32px);
+}
+
 section {
-  @include marginX($spacing-48);
+  @include marginX($spacing-16);
 }
 
 .findpw__container {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .findPw__title {
@@ -114,12 +120,16 @@ section {
     font-size: $text-16;
   }
 
+  .section__container {
+    max-width: 100%;
+  }
+
   section {
     margin: 0 10rem;
   }
 
   .findpw__container {
-    margin-top: 6.25rem;
+    margin-top: 4rem;
   }
 
   .findPw__title {
@@ -170,7 +180,7 @@ section {
 
   .findpw__container {
     font-size: $text-28;
-    margin-top: 10.6rem;
+    margin-top: 6rem;
   }
 
   .findPw__title {

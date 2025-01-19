@@ -6,10 +6,16 @@ body {
 }
 
 .main__login {
+  @include flexbox(flex, nowrap, center, center);
   width: 100%;
 
+  .section__container {
+    width: 100%;
+    max-width: calc(448px + 32px);
+  }
+
   .login__container {
-    margin: 4rem $spacing-48;
+    margin: 3rem $spacing-16;
 
     .login__title {
       text-align: center;
@@ -164,8 +170,12 @@ fieldset {
     max-width: 62.5rem;
     font-size: $text-16;
 
+    .section__container {
+      max-width: 100%;
+    }
+
     .login__container {
-      margin: 6rem 10rem;
+      margin: 4rem 10rem;
 
       .login__title {
         font-size: $text-28;
@@ -225,7 +235,7 @@ fieldset {
 
     .login__container {
       min-width: 45.75rem;
-      margin: 10rem auto;
+      margin: 6rem auto;
 
       .login__title {
         font-size: $text-38;

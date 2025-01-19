@@ -21,51 +21,51 @@
     <c-header></c-header>
 
     <main class="main">
-      <section class="findId_container">
-        <h2 class="findId_title">아이디 찾기</h2>
-
-        <form class="findId_content" action="/">
+      <div class="section__container">
+        <section class="findId_container">
+          <h2 class="findId_title">아이디 찾기</h2>
+          <form class="findId_content" action="/">
+            <h3>
+              이메일로 찾기
+              <span>가입 시 등록한 이메일을 입력해주세요.</span>
+            </h3>
+            <label class="findId_label" for="findId_email">
+              <input
+                id="findId_email"
+                type="email"
+                name="user_email"
+                placeholder="이메일"
+                required
+              />
+              <button class="button_delete" type="reset"></button>
+            </label>
+            <span class="error-message">
+              아이디는 이메일 형식으로 입력해 주세요.
+            </span>
+          </form>
+          <button class="check_email_button" type="button" disabled>
+            확인
+          </button>
+        </section>
+        <section class="line_border"><p>또는</p></section>
+        <section class="findId_sub-content">
           <h3>
-            이메일로 찾기
-            <span>가입 시 등록한 이메일을 입력해주세요.</span>
+            본인인증으로 찾기
+            <span
+              >이미 본인인증이 완료된 계정에 한하여 아이디 찾기가
+              가능합니다.</span
+            >
           </h3>
-          <label class="findId_label" for="findId_email">
-            <input
-              id="findId_email"
-              type="email"
-              name="user_email"
-              placeholder="이메일"
-              required
-            />
-            <button class="button_delete" type="reset"></button>
-          </label>
-          <span class="error-message">
-            아이디는 이메일 형식으로 입력해 주세요.
-          </span>
-        </form>
-        <button class="check_email_button" type="button" disabled>확인</button>
-      </section>
-
-      <section class="line_border"><p>또는</p></section>
-
-      <section class="findId_sub-content">
-        <h3>
-          본인인증으로 찾기
-          <span
-            >이미 본인인증이 완료된 계정에 한하여 아이디 찾기가
-            가능합니다.</span
-          >
-        </h3>
-        <button class="button_valid_thirdparty" type="button">
-          본인인증하기
-        </button>
-      </section>
-
-      <section class="login__search__container">
-        <a href="/src/pages/loginID/index.html">로그인 하기</a>
-        <span class="line_divide" aria-hidden="true">|</span>
-        <a href="/src/pages/findpw/index.html">비밀번호 찾기</a>
-      </section>
+          <button class="button_valid_thirdparty" type="button">
+            본인인증하기
+          </button>
+        </section>
+        <section class="login__search__container">
+          <a href="/src/pages/loginID/index.html">로그인 하기</a>
+          <span class="line_divide" aria-hidden="true">|</span>
+          <a href="/src/pages/findpw/index.html">비밀번호 찾기</a>
+        </section>
+      </div>
     </main>
 
     <c-footer></c-footer>
