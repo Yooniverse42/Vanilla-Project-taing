@@ -267,6 +267,7 @@ export function renderProfileForm(pageName) {
   // 프로필 저장
 
   function saveUserProfile() {
+    const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
     loading.show();
     if (!currentProfile) return;
 
