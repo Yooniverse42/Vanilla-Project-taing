@@ -1,7 +1,9 @@
-import pb from '@/api/pocketbase';
-import { getStorage, deleteStorage } from '@/library/index';
 import textCSS from '@/styles/components/headerProfile.scss?inline';
+import pb from '@/api/pocketbase';
+import { getStorage, deleteStorage, getNode } from '@/library/index';
+import { getRecords } from '@/api/getRecords';
 import { sweetConfirm, sweetBasic } from '@/components/sweetAlert';
+import '@/components/loading.js';
 
 const currentProfile = JSON.parse(localStorage.getItem('currentProfile'));
 
@@ -115,12 +117,29 @@ export class ProfileModal extends HTMLElement {
           false,
           '취소'
         ).then(async (res) => {
-          if (res.isConrimed) {
+          if (res.isConfirmed) {
+            const loading = getNode('c-loading');
+            loading.show();
             const user = await getStorage('user');
+            const profiles = await getRecords('profileinfo', {
+              filter: `user="${user.record.id}"`,
+            });
+            await Promise.all(
+              profiles.map((profile) =>
+                pb.collection('profileinfo').delete(profile.id)
+              )
+            );
             await pb.collection('users').delete(user.record.id);
-            await pb.collection('profileinfo').delete(user.record.id);
+
             deleteStorage('user');
             deleteStorage('currentProfile');
+            deleteStorage('popupDate');
+            Object.keys(localStorage).forEach((key) => {
+              if (key.includes('RecentSearch')) {
+                deleteStorage(key);
+              }
+            });
+            loading.hide();
             sweetBasic(
               '회원 탈퇴 완료',
               '확인을 누르면 메인 페이지로 이동합니다.'
