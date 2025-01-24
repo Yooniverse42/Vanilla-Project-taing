@@ -5,21 +5,15 @@
 <div align="center">
 <strong>✨ 배포 URL ✨</strong>
 
-```
 https://techit-taing.netlify.app/
-```
 
 <strong>✨ Test ID ✨</strong>
 
-```
-taing777
-```
+_**taing777**_
 
 <strong>✨ Test PW ✨</strong>
 
-```
-taing777!
-```
+_**taing777!**_
 
 </div>
 
@@ -148,8 +142,8 @@ taing777!
 
 ### 2. 랜딩 페이지
 
-<img src="./public/descImages/landing/landing.gif" />
 <img src="./public/descImages/landing/landing.png" />
+<img src="./public/descImages/landing/landing.gif" />
 
 - 버튼 클릭 시 로그인 페이지로 이동
 - 스와이퍼를 이용하여 여러 콘텐츠 확인 가능
@@ -307,10 +301,6 @@ taing777!
 <img src="./public/descImages/home/main.png" />
 <div align="center">
   <img src="./public/descImages/home/main.gif" width="45%" /> <img src="./public/descImages/home/event.gif" width="45%" />
-  <br/>
-  <img src="./public/descImages/home/search.gif" width="45%" /> <img src="./public/descImages/home/headerPage.gif" width="45%" />
-  <br/>
-  <img src="./public/descImages/home/logout.gif" width="45%" /> <img src="./public/descImages/home/withdrawal.gif" width="45%" />
 </div>
 
 - 로딩 스피너를 이용하여 UX 향상
@@ -330,6 +320,8 @@ taing777!
 
 ### 7-1. 네비게이션 메뉴 세부 페이지
 
+<img src="./public/descImages/home/headerPage.gif" />
+
 | 🕹️ 개선사항 |
 | :---------- |
 
@@ -337,6 +329,8 @@ taing777!
 - 관련 포스터 동적 렌더링
 
 ### 7-2. 검색 기능
+
+<img src="./public/descImages/home/search.gif" />
 
 - 최근 검색어 저장 및 개별 삭제 가능
 
@@ -351,6 +345,10 @@ taing777!
 
 ### 7-3. 프로필 다이얼로그
 
+<div align="center">
+  <img src="./public/descImages/home/logout.gif" width="45%" /> <img src="./public/descImages/home/withdrawal.gif" width="45%" />
+</div>
+
 - 로그아웃 및 회원탈퇴 가능
 - 프로필 편집에서 프로필명 변경 가능
 
@@ -362,5 +360,136 @@ taing777!
 - 프로필 전환 버튼 클릭 시 프로필 선택 페이지로 이동
 
 <br>
+<br>
+<br>
 
----
+## 📈 전체적인 프로젝트 개선 과정
+
+### 1. 데스크탑 Breakpoint 최적화
+
+- 피그마 시안의 데스크탑 해상도(1920px)와 실제 사용자 환경의 불일치
+- 1280px~1920px 해상도 사용자들의 태블릿 레이아웃 강제 노출
+
+> - 모바일: min-width 320px
+> - 태블릿: min-width 768px
+> - 데스크탑: min-width 1920px
+
+#### 개선사항
+
+> 데스크탑 해상도 사용 통계 (23.10 ~ 24.10, https://gs.statcounter.com/ 참고)
+>
+> - 1위: 1920px
+> - 2위: 1366px
+> - 3위: 1536px
+> - 4위: 1280px
+
+- 프로젝트 특성: 90% 이상이 이미지 콘텐츠로 구성
+- 이미지 해상도 문제가 사용자 경험을 크게 저해할 것이라 판단
+
+Breakpoint 기준 변경
+
+> - Mobile: min-width 320px
+> - Tablet: min-width 768px
+> - Desktop: min-width 1280px ⬅️ 변경
+
+<br>
+
+### 2. FOUC 해결
+
+- 동적 이미지 로딩 시 0.5초 가량의 FOUC 발생
+- 네트워크 환경에 따른 사용자 경험 저하
+
+#### 개선사항
+
+- 코드 모듈화 및 재사용성 향상
+
+```html
+<link rel="stylesheet" href="/src/styles/components/fouc.scss" />
+<script type="module" src="/src/components/fouc.js"></script>
+```
+
+```scss
+body {
+  display: none;
+}
+
+body.loaded {
+  display: block;
+}
+```
+
+```javascript
+window.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('loaded');
+});
+```
+
+<br>
+
+### 3. Lighthouse
+
+#### 개선사항
+
+- 접근성
+
+  - WAI-ARIA 적절한 사용
+  - 시맨틱 마크업 구조화
+  - 충분한 색상 대비
+  - 키보드 접근성 보장
+
+- 권장사항
+
+  - 이미지 alt 속성 추가
+  - 적절한 viewport 설정
+  - 링크 텍스트 최적화
+
+- SEO
+  - 메타 태그 최적화
+  - 검색엔진 친화적 URL 구조
+
+#### 현재 이슈
+
+1. 성능
+
+- 대량의 이미지로 인한 LCP(Largest Contentful Paint) 지연
+- 이미지 최적화 필요성
+
+<img src="./public/descImages/lighthouse/lighthouse-landing.png">
+<img src="./public/descImages/lighthouse/lighthouse-main-tablet.png">
+
+랜딩 페이지와 메인 페이지에서는 많은 이미지가 필요하기 때문에 `콘텐츠가 포함된 최대 페인트 요소` 에서 성능 저해
+
+<br>
+<br>
+
+2. 해상도 대응
+
+- 디바이스별 최적 해상도 제공 vs 브라우저 크기 변경 시 화질 저하
+- 반응형 이미지 전략 재검토 필요
+
+<img src="./public/descImages/lighthouse/lighthouse-landing-tablet.png">
+
+<br>
+<br>
+<br>
+
+## 🧐 회고 🤔
+
+### 기술적 도전과 개선점
+
+Breakpoint: 데스크탑 환경에서 1280px 구간의 최적화가 더 필요하다고 판단했다.  
+커스텀 태그: 중복 코드 제거를 위해 도입했으나, 포커스 트랩 등 생각과 다르게 작동할 때가 많아서 좀 더 공부가 필요하다고 느꼈다.  
+UI/UX: SweetAlert2 라이브러리 사용으로 시각적 개선을 이뤘으나, 스크린리더 호환성 문제가 있었다.  
+WAI-ARIA: 접근성 향상을 위해 적용했으나, 더 세밀한 구현이 필요하다고 느꼈다.
+
+### 리팩토링 과정에서 배운 점
+
+팀 프로젝트 코드의 이해와 수정에 예상보다 많은 시간이 필요했고, 코드 재사용성과 중복 제거를 위한 지속적인 고민이 필요했다.  
+그리고 가독성 향상과 최적의 메서드 선택을 위한 고민이 많았다.
+
+### 향후 개선 계획
+
+포커스 트랩에 대한 추가 학습 후 재구현 예정  
+접근성과 호환되는 UI 라이브러리 탐색  
+WAI-ARIA 더 세밀한 적용  
+데스크탑 breakpoint 추가 세분화
