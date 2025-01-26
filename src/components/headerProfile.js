@@ -89,6 +89,7 @@ export class ProfileModal extends HTMLElement {
           if (res.isConfirmed) {
             await deleteStorage('user');
             await deleteStorage('currentProfile');
+            await deleteStorage('pocketbase_auth');
 
             Object.keys(localStorage).forEach((key) => {
               if (key.includes('RecentSearch')) {
@@ -133,6 +134,7 @@ export class ProfileModal extends HTMLElement {
 
             deleteStorage('user');
             deleteStorage('currentProfile');
+            deleteStorage('pocketbase_auth');
             deleteStorage('popupDate');
             Object.keys(localStorage).forEach((key) => {
               if (key.includes('RecentSearch')) {
