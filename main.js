@@ -75,6 +75,7 @@ function renderSwiper() {
     null,
     false
   );
+
   new Swiper('.section1__swiper .swiper-container', {
     effect: 'coverflow',
     grabCursor: true,
@@ -88,7 +89,6 @@ function renderSwiper() {
       modifier: 1,
       slideShadows: true,
     },
-    loop: true,
     spaceBetween: 5,
     breakpoints: {
       768: {
