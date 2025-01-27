@@ -1,4 +1,4 @@
-# TVING Clone with Vanilla JavaScript
+# TVING Clone: 팀 프로젝트 & 개인 리팩토링 with Vanilla JavaScript
 
 ![readme_mockup2](/public/descImages/taing.png)
 
@@ -23,7 +23,7 @@ _**taing777!**_
 
 ### 🌱 개요
 
-- 국내 OTT 사이트 '티빙(TVING)'을 클론 코딩하고, 이후 전반적인 리팩토링을 진행한 프로젝트입니다.
+- 국내 OTT 사이트 '티빙(TVING)'을 클론 코딩하고, 이후 **전반적인 리팩토링을 진행한 프로젝트**입니다.
 
 ### 🎯 목표
 
