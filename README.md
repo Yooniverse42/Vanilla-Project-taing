@@ -7,6 +7,8 @@
 
 https://techit-taing.netlify.app/
 
+(리팩토링 전 : https://gogo7.netlify.app/)
+
 <strong>✨ Test ID ✨</strong>
 
 _**taing777**_
